@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "01_puzzle", "01_puzzle\01_puzzle.vcproj", "{BDAC7BB9-BB8E-4310-B67F-7740B65ED974}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "01_puzzle_2", "01_puzzle_2\01_puzzle_2.vcproj", "{E6ADBC2E-2D1A-42A1-8503-D57FB066C430}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDAC7BB9-BB8E-4310-B67F-7740B65ED974}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BDAC7BB9-BB8E-4310-B67F-7740B65ED974}.Debug|Win32.Build.0 = Debug|Win32
+		{BDAC7BB9-BB8E-4310-B67F-7740B65ED974}.Release|Win32.ActiveCfg = Release|Win32
+		{BDAC7BB9-BB8E-4310-B67F-7740B65ED974}.Release|Win32.Build.0 = Release|Win32
+		{E6ADBC2E-2D1A-42A1-8503-D57FB066C430}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E6ADBC2E-2D1A-42A1-8503-D57FB066C430}.Debug|Win32.Build.0 = Debug|Win32
+		{E6ADBC2E-2D1A-42A1-8503-D57FB066C430}.Release|Win32.ActiveCfg = Release|Win32
+		{E6ADBC2E-2D1A-42A1-8503-D57FB066C430}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
