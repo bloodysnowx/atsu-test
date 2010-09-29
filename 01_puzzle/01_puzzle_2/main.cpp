@@ -9,6 +9,7 @@ int main()
 {
 	newPosition();
 	initializePosition();
+	draw();
 
 	exitPosition();
 	return 0;
@@ -37,4 +38,12 @@ void exitPosition()
 		delete[] now_position[i];
 
 	delete[] now_position;
+}
+
+void draw()
+{
+	for(int i=0; i < GAME_SIZE_Y; ++i)
+		cout << now_position[i] << endl;
+
+	cout << "a:left s:right w:up z:down. command? ";
 }

@@ -4,6 +4,7 @@
 void newPosition();
 void initializePosition();
 void exitPosition();
+void draw();
 
 static const int GAME_SIZE_X = 9;
 static const int GAME_SIZE_Y = 5;
