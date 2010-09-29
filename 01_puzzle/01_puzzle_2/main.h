@@ -5,8 +5,9 @@ void newPosition();
 void initializePosition();
 void exitPosition();
 void draw();
-void getInput();
+bool getInput();
 void updateGame();
+bool checkClear();
 
 static const int GAME_SIZE_X = 9;
 static const int GAME_SIZE_Y = 5;

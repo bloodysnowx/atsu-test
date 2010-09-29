@@ -14,11 +14,14 @@ int main()
 	newPosition();
 	initializePosition();
 
-	while(true)
+	bool exit_flg = false;
+
+	while(exit_flg == false)
 	{
 		draw();
-		getInput();
+		exit_flg = getInput();
 		updateGame();
+		exit_flg |= checkClear();
 	}
 
 	exitPosition();
@@ -58,13 +61,15 @@ void draw()
 	for(int i=0; i < GAME_SIZE_Y; ++i)
 		cout << now_position[i] << endl;
 
-	cout << "a:left s:right w:up z:down. command? ";
+	cout << "a:left s:right w:up z:down x:exit, command? ";
 }
 
-void getInput()
+bool getInput()
 {
 	char c;
 	cin >> c;
+
+	bool exit_flg = false;
 	
 	switch (c)
 	{
@@ -92,6 +97,8 @@ void getInput()
 		pushing_x = now_x;
 		pushing_y = now_y + 2;
 		break;
+	case 'x':
+		exit_flg = true;
 	default:
 		moving_x = now_x;
 		moving_y = now_y;
@@ -99,6 +106,8 @@ void getInput()
 		pushing_y = now_y;
 		break;
 	}
+
+	return exit_flg;
 }
 
 void updateGame()
@@ -223,5 +232,21 @@ void updateGame()
 	default:
 		break;
 	}
+}
 
+bool checkClear()
+{
+	bool clear_flg = true;
+
+	for(int i=0; i < GAME_SIZE_Y; ++i)
+	{
+		for(int j=0; j < GAME_SIZE_X; ++j)
+		{
+			// ゴールに到達していない荷物があれば、クリアしていない
+			if(now_position[i][j] == 'o')
+				clear_flg = false;
+		}
+	}
+
+	return clear_flg;
 }
