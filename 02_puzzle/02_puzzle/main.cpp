@@ -1,15 +1,13 @@
 #include "GameLib/Framework.h"
 
-int main()
-{
-	return 0;
-}
-
-#if 0
 namespace GameLib
 {
 	void Framework::update()
 	{
+		unsigned* vram = videoMemory();
+		static unsigned i;
+		vram[ i ] += i * 100;
+		i += 9973; //1ñúà»â∫ç≈ëÂÇÃëfêî
+		i %= ( width() * height() );
 	}
 }
-#endif
