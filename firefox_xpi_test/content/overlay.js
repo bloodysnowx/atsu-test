@@ -11,5 +11,7 @@ var GetPTRSummary =
             var src_html = target_table.rows[i].innerHTML;
             window.alert(src_html);
         }
+        // clipboardData.setData("Text", "test");
+        System.setClipboard("test");
     },
 };
