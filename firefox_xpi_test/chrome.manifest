@@ -1,2 +1,2 @@
-content  GetPTRSummary  content/
+content  GetPTRSummary  jar:chrome/GetPTRSummary.jar!/content/
 overlay  chrome://browser/content/browser.xul  chrome://GetPTRSummary/content/overlay.xul

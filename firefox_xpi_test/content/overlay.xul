@@ -5,6 +5,6 @@
   <popup id="contentAreaContextMenu">
     <menuitem id="PTR-menu"
               label="Get Player EX Summary FROM PTR"
-              oncommand="GetPTRSummary.GetSummary();" />
+              oncommand="GetPTRSummary();" />
   </popup>
 </overlay>
