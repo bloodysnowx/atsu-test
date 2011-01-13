@@ -3,8 +3,14 @@
 <overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
   <script type="application/x-javascript" src="chrome://GetPTRSummary/content/overlay.js" />
   <popup id="contentAreaContextMenu">
-    <menuitem id="PTR-menu"
+    <menuitem id="PTREXSummary"
               label="Get Player EX Summary FROM PTR"
-              oncommand="GetPTRSummary();" />
+              oncommand="GetPTREXSummary();" />
+    <menuitem id="PTRNLSummary"
+              label="Get Player NL Summary FROM PTR"
+              oncommand="GetPTRNLSummary();" />
+    <menuitem id="PTRFLSummary"
+              label="Get Player FL Summary FROM PTR"
+              oncommand="GetPTRFLSummary();" />
   </popup>
 </overlay>
