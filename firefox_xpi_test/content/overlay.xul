@@ -5,12 +5,12 @@
   <popup id="contentAreaContextMenu">
     <menuitem id="PTREXSummary"
               label="Get Player EX Summary FROM PTR"
-              oncommand="GetPTREXSummary();" />
+              oncommand="GetPTRSummary(0);" />
     <menuitem id="PTRNLSummary"
               label="Get Player NL Summary FROM PTR"
-              oncommand="GetPTRNLSummary();" />
+              oncommand="GetPTRSummary(1);" />
     <menuitem id="PTRFLSummary"
               label="Get Player FL Summary FROM PTR"
-              oncommand="GetPTRFLSummary();" />
+              oncommand="GetPTRSummary(2);" />
   </popup>
 </overlay>

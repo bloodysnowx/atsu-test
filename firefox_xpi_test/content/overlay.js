@@ -1,9 +1,11 @@
-function GetPTREXSummary()
+// 0-> EXSummary, 1-> NLSummary, 2-> FLSummary
+
+function GetPTRSummary(summary_type)
 {
     // window.alert("GetPTRSummary");
     var strDate = makeDate();
     var Rate = getRate();
-    var summariString = getEXSummary();
+    var summariString = getSummary(summary_type);
 
     const CLIPBOARD = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
     CLIPBOARD.copyString("R" + Rate + summariString + strDate);
@@ -36,7 +38,7 @@ function getRate()
 }
 
 // Earn, BB100, Hands‚ðŽæ“¾‚·‚é
-function getEXSummary()
+function getSummary(summary_type)
 {
     // window.alert("getSummary");
     var BB_sum = 0;
