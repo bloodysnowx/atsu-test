@@ -52,7 +52,7 @@ function getSummary(summary_type)
         var stakesName = target_table.rows[i].cells[0];
         while(stakesName.childNodes.length > 0) stakesName = stakesName.childNodes[0];
         // window.alert(stakesName.nodeValue);
-        if(is10maxNLabove(stakesName.nodeValue))
+        if(isSummaryType(stakesName.nodeValue, summary_type))
         {
            var tmp_hand = target_table.rows[i].cells[1];
            while(tmp_hand.childNodes.length > 0) tmp_hand = tmp_hand.childNodes[0];
@@ -72,15 +72,29 @@ function getSummary(summary_type)
     return "  H " + Hands + "  $ " + Earn + "  BB " + BB100.toFixed(2) + "  ";
 }
 
-// 10max‚æ‚è‘å‚«‚¢NL‚©”»’è‚·‚é
-function is10maxNLabove(stakesName)
+// summary_type == 0(EX) 10max‚æ‚è‘å‚«‚¢NL‚©”»’è‚·‚é
+// summary_type == 1(NL)
+// summary_type == 2(FL)
+function isSummaryType(stakesName, summary_type)
 {
     var ret = true;
 
-    if (stakesName.indexOf("NLH") < 0) ret = false;
-    else if (stakesName.indexOf("HU") > -1) ret = false;
-    else if (stakesName.indexOf("0.02") > -1) ret = false;
-    else if (stakesName.indexOf("0.05") > -1) ret = false;
+    if(summary_type == 0)
+    {
+        if (stakesName.indexOf("NLH") < 0) ret = false;
+        else if (stakesName.indexOf("HU") > -1) ret = false;
+        else if (stakesName.indexOf("0.02") > -1) ret = false;
+        else if (stakesName.indexOf("0.05") > -1) ret = false;
+    }
+    else if(summary_type == 1)
+    {
+        if (stakesName.indexOf("NLH") < 0) ret = false;
+    }
+    else if(summary_type == 2)
+    {
+        if (stakesName.indexOf("FLH") < 0) ret = false;
+    }
+    else ret = false;
 
     return ret;
 }
