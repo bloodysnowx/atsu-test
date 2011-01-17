@@ -1,0 +1,17 @@
+﻿DBファイルを開くボタン
+前回チェック日時指定カレンダー
+XML出力ボタン
+
+Joker: 判定条件はまず
+Joker: exBB/100＞-1 ならNormal
+Joker: のこりのうちexBB/100＞-20 なら-1-20
+Lates: ちっちゃい電池がころがっていって行方不明で
+Lates: あまりがめんみてなかった
+Joker: のこりのうちハンド数<1000なら　-1kH
+Lates: 分類が統一さえされてりゃカンタンにできるというのは50行まえからわかっているので
+Joker: のこりのうちexBB/100＞-40　なら　-20-40
+
+Joker: [label=0] 30dbff, Normal [label=1] 30ff97, 1-25 [label=2] e1ff80, 25-40 [label=3] ff9b30, 40-60 [label=4] ff304e, 60- [label=5] ff30d7, Check [label=6] 303eff, -1k hands [label=7] 1985ff, Pickup 判定条件は exBB/100＞-1 ならNormal のこりのうちexBB/100＞-25 なら　1-25 のこりのうちハンド数<1000なら　-1k hands のこりのうちexBB/100＞-40　なら　20-40 のこりのうちexBB/100＞-60　なら　40-60 のこりのうちexBB/100<=-60　なら　60-
+
+Joker: [label=0] 30dbff, Normal [label=1] 30ff97, 1-25 [label=2] e1ff80, 25-40 [label=3] ff9b30, 40-60 [label=4] ff304e, 60- [label=5] ff30d7, Check [label=6] 303eff, -1k hands [label=7] 1985ff, Pickup 
+判定条件は exBB/100＞-1 ならNormal のこりのうちexBB/100＞-25 なら　1-25 のこりのうちハンド数<1000なら　-1k hands のこりのうちexBB/100＞-40　なら　20-40 のこりのうちexBB/100＞-60　なら　40-60 のこりのうちexBB/100<=-60　なら　60-
