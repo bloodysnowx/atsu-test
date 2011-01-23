@@ -56,15 +56,15 @@ function getSummary(summary_type)
         {
            var tmp_hand = target_table.rows[i].cells[1];
            while(tmp_hand.childNodes.length > 0) tmp_hand = tmp_hand.childNodes[0];
-           Hands += eval(tmp_hand.nodeValue.replace(",", ""));
+           Hands += eval(tmp_hand.nodeValue.replace(/,/g, ""));
            
            var tmp_bb = target_table.rows[i].cells[3];
            while(tmp_bb.childNodes.length > 0) tmp_bb = tmp_bb.childNodes[0];
-           BB_sum += eval(tmp_bb.nodeValue.replace(",", "")) * eval(tmp_hand.nodeValue.replace(",", ""));
+           BB_sum += eval(tmp_bb.nodeValue.replace(/,/g, "")) * eval(tmp_hand.nodeValue.replace(/,/g, ""));
            
            var tmp_earn = target_table.rows[i].cells[2];
            while(tmp_earn.childNodes.length > 0) tmp_earn = tmp_earn.childNodes[0];
-           Earn += eval(tmp_earn.nodeValue.replace("\$", "").replace(",", ""));
+           Earn += eval(tmp_earn.nodeValue.replace("\$", "").replace(/,/g, ""));
         }
     }
     var BB100 = Math.round(BB_sum * 100 / Hands) / 100;
