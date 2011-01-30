@@ -16,3 +16,5 @@
 #include <tlhelp32.h>
 
 #pragma comment(lib, "user32.lib")
+#pragma comment(lib, "ShLwApi.Lib")
+#pragma comment(lib, "Psapi.Lib")
