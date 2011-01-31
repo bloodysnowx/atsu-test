@@ -15,9 +15,13 @@ int _tmain(int argc, _TCHAR* argv[])
 	// PokerStarsのProcess IDを取得
 	DWORD ps_handle;
 	DWORD thread_id = GetWindowThreadProcessId(ps_window_handle, &ps_handle);
+	// 見つかったハンドヒストリの総数
+	int hh_found_count_sum = 0;
 	// メインループ
 	while(true)
 	{
+		// 今回のループで見つかったハンドヒストリの数
+		int hh_found_count_loop = 0;
 		// PokerStarsのヒープ一覧を取得
 		HANDLE hHeapSnapshot;
 		HEAPLIST32 HeapList = {0};
@@ -134,9 +138,12 @@ int _tmain(int argc, _TCHAR* argv[])
 							std::string hh_file_name = hh_time + "_" + hand_number + ".txt";
 							if(!PathFileExistsA(hh_file_name.c_str()))
 							{
+								// ファイル出力
 								std::ofstream ofs(hh_file_name);
 								ofs << str;
 								ofs.close();
+								// 見つかった回数をカウントアップ
+								++hh_found_count_loop;
 							}
 						}
 					}
@@ -149,6 +156,10 @@ int _tmain(int argc, _TCHAR* argv[])
 		} while (Heap32ListNext(hHeapSnapshot, &HeapList) != FALSE);
 		// PokerStarsのスナップショットを破棄する
 		CloseHandle(hHeapSnapshot);
+		// 総数を計算
+		hh_found_count_sum += hh_found_count_loop;
+		std::cout << std::endl << hh_found_count_loop << " hands is found in this loop.";
+		std::cout << std::endl << hh_found_count_sum << " hands is found in this program running.";
 
 		Sleep(60 * 1000);
 	}
