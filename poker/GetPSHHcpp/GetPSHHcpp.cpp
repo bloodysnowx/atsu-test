@@ -84,7 +84,7 @@ int _tmain(int argc, _TCHAR* argv[])
 								continue;
 
 							// カレントディレクトリを移動
-							bool ret = SetCurrentDirectory(_T("E:\\observe_hh"));
+							BOOL ret = SetCurrentDirectory(_T("E:\\observe_hh"));
 
 							// ハンド番号を取得する
 							end_index = str.find(":", start_index);
