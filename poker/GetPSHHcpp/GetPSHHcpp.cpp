@@ -74,8 +74,10 @@ int _tmain(int argc, _TCHAR* argv[])
 					{
 						if(memcmp(&buff[i], find_str, sizeof(find_str) - 1) == 0)
 						{
+#if 0
 							std::cout << std::endl << "found!";
 							std::cout << std::endl << buff + i;
+#endif
 							std::string str = std::string(buff + i);
 							size_t start_index = 16;
 							size_t end_index;
@@ -138,6 +140,8 @@ int _tmain(int argc, _TCHAR* argv[])
 							std::string hh_file_name = hh_time + "_" + hand_number + ".txt";
 							if(!PathFileExistsA(hh_file_name.c_str()))
 							{
+								std::cout << std::endl << "Found! Table = " << table_name << " , date = " << hh_date << " " << hh_time 
+									<< " , number = " << hand_number;
 								// ファイル出力
 								std::ofstream ofs(hh_file_name);
 								ofs << str;
