@@ -90,10 +90,13 @@ int _tmain(int argc, _TCHAR* argv[])
 
 							// ハンド番号を取得する
 							end_index = str.find(":", start_index);
+							if(end_index == std::string::npos) continue;
 							std::string hand_number = str.substr(start_index + 1, end_index - start_index - 1);
 							// 日付を取得する
 							start_index = str.find(" - ", end_index) + 3;
+							if(start_index == std::string::npos) continue;
 							end_index = str.find(" ", start_index);
+							if(end_index == std::string::npos) continue;
 							std::string hh_date = str.substr(start_index, end_index - start_index);
 							// 日付のフォルダが無ければ作成する
 							size_t found_index;
