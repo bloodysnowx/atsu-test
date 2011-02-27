@@ -27,7 +27,7 @@ function makeDate()
 // Rate‚ğæ“¾‚·‚é
 function getRate()
 {
-    rObj = new RegExp("<DIV class=ov_main_rate.*?>(.*?)</DIV>");
+    rObj = new RegExp("<div id=\"number_reading\">(.*?)</div>");
     rObj.ignoreCase = true;
     document.body.innerHTML.match(rObj);
     return RegExp.$1;
@@ -56,7 +56,7 @@ function getSummary()
            
            var tmp_earn = target_table.rows[i].cells[2];
            while(tmp_earn.childNodes.length > 0) tmp_earn = tmp_earn.childNodes[0];
-           Earn += eval(tmp_earn.nodeValue.replace("\$", "").replace(/,/g, ""));
+           Earn += getNumOnly(tmp_earn.nodeValue.replace(/,/g, ""));
         }
     }
     BB100 = Math.round(BB_sum * 100 / Hands) / 100;
@@ -73,4 +73,15 @@ function is10maxNLabove(stakesName)
     else if (stakesName.indexOf("0.05") > -1) ret = false;
 
     return ret;
+}
+
+// ”’l‚Ì‚İ‚ğæ‚èo‚·
+function getNumOnly(str)
+{
+    if(str.search(/(-?[0-9]+)/) != -1)
+        return Number(RegExp.$1);
+    else if(!isNaN(str))
+        return Number(str);
+
+    return 0;
 }

@@ -90,7 +90,9 @@ namespace DBtoNote
                     else if (dr.GetDouble(4) > -40) label_num = "2";
                     else if (dr.GetDouble(4) > -60) label_num = "3";
                     else label_num = "4";
-
+#if  false
+                    label_num = "0";
+#endif
                     xmlWriter.WriteStartAttribute("label");
                     xmlWriter.WriteString(label_num);
                     xmlWriter.WriteEndAttribute();

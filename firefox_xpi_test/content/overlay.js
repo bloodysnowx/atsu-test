@@ -30,7 +30,7 @@ function getRate()
 {
     // window.alert("getRate");
     var d = window._content.document;
-    rObj = new RegExp("<div class=\"ov_main_rate\".*?>(.*?)</div>");
+    rObj = new RegExp("<div id=\"number_reading\">(.*?)</div>");
     rObj.ignoreCase = true;
     d.body.innerHTML.match(rObj);
     // window.alert(RegExp.$1);
@@ -64,7 +64,7 @@ function getSummary(summary_type)
            
            var tmp_earn = target_table.rows[i].cells[2];
            while(tmp_earn.childNodes.length > 0) tmp_earn = tmp_earn.childNodes[0];
-           Earn += eval(tmp_earn.nodeValue.replace("\$", "").replace(/,/g, ""));
+           Earn += getNumOnly(tmp_earn.nodeValue.replace(/,/g, ""));
         }
     }
     var BB100 = Math.round(BB_sum * 100 / Hands) / 100;
@@ -98,3 +98,15 @@ function isSummaryType(stakesName, summary_type)
 
     return ret;
 }
+
+// ”’l‚Ì‚İ‚ğæ‚èo‚·
+function getNumOnly(str)
+{
+    if(str.search(/(-?[0-9]+)/) != -1)
+        return Number(RegExp.$1);
+    else if(!isNaN(str))
+        return Number(str);
+
+    return 0;
+}
+
