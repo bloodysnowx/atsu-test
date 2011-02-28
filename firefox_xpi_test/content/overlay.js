@@ -8,7 +8,7 @@ function GetPTRSummary(summary_type)
     var summariString = getSummary(summary_type);
 
     const CLIPBOARD = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
-    CLIPBOARD.copyString("R" + Rate + summariString + strDate);
+    CLIPBOARD.copyString("R:" + Rate + summariString + strDate);
 }
 
 // “ú•t‚ğ¶¬‚·‚é
@@ -69,7 +69,7 @@ function getSummary(summary_type)
     }
     var BB100 = Math.round(BB_sum * 100 / Hands) / 100;
 
-    return "  H " + Hands + "  $ " + Earn + "  BB " + BB100.toFixed(2) + "  ";
+    return ", H:" + Hands + ", $:" + Earn + ", BB:" + BB100.toFixed(2) + ", ";
 }
 
 // summary_type == 0(EX) 10max‚æ‚è‘å‚«‚¢NL‚©”»’è‚·‚é
