@@ -9,7 +9,7 @@ var Rate = getRate();
 var Earn, BB100, Hands, Rate;
 getSummary();
 
-clipboardData.setData("Text", "R" + Rate+ "  H " + Hands + "  $ " + Earn + "  BB " + BB100.toFixed(2) + "  " + strDate);
+clipboardData.setData("Text", "R:" + Rate + ", H:" + Hands + ", $:" + Earn + ", BB:" + BB100.toFixed(2) + ", " + strDate);
 
 // “ú•t‚ğ¶¬‚·‚é
 function makeDate()
