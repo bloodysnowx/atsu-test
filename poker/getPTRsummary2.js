@@ -27,7 +27,7 @@ function makeDate()
 // Rate‚ðŽæ“¾‚·‚é
 function getRate()
 {
-    rObj = new RegExp("<div id=\"number_reading\">(.*?)</div>");
+    rObj = new RegExp("<DIV id=number_reading>(.*?)</DIV>");
     rObj.ignoreCase = true;
     document.body.innerHTML.match(rObj);
     return RegExp.$1;
