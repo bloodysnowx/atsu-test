@@ -45,7 +45,7 @@ namespace PTRtoNote
     {
         /// <summary>PTRのログインURL</summary>
         private const string PTR_LOGIN_URL = "http://www.pokertableratings.com/login_action.php";
-        /// <summary>PTRのログインURL</summary>
+        /// <summary>PTRの検索URL</summary>
         private const string PTR_SEARCH_URL = "http://www.pokertableratings.com/stars-player-search/";
         /// <summary>残り検索回数</summary>
         public uint SearchesRemaining { get; private set; }
@@ -59,7 +59,7 @@ namespace PTRtoNote
         /// <summary>
         /// PTRに接続する
         /// </summary>
-        /// <returns></returns>
+        /// <returns>ログイン処理に成功したかどうか</returns>
         public bool PTRConnect()
         {
             // クライアントを初期化する
@@ -76,6 +76,11 @@ namespace PTRtoNote
             return str.Contains("\"success\" : true");
         }
 
+        /// <summary>
+        /// PTRでPlayerを検索する
+        /// </summary>
+        /// <param name="player_name">Player名</param>
+        /// <returns>検索結果のwebページ</returns>
         public string GetPTR(string player_name)
         {
             return PTRClient.DownloadString(PTR_SEARCH_URL + player_name);
