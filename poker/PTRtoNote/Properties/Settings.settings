@@ -17,11 +17,14 @@
     <Setting Name="Label_4_Min" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">-60</Value>
     </Setting>
-    <Setting Name="Login" Type="System.String" Scope="Application">
+    <Setting Name="Logins" Type="System.String" Scope="Application">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="Password" Type="System.String" Scope="Application">
+    <Setting Name="Passwords" Type="System.String" Scope="Application">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="AccountNum" Type="System.UInt32" Scope="Application">
+      <Value Profile="(Default)">1</Value>
     </Setting>
   </Settings>
 </SettingsFile>

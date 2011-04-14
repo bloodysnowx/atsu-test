@@ -71,18 +71,27 @@ namespace PTRtoNote.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Login {
+        public string Logins {
             get {
-                return ((string)(this["Login"]));
+                return ((string)(this["Logins"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Password {
+        public string Passwords {
             get {
-                return ((string)(this["Password"]));
+                return ((string)(this["Passwords"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public uint AccountNum {
+            get {
+                return ((uint)(this["AccountNum"]));
             }
         }
     }
