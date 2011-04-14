@@ -1,7 +1,27 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PTRtoNote.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Label_0_Min" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">-1</Value>
+    </Setting>
+    <Setting Name="Label_1_Min" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">-10</Value>
+    </Setting>
+    <Setting Name="Label_2_Min" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">-25</Value>
+    </Setting>
+    <Setting Name="Label_3_Min" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">-40</Value>
+    </Setting>
+    <Setting Name="Label_4_Min" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">-60</Value>
+    </Setting>
+    <Setting Name="Login" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
 </SettingsFile>

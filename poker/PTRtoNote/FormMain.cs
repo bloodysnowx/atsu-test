@@ -15,5 +15,20 @@ namespace PTRtoNote
         {
             InitializeComponent();
         }
+
+        private void buttonOpen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonExecute_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
