@@ -26,7 +26,10 @@ namespace PTRtoNote
             PTRconnection conn = new PTRconnection();
             conn.Username = "shobon2";
             conn.Password = "shakin";
-            conn.PTRConnect();
+            if (conn.PTRConnect())
+            {
+                string str = conn.GetPTR("chiyuki");
+            }
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
