@@ -23,7 +23,10 @@ namespace PTRtoNote
 
         private void buttonExecute_Click(object sender, EventArgs e)
         {
-
+            PTRconnection conn = new PTRconnection();
+            conn.Username = "shobon2";
+            conn.Password = "shakin";
+            conn.PTRConnect();
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
