@@ -81,10 +81,10 @@ namespace PTRtoNote
 
             PTRconnection conn = new PTRconnection();
             conn.Username = Username[0];
-            conn.Password = Username[0];
+            conn.Password = Password[0];
             if (conn.PTRConnect())
             {
-                string str = conn.GetPTRWebPage("chiyuki");
+                conn.GetPTRData("LiuM+WuShu=?");
             }
         }
 

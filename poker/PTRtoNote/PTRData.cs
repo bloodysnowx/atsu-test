@@ -29,6 +29,8 @@ namespace PTRtoNote
 
         public PTRData()
         {
+            Hands = 0;
+            Earnings = 0;
         }
 
         /// <summary>

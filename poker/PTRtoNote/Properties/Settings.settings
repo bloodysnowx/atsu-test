@@ -29,5 +29,8 @@
     <Setting Name="Label_6_Hand_Max" Type="System.UInt32" Scope="Application">
       <Value Profile="(Default)">1000</Value>
     </Setting>
+    <Setting Name="ReacquisitionSpanDays" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">90</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

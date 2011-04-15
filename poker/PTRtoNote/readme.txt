@@ -28,7 +28,7 @@ notes.xmlを読み込み、PTRからのデータを追加し、条件による�
 	. 日付を確認(古いならばPTRから再取得)
 	. ラベル設定ルールに沿って、ラベルを更新
   . 形式に合致していなかった場合
-    . PTRから取得
+    . PTRから取得 -> done
 	. 以前のnoteの内容を付加
 	. ラベル設定ルールに沿って、ラベルを付加
   . 生成結果を更新版に書き込み
@@ -43,15 +43,15 @@ notes.xmlを読み込み、PTRからのデータを追加し、条件による�
 
 --- クラス ---
 
-. PTRとの接続クラス
+. PTRとの接続クラス -> done
   . PTRにログインする関数 -> done
   . PTRからログアウトする関数 -> 不要？
-  . PTRの残り検索回数を確認する関数
+  . PTRの残り検索回数を確認する関数 -> done
   . PTRからデータを取得する関数 -> done
-  . PTRのページからデータを切り出す関数
-. 個別noteに関するクラス
-  . note文字列から内容を切り出す関数
-  . データが古いかどうかを判定する関数
+  . PTRのページからデータを切り出す関数 -> done
+. 個別noteに関するクラス -> done
+  . note文字列から内容を切り出す関数 -> done
+  . データが古いかどうかを判定する関数 -> 不要？
 
 --- note文字列 ---
 
@@ -63,6 +63,7 @@ string summary = "R:" + dr.GetInt32(2).ToString() + ", H:" + dr.GetInt32(3).ToSt
                + ", " + dr.GetDateTime(1).ToString("yyyy/MM/dd");
 
 --- ラベル設定ルール ---
+
 app.configのLabel_6_Hand_Max未満のハンド数の場合は"6"
 app.configのLabel_0_Min以上のBB/100の場合は"0"
 app.configのLabel_1_Min以上のBB/100の場合は"1"
@@ -70,6 +71,19 @@ app.configのLabel_2_Min以上のBB/100の場合は"2"
 app.configのLabel_3_Min以上のBB/100の場合は"3"
 app.configのLabel_4_Min以上のBB/100の場合は"4"
 app.configのLabel_4_Min未満のBB/100の場合は"5"
+
+--- app.config ---
+
+Label_0_Min - ラベル"0"になる最小BB/100
+Label_1_Min - ラベル"1"になる最小BB/100
+Label_2_Min - ラベル"2"になる最小BB/100
+Label_3_Min - ラベル"3"になる最小BB/100
+Label_4_Min - ラベル"4"になる最小BB/100
+Logins - ログインユーザ名のCSV
+Passwords - ログインパスワードのCSV
+AccountNum - アカウント総数(上記二つの確認用)
+Label_6_Hand_Max - ラベル"6"になる最大ハンド数
+ReacquisitionSpanDays - 再取得を実行する期間
 
 --- 状態遷移 ---
 デフォルト
@@ -107,7 +121,8 @@ XP環境を構築するなどの自助努力をお願いします。
 
 --- to do ---
 
-
+PTRアクセス時にはランダム時間waitする
+前回アクセス時からハンド数が減少している場合はエラーとする
 
 --- author ---
 

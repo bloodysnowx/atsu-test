@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using System.Text.RegularExpressions;
+
 namespace PTRtoNote
 {
     /// <summary>
@@ -83,7 +85,19 @@ namespace PTRtoNote
         /// <returns>検索結果のwebページ</returns>
         private string GetPTRWebPage(string player_name)
         {
-            return PTRClient.DownloadString(PTR_SEARCH_URL + player_name);
+            return PTRClient.DownloadString(PTR_SEARCH_URL + System.Web.HttpUtility.UrlEncode(player_name));
+        }
+
+        private bool isStakes(string stakes_name)
+        {
+            bool ret = true;
+
+            if (stakes_name.IndexOf("NLH") < 0) ret = false;
+            else if (stakes_name.IndexOf("HU") > -1) ret = false;
+            else if (stakes_name.IndexOf("0.02") > -1) ret = false;
+            else if (stakes_name.IndexOf("0.05") > -1) ret = false;
+
+            return ret;
         }
 
         /// <summary>
@@ -94,14 +108,51 @@ namespace PTRtoNote
         private PTRData GetPTRDataFromWebPage(string web_page)
         {
             PTRData data = new PTRData();
-            // data.Rating = 
-            // data.Hands =
-            // data.Earnings = 
-            // data.BB_100 =
+            data.Rating = getRate(web_page);
+            web_page = web_page.Substring(web_page.IndexOf("<table id=\"sortable-data-table\" cellpadding=\"0\" cellspacing=\"0\">"));
+            // web_page = web_page.Substring(web_page.IndexOf("<td class=\"overview-stakes\">"));
+
+            Regex regex = new Regex(">([^<]+?)<");
+            MatchCollection matchCol;
+            decimal bb_sum = 0;
+
+            while (true)
+            {
+                if (web_page.IndexOf("<tr class=", 1) < 0) break;
+                // 列まで読み進める
+                web_page = web_page.Substring(web_page.IndexOf("<tr class=", 1));
+
+                matchCol = regex.Matches(web_page);
+
+                if (isStakes(matchCol[1].Groups[1].Value))
+                {
+                    data.Hands += uint.Parse(matchCol[3].Groups[1].Value.Replace(",", ""));
+                    data.Earnings += int.Parse(matchCol[5].Groups[1].Value.Replace(",", "").Replace("$", "").Replace("&#8364;", ""));
+                    bb_sum += decimal.Parse(matchCol[7].Groups[1].Value.Replace(",", "")) * uint.Parse(matchCol[3].Groups[1].Value.Replace(",", ""));
+                }
+            }
+            data.BB_100 = bb_sum / data.Hands;
+
             data.GetDate = System.DateTime.Today;
-            // SearchesRemaining = 
+
+            web_page = web_page.Substring(web_page.IndexOf("<div id=\"searches\" class=\"right_module\">"));
+            regex = new Regex("<h1>([0-9|,]+)</h1>");
+            matchCol = regex.Matches(web_page);
+            if (matchCol.Count > 0)
+                SearchesRemaining = uint.Parse(matchCol[0].Groups[1].Value.Replace(",", ""));
 
             return data;
+        }
+
+        private uint getRate(string web_page)
+        {
+            uint ratings = 0;
+            Regex regex = new Regex("<div id=\"number_reading\">(.*?)</div>");
+            MatchCollection matchCol = regex.Matches(web_page);
+            if (matchCol.Count > 0)
+                ratings = uint.Parse(matchCol[0].Groups[1].Value);
+
+            return ratings;
         }
 
         /// <summary>
@@ -112,7 +163,9 @@ namespace PTRtoNote
         public PTRData GetPTRData(string player_name)
         {
             string web_page = GetPTRWebPage(player_name);
-            return GetPTRDataFromWebPage(web_page);
+            PTRData data = GetPTRDataFromWebPage(web_page);
+            data.PlayerName = player_name;
+            return data;
         }
 
         /// <summary>
