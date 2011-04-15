@@ -23,10 +23,24 @@ namespace PTRtoNote
         /// <summary>PTRから取得した日付</summary>
         public DateTime GetDate { get; set; }
 
+        /// <summary>
+        /// note文字列からPTRのデータを取り出す
+        /// </summary>
+        /// <param name="note_str">note文字列</param>
         public PTRData(string note_str)
         {
+            string[] tmp_str = note_str.Split(',');
+            Rating = uint.Parse(tmp_str[0].Split(':')[1]);
+            Hands = uint.Parse(tmp_str[1].Split(':')[1]);
+            Earnings = int.Parse(tmp_str[2].Split(':')[1]);
+            BB_100 = decimal.Parse(tmp_str[3].Split(':')[1]);
+            GetDate = DateTime.ParseExact(tmp_str[4], "yyyy/MM/dd", null);
         }
 
+        /// <summary>
+        /// PTRのデータからnote文字列を生成する
+        /// </summary>
+        /// <returns>note文字列</returns>
         public string GetNoteString()
         {
             System.Text.StringBuilder note_str = new StringBuilder();
