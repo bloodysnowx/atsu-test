@@ -20,6 +20,8 @@ notes.xmlを読み込み、PTRからのデータを追加し、条件による�
 . notes.xml(オリジナル)を読み込む
 . XML要素を解析
 . ラベル要素をオリジナルから更新版にコピー
+. csvからプレイヤー名を読み込む
+. オリジナルに存在しないプレイヤーがあれば検索フラグを立てて更新版に追加
 . プレイヤー毎にループ
   . noteの内容(オリジナル)を読み込む
   . 形式に合致していた場合
@@ -61,12 +63,21 @@ string summary = "R:" + dr.GetInt32(2).ToString() + ", H:" + dr.GetInt32(3).ToSt
                + ", " + dr.GetDateTime(1).ToString("yyyy/MM/dd");
 
 --- ラベル設定ルール ---
+app.configのLabel_6_Hand_Max未満のハンド数の場合は"6"
+app.configのLabel_0_Min以上のBB/100の場合は"0"
+app.configのLabel_1_Min以上のBB/100の場合は"1"
+app.configのLabel_2_Min以上のBB/100の場合は"2"
+app.configのLabel_3_Min以上のBB/100の場合は"3"
+app.configのLabel_4_Min以上のBB/100の場合は"4"
+app.configのLabel_4_Min未満のBB/100の場合は"5"
 
 --- 注意 ---
 
 Windows XP Professional SP3 + IE8 + .net Framework 4.0の環境でしかテストしていません。他の環境では
 動作しないかもしれません。仮に動作しなかった場合、あまり積極的に対処するつもりはありませんので、VMで
 XP環境を構築するなどの自助努力をお願いします。
+画面UIに関しても、FlowLayoutPanelとAutoScrollに丸投げしていますので、正しく表示されない場合等は、
+クライアントのウィンドウサイズを適宜調整するなどをお願いします。
 不具合や要望は連絡してくれたら対処するかもしれません。しかし、必要であればソースコードを提供しますので、
 自分で修正してパッチをこちらまで送付してください。GPLは面倒なので採用しませんが、精神としてはGPLのように
 お願いします(つまり、他人に頼らずにできることは自分でやろうってことですねー)。自分では無理だけど、
