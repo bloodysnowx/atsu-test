@@ -17,6 +17,10 @@ namespace PTRtoNote
         string[] Username;
         string[] Password;
 
+        // notesXMLオリジナル読み込み用
+        XmlTextReader xmlReader;
+
+        // notesXML更新版生成用
         MemoryStream mem;
         XmlTextWriter xmlWriter;
 
@@ -44,7 +48,10 @@ namespace PTRtoNote
 
         private void buttonOpen_Click(object sender, EventArgs e)
         {
-
+            if (openXMLDialog.ShowDialog() == DialogResult.OK)
+            {
+                xmlReader = new XmlTextReader(openXMLDialog.FileName);
+            }
         }
 
         private void buttonExecute_Click(object sender, EventArgs e)
@@ -77,7 +84,7 @@ namespace PTRtoNote
             conn.Password = Username[0];
             if (conn.PTRConnect())
             {
-                string str = conn.GetPTR("chiyuki");
+                string str = conn.GetPTRWebPage("chiyuki");
             }
         }
 

@@ -141,6 +141,7 @@
             // 
             this.buttonCSV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCSV.Enabled = false;
             this.buttonCSV.Location = new System.Drawing.Point(3, 44);
             this.buttonCSV.Name = "buttonCSV";
             this.buttonCSV.Size = new System.Drawing.Size(75, 23);

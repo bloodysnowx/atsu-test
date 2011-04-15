@@ -71,6 +71,22 @@ app.configのLabel_3_Min以上のBB/100の場合は"3"
 app.configのLabel_4_Min以上のBB/100の場合は"4"
 app.configのLabel_4_Min未満のBB/100の場合は"5"
 
+--- 状態遷移 ---
+デフォルト
+ buttonOpen = True, buttonCSV = True, buttonExecute = False, buttonSave = False
+ notesXMLオリジナル = null, notesXML更新版 = null
+XML読み込み
+ buttonExecute -> True, buttonSave -> False
+ notesXMLオリジナル -> 生成
+CSV読み込み
+ buttonExecute -> True, buttonSave -> False
+Execute
+ buttonOpen -> False, buttonCSV -> False, buttonExecute -> False, buttonSave -> True
+ notesXML更新版 -> 生成
+Save
+ buttonOpen -> True, buttonCSV -> True, buttonExecute -> False, buttonSave -> False
+ notesXMLオリジナル -> null, notesXML更新版 -> null
+
 --- 注意 ---
 
 Windows XP Professional SP3 + IE8 + .net Framework 4.0の環境でしかテストしていません。他の環境では

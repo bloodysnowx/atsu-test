@@ -81,10 +81,12 @@ namespace PTRtoNote
         /// </summary>
         /// <param name="player_name">Player名</param>
         /// <returns>検索結果のwebページ</returns>
-        public string GetPTR(string player_name)
+        public string GetPTRWebPage(string player_name)
         {
             return PTRClient.DownloadString(PTR_SEARCH_URL + player_name);
         }
+
+        // public 
 
         /// <summary>
         /// 
