@@ -81,12 +81,39 @@ namespace PTRtoNote
         /// </summary>
         /// <param name="player_name">Player名</param>
         /// <returns>検索結果のwebページ</returns>
-        public string GetPTRWebPage(string player_name)
+        private string GetPTRWebPage(string player_name)
         {
             return PTRClient.DownloadString(PTR_SEARCH_URL + player_name);
         }
 
-        // public 
+        /// <summary>
+        /// PTRのページからデータを取得する
+        /// </summary>
+        /// <param name="web_page"></param>
+        /// <returns></returns>
+        private PTRData GetPTRDataFromWebPage(string web_page)
+        {
+            PTRData data = new PTRData();
+            // data.Rating = 
+            // data.Hands =
+            // data.Earnings = 
+            // data.BB_100 =
+            data.GetDate = System.DateTime.Today;
+            // SearchesRemaining = 
+
+            return data;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="player_name"></param>
+        /// <returns></returns>
+        public PTRData GetPTRData(string player_name)
+        {
+            string web_page = GetPTRWebPage(player_name);
+            return GetPTRDataFromWebPage(web_page);
+        }
 
         /// <summary>
         /// 

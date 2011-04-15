@@ -23,18 +23,72 @@ namespace PTRtoNote
         /// <summary>PTRから取得した日付</summary>
         public DateTime GetDate { get; set; }
 
+        /// <summary>log4netのインスタンス</summary>
+        private static readonly log4net.ILog logger
+            = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        public PTRData()
+        {
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="player_name">プレイヤーID</param>
+        public PTRData(string player_name) : this()
+        {
+            PlayerName = player_name;
+        }
+
         /// <summary>
         /// note文字列からPTRのデータを取り出す
         /// </summary>
+        /// <param name="player_name">プレイヤーID</param>
         /// <param name="note_str">note文字列</param>
-        public PTRData(string note_str)
+        public bool MakePTRDataFromNoteStr(string player_name, string note_str)
         {
-            string[] tmp_str = note_str.Split(',');
-            Rating = uint.Parse(tmp_str[0].Split(':')[1]);
-            Hands = uint.Parse(tmp_str[1].Split(':')[1]);
-            Earnings = int.Parse(tmp_str[2].Split(':')[1]);
-            BB_100 = decimal.Parse(tmp_str[3].Split(':')[1]);
-            GetDate = DateTime.ParseExact(tmp_str[4], "yyyy/MM/dd", null);
+            string[] tmp_str_1 = note_str.Split(',');
+            if (tmp_str_1.Count() < 5)
+            {
+                if (logger.IsWarnEnabled) logger.Warn(player_name + "'s note_str.Count() < 5");
+                return false;
+            }
+
+            string[] tmp_str_2 = tmp_str_1[0].Split(':');
+            if (tmp_str_2.Count() != 2 || tmp_str_2[0].Trim() != "R")
+            {
+                if(logger.IsWarnEnabled)logger.Warn(player_name + "'s Rating is Broken.");
+                return false;
+            }
+            Rating = uint.Parse(tmp_str_2[1]);
+
+            tmp_str_2 = tmp_str_1[1].Split(':');
+            if (tmp_str_2.Count() != 2 || tmp_str_2[0].Trim() != "H")
+            {
+                if (logger.IsWarnEnabled) logger.Warn(player_name + "'s Hands is Broken.");
+                return false;
+            }
+            Hands = uint.Parse(tmp_str_2[1]);
+
+            tmp_str_2 = tmp_str_1[2].Split(':');
+            if (tmp_str_2.Count() != 2 || tmp_str_2[0].Trim() != "$")
+            {
+                if (logger.IsWarnEnabled) logger.Warn(player_name + "'s Earnings is Broken.");
+                return false;
+            }
+            Earnings = int.Parse(tmp_str_2[1]);
+
+            tmp_str_2 = tmp_str_1[3].Split(':');
+            if (tmp_str_2.Count() != 2 || tmp_str_2[0].Trim() != "BB")
+            {
+                if (logger.IsWarnEnabled) logger.Warn(player_name + "'s BB/100 is Broken.");
+                return false;
+            }
+            BB_100 = decimal.Parse(tmp_str_2[1]);
+
+            GetDate = DateTime.ParseExact(tmp_str_1[4], "yyyy/MM/dd", null);
+
+            return true;
         }
 
         /// <summary>

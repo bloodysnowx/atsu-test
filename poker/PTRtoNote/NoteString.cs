@@ -17,12 +17,18 @@ namespace PTRtoNote
         /// <summary></summary>
         public PTRData data { get; set; }
         
-        NoteString(string player_name, string note_str)
+        NoteString(string player_name, string note_str) : this(player_name)
         {
+            str = note_str;
+            
+            data = new PTRData(player_name);
+
+            // note文字列のタイプを判定する
         }
 
         NoteString(string player_name)
         {
+            PlayerName = player_name;
         }
 
     }
