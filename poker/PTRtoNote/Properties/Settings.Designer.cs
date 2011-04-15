@@ -70,7 +70,7 @@ namespace PTRtoNote.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1scout")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1scout,2scout,3scout,4scout,5scout,6scout,7scout,8scout,9scout")]
         public string Logins {
             get {
                 return ((string)(this["Logins"]));
@@ -79,7 +79,7 @@ namespace PTRtoNote.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("123456")]
+        [global::System.Configuration.DefaultSettingValueAttribute("123456,123456,123456,123456,123456,123456,123456,123456,123456")]
         public string Passwords {
             get {
                 return ((string)(this["Passwords"]));
@@ -88,10 +88,10 @@ namespace PTRtoNote.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public uint AccountNum {
+        [global::System.Configuration.DefaultSettingValueAttribute("9")]
+        public int AccountNum {
             get {
-                return ((uint)(this["AccountNum"]));
+                return ((int)(this["AccountNum"]));
             }
         }
         

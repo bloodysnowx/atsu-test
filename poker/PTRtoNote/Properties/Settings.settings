@@ -18,13 +18,13 @@
       <Value Profile="(Default)">-60</Value>
     </Setting>
     <Setting Name="Logins" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">1scout</Value>
+      <Value Profile="(Default)">1scout,2scout,3scout,4scout,5scout,6scout,7scout,8scout,9scout</Value>
     </Setting>
     <Setting Name="Passwords" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">123456</Value>
+      <Value Profile="(Default)">123456,123456,123456,123456,123456,123456,123456,123456,123456</Value>
     </Setting>
-    <Setting Name="AccountNum" Type="System.UInt32" Scope="Application">
-      <Value Profile="(Default)">1</Value>
+    <Setting Name="AccountNum" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">9</Value>
     </Setting>
     <Setting Name="Label_6_Hand_Max" Type="System.UInt32" Scope="Application">
       <Value Profile="(Default)">1000</Value>
