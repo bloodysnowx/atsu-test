@@ -156,13 +156,15 @@ namespace PTRtoNote
         }
 
         /// <summary>
-        /// 
+        /// 検索に失敗した場合はnullを返す
         /// </summary>
         /// <param name="player_name"></param>
         /// <returns></returns>
         public PTRData GetPTRData(string player_name)
         {
             string web_page = GetPTRWebPage(player_name);
+            if (web_page.IndexOf("Unlock Full Access to Premium Content") > -1) return null;
+            else if (web_page.IndexOf("We didn't find this player, here are some similar names.") > -1) return null;
             PTRData data = GetPTRDataFromWebPage(web_page);
             data.PlayerName = player_name;
             return data;

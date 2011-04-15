@@ -32,10 +32,8 @@
             this.saveXMLDialog = new System.Windows.Forms.SaveFileDialog();
             this.buttonOpen = new System.Windows.Forms.Button();
             this.labelOpen = new System.Windows.Forms.Label();
-            this.buttonSave = new System.Windows.Forms.Button();
             this.buttonExecute = new System.Windows.Forms.Button();
             this.labelExecute = new System.Windows.Forms.Label();
-            this.labelSave = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonCSV = new System.Windows.Forms.Button();
             this.labelCSV = new System.Windows.Forms.Label();
@@ -78,18 +76,6 @@
             this.labelOpen.TabIndex = 1;
             this.labelOpen.Text = "notesXML is not opend..........";
             // 
-            // buttonSave
-            // 
-            this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSave.Location = new System.Drawing.Point(3, 126);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(75, 23);
-            this.buttonSave.TabIndex = 2;
-            this.buttonSave.Text = "saveXML";
-            this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
-            // 
             // buttonExecute
             // 
             this.buttonExecute.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
@@ -111,15 +97,6 @@
             this.labelExecute.TabIndex = 4;
             this.labelExecute.Text = "PTR is not connected..........";
             // 
-            // labelSave
-            // 
-            this.labelSave.AutoSize = true;
-            this.labelSave.Location = new System.Drawing.Point(3, 152);
-            this.labelSave.Name = "labelSave";
-            this.labelSave.Size = new System.Drawing.Size(150, 12);
-            this.labelSave.TabIndex = 5;
-            this.labelSave.Text = "notesXML is not created..........";
-            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
@@ -129,8 +106,6 @@
             this.flowLayoutPanel1.Controls.Add(this.labelCSV);
             this.flowLayoutPanel1.Controls.Add(this.buttonExecute);
             this.flowLayoutPanel1.Controls.Add(this.labelExecute);
-            this.flowLayoutPanel1.Controls.Add(this.buttonSave);
-            this.flowLayoutPanel1.Controls.Add(this.labelSave);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -189,10 +164,8 @@
         private System.Windows.Forms.SaveFileDialog saveXMLDialog;
         private System.Windows.Forms.Button buttonOpen;
         private System.Windows.Forms.Label labelOpen;
-        private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonExecute;
         private System.Windows.Forms.Label labelExecute;
-        private System.Windows.Forms.Label labelSave;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button buttonCSV;
         private System.Windows.Forms.Label labelCSV;
