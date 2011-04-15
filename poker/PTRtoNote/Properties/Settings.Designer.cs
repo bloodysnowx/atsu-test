@@ -70,7 +70,8 @@ namespace PTRtoNote.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1scout,2scout,3scout,4scout,5scout,6scout,7scout,8scout,9scout")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1scout,2scout,3scout,4scout,5scout,6scout,7scout,8scout,9scout,shobon2,shobon3,sh" +
+            "obon4,shobon5,shobon6,shobon7,shobon8,shobon9,shobon10")]
         public string Logins {
             get {
                 return ((string)(this["Logins"]));
@@ -79,7 +80,8 @@ namespace PTRtoNote.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("123456,123456,123456,123456,123456,123456,123456,123456,123456")]
+        [global::System.Configuration.DefaultSettingValueAttribute("123456,123456,123456,123456,123456,123456,123456,123456,123456,shakin,shakin,shak" +
+            "in,shakin,shakin,shakin,shakin,shakin,shakin")]
         public string Passwords {
             get {
                 return ((string)(this["Passwords"]));
@@ -88,7 +90,7 @@ namespace PTRtoNote.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("9")]
+        [global::System.Configuration.DefaultSettingValueAttribute("18")]
         public int AccountNum {
             get {
                 return ((int)(this["AccountNum"]));

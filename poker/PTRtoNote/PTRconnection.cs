@@ -50,13 +50,21 @@ namespace PTRtoNote
         /// <summary>PTRの検索URL</summary>
         private const string PTR_SEARCH_URL = "http://www.pokertableratings.com/stars-player-search/";
         /// <summary>残り検索回数</summary>
-        public uint SearchesRemaining { get; private set; }
+        public uint SearchesRemaining { get; set; }
         /// <summary>ログインユーザ名</summary>
         public string Username { get; set; }
         /// <summary>ログインパスワード</summary>
         public string Password { get; set; }
         /// <summary>PTRとの接続</summary>
         private WebClientEx PTRClient;
+        /// <summary>PTRと接続されているか</summary>
+        public bool isConnected { get; private set; }
+
+        public PTRconnection()
+        {
+            isConnected = false;
+            SearchesRemaining = 10;
+        }
 
         /// <summary>
         /// PTRに接続する
@@ -75,7 +83,8 @@ namespace PTRtoNote
             // ログイン処理を実行する
             byte[] resData = PTRClient.UploadValues(PTR_LOGIN_URL, vals);
             string str = System.Text.Encoding.UTF8.GetString(resData);
-            return str.Contains("\"success\" : true");
+            isConnected = str.Contains("\"success\" : true");
+            return isConnected;
         }
 
         /// <summary>
@@ -109,6 +118,7 @@ namespace PTRtoNote
         {
             PTRData data = new PTRData();
             data.Rating = getRate(web_page);
+            if (web_page.IndexOf("<table id=\"sortable-data-table\" cellpadding=\"0\" cellspacing=\"0\">") < 0) throw new System.Net.WebException();
             web_page = web_page.Substring(web_page.IndexOf("<table id=\"sortable-data-table\" cellpadding=\"0\" cellspacing=\"0\">"));
             // web_page = web_page.Substring(web_page.IndexOf("<td class=\"overview-stakes\">"));
 
@@ -164,7 +174,16 @@ namespace PTRtoNote
         {
             string web_page = GetPTRWebPage(player_name);
             if (web_page.IndexOf("Unlock Full Access to Premium Content") > -1) return null;
-            else if (web_page.IndexOf("We didn't find this player, here are some similar names.") > -1) return null;
+            else if (web_page.IndexOf("We didn't find this player, here are some similar names.") > -1) throw new System.Net.WebException();
+            else if (web_page.IndexOf("You&#8217;ve mis-spelled") > -1) return null;
+            else if (web_page.IndexOf("doesn&#8217;t play at PokerStars.") > -1) return null;
+            else if (web_page.IndexOf("doesn&#8217;t exist.") > -1) return null;
+            else if (web_page.IndexOf("has never played at any tables.") > -1) return null;
+            else if (web_page.IndexOf("doesn&#8217;t like you!") > -1) return null;
+            else if (web_page.IndexOf("You&#8217;re trying to hack our system, but it didn&#8217;t work.") > -1) return null;
+            else if (web_page.IndexOf("You&#8217;re having some bad luck, we hope you have better luck.") > -1) return null;
+            else if (web_page.IndexOf("You&#8217;re having a bad day, we apologize.") > -1) return null;
+
             PTRData data = GetPTRDataFromWebPage(web_page);
             data.PlayerName = player_name;
             return data;
@@ -174,8 +193,9 @@ namespace PTRtoNote
         /// 
         /// </summary>
         /// <returns></returns>
-        bool PTRDisconnect()
+        public bool PTRDisconnect()
         {
+            isConnected = false;
             return true;
         }
     }

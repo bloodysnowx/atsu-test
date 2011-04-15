@@ -16,6 +16,7 @@ namespace PTRtoNote
     {
         string[] Username;
         string[] Password;
+        int account_number;
 
         // notesXMLオリジナル読み込み用
         XmlTextReader xmlReader;
@@ -23,6 +24,12 @@ namespace PTRtoNote
         // notesXML更新版生成用
         MemoryStream mem;
         XmlTextWriter xmlWriter;
+
+        // PTRとの接続
+        PTRconnection conn;
+
+        // PTRとの接続フラグ
+        bool CannotConnect;
 
         /// <summary>log4netのインスタンス</summary>
         private static readonly log4net.ILog logger
@@ -44,6 +51,12 @@ namespace PTRtoNote
                 if (logger.IsErrorEnabled) logger.Error(error_message);
                 System.Windows.Forms.MessageBox.Show(error_message);
             }
+
+            conn = new PTRconnection();
+            account_number = 0;
+            conn.Username = Username[0];
+            conn.Password = Password[0];
+            CannotConnect = false;
         }
 
         private void buttonOpen_Click(object sender, EventArgs e)
@@ -115,8 +128,47 @@ namespace PTRtoNote
                         string note_str = xmlReader.ReadString();
 
                         PTRData data = new PTRData(player_name);
-                        if (data.MakePTRDataFromNoteStr(player_name, note_str))
+
+                        // 取得指示があった場合
+                        if (note_str == "a" || (note_str[0] == 'a' && note_str[1] == '\n'))
                         {
+                            // 取得実行
+                            data = GetPTR(player_name);
+                            if (data != null)
+                            {
+                                if (note_str == "a") note_str = data.GetNoteString();
+                                else note_str = data.GetNoteString() + note_str.Substring(1);
+                            }
+                        }
+                        // データが無い場合
+                        else if (data.MakePTRDataFromNoteStr(player_name, note_str) == false)
+                        {
+                            // データを先頭に付与
+                            data = GetPTR(player_name);
+                            if (data != null)
+                            {
+                                note_str = data.GetNoteString() + '\n' + note_str;
+                            }
+                        }
+                        // データある場合
+                        else
+                        {
+                            // データが古い場合は再取得
+                            if (data.GetDate < System.DateTime.Today - new System.TimeSpan(Properties.Settings.Default.ReacquisitionSpanDays, 0, 0, 0))
+                            {
+                                PTRData new_data = GetPTR(player_name);
+                                if(new_data != null && new_data.Hands >= data.Hands)
+                                {
+                                    data = new_data;
+                                    note_str = data.GetNoteString() + '\n' + note_str;
+                                }
+                            }
+                        }
+
+                        // ラベル更新処理
+                        if (data != null)
+                        {
+                            label = DecideLabel(data);
                         }
 
                         xmlWriter.WriteStartElement("note");
@@ -143,12 +195,9 @@ namespace PTRtoNote
             xmlWriter.WriteEndDocument();
             xmlWriter.Close();
 
-            PTRconnection conn = new PTRconnection();
-            conn.Username = Username[1];
-            conn.Password = Password[1];
             if (conn.PTRConnect())
             {
-                conn.GetPTRData("KAMOX");
+                conn.GetPTRData("chiyuki");
             }
         }
 
@@ -160,6 +209,80 @@ namespace PTRtoNote
         private void buttonCSV_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private PTRData GetPTR(string player_name)
+        {
+            if (CannotConnect == true) return null;
+
+            while (account_number < Properties.Settings.Default.AccountNum)
+            {
+                conn.Username = Username[account_number];
+                conn.Password = Password[account_number];
+
+                // 検索回数が無い場合は次のアカウントに切替
+                if (conn.SearchesRemaining == 0)
+                {
+                    conn.PTRDisconnect();
+                    ++account_number;
+                    conn.SearchesRemaining = 10;
+                    continue;
+                }
+
+                // 接続されていない場合はログイン
+                for (int i = 0; i < 3; ++i)
+                {
+                    if (conn.isConnected == true) break;
+                    conn.PTRConnect();
+                }
+                if (conn.isConnected == false)
+                {
+                    ++account_number;
+                    conn.SearchesRemaining = 10;
+                    continue;
+                }
+                else
+                {
+                    PTRData data;
+                    try
+                    {
+                        data = conn.GetPTRData(player_name);
+                        System.Threading.Thread.Sleep(1000);
+
+                        if (data == null)
+                        {
+                            conn.PTRDisconnect();
+                            ++account_number;
+                            conn.SearchesRemaining = 10;
+                            continue;
+                        }
+                        else return data;
+                    }
+                    catch (System.Net.WebException)
+                    {
+                        return null;
+                    }
+                    catch (Exception)
+                    {
+                        return null;
+                    }
+                }
+            }
+            CannotConnect = true;
+            return null;
+        }
+
+        private string DecideLabel(PTRData data)
+        {
+            string label = "5";
+            if (data.BB_100 > Properties.Settings.Default.Label_0_Min) label = "0";
+            else if (data.Hands < Properties.Settings.Default.Label_6_Hand_Max) label = "6";
+            else if (data.BB_100 > Properties.Settings.Default.Label_1_Min) label = "1";
+            else if (data.BB_100 > Properties.Settings.Default.Label_2_Min) label = "2";
+            else if (data.BB_100 > Properties.Settings.Default.Label_3_Min) label = "3";
+            else if (data.BB_100 > Properties.Settings.Default.Label_4_Min) label = "4";
+
+            return label;
         }
     }
 }
