@@ -15,7 +15,7 @@ notes.xmlを読み込み、PTRからのデータを追加し、条件による�
 --- 全体フロー ---
 
 . ラベル設定ルールをapp.configから読み取る -> done
-. PTRのアカウント情報をapp.configから読み取る
+. PTRのアカウント情報をapp.configから読み取る -> done
 . XML(更新版)を生成
 . notes.xml(オリジナル)を読み込む
 . XML要素を解析
