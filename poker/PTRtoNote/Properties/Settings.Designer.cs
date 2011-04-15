@@ -70,7 +70,7 @@ namespace PTRtoNote.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1scout")]
         public string Logins {
             get {
                 return ((string)(this["Logins"]));
@@ -79,7 +79,7 @@ namespace PTRtoNote.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("123456")]
         public string Passwords {
             get {
                 return ((string)(this["Passwords"]));
@@ -92,6 +92,15 @@ namespace PTRtoNote.Properties {
         public uint AccountNum {
             get {
                 return ((uint)(this["AccountNum"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
+        public uint Label_6_Hand_Max {
+            get {
+                return ((uint)(this["Label_6_Hand_Max"]));
             }
         }
     }
