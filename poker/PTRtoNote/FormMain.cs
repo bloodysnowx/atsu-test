@@ -22,7 +22,6 @@ namespace PTRtoNote
         XmlTextReader xmlReader;
 
         // notesXML更新版生成用
-        MemoryStream mem;
         XmlTextWriter xmlWriter;
 
         // PTRとの接続
@@ -64,6 +63,7 @@ namespace PTRtoNote
             if (openXMLDialog.ShowDialog() == DialogResult.OK)
             {
                 xmlReader = new XmlTextReader(openXMLDialog.FileName);
+                this.labelOpen.Text = "notesXML is opend and ready to Execute...";
             }
         }
 
@@ -194,11 +194,6 @@ namespace PTRtoNote
             // notesXMLの末尾書き込み
             xmlWriter.WriteEndDocument();
             xmlWriter.Close();
-
-            if (conn.PTRConnect())
-            {
-                conn.GetPTRData("chiyuki");
-            }
         }
 
         private void buttonSave_Click(object sender, EventArgs e)

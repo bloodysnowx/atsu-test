@@ -118,6 +118,7 @@ namespace PTRtoNote
         {
             PTRData data = new PTRData();
             data.Rating = getRate(web_page);
+            data.BB_100 = getBB(web_page);
             if (web_page.IndexOf("<table id=\"sortable-data-table\" cellpadding=\"0\" cellspacing=\"0\">") < 0) throw new System.Net.WebException();
             web_page = web_page.Substring(web_page.IndexOf("<table id=\"sortable-data-table\" cellpadding=\"0\" cellspacing=\"0\">"));
             // web_page = web_page.Substring(web_page.IndexOf("<td class=\"overview-stakes\">"));
@@ -141,7 +142,7 @@ namespace PTRtoNote
                     bb_sum += decimal.Parse(matchCol[7].Groups[1].Value.Replace(",", "")) * uint.Parse(matchCol[3].Groups[1].Value.Replace(",", ""));
                 }
             }
-            data.BB_100 = bb_sum / data.Hands;
+            if (data.Hands != 0) data.BB_100 = bb_sum / data.Hands;
 
             data.GetDate = System.DateTime.Today;
 
@@ -165,6 +166,17 @@ namespace PTRtoNote
             return ratings;
         }
 
+        private decimal getBB(string web_page)
+        {
+            decimal bb_100 = 0;
+            Regex regex = new Regex("<div class=\"stat_icon\"></div><span>(-?[0-9|,]+" + Regex.Escape(".") + "[0-9]+)</span>");
+            MatchCollection matchCol = regex.Matches(web_page);
+            if (matchCol.Count > 0)
+                bb_100 = decimal.Parse(matchCol[0].Groups[1].Value);
+
+            return bb_100;
+        }
+
         /// <summary>
         /// 検索に失敗した場合はnullを返す
         /// </summary>
@@ -175,11 +187,11 @@ namespace PTRtoNote
             string web_page = GetPTRWebPage(player_name);
             if (web_page.IndexOf("Unlock Full Access to Premium Content") > -1) return null;
             else if (web_page.IndexOf("We didn't find this player, here are some similar names.") > -1) throw new System.Net.WebException();
-            else if (web_page.IndexOf("You&#8217;ve mis-spelled") > -1) return null;
-            else if (web_page.IndexOf("doesn&#8217;t play at PokerStars.") > -1) return null;
-            else if (web_page.IndexOf("doesn&#8217;t exist.") > -1) return null;
-            else if (web_page.IndexOf("has never played at any tables.") > -1) return null;
-            else if (web_page.IndexOf("doesn&#8217;t like you!") > -1) return null;
+            else if (web_page.IndexOf("You&#8217;ve mis-spelled") > -1) throw new System.Net.WebException();
+            else if (web_page.IndexOf("doesn&#8217;t play at PokerStars.") > -1) throw new System.Net.WebException();
+            else if (web_page.IndexOf("doesn&#8217;t exist.") > -1) throw new System.Net.WebException();
+            else if (web_page.IndexOf("has never played at any tables.") > -1) throw new System.Net.WebException();
+            else if (web_page.IndexOf("doesn&#8217;t like you!") > -1) throw new System.Net.WebException();
             else if (web_page.IndexOf("You&#8217;re trying to hack our system, but it didn&#8217;t work.") > -1) return null;
             else if (web_page.IndexOf("You&#8217;re having some bad luck, we hope you have better luck.") > -1) return null;
             else if (web_page.IndexOf("You&#8217;re having a bad day, we apologize.") > -1) return null;
