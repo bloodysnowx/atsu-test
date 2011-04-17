@@ -14,26 +14,34 @@ namespace PTRtoNote
 {
     public partial class FormMain : Form
     {
+        /// <summary>ログインユーザ名</summary>
         string[] Username;
+        /// <summary>ログインパスワード</summary>
         string[] Password;
+        /// <summary>現在のアカウント番号</summary>
         int account_number;
 
-        // notesXMLオリジナル読み込み用
+        /// <summary>notesXMLオリジナル読み込み用リーダ</summary>
         XmlTextReader xmlReader;
-
-        // notesXML更新版生成用
+        /// <summary>notesXML更新版生成用ファイルストリーム</summary>
+        FileStream fs;
+        /// <summary>notesXML更新版生成用ライタ</summary>
         XmlTextWriter xmlWriter;
 
-        // PTRとの接続
+        /// <summary>PTRとの接続</summary>
         PTRconnection conn;
-
-        // PTRとの接続フラグ
+        /// <summary>PTRとの接続フラグ</summary>
         bool CannotConnect;
+
+        Random rnd = new Random();
 
         /// <summary>log4netのインスタンス</summary>
         private static readonly log4net.ILog logger
             = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        /// <summary>
+        /// コンストラクタ(PTRのアカウント情報読み込み、初期化処理)
+        /// </summary>
         public FormMain()
         {
             InitializeComponent();
@@ -51,6 +59,7 @@ namespace PTRtoNote
                 System.Windows.Forms.MessageBox.Show(error_message);
             }
 
+            // 初期化処理
             conn = new PTRconnection();
             account_number = 0;
             conn.Username = Username[0];
@@ -58,6 +67,11 @@ namespace PTRtoNote
             CannotConnect = false;
         }
 
+        /// <summary>
+        /// openXMLを押した時の処理(notesXMLを開く)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonOpen_Click(object sender, EventArgs e)
         {
             if (openXMLDialog.ShowDialog() == DialogResult.OK)
@@ -67,17 +81,21 @@ namespace PTRtoNote
             }
         }
 
+        /// <summary>
+        /// Executeを押した時の処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonExecute_Click(object sender, EventArgs e)
         {
-            if (saveXMLDialog.ShowDialog() != DialogResult.OK)
-                return;
-
-            FileStream fs = new FileStream(saveXMLDialog.FileName, FileMode.Create, FileAccess.Write);
+            if (saveXMLDialog.ShowDialog() != DialogResult.OK) return;
+            // XMLを書き込み用に開く
+            fs = new FileStream(saveXMLDialog.FileName, FileMode.Create, FileAccess.Write);
             xmlWriter = new XmlTextWriter(fs, new UTF8Encoding(false));
-
-            // XMLの設定
+            // XMLの設定をする
             xmlWriter.Formatting = Formatting.Indented;
             xmlWriter.IndentChar = '\t';
+
             // notesXMLの先頭書き込み
             xmlWriter.WriteStartDocument();
             
@@ -94,10 +112,8 @@ namespace PTRtoNote
                         xmlWriter.WriteString("1");
                         xmlWriter.WriteEndAttribute();
                     }
-                    else if (xmlReader.Name == "labels")
-                    {
-                        xmlWriter.WriteStartElement("labels");
-                    }
+                    else if (xmlReader.Name == "labels") xmlWriter.WriteStartElement("labels");
+                    // ラベル情報をコピーする
                     else if (xmlReader.Name == "label")
                     {
                         xmlWriter.WriteStartElement("label");
@@ -119,12 +135,15 @@ namespace PTRtoNote
                     }
                     else if (xmlReader.Name == "note")
                     {
+                        // PlayerIDを読み込む
                         xmlReader.MoveToAttribute("player");
                         string player_name = xmlReader.Value;
-                        // csvから読み込んだプレイヤー一覧から削除する
+                        // ToDO : csvから読み込んだプレイヤー一覧から削除する処理を実装
+
+                        // ラベル情報を読み込む
                         xmlReader.MoveToAttribute("label");
                         string label = xmlReader.Value;
-
+                        // noteの内容を読み込む
                         string note_str = xmlReader.ReadString();
 
                         PTRData data = new PTRData(player_name);
@@ -145,12 +164,9 @@ namespace PTRtoNote
                         {
                             // データを先頭に付与
                             data = GetPTR(player_name);
-                            if (data != null)
-                            {
-                                note_str = data.GetNoteString() + '\n' + note_str;
-                            }
+                            if (data != null) note_str = data.GetNoteString() + '\n' + note_str;
                         }
-                        // データある場合
+                        // データがある場合
                         else
                         {
                             // データが古い場合は再取得
@@ -166,11 +182,8 @@ namespace PTRtoNote
                         }
 
                         // ラベル更新処理
-                        if (data != null)
-                        {
-                            label = DecideLabel(data);
-                        }
-
+                        if (data != null) label = DecideLabel(data);
+                        // XMLに要素を書き込む
                         xmlWriter.WriteStartElement("note");
                         xmlWriter.WriteStartAttribute("player");
                         xmlWriter.WriteString(player_name);
@@ -194,11 +207,7 @@ namespace PTRtoNote
             // notesXMLの末尾書き込み
             xmlWriter.WriteEndDocument();
             xmlWriter.Close();
-        }
-
-        private void buttonSave_Click(object sender, EventArgs e)
-        {
-
+            fs.Close();
         }
 
         private void buttonCSV_Click(object sender, EventArgs e)
@@ -242,7 +251,8 @@ namespace PTRtoNote
                     try
                     {
                         data = conn.GetPTRData(player_name);
-                        System.Threading.Thread.Sleep(1000);
+                        
+                        System.Threading.Thread.Sleep(1000 + rnd.Next(1000));
 
                         if (data == null)
                         {
@@ -251,7 +261,15 @@ namespace PTRtoNote
                             conn.SearchesRemaining = 10;
                             continue;
                         }
-                        else return data;
+                        else
+                        {
+                            // Labe 3 以上のカモを発見した場合は、ニューカマーリストに表示する
+                            if (data.BB_100 < Properties.Settings.Default.Label_3_Min)
+                            {
+                                this.textBoxNewComer.Text += player_name + " " + data.GetNoteString() + System.Environment.NewLine;
+                            }
+                            return data;
+                        }
                     }
                     catch (System.Net.WebException)
                     {
@@ -267,6 +285,11 @@ namespace PTRtoNote
             return null;
         }
 
+        /// <summary>
+        /// PTRDataからラベルを決定する
+        /// </summary>
+        /// <param name="data">PTRのデータ</param>
+        /// <returns>決定したラベル</returns>
         private string DecideLabel(PTRData data)
         {
             string label = "5";

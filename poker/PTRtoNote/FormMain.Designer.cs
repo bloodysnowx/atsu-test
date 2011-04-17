@@ -34,11 +34,10 @@
             this.labelOpen = new System.Windows.Forms.Label();
             this.buttonExecute = new System.Windows.Forms.Button();
             this.labelExecute = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonCSV = new System.Windows.Forms.Button();
             this.labelCSV = new System.Windows.Forms.Label();
+            this.textBoxNewComer = new System.Windows.Forms.TextBox();
             this.openCSVDialog = new System.Windows.Forms.OpenFileDialog();
-            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // openXMLDialog
@@ -57,9 +56,7 @@
             // 
             // buttonOpen
             // 
-            this.buttonOpen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonOpen.Location = new System.Drawing.Point(3, 3);
+            this.buttonOpen.Location = new System.Drawing.Point(12, 12);
             this.buttonOpen.Name = "buttonOpen";
             this.buttonOpen.Size = new System.Drawing.Size(75, 23);
             this.buttonOpen.TabIndex = 0;
@@ -70,7 +67,7 @@
             // labelOpen
             // 
             this.labelOpen.AutoSize = true;
-            this.labelOpen.Location = new System.Drawing.Point(3, 29);
+            this.labelOpen.Location = new System.Drawing.Point(93, 12);
             this.labelOpen.Name = "labelOpen";
             this.labelOpen.Size = new System.Drawing.Size(142, 12);
             this.labelOpen.TabIndex = 1;
@@ -78,9 +75,7 @@
             // 
             // buttonExecute
             // 
-            this.buttonExecute.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonExecute.Location = new System.Drawing.Point(3, 85);
+            this.buttonExecute.Location = new System.Drawing.Point(12, 70);
             this.buttonExecute.Name = "buttonExecute";
             this.buttonExecute.Size = new System.Drawing.Size(75, 23);
             this.buttonExecute.TabIndex = 3;
@@ -91,33 +86,16 @@
             // labelExecute
             // 
             this.labelExecute.AutoSize = true;
-            this.labelExecute.Location = new System.Drawing.Point(3, 111);
+            this.labelExecute.Location = new System.Drawing.Point(93, 70);
             this.labelExecute.Name = "labelExecute";
             this.labelExecute.Size = new System.Drawing.Size(136, 12);
             this.labelExecute.TabIndex = 4;
             this.labelExecute.Text = "PTR is not connected..........";
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Controls.Add(this.buttonOpen);
-            this.flowLayoutPanel1.Controls.Add(this.labelOpen);
-            this.flowLayoutPanel1.Controls.Add(this.buttonCSV);
-            this.flowLayoutPanel1.Controls.Add(this.labelCSV);
-            this.flowLayoutPanel1.Controls.Add(this.buttonExecute);
-            this.flowLayoutPanel1.Controls.Add(this.labelExecute);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(220, 183);
-            this.flowLayoutPanel1.TabIndex = 6;
-            // 
             // buttonCSV
             // 
-            this.buttonCSV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonCSV.Enabled = false;
-            this.buttonCSV.Location = new System.Drawing.Point(3, 44);
+            this.buttonCSV.Location = new System.Drawing.Point(12, 41);
             this.buttonCSV.Name = "buttonCSV";
             this.buttonCSV.Size = new System.Drawing.Size(75, 23);
             this.buttonCSV.TabIndex = 6;
@@ -128,11 +106,22 @@
             // labelCSV
             // 
             this.labelCSV.AutoSize = true;
-            this.labelCSV.Location = new System.Drawing.Point(3, 70);
+            this.labelCSV.Location = new System.Drawing.Point(93, 41);
             this.labelCSV.Name = "labelCSV";
             this.labelCSV.Size = new System.Drawing.Size(181, 12);
             this.labelCSV.TabIndex = 7;
             this.labelCSV.Text = "player name CSV is not opend..........";
+            // 
+            // textBoxNewComer
+            // 
+            this.textBoxNewComer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxNewComer.Location = new System.Drawing.Point(12, 99);
+            this.textBoxNewComer.Multiline = true;
+            this.textBoxNewComer.Name = "textBoxNewComer";
+            this.textBoxNewComer.Size = new System.Drawing.Size(497, 665);
+            this.textBoxNewComer.TabIndex = 8;
             // 
             // openCSVDialog
             // 
@@ -146,15 +135,20 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(220, 183);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.ClientSize = new System.Drawing.Size(521, 776);
+            this.Controls.Add(this.textBoxNewComer);
+            this.Controls.Add(this.labelExecute);
+            this.Controls.Add(this.buttonExecute);
+            this.Controls.Add(this.labelCSV);
+            this.Controls.Add(this.buttonCSV);
+            this.Controls.Add(this.labelOpen);
+            this.Controls.Add(this.buttonOpen);
             this.Name = "FormMain";
             this.Opacity = 0.9D;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "PTRtoNote";
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -166,10 +160,10 @@
         private System.Windows.Forms.Label labelOpen;
         private System.Windows.Forms.Button buttonExecute;
         private System.Windows.Forms.Label labelExecute;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button buttonCSV;
         private System.Windows.Forms.Label labelCSV;
         private System.Windows.Forms.OpenFileDialog openCSVDialog;
+        private System.Windows.Forms.TextBox textBoxNewComer;
     }
 }
 

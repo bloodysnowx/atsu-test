@@ -88,16 +88,7 @@ namespace PTRtoNote.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"scout1,scout2,scout3,scout4,scout5,scout6,scount7,scout8,scount9,yukitan01,yukitan02,yukitan03,yukitan04,yukitan05,yukitan06,yukitan07,yukitan08,yukitan09,yukitan10,yukitan11,yukitan12,yukitan13,1scout,2scout,3scout,4scout,5scout,6scout,7scout,8scout,9scout,shobon2,shobon3,shobon4,shobon5,shobon6,shobon7,shobon8,shobon9,shobon10")]
-        public string Logins {
-            get {
-                return ((string)(this["Logins"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"123456,123456,123456,123456,123456,123456,123456,123456,123456,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,123456,123456,123456,123456,123456,123456,123456,123456,123456,shakin,shakin,shakin,shakin,shakin,shakin,shakin,shakin,shakin")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"123456,123456,123456,123456,123456,123456,123456,123456,123456,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,chiyuki,123456,123456,123456,123456,123456,123456,123456,123456,123456,shakin,shakin,shakin,shakin,shakin,shakin,shakin,shakin,shakin")]
         public string Passwords {
             get {
                 return ((string)(this["Passwords"]));
@@ -106,10 +97,19 @@ namespace PTRtoNote.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("40")]
+        [global::System.Configuration.DefaultSettingValueAttribute("69")]
         public int AccountNum {
             get {
                 return ((int)(this["AccountNum"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"scout1,scout2,scout3,scout4,scout5,scout6,scount7,scout8,scount9,yukitan01,yukitan02,yukitan03,yukitan04,yukitan05,yukitan06,yukitan07,yukitan08,yukitan09,yukitan10,yukitan11,yukitan12,yukitan13,yukitan14,yukitan15,yukitan16,yukitan17,yukitan18,yukitan19,yukitan20,yukitan21,yukitan22,yukitan23,yukitan24,yukitan25,yukitan26,yukitan27,yukitan28,yukitan29,yukitan30,yukitan31,yukitan32,yukitan33,yukitan34,yukitan35,yukitan36,yukitan37,yukitan38,yukitan39,yukitan40,yukitan41,yukitan42,1scout,2scout,3scout,4scout,5scout,6scout,7scout,8scout,9scout,shobon2,shobon3,shobon4,shobon5,shobon6,shobon7,shobon8,shobon9,shobon10")]
+        public string Logins {
+            get {
+                return ((string)(this["Logins"]));
             }
         }
     }
