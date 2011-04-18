@@ -213,6 +213,7 @@ namespace PTRtoNote
             xmlWriter.WriteEndDocument();
             xmlWriter.Close();
             fs.Close();
+            xmlReader.Close();
 
             this.labelExecute.Text = "PTR search was ended and new notesXML was written...";
         }
@@ -271,7 +272,7 @@ namespace PTRtoNote
                         else
                         {
                             // Labe 3 以上のカモを発見した場合は、ニューカマーリストに表示する
-                            if (data.BB_100 < Properties.Settings.Default.Label_3_Min)
+                            if (data.BB_100 < Properties.Settings.Default.Label_3_Min && data.Hands > Properties.Settings.Default.Label_6_Hand_Max)
                             {
                                 this.textBoxNewComer.Text += player_name + " " + data.GetNoteString() + System.Environment.NewLine;
                             }
