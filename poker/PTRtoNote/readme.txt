@@ -5,14 +5,16 @@ PTRtoNote
 --- ファイル説明 ---
 
 PTRtoNote.exe : 本ツールの本体です。
-PTRtoNote.exe.config : 
+PTRtoNote.exe.config : 設定ファイル
+log4net.dll : ログ出力用dll
+readme.txt : 本説明ファイル
 
 --- 動作概要 ---
 
 notes.xmlを読み込み、PTRからのデータを追加し、条件によるラベリングを実行し、
 データを追加したnotes.xmlを出力します。
 
---- 全体フロー ---
+--- 全体フロー(β) ---
 
 . ラベル設定ルールをapp.configから読み取る -> done
 . PTRのアカウント情報をapp.configから読み取る -> done
@@ -34,14 +36,14 @@ notes.xmlを読み込み、PTRからのデータを追加し、条件による�
   . 生成結果を更新版に書き込み -> done
 . 更新版を出力する -> done
 
---- 個別関数 ---
+--- 個別関数(β) ---
 
 . ラベル要素を取得する関数
 . データとラベル設定ルールからラベルを決定する関数
 . csvからプレイヤー名を読み込む関数
 . 読み込んだプレイヤー名がXMLに存在するか確認し、存在しないならば検索フラグを立てて追加する関数
 
---- クラス ---
+--- クラス(β) ---
 
 . PTRとの接続クラス -> done
   . PTRにログインする関数 -> done
@@ -85,7 +87,7 @@ AccountNum - アカウント総数(上記二つの確認用)
 Label_6_Hand_Max - ラベル"6"になる最大ハンド数
 ReacquisitionSpanDays - 再取得を実行する期間
 
---- 状態遷移 ---
+--- 状態遷移(β) ---
 デフォルト
  buttonOpen = True, buttonCSV = True, buttonExecute = False, buttonSave = False
  notesXMLオリジナル = null, notesXML更新版 = null
@@ -121,7 +123,6 @@ XP環境を構築するなどの自助努力をお願いします。
 
 --- to do ---
 
-PTRアクセス時にはランダム時間waitする
 readmeをプログラムの実態に合わせて更新
 エラー処理
 ログ出力
@@ -132,6 +133,8 @@ bloodysnow
 
 --- date ---
 
-
+2011/04/17
 
 --- version ---
+
+2011/04/17 version 0.1.0 初回リリース版
