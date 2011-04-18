@@ -58,6 +58,11 @@ namespace PTRtoNote
                 if (logger.IsErrorEnabled) logger.Error(error_message);
                 System.Windows.Forms.MessageBox.Show(error_message);
             }
+            else
+            {
+                if (logger.IsInfoEnabled)
+                    logger.InfoFormat("{0} accounts are read.", Properties.Settings.Default.AccountNum);
+            }
 
             // 初期化処理
             conn = new PTRconnection();
@@ -208,6 +213,8 @@ namespace PTRtoNote
             xmlWriter.WriteEndDocument();
             xmlWriter.Close();
             fs.Close();
+
+            this.labelExecute.Text = "PTR search was ended and new notesXML was written...";
         }
 
         private void buttonCSV_Click(object sender, EventArgs e)

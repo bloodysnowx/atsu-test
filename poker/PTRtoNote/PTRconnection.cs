@@ -60,6 +60,10 @@ namespace PTRtoNote
         /// <summary>PTRと接続されているか</summary>
         public bool isConnected { get; private set; }
 
+        /// <summary>log4netのインスタンス</summary>
+        private static readonly log4net.ILog logger
+            = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public PTRconnection()
         {
             isConnected = false;
@@ -84,6 +88,18 @@ namespace PTRtoNote
             byte[] resData = PTRClient.UploadValues(PTR_LOGIN_URL, vals);
             string str = System.Text.Encoding.UTF8.GetString(resData);
             isConnected = str.Contains("\"success\" : true");
+
+            if (isConnected)
+            {
+                if(logger.IsInfoEnabled)
+                    logger.Info("login = " + Username + " : success : " + str);
+            }
+            else
+            {
+                if (logger.IsErrorEnabled)
+                    logger.Error("login = " + Username + " : failed : " + str);
+            }
+
             return isConnected;
         }
 
