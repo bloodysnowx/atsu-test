@@ -14,6 +14,32 @@ readme.txt : 本説明ファイル
 notes.xmlを読み込み、PTRからのデータを追加し、条件によるラベリングを実行し、
 データを追加したnotes.xmlを出力します。
 
+--- 使い方 ---
+
+1. 設定作業
+  a. app.config(PTRtoNote.exe.config)を開く
+  b. 下記ラベル設定ルールを参考に、Label_0_Min, Label_1_Min, Label_2_Min, Label_3_Min, Label_6_Hand_Maxを設定する
+  c. 何日以上古いデータであれば更新するかを、ReacquisitionSpanDaysに設定する
+  d. LoginsにPTRのログイン名を区切り文字","のみで記入する(余計なスペースがあった場合、スペースもログイン名の一部と認識します)
+    ex. user1,user2,user3,...
+  e. PasswordsにPTRのパスワードを区切り文字","のみで記入する(余計なスペースがあった場合、スペースもログイン名の一部と認識します)
+    ex. pass1,pass2,pass3,...(pass1はuser1のパスワード、pass2はuser2のパスワード、。。。)
+  f. LoginsとPasswordsに設定したアカウント数をAccountNumに記載する
+2. 下準備
+  a. Pokerstarsを起動する
+  b. PTRからデータを取得したいプレイヤーでラベリングされていないプレイヤーのnoteに"a"と記入していく
+  c. Pokerstarsを終了する(本ソフト実行時は必ず終了させておいてください)
+3. 実行
+  a. 本ソフトを起動する
+  b. openXMLボタンを押して、Pokerstarsのnotes.xmlを開く
+  c. Executeボタンを押して、出力ファイル名を指定し、実行
+  (検索回数(無料アカウントの場合はアカウント数×10)×3秒程度待つ)
+  d. Executeボタンの下のラベルが"PTR search was ended and new notesXML was written..."に変更されたことを確認して、終了する
+  (ラベル4またはラベル5に相当するカモが発見された場合はテキストボックスに表示されます。必要に応じてKGSやスカイプにコピペして
+  共有するといいでしょう)
+4. 結果確認(結果出力のnotes.xmlに不具合があった場合)
+  a. 実行フォルダの直下にlog出力用フォルダが生成されているはずです。実行した日付のファイルを確認してみてください。
+
 --- 全体フロー(β) ---
 
 . ラベル設定ルールをapp.configから読み取る -> done
