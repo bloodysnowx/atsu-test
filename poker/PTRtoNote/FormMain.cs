@@ -33,6 +33,9 @@ namespace PTRtoNote
         /// <summary>PTRとの接続フラグ</summary>
         bool CannotConnect;
 
+        /// <summary>PTRで検索を実行した回数</summary>
+        uint searchedCount = 0;
+
         Random rnd = new Random();
 
         /// <summary>log4netのインスタンス</summary>
@@ -82,7 +85,7 @@ namespace PTRtoNote
             if (openXMLDialog.ShowDialog() == DialogResult.OK)
             {
                 xmlReader = new XmlTextReader(openXMLDialog.FileName);
-                this.labelOpen.Text = "notesXML is opend and ready to Execute...";
+                this.labelOpen.Text = "notesXML is opened and ready to Execute...";
             }
         }
 
@@ -93,6 +96,8 @@ namespace PTRtoNote
         /// <param name="e"></param>
         private void buttonExecute_Click(object sender, EventArgs e)
         {
+            uint player_count = 0;
+
             if (saveXMLDialog.ShowDialog() != DialogResult.OK) return;
             // XMLを書き込み用に開く
             fs = new FileStream(saveXMLDialog.FileName, FileMode.Create, FileAccess.Write);
@@ -140,6 +145,7 @@ namespace PTRtoNote
                     }
                     else if (xmlReader.Name == "note")
                     {
+                        ++player_count;
                         // PlayerIDを読み込む
                         xmlReader.MoveToAttribute("player");
                         string player_name = xmlReader.Value;
@@ -215,7 +221,12 @@ namespace PTRtoNote
             fs.Close();
             xmlReader.Close();
 
-            this.labelExecute.Text = "PTR search was ended and new notesXML was written...";
+            this.labelExecute.Text = (account_number + 1).ToString() + " accounts were used, "
+                + searchedCount.ToString() + " players were searched at PTR, "
+                + player_count.ToString() + " labels were updated, "
+                + "and new notesXML was written...";
+            this.buttonExecute.Enabled = false;
+            this.buttonOpen.Enabled = false;
         }
 
         private void buttonCSV_Click(object sender, EventArgs e)
@@ -271,6 +282,8 @@ namespace PTRtoNote
                         }
                         else
                         {
+                            ++searchedCount;
+
                             // Labe 3 以上のカモを発見した場合は、ニューカマーリストに表示する
                             if (data.BB_100 < Properties.Settings.Default.Label_3_Min && data.Hands > Properties.Settings.Default.Label_6_Hand_Max)
                             {
@@ -279,12 +292,16 @@ namespace PTRtoNote
                             return data;
                         }
                     }
-                    catch (System.Net.WebException)
+                    catch (System.Net.WebException e)
                     {
+                        if (logger.IsErrorEnabled)
+                            logger.Error(player_name + "'s PTR returns error.", e);
                         return null;
                     }
-                    catch (Exception)
+                    catch (Exception e)
                     {
+                        if (logger.IsErrorEnabled)
+                            logger.Error(player_name + "'s PTR returns error.", e);
                         return null;
                     }
                 }
@@ -309,6 +326,11 @@ namespace PTRtoNote
             else if (data.BB_100 > Properties.Settings.Default.Label_4_Min) label = "4";
 
             return label;
+        }
+
+        private void buttonOther_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

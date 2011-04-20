@@ -171,6 +171,11 @@ namespace PTRtoNote
             return data;
         }
 
+        /// <summary>
+        /// PTRのページから正規表現を用いてRatingsを抜き出す
+        /// </summary>
+        /// <param name="web_page">PTRのページ</param>
+        /// <returns>Ratings</returns>
         private uint getRate(string web_page)
         {
             uint ratings = 0;
@@ -182,6 +187,11 @@ namespace PTRtoNote
             return ratings;
         }
 
+        /// <summary>
+        /// PTRのページから正規表現を用いてBB/100を抜き出す
+        /// </summary>
+        /// <param name="web_page">PTRのページ</param>
+        /// <returns>BB/100</returns>
         private decimal getBB(string web_page)
         {
             decimal bb_100 = 0;

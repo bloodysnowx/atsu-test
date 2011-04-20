@@ -27,6 +27,9 @@ namespace PTRtoNote
         private static readonly log4net.ILog logger
             = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        /// <summary>
+        /// 
+        /// </summary>
         public PTRData()
         {
             Hands = 0;
@@ -92,8 +95,10 @@ namespace PTRtoNote
 
                 GetDate = DateTime.ParseExact(tmp_str_1[4].Trim().Substring(0, 10), "yyyy/MM/dd", null);
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                if (logger.IsErrorEnabled)
+                    logger.Error(player_name + "'s PTR could not be understood.", e);
                 return false;
             }
 

@@ -38,6 +38,8 @@
             this.labelCSV = new System.Windows.Forms.Label();
             this.textBoxNewComer = new System.Windows.Forms.TextBox();
             this.openCSVDialog = new System.Windows.Forms.OpenFileDialog();
+            this.buttonOther = new System.Windows.Forms.Button();
+            this.labelOther = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // openXMLDialog
@@ -69,13 +71,13 @@
             this.labelOpen.AutoSize = true;
             this.labelOpen.Location = new System.Drawing.Point(93, 12);
             this.labelOpen.Name = "labelOpen";
-            this.labelOpen.Size = new System.Drawing.Size(142, 12);
+            this.labelOpen.Size = new System.Drawing.Size(148, 12);
             this.labelOpen.TabIndex = 1;
-            this.labelOpen.Text = "notesXML is not opend..........";
+            this.labelOpen.Text = "notesXML is not opened..........";
             // 
             // buttonExecute
             // 
-            this.buttonExecute.Location = new System.Drawing.Point(12, 70);
+            this.buttonExecute.Location = new System.Drawing.Point(12, 99);
             this.buttonExecute.Name = "buttonExecute";
             this.buttonExecute.Size = new System.Drawing.Size(75, 23);
             this.buttonExecute.TabIndex = 3;
@@ -86,11 +88,11 @@
             // labelExecute
             // 
             this.labelExecute.AutoSize = true;
-            this.labelExecute.Location = new System.Drawing.Point(93, 70);
+            this.labelExecute.Location = new System.Drawing.Point(93, 99);
             this.labelExecute.Name = "labelExecute";
             this.labelExecute.Size = new System.Drawing.Size(136, 12);
             this.labelExecute.TabIndex = 4;
-            this.labelExecute.Text = "PTR is not connected..........";
+            this.labelExecute.Text = "PTR is not connected..........\r\n";
             // 
             // buttonCSV
             // 
@@ -108,19 +110,19 @@
             this.labelCSV.AutoSize = true;
             this.labelCSV.Location = new System.Drawing.Point(93, 41);
             this.labelCSV.Name = "labelCSV";
-            this.labelCSV.Size = new System.Drawing.Size(181, 12);
+            this.labelCSV.Size = new System.Drawing.Size(187, 12);
             this.labelCSV.TabIndex = 7;
-            this.labelCSV.Text = "player name CSV is not opend..........";
+            this.labelCSV.Text = "player name CSV is not opened..........";
             // 
             // textBoxNewComer
             // 
             this.textBoxNewComer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxNewComer.Location = new System.Drawing.Point(12, 99);
+            this.textBoxNewComer.Location = new System.Drawing.Point(12, 157);
             this.textBoxNewComer.Multiline = true;
             this.textBoxNewComer.Name = "textBoxNewComer";
-            this.textBoxNewComer.Size = new System.Drawing.Size(497, 665);
+            this.textBoxNewComer.Size = new System.Drawing.Size(497, 607);
             this.textBoxNewComer.TabIndex = 8;
             // 
             // openCSVDialog
@@ -130,12 +132,34 @@
             this.openCSVDialog.RestoreDirectory = true;
             this.openCSVDialog.Title = "openCSV";
             // 
+            // buttonOther
+            // 
+            this.buttonOther.Enabled = false;
+            this.buttonOther.Location = new System.Drawing.Point(12, 70);
+            this.buttonOther.Name = "buttonOther";
+            this.buttonOther.Size = new System.Drawing.Size(158, 23);
+            this.buttonOther.TabIndex = 9;
+            this.buttonOther.Text = "open another XML for Merge";
+            this.buttonOther.UseVisualStyleBackColor = true;
+            this.buttonOther.Click += new System.EventHandler(this.buttonOther_Click);
+            // 
+            // labelOther
+            // 
+            this.labelOther.AutoSize = true;
+            this.labelOther.Location = new System.Drawing.Point(177, 70);
+            this.labelOther.Name = "labelOther";
+            this.labelOther.Size = new System.Drawing.Size(170, 12);
+            this.labelOther.TabIndex = 10;
+            this.labelOther.Text = "another notesXML is not opened";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(521, 776);
+            this.Controls.Add(this.labelOther);
+            this.Controls.Add(this.buttonOther);
             this.Controls.Add(this.textBoxNewComer);
             this.Controls.Add(this.labelExecute);
             this.Controls.Add(this.buttonExecute);
@@ -164,6 +188,8 @@
         private System.Windows.Forms.Label labelCSV;
         private System.Windows.Forms.OpenFileDialog openCSVDialog;
         private System.Windows.Forms.TextBox textBoxNewComer;
+        private System.Windows.Forms.Button buttonOther;
+        private System.Windows.Forms.Label labelOther;
     }
 }
 
