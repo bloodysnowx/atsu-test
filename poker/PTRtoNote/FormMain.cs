@@ -35,6 +35,8 @@ namespace PTRtoNote
 
         /// <summary>PTRで検索を実行した回数</summary>
         uint searchedCount = 0;
+        /// <summary>noteが"a"のままの数</summary>
+        uint aCount = 0;
 
         Random rnd = new Random();
 
@@ -169,6 +171,7 @@ namespace PTRtoNote
                                 if (note_str == "a") note_str = data.GetNoteString();
                                 else note_str = data.GetNoteString() + note_str.Substring(1);
                             }
+                            else ++aCount;
                         }
                         // データが無い場合
                         else if (data.MakePTRDataFromNoteStr(player_name, note_str) == false)
@@ -221,10 +224,10 @@ namespace PTRtoNote
             fs.Close();
             xmlReader.Close();
 
-            this.labelExecute.Text = (account_number + 1).ToString() + " accounts were used, "
-                + searchedCount.ToString() + " players were searched at PTR, "
+            this.labelExecute.Text = account_number.ToString() + " accounts were used, "
+                + searchedCount.ToString() + " players were searched at PTR, " + '\n'
                 + player_count.ToString() + " labels were updated, "
-                + "and new notesXML was written...";
+                + "could not search " + aCount.ToString() + " players.";
             this.buttonExecute.Enabled = false;
             this.buttonOpen.Enabled = false;
         }
