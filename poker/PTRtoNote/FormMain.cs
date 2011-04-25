@@ -215,6 +215,13 @@ namespace PTRtoNote
                         xmlWriter.WriteEndAttribute();
                         xmlWriter.WriteString(note_str);
                         xmlWriter.WriteEndElement();
+
+                        this.labelExecute.Text = account_number.ToString() + " accounts were used, "
+                            + searchedCount.ToString() + " players were searched at PTR, " + '\n'
+                            + player_count.ToString() + " labels were updated, "
+                            + "could not search " + aCount.ToString() + " players.";
+
+                        this.Refresh();
                     }
                 }
                 else if (xmlReader.NodeType == XmlNodeType.EndElement)
@@ -232,10 +239,6 @@ namespace PTRtoNote
             fs.Close();
             xmlReader.Close();
 
-            this.labelExecute.Text = account_number.ToString() + " accounts were used, "
-                + searchedCount.ToString() + " players were searched at PTR, " + '\n'
-                + player_count.ToString() + " labels were updated, "
-                + "could not search " + aCount.ToString() + " players.";
             this.buttonExecute.Enabled = false;
             this.buttonOpen.Enabled = false;
         }
@@ -294,6 +297,11 @@ namespace PTRtoNote
                         else
                         {
                             ++searchedCount;
+
+                            if (logger.IsDebugEnabled)
+                            {
+                                logger.DebugFormat("{0} : {1} {2}", searchedCount, player_name, data.GetNoteString());
+                            }
 
                             // Labe 3 以上のカモを発見した場合は、ニューカマーリストに表示する
                             if (data.BB_100 < Properties.Settings.Default.Label_3_Min && data.Hands > Properties.Settings.Default.Label_6_Hand_Max)
