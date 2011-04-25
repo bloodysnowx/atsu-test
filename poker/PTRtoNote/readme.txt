@@ -92,10 +92,11 @@ string summary = "R:" + dr.GetInt32(2).ToString() + ", H:" + dr.GetInt32(3).ToSt
 
 --- ラベル設定ルール ---
 
-app.configのLabel_6_Hand_Max未満のハンド数の場合は"6"
+ラベル7の場合はラベル7のまま
 app.configのLabel_0_Min以上のBB/100の場合は"0"
 app.configのLabel_1_Min以上のBB/100の場合は"1"
 app.configのLabel_2_Min以上のBB/100の場合は"2"
+app.configのLabel_6_Hand_Max未満のハンド数の場合は"6"
 app.configのLabel_3_Min以上のBB/100の場合は"3"
 app.configのLabel_4_Min以上のBB/100の場合は"4"
 app.configのLabel_4_Min未満のBB/100の場合は"5"
