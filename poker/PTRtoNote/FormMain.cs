@@ -247,6 +247,11 @@ namespace PTRtoNote
             fs.Close();
             xmlReader.Close();
 
+            this.labelExecute.Text = account_number.ToString() + " accounts were used, "
+                + searchedCount.ToString() + " players were searched at PTR, " + '\n'
+                + player_count.ToString() + " labels were updated, "
+                + "could not search " + aCount.ToString() + " players.";
+
             this.buttonExecute.Enabled = false;
             this.buttonOpen.Enabled = false;
         }
