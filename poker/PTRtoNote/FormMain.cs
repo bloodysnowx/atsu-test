@@ -204,7 +204,10 @@ namespace PTRtoNote
                         }
 
                         // ラベル更新処理
-                        if (data != null) label = DecideLabel(data);
+                        if (label == "7")
+                        {
+                        }
+                        else if (data != null) label = DecideLabel(data);
                         // XMLに要素を書き込む
                         xmlWriter.WriteStartElement("note");
                         xmlWriter.WriteStartAttribute("player");
