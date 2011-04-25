@@ -99,6 +99,7 @@ namespace PTRtoNote
         private void buttonExecute_Click(object sender, EventArgs e)
         {
             uint player_count = 0;
+            uint old_searchedCount = searchedCount;
 
             if (saveXMLDialog.ShowDialog() != DialogResult.OK) return;
             // XMLを書き込み用に開く
@@ -176,7 +177,7 @@ namespace PTRtoNote
                             data = GetPTR(player_name);
                             if (data != null)
                             {
-                                if (note_str == "a") note_str = data.GetNoteString();
+                                if (note_str == "a" || note_str.Length < 1) note_str = data.GetNoteString();
                                 else note_str = data.GetNoteString() + note_str.Substring(1);
                             }
                             else ++aCount;
@@ -219,12 +220,16 @@ namespace PTRtoNote
                         xmlWriter.WriteString(note_str);
                         xmlWriter.WriteEndElement();
 
-                        this.labelExecute.Text = account_number.ToString() + " accounts were used, "
-                            + searchedCount.ToString() + " players were searched at PTR, " + '\n'
-                            + player_count.ToString() + " labels were updated, "
-                            + "could not search " + aCount.ToString() + " players.";
+                        if (searchedCount != old_searchedCount || player_count % 1000 == 0)
+                        {
+                            this.labelExecute.Text = account_number.ToString() + " accounts were used, "
+                                + searchedCount.ToString() + " players were searched at PTR, " + '\n'
+                                + player_count.ToString() + " labels were updated, "
+                                + "could not search " + aCount.ToString() + " players.";
 
-                        this.Refresh();
+                            this.Refresh();
+                            old_searchedCount = searchedCount;
+                        }
                     }
                 }
                 else if (xmlReader.NodeType == XmlNodeType.EndElement)
