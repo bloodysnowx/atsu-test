@@ -1,0 +1,89 @@
+DIM count = 8
+DIM pos_x[] = 1004, 1192, 1201, 1145, 819, 487, 160, 140, 321
+DIM pos_y[] =  136,  314,  536,  642, 657, 650, 550, 335, 151
+
+Ifb MSGBOX("9MAX->YES, 6MAX->NO", BTN_YES or BTN_NO) = BTN_YES then
+    SLEEP(1)
+Else
+    count = 5
+    pos_x[0] = 1049
+    pos_y[0] =  133
+    pos_x[1] = 1191
+    pos_y[1] =  477
+    pos_x[2] = 1009
+    pos_y[2] =  656
+    pos_x[3] =  249
+    pos_y[3] =  658
+    pos_x[4] =  145
+    pos_y[4] =  466
+    pos_x[5] =  294
+    pos_y[5] =  135
+Endif
+
+// スターズのロビー画面取得
+lobby_id = GETID("PokerStars Lobby", "#32770", -1)
+SLEEP(1)
+// スターズのロビー画面を位置固定
+ACW(lobby_id,0,0,1280,1024,0)
+BTN(LEFT,CLICK,107,249,281)
+
+DIM old_table_name = ""
+DIM new_table_name = ""
+
+WHILE TRUE
+	// テーブルを開く
+	KBD(VK_RETURN,CLICK,40)
+	SLEEP(2)
+	table_id = GETID("", "PokerStarsTableFrameClass")
+	ACW(table_id,0,0,1328,937,0)
+	old_table_name = new_table_name
+	new_table_name = STATUS(table_id, ST_TITLE)
+
+	FOR i = 0 TO count
+		SLEEP(0.1)
+		SENDSTR(0, "")
+		BTN(RIGHT,CLICK,pos_x[i],pos_y[i],100)
+		SLEEP(0.1)
+		id = GETID("", "#32768", 1)
+		CLKITEM(id, "Note", CLK_ACC or CLK_BACK or CLK_MUSMOVE)
+		SLEEP(0.2)
+		BTN(RIGHT,CLICK,66,852,300)
+		SLEEP(0.1)
+		id = GETID("", "#32768", 1)
+		CLKITEM(id, "すべて選択(A)", CLK_ACC or CLK_BACK or CLK_MUSMOVE)
+		SLEEP(0.1)
+		BTN(RIGHT,CLICK,66,852,300)
+		SLEEP(0.1)
+		id = GETID("", "#32768", 1)
+		CLKITEM(id, "コピー(C)", CLK_ACC or CLK_BACK or CLK_MUSMOVE)
+		Dim note_str = GetStr(0)
+		// MSGBOX(note_str)
+		IFB Length(note_str) < 1 OR note_str == "" THEN
+			BTN(LEFT,CLICK,133,884,94)
+			BTN(LEFT,CLICK,224,839,187)
+			KBD(VK_A,CLICK,40)
+		ENDIF
+	NEXT
+	// テーブルを閉じる
+	BTN(LEFT,CLICK,1178,48,300)
+	SLEEP(1)
+	ACW(lobby_id,0,0,1280,1024,0)
+	
+	IFB old_table_name <> new_table_name THEN
+		KBD(VK_DOWN,CLICK,40)
+	ELSE
+		BTN(LEFT,DOWN,877,848,300)
+		BTN(LEFT,UP,879,271,300)
+		BTN(LEFT,CLICK,877,250,1000)
+		BTN(LEFT,CLICK,325,253,300)
+		BTN(LEFT,CLICK,107,249,300)
+	ENDIF
+WEND
+
+
+ACW(GETID("Agena V - $0.10/$0.25 USD - No Limit Hold'em","PokerStarsTableFrameClass"),0,0,1328,937,0)
+BTN(LEFT,CLICK,231,274,300)
+BTN(LEFT,CLICK,231,274,78)
+BTN(LEFT,CLICK,224,836,125)
+BTN(LEFT,CLICK,224,839,187)
+KBD(VK_A,CLICK,40)
