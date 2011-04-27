@@ -177,7 +177,16 @@ namespace PTRtoNote
                             data = GetPTR(player_name);
                             if (data != null)
                             {
-                                if (note_str == "a" || note_str.Length < 1) note_str = data.GetNoteString();
+                                if (note_str == "a" || note_str.Length < 1)
+                                {
+                                    note_str = data.GetNoteString();
+
+                                    // Labe 3 以上のカモを発見した場合は、ニューカマーリストに表示する
+                                    if (data.BB_100 < Properties.Settings.Default.Label_3_Min && data.Hands > Properties.Settings.Default.Label_6_Hand_Max)
+                                    {
+                                        this.textBoxNewComer.Text += player_name + " " + note_str + System.Environment.NewLine;
+                                    }
+                                }
                                 else note_str = data.GetNoteString() + note_str.Substring(1);
                             }
                             else ++aCount;
@@ -188,6 +197,8 @@ namespace PTRtoNote
                             // データを先頭に付与
                             data = GetPTR(player_name);
                             if (data != null) note_str = data.GetNoteString() + '\n' + note_str;
+
+                            addToUpdateComer(player_name, data, note_str);
                         }
                         // データがある場合
                         else
@@ -200,6 +211,8 @@ namespace PTRtoNote
                                 {
                                     data = new_data;
                                     note_str = data.GetNoteString() + '\n' + note_str;
+
+                                    addToUpdateComer(player_name, data, note_str);
                                 }
                             }
                         }
@@ -254,6 +267,15 @@ namespace PTRtoNote
 
             this.buttonExecute.Enabled = false;
             this.buttonOpen.Enabled = false;
+        }
+
+        private void addToUpdateComer(string player_name, PTRData data, string note_str)
+        {
+            // Labe 3 以上のカモを発見した場合は、ニューカマーリストに表示する
+            if (data.BB_100 < Properties.Settings.Default.Label_3_Min && data.Hands > Properties.Settings.Default.Label_6_Hand_Max)
+            {
+                this.textBoxUpdate.Text += player_name + " " + note_str + System.Environment.NewLine;
+            }
         }
 
         private void buttonCSV_Click(object sender, EventArgs e)
@@ -314,12 +336,6 @@ namespace PTRtoNote
                             if (logger.IsDebugEnabled)
                             {
                                 logger.DebugFormat("{0} : {1} {2}", searchedCount, player_name, data.GetNoteString());
-                            }
-
-                            // Labe 3 以上のカモを発見した場合は、ニューカマーリストに表示する
-                            if (data.BB_100 < Properties.Settings.Default.Label_3_Min && data.Hands > Properties.Settings.Default.Label_6_Hand_Max)
-                            {
-                                this.textBoxNewComer.Text += player_name + " " + data.GetNoteString() + System.Environment.NewLine;
                             }
                             return data;
                         }
