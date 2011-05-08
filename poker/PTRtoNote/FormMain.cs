@@ -157,6 +157,14 @@ namespace PTRtoNote
                         // ラベル情報を読み込む
                         xmlReader.MoveToAttribute("label");
                         string label = xmlReader.Value;
+
+                        // updateを読み込む
+                        string update = null;
+                        if (xmlReader.MoveToAttribute("update"))
+                        {
+                            update = xmlReader.Value;
+                        }
+
                         // noteの内容を読み込む
                         string note_str = "";
                         try
@@ -196,9 +204,11 @@ namespace PTRtoNote
                         {
                             // データを先頭に付与
                             data = GetPTR(player_name);
-                            if (data != null) note_str = data.GetNoteString() + '\n' + note_str;
-
-                            addToUpdateComer(player_name, data, note_str);
+                            if (data != null)
+                            {
+                                note_str = data.GetNoteString() + '\n' + note_str;
+                                addToUpdateComer(player_name, data, note_str);
+                            }
                         }
                         // データがある場合
                         else
@@ -230,6 +240,12 @@ namespace PTRtoNote
                         xmlWriter.WriteStartAttribute("label");
                         xmlWriter.WriteString(label);
                         xmlWriter.WriteEndAttribute();
+                        if (update != null)
+                        {
+                            xmlWriter.WriteStartAttribute("update");
+                            xmlWriter.WriteString(update);
+                            xmlWriter.WriteEndAttribute();
+                        }
                         xmlWriter.WriteString(note_str);
                         xmlWriter.WriteEndElement();
 
