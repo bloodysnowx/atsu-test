@@ -188,12 +188,7 @@ namespace PTRtoNote
                                 if (note_str == "a" || note_str.Length < 1)
                                 {
                                     note_str = data.GetNoteString();
-
-                                    // Labe 3 以上のカモを発見した場合は、ニューカマーリストに表示する
-                                    if (data.BB_100 < Properties.Settings.Default.Label_3_Min && data.Hands > Properties.Settings.Default.Label_6_Hand_Max)
-                                    {
-                                        this.textBoxNewComer.Text += player_name + " " + note_str + System.Environment.NewLine;
-                                    }
+                                    addToNewComer(player_name, data, note_str);
                                 }
                                 else note_str = data.GetNoteString() + note_str.Substring(1);
                             }
@@ -251,10 +246,7 @@ namespace PTRtoNote
 
                         if (searchedCount != old_searchedCount || player_count % 1000 == 0)
                         {
-                            this.labelExecute.Text = account_number.ToString() + " accounts were used, "
-                                + searchedCount.ToString() + " players were searched at PTR, " + '\n'
-                                + player_count.ToString() + " labels were updated, "
-                                + "could not search " + aCount.ToString() + " players.";
+                            updateLabelExecute(account_number, searchedCount, player_count, aCount);
 
                             this.Refresh();
                             old_searchedCount = searchedCount;
@@ -276,22 +268,36 @@ namespace PTRtoNote
             fs.Close();
             xmlReader.Close();
 
-            this.labelExecute.Text = account_number.ToString() + " accounts were used, "
-                + searchedCount.ToString() + " players were searched at PTR, " + '\n'
-                + player_count.ToString() + " labels were updated, "
-                + "could not search " + aCount.ToString() + " players.";
+            updateLabelExecute(account_number, searchedCount, player_count, aCount);
 
             this.buttonExecute.Enabled = false;
             this.buttonOpen.Enabled = false;
         }
 
+        private void addToNewComer(string player_name, PTRData data, string note_str)
+        {
+            // Label 3 以上のカモを発見した場合は、ニューカマーリストに表示する
+            if (data.BB_100 < Properties.Settings.Default.Label_3_Min && data.Hands > Properties.Settings.Default.Label_6_Hand_Max)
+            {
+                this.textBoxNewComer.Text += player_name + " " + note_str + System.Environment.NewLine;
+            }
+        }
+
         private void addToUpdateComer(string player_name, PTRData data, string note_str)
         {
-            // Labe 3 以上のカモを発見した場合は、ニューカマーリストに表示する
+            // Label 3 以上のカモを発見した場合は、ニューカマーリストに表示する
             if (data.BB_100 < Properties.Settings.Default.Label_3_Min && data.Hands > Properties.Settings.Default.Label_6_Hand_Max)
             {
                 this.textBoxUpdate.Text += player_name + " " + note_str + System.Environment.NewLine;
             }
+        }
+
+        private void updateLabelExecute(int account_number, uint searchedCount, uint player_count, uint aCount)
+        {
+            this.labelExecute.Text = account_number.ToString() + " accounts were used, "
+                + searchedCount.ToString() + " players were searched at PTR, " + '\n'
+                + player_count.ToString() + " labels were updated, "
+                + "could not search " + aCount.ToString() + " players.";
         }
 
         private void buttonCSV_Click(object sender, EventArgs e)
