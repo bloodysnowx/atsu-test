@@ -358,7 +358,7 @@ namespace PTRtoNote
                     {
                         data = conn.GetPTRData(player_name);
                         
-                        System.Threading.Thread.Sleep(1000 + rnd.Next(1000));
+                        System.Threading.Thread.Sleep(600 + rnd.Next(900));
 
                         if (data == null)
                         {
