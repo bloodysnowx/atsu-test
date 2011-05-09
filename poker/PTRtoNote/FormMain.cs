@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Collections;
 
 using System.IO;
 using System.Xml;
@@ -19,7 +20,7 @@ namespace PTRtoNote
         /// <summary>ログインパスワード</summary>
         string[] Password;
         /// <summary>現在のアカウント番号</summary>
-        int account_number;
+        int account_number = 0;
 
         /// <summary>notesXMLオリジナル読み込み用リーダ</summary>
         XmlTextReader xmlReader;
@@ -31,12 +32,15 @@ namespace PTRtoNote
         /// <summary>PTRとの接続</summary>
         PTRconnection conn;
         /// <summary>PTRとの接続フラグ</summary>
-        bool CannotConnect;
+        bool CannotConnect = false;
 
         /// <summary>PTRで検索を実行した回数</summary>
         uint searchedCount = 0;
         /// <summary>noteが"a"のままの数</summary>
         uint aCount = 0;
+
+        /// <summary>新しいプレイヤー名のリスト</summary>
+        ArrayList newPlayerList = null;
 
         Random rnd = new Random();
 
@@ -71,10 +75,8 @@ namespace PTRtoNote
 
             // 初期化処理
             conn = new PTRconnection();
-            account_number = 0;
             conn.Username = Username[0];
             conn.Password = Password[0];
-            CannotConnect = false;
         }
 
         /// <summary>
@@ -272,6 +274,7 @@ namespace PTRtoNote
 
             this.buttonExecute.Enabled = false;
             this.buttonOpen.Enabled = false;
+            this.buttonCSV.Enabled = false;
         }
 
         private void addToNewComer(string player_name, PTRData data, string note_str)
@@ -302,7 +305,20 @@ namespace PTRtoNote
 
         private void buttonCSV_Click(object sender, EventArgs e)
         {
+            if (openCSVDialog.ShowDialog() == DialogResult.OK)
+            {
+                newPlayerList = new ArrayList();
+                StreamReader sr = new StreamReader(openCSVDialog.FileName);
 
+                string new_name = "";
+
+                while ((new_name = sr.ReadLine()) != null)
+                {
+                    newPlayerList.Add(new_name.Trim());
+                }
+
+                this.labelCSV.Text = "CSV is opened and " + newPlayerList.Count + " players are read...";
+            }
         }
 
         private PTRData GetPTR(string player_name)

@@ -103,7 +103,6 @@
             // 
             // buttonCSV
             // 
-            this.buttonCSV.Enabled = false;
             this.buttonCSV.Location = new System.Drawing.Point(12, 41);
             this.buttonCSV.Name = "buttonCSV";
             this.buttonCSV.Size = new System.Drawing.Size(75, 23);
