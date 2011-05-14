@@ -22,6 +22,10 @@ namespace PTRtoNote
         public decimal BB_100 { get; set; }
         /// <summary>PTRから取得した日付</summary>
         public DateTime GetDate { get; set; }
+        /// <summary>HU時のBB/100</summary>
+        public decimal HU_BB_100 { get; set; }
+        /// <summary>HU時のHands</summary>
+        public uint HU_Hands { get; set; }
 
         /// <summary>log4netのインスタンス</summary>
         private static readonly log4net.ILog logger
@@ -94,6 +98,27 @@ namespace PTRtoNote
                 BB_100 = decimal.Parse(tmp_str_2[1]);
 
                 GetDate = DateTime.ParseExact(tmp_str_1[4].Trim().Substring(0, 10), "yyyy/MM/dd", null);
+
+                HU_BB_100 = 0;
+                HU_Hands = 0;
+                if (tmp_str_1.Count() > 6)
+                {
+                    tmp_str_2 = tmp_str_1[5].Split(':');
+                    if (tmp_str_2.Count() != 2 || tmp_str_2[0].Trim() != "HUBB")
+                    {
+                        if (logger.IsWarnEnabled) logger.Warn(player_name + "'s HUBB is Broken or old type.");
+                    }
+                    else
+                        HU_BB_100 = decimal.Parse(tmp_str_2[1]);
+
+                    tmp_str_2 = tmp_str_1[6].Split(':');
+                    if (tmp_str_2.Count() != 2 || tmp_str_2[0].Trim() != "HUH")
+                    {
+                        if (logger.IsWarnEnabled) logger.Warn(player_name + "'s HUH is Broken or old type.");
+                    }
+                    else
+                        HU_Hands = uint.Parse(tmp_str_2[1]);
+                }
             }
             catch (Exception e)
             {
@@ -122,6 +147,10 @@ namespace PTRtoNote
             note_str.Append(BB_100.ToString("f2"));
             note_str.Append(", ");
             note_str.Append(GetDate.ToString("yyyy/MM/dd"));
+            note_str.Append(", HUBB:");
+            note_str.Append(HU_BB_100.ToString("f2"));
+            note_str.Append(", HUH:");
+            note_str.Append(HU_Hands);
 
             return note_str.ToString();
         }

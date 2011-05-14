@@ -203,3 +203,5 @@ bloodysnow
 --- version ---
 
 2011/05/09 version 0.2.0
+
+C-M-% \([^>]\)a+< \1<

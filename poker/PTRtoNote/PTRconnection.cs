@@ -113,7 +113,7 @@ namespace PTRtoNote
             return PTRClient.DownloadString(PTR_SEARCH_URL + System.Web.HttpUtility.UrlEncode(player_name));
         }
 
-        private bool isStakes(string stakes_name)
+        private bool isExStakes(string stakes_name)
         {
             bool ret = true;
 
@@ -121,6 +121,14 @@ namespace PTRtoNote
             else if (stakes_name.IndexOf("HU") > -1) ret = false;
             else if (stakes_name.IndexOf("0.02") > -1) ret = false;
             else if (stakes_name.IndexOf("0.05") > -1) ret = false;
+
+            return ret;
+        }
+
+        private bool isHUStakes(string stakes_name)
+        {
+            bool ret = true;
+            if (stakes_name.IndexOf("NLH HU") < 0) ret = false;
 
             return ret;
         }
@@ -142,6 +150,7 @@ namespace PTRtoNote
             Regex regex = new Regex(">([^<]+?)<");
             MatchCollection matchCol;
             decimal bb_sum = 0;
+            decimal hu_bb_sum = 0;
 
             while (true)
             {
@@ -151,14 +160,20 @@ namespace PTRtoNote
 
                 matchCol = regex.Matches(web_page);
 
-                if (isStakes(matchCol[1].Groups[1].Value))
+                if (isExStakes(matchCol[1].Groups[1].Value))
                 {
                     data.Hands += uint.Parse(matchCol[3].Groups[1].Value.Replace(",", ""));
                     data.Earnings += int.Parse(matchCol[5].Groups[1].Value.Replace(",", "").Replace("$", "").Replace("&#8364;", ""));
                     bb_sum += decimal.Parse(matchCol[7].Groups[1].Value.Replace(",", "")) * uint.Parse(matchCol[3].Groups[1].Value.Replace(",", ""));
                 }
+                else if (isHUStakes(matchCol[1].Groups[1].Value))
+                {
+                    data.HU_Hands += uint.Parse(matchCol[3].Groups[1].Value.Replace(",", ""));
+                    hu_bb_sum += decimal.Parse(matchCol[7].Groups[1].Value.Replace(",", "")) * uint.Parse(matchCol[3].Groups[1].Value.Replace(",", ""));
+                }
             }
             if (data.Hands != 0) data.BB_100 = bb_sum / data.Hands;
+            if (data.HU_Hands != 0) data.HU_BB_100 = hu_bb_sum / data.HU_Hands;
 
             data.GetDate = System.DateTime.Today;
 

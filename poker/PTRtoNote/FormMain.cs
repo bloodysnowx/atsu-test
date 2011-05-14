@@ -358,7 +358,7 @@ namespace PTRtoNote
                     {
                         data = conn.GetPTRData(player_name);
                         
-                        System.Threading.Thread.Sleep(600 + rnd.Next(900));
+                        System.Threading.Thread.Sleep(1000 + rnd.Next(1000));
 
                         if (data == null)
                         {
@@ -403,13 +403,21 @@ namespace PTRtoNote
         /// <returns>決定したラベル</returns>
         private string DecideLabel(PTRData data)
         {
+            decimal label_bb = data.BB_100;
+            uint label_hand = data.Hands;
+            if (data.HU_Hands > data.Hands)
+            {
+                label_bb = data.HU_BB_100;
+                label_hand = data.HU_Hands;
+            }
+
             string label = "5";
-            if (data.BB_100 > Properties.Settings.Default.Label_0_Min) label = "0";
-            else if (data.BB_100 > Properties.Settings.Default.Label_1_Min) label = "1";
-            else if (data.BB_100 > Properties.Settings.Default.Label_2_Min) label = "2";
-            else if (data.Hands < Properties.Settings.Default.Label_6_Hand_Max) label = "6";
-            else if (data.BB_100 > Properties.Settings.Default.Label_3_Min) label = "3";
-            else if (data.BB_100 > Properties.Settings.Default.Label_4_Min) label = "4";
+            if (label_bb > Properties.Settings.Default.Label_0_Min) label = "0";
+            else if (label_bb > Properties.Settings.Default.Label_1_Min) label = "1";
+            else if (label_bb > Properties.Settings.Default.Label_2_Min) label = "2";
+            else if (label_hand < Properties.Settings.Default.Label_6_Hand_Max) label = "6";
+            else if (label_bb > Properties.Settings.Default.Label_3_Min) label = "3";
+            else if (label_bb > Properties.Settings.Default.Label_4_Min) label = "4";
 
             return label;
         }
