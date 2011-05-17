@@ -24,7 +24,7 @@
       <Value Profile="(Default)">3650</Value>
     </Setting>
     <Setting Name="Label6ReacquisitionSpanDays" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">120</Value>
+      <Value Profile="(Default)">365</Value>
     </Setting>
     <Setting Name="AccountNum" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">46</Value>

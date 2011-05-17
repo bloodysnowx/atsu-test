@@ -88,7 +88,7 @@ namespace PTRtoNote.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("120")]
+        [global::System.Configuration.DefaultSettingValueAttribute("365")]
         public int Label6ReacquisitionSpanDays {
             get {
                 return ((int)(this["Label6ReacquisitionSpanDays"]));
