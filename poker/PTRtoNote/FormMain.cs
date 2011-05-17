@@ -15,6 +15,7 @@ namespace PTRtoNote
 {
     public partial class FormMain : Form
     {
+        #region MEMBER
         /// <summary>ログインユーザ名</summary>
         string[] Username;
         /// <summary>ログインパスワード</summary>
@@ -47,7 +48,7 @@ namespace PTRtoNote
         /// <summary>log4netのインスタンス</summary>
         private static readonly log4net.ILog logger
             = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
+        #endregion
         /// <summary>
         /// コンストラクタ(PTRのアカウント情報読み込み、初期化処理)
         /// </summary>
@@ -100,6 +101,7 @@ namespace PTRtoNote
         /// <param name="e"></param>
         private void buttonExecute_Click(object sender, EventArgs e)
         {
+            #region XML_INIT
             uint player_count = 0;
             uint old_searchedCount = searchedCount;
 
@@ -113,9 +115,11 @@ namespace PTRtoNote
 
             // notesXMLの先頭書き込み
             xmlWriter.WriteStartDocument();
-            
+            #endregion
+
             while (xmlReader.Read())
             {
+                #region READ_HEADER
                 if (xmlReader.NodeType == XmlNodeType.XmlDeclaration) continue;
                 if (xmlReader.NodeType == XmlNodeType.Whitespace) continue;
                 if (xmlReader.NodeType == XmlNodeType.Element)
@@ -148,6 +152,7 @@ namespace PTRtoNote
                         if (xmlReader.NodeType == XmlNodeType.EndElement)
                             xmlWriter.WriteEndElement();
                     }
+                #endregion
                     else if (xmlReader.Name == "note")
                     {
                         ++player_count;
@@ -190,7 +195,7 @@ namespace PTRtoNote
                                 if (note_str == "a" || note_str.Length < 1)
                                 {
                                     note_str = data.GetNoteString();
-                                    addToNewComer(player_name, data, note_str);
+                                    addToNewComer(player_name, data);
                                 }
                                 else note_str = data.GetNoteString() + note_str.Substring(1);
                             }
@@ -204,7 +209,7 @@ namespace PTRtoNote
                             if (data != null)
                             {
                                 note_str = data.GetNoteString() + '\n' + note_str;
-                                addToUpdateComer(player_name, data, note_str);
+                                addToUpdateComer(player_name, data);
                             }
                         }
                         // データがある場合
@@ -219,7 +224,19 @@ namespace PTRtoNote
                                     data = new_data;
                                     note_str = data.GetNoteString() + '\n' + note_str;
 
-                                    addToUpdateComer(player_name, data, note_str);
+                                    addToUpdateComer(player_name, data);
+                                }
+                            }
+                                // ラベル6でデータが古い場合は再取得
+                            else if (label == "6" && data.GetDate < System.DateTime.Today - new System.TimeSpan(Properties.Settings.Default.Label6ReacquisitionSpanDays, 0, 0, 0))
+                            {
+                                PTRData new_data = GetPTR(player_name);
+                                if (new_data != null && new_data.Hands >= data.Hands)
+                                {
+                                    data = new_data;
+                                    note_str = data.GetNoteString() + '\n' + note_str;
+
+                                    addToUpdateComer(player_name, data);
                                 }
                             }
                         }
@@ -277,21 +294,21 @@ namespace PTRtoNote
             this.buttonCSV.Enabled = false;
         }
 
-        private void addToNewComer(string player_name, PTRData data, string note_str)
+        private void addToNewComer(string player_name, PTRData data)
         {
             // Label 3 以上のカモを発見した場合は、ニューカマーリストに表示する
             if (data.BB_100 < Properties.Settings.Default.Label_3_Min && data.Hands > Properties.Settings.Default.Label_6_Hand_Max)
             {
-                this.textBoxNewComer.Text += player_name + " " + note_str + System.Environment.NewLine;
+                this.textBoxNewComer.Text += player_name + " " + data.GetNoteString() + System.Environment.NewLine;
             }
         }
 
-        private void addToUpdateComer(string player_name, PTRData data, string note_str)
+        private void addToUpdateComer(string player_name, PTRData data)
         {
             // Label 3 以上のカモを発見した場合は、ニューカマーリストに表示する
             if (data.BB_100 < Properties.Settings.Default.Label_3_Min && data.Hands > Properties.Settings.Default.Label_6_Hand_Max)
             {
-                this.textBoxUpdate.Text += player_name + " " + note_str + System.Environment.NewLine;
+                this.textBoxUpdate.Text += player_name + " " + data.GetNoteString() + System.Environment.NewLine;
             }
         }
 

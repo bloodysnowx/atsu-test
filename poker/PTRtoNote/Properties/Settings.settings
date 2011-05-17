@@ -23,22 +23,17 @@
     <Setting Name="ReacquisitionSpanDays" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">3650</Value>
     </Setting>
+    <Setting Name="Label6ReacquisitionSpanDays" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">120</Value>
+    </Setting>
     <Setting Name="AccountNum" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">38</Value>
+      <Value Profile="(Default)">46</Value>
     </Setting>
     <Setting Name="Logins" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">scout1,scout2,scout3,scout4,scout5,scout6,scout7,scout8,scout9,scout10,
-                1scout,2scout,3scout,4scout,5scout,6scout,7scout,8scout,9scout,
-                shobon2,shobon3,shobon4,shobon5,shobon6,shobon7,shobon8,shobon9,shobon10,
-                louise1,louisex2,yylouise,louisetae,louisevvv,
-                tifathefirst,tifadeuce,tifasan,tifashi,tifa-go</Value>
+      <Value Profile="(Default)">scout1,scout2,scout3,scout4,scout5,scout6,scout7,scout8,scout9,scout10,1scout,2scout,3scout,4scout,5scout,6scout,7scout,8scout,9scout,shobon2,shobon3,shobon4,shobon5,shobon6,shobon7,shobon8,shobon9,shobon10,louise1,louisex2,yylouise,louisetae,louisevvv,tifathefirst,tifadeuce,tifasan,tifashi,tifa-go,shanatan,xxshanaxx,shana4,sh55ana,tenshichan,angelbeat2,angeltaiga,tenoritaiga</Value>
     </Setting>
     <Setting Name="Passwords" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,
-                123456,123456,123456,123456,123456,123456,123456,123456,123456,
-                shakin,shakin,shakin,shakin,shakin,shakin,shakin,shakin,shakin,
-                123456,123456,123456,123456,123456,
-                123456,123456,123456,123456,123456</Value>
+      <Value Profile="(Default)">123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,shakin,shakin,shakin,shakin,shakin,shakin,shakin,shakin,shakin,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456</Value>
     </Setting>
   </Settings>
 </SettingsFile>
