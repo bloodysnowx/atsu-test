@@ -97,7 +97,7 @@ namespace PTRtoNote.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("46")]
+        [global::System.Configuration.DefaultSettingValueAttribute("48")]
         public int AccountNum {
             get {
                 return ((int)(this["AccountNum"]));
@@ -106,7 +106,7 @@ namespace PTRtoNote.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"scout1,scout2,scout3,scout4,scout5,scout6,scout7,scout8,scout9,scout10,1scout,2scout,3scout,4scout,5scout,6scout,7scout,8scout,9scout,shobon2,shobon3,shobon4,shobon5,shobon6,shobon7,shobon8,shobon9,shobon10,louise1,louisex2,yylouise,louisetae,louisevvv,tifathefirst,tifadeuce,tifasan,tifashi,tifa-go,shanatan,xxshanaxx,shana4,sh55ana,tenshichan,angelbeat2,angeltaiga,tenoritaiga")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"scout1,scout2,scout3,scout4,scout5,scout6,scout7,scout8,scout9,scout10,1scout,2scout,3scout,4scout,5scout,6scout,7scout,8scout,9scout,shobon2,shobon3,shobon4,shobon5,shobon6,shobon7,shobon8,shobon9,shobon10,louise1,louisex2,yylouise,louisetae,louisevvv,tifathefirst,tifadeuce,tifasan,tifashi,tifa-go,shanatan,xxshanaxx,shana4,sh55ana,tenshichan,angelbeat2,angeltaiga,tenoritaiga,aisakataiga,senjogahara")]
         public string Logins {
             get {
                 return ((string)(this["Logins"]));
@@ -115,7 +115,7 @@ namespace PTRtoNote.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,shakin,shakin,shakin,shakin,shakin,shakin,shakin,shakin,shakin,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,shakin,shakin,shakin,shakin,shakin,shakin,shakin,shakin,shakin,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456")]
         public string Passwords {
             get {
                 return ((string)(this["Passwords"]));
