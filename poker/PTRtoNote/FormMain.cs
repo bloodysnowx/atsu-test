@@ -292,6 +292,9 @@ namespace PTRtoNote
             this.buttonExecute.Enabled = false;
             this.buttonOpen.Enabled = false;
             this.buttonCSV.Enabled = false;
+            this.openXMLToolStripMenuItem.Enabled = false;
+            this.openPlayerNamesToolStripMenuItem.Enabled = false;
+            this.executeToolStripMenuItem.Enabled = false;
         }
 
         private void addToNewComer(string player_name, PTRData data)
