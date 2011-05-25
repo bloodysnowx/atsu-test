@@ -306,7 +306,7 @@
             // bgWorkerExecute
             // 
             this.bgWorkerExecute.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerExecute_DoWork);
-            this.bgWorkerExecute.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgdWorkerExecute_ProgressChanged);
+            this.bgWorkerExecute.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorkerExecute_ProgressChanged);
             this.bgWorkerExecute.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerExecute_RunWorkerCompleted);
             // 
             // numericUpDownStart

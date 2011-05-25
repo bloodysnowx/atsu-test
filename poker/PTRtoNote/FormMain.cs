@@ -457,10 +457,11 @@ namespace PTRtoNote
 
         private void bgWorkerExecute_DoWork(object sender, DoWorkEventArgs e)
         {
-
+            // テキストボックスの内容更新にデリゲート？
+            // ラベルアップデートはProgressChanged
         }
 
-        private void bgdWorkerExecute_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void bgWorkerExecute_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             updateLabelExecute(account_number, searchedCount, player_count, aCount);
         }
