@@ -55,7 +55,7 @@
             this.convertCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.executeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.backgroundWorkerExecute = new System.ComponentModel.BackgroundWorker();
+            this.bgWorkerExecute = new System.ComponentModel.BackgroundWorker();
             this.numericUpDownStart = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownEnd = new System.Windows.Forms.NumericUpDown();
             this.labelAccount = new System.Windows.Forms.Label();
@@ -303,11 +303,11 @@
             this.executeToolStripMenuItem.Text = "Execute";
             this.executeToolStripMenuItem.Click += new System.EventHandler(this.buttonExecute_Click);
             // 
-            // backgroundWorkerExecute
+            // bgWorkerExecute
             // 
-            this.backgroundWorkerExecute.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerExecute_DoWork);
-            this.backgroundWorkerExecute.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerExecute_ProgressChanged);
-            this.backgroundWorkerExecute.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerExecute_RunWorkerCompleted);
+            this.bgWorkerExecute.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerExecute_DoWork);
+            this.bgWorkerExecute.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgdWorkerExecute_ProgressChanged);
+            this.bgWorkerExecute.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerExecute_RunWorkerCompleted);
             // 
             // numericUpDownStart
             // 
@@ -431,7 +431,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem executeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openConvertedCSVToolStripMenuItem;
-        private System.ComponentModel.BackgroundWorker backgroundWorkerExecute;
+        private System.ComponentModel.BackgroundWorker bgWorkerExecute;
         private System.Windows.Forms.NumericUpDown numericUpDownStart;
         private System.Windows.Forms.NumericUpDown numericUpDownEnd;
         private System.Windows.Forms.Label labelAccount;

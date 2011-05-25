@@ -39,6 +39,8 @@ namespace PTRtoNote
         uint searchedCount = 0;
         /// <summary>noteが"a"のままの数</summary>
         uint aCount = 0;
+        /// <summary>現時点までで読み込んだプレイヤー数</summary>
+        uint player_count = 0;
 
         /// <summary>新しいプレイヤー名のリスト</summary>
         ArrayList newPlayerList = null;
@@ -104,11 +106,10 @@ namespace PTRtoNote
         private void buttonExecute_Click(object sender, EventArgs e)
         {
             account_number = System.Convert.ToInt32(numericUpDownStart.Value) - 1;
-
-            #region XML_INIT
-            uint player_count = 0;
+            player_count = 0;
             uint old_searchedCount = searchedCount;
 
+            #region XML_INIT
             if (saveXMLDialog.ShowDialog() != DialogResult.OK) return;
             // XMLを書き込み用に開く
             fs = new FileStream(saveXMLDialog.FileName, FileMode.Create, FileAccess.Write);
@@ -276,6 +277,7 @@ namespace PTRtoNote
                         }
                     }
                 }
+                #region
                 else if (xmlReader.NodeType == XmlNodeType.EndElement)
                 {
                     if (xmlReader.Name == "labels")
@@ -283,22 +285,24 @@ namespace PTRtoNote
                     else if (xmlReader.Name == "notes")
                         xmlWriter.WriteEndElement();
                 }
-            }
-
+                #endregion
+            } // while
+            #region XML_FIN
             // notesXMLの末尾書き込み
             xmlWriter.WriteEndDocument();
             xmlWriter.Close();
             fs.Close();
             xmlReader.Close();
-
+            #endregion
             updateLabelExecute(account_number, searchedCount, player_count, aCount);
-
+            #region STATE_CHANGE
             this.buttonExecute.Enabled = false;
             this.buttonOpen.Enabled = false;
             this.buttonCSV.Enabled = false;
             this.openXMLToolStripMenuItem.Enabled = false;
             this.openPlayerNamesToolStripMenuItem.Enabled = false;
             this.executeToolStripMenuItem.Enabled = false;
+            #endregion
         }
 
         private void addToNewComer(string player_name, PTRData data)
@@ -451,17 +455,17 @@ namespace PTRtoNote
 
         }
 
-        private void backgroundWorkerExecute_DoWork(object sender, DoWorkEventArgs e)
+        private void bgWorkerExecute_DoWork(object sender, DoWorkEventArgs e)
         {
 
         }
 
-        private void backgroundWorkerExecute_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void bgdWorkerExecute_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-
+            updateLabelExecute(account_number, searchedCount, player_count, aCount);
         }
 
-        private void backgroundWorkerExecute_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void bgWorkerExecute_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
 
         }
