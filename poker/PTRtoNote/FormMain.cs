@@ -78,6 +78,8 @@ namespace PTRtoNote
             conn = new PTRconnection();
             conn.Username = Username[0];
             conn.Password = Password[0];
+            numericUpDownStart.Maximum = Properties.Settings.Default.AccountNum;
+            numericUpDownEnd.Maximum = Properties.Settings.Default.AccountNum;
         }
 
         /// <summary>
@@ -101,6 +103,8 @@ namespace PTRtoNote
         /// <param name="e"></param>
         private void buttonExecute_Click(object sender, EventArgs e)
         {
+            account_number = System.Convert.ToInt32(numericUpDownStart.Value) - 1;
+
             #region XML_INIT
             uint player_count = 0;
             uint old_searchedCount = searchedCount;
@@ -345,7 +349,7 @@ namespace PTRtoNote
         {
             if (CannotConnect == true) return null;
 
-            while (account_number < Properties.Settings.Default.AccountNum)
+            while (account_number < numericUpDownEnd.Value)
             {
                 conn.Username = Username[account_number];
                 conn.Password = Password[account_number];
@@ -443,6 +447,21 @@ namespace PTRtoNote
         }
 
         private void buttonOther_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void backgroundWorkerExecute_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void backgroundWorkerExecute_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+
+        }
+
+        private void backgroundWorkerExecute_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
 
         }

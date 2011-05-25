@@ -44,21 +44,27 @@
             this.tabPageNew = new System.Windows.Forms.TabPage();
             this.tabPageUpdate = new System.Windows.Forms.TabPage();
             this.textBoxUpdate = new System.Windows.Forms.TextBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openPlayerNamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openAnotherXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.convertCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.executeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.openPlayerNamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openConvertedCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openAnotherXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.convertCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.executeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backgroundWorkerExecute = new System.ComponentModel.BackgroundWorker();
+            this.numericUpDownStart = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownEnd = new System.Windows.Forms.NumericUpDown();
+            this.labelAccount = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabPageNew.SuspendLayout();
             this.tabPageUpdate.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.menuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEnd)).BeginInit();
             this.SuspendLayout();
             // 
             // openXMLDialog
@@ -212,15 +218,15 @@
             this.textBoxUpdate.Size = new System.Drawing.Size(483, 590);
             this.textBoxUpdate.TabIndex = 9;
             // 
-            // menuStrip1
+            // menuStrip
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(521, 24);
-            this.menuStrip1.TabIndex = 12;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(521, 24);
+            this.menuStrip.TabIndex = 12;
+            this.menuStrip.Text = "menu";
             // 
             // fileToolStripMenuItem
             // 
@@ -245,6 +251,11 @@
             this.openXMLToolStripMenuItem.Text = "openXML";
             this.openXMLToolStripMenuItem.Click += new System.EventHandler(this.buttonOpen_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(166, 6);
+            // 
             // openPlayerNamesToolStripMenuItem
             // 
             this.openPlayerNamesToolStripMenuItem.Enabled = false;
@@ -252,6 +263,13 @@
             this.openPlayerNamesToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.openPlayerNamesToolStripMenuItem.Text = "openPlayerNames";
             this.openPlayerNamesToolStripMenuItem.Click += new System.EventHandler(this.buttonCSV_Click);
+            // 
+            // openConvertedCSVToolStripMenuItem
+            // 
+            this.openConvertedCSVToolStripMenuItem.Enabled = false;
+            this.openConvertedCSVToolStripMenuItem.Name = "openConvertedCSVToolStripMenuItem";
+            this.openConvertedCSVToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.openConvertedCSVToolStripMenuItem.Text = "openConvertedCSV";
             // 
             // openAnotherXMLToolStripMenuItem
             // 
@@ -261,10 +279,10 @@
             this.openAnotherXMLToolStripMenuItem.Text = "openAnotherXML";
             this.openAnotherXMLToolStripMenuItem.Click += new System.EventHandler(this.buttonOther_Click);
             // 
-            // toolStripSeparator1
+            // toolStripSeparator2
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(166, 6);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(166, 6);
             // 
             // convertCSVToolStripMenuItem
             // 
@@ -273,10 +291,10 @@
             this.convertCSVToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.convertCSVToolStripMenuItem.Text = "convertCSV";
             // 
-            // toolStripSeparator2
+            // toolStripSeparator3
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(166, 6);
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(166, 6);
             // 
             // executeToolStripMenuItem
             // 
@@ -285,17 +303,66 @@
             this.executeToolStripMenuItem.Text = "Execute";
             this.executeToolStripMenuItem.Click += new System.EventHandler(this.buttonExecute_Click);
             // 
-            // toolStripSeparator3
+            // backgroundWorkerExecute
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(166, 6);
+            this.backgroundWorkerExecute.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerExecute_DoWork);
+            this.backgroundWorkerExecute.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerExecute_ProgressChanged);
+            this.backgroundWorkerExecute.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerExecute_RunWorkerCompleted);
             // 
-            // openConvertedCSVToolStripMenuItem
+            // numericUpDownStart
             // 
-            this.openConvertedCSVToolStripMenuItem.Enabled = false;
-            this.openConvertedCSVToolStripMenuItem.Name = "openConvertedCSVToolStripMenuItem";
-            this.openConvertedCSVToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.openConvertedCSVToolStripMenuItem.Text = "openConvertedCSV";
+            this.numericUpDownStart.Location = new System.Drawing.Point(378, 30);
+            this.numericUpDownStart.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDownStart.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownStart.Name = "numericUpDownStart";
+            this.numericUpDownStart.Size = new System.Drawing.Size(51, 19);
+            this.numericUpDownStart.TabIndex = 13;
+            this.numericUpDownStart.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDownStart.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDownEnd
+            // 
+            this.numericUpDownEnd.Location = new System.Drawing.Point(458, 30);
+            this.numericUpDownEnd.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDownEnd.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownEnd.Name = "numericUpDownEnd";
+            this.numericUpDownEnd.Size = new System.Drawing.Size(51, 19);
+            this.numericUpDownEnd.TabIndex = 14;
+            this.numericUpDownEnd.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDownEnd.Value = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            // 
+            // labelAccount
+            // 
+            this.labelAccount.AutoSize = true;
+            this.labelAccount.Location = new System.Drawing.Point(435, 34);
+            this.labelAccount.Name = "labelAccount";
+            this.labelAccount.Size = new System.Drawing.Size(17, 12);
+            this.labelAccount.TabIndex = 15;
+            this.labelAccount.Text = "～";
             // 
             // FormMain
             // 
@@ -303,6 +370,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(521, 776);
+            this.Controls.Add(this.labelAccount);
+            this.Controls.Add(this.numericUpDownEnd);
+            this.Controls.Add(this.numericUpDownStart);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.labelOther);
             this.Controls.Add(this.buttonOther);
@@ -312,8 +382,8 @@
             this.Controls.Add(this.buttonCSV);
             this.Controls.Add(this.labelOpen);
             this.Controls.Add(this.buttonOpen);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.menuStrip);
+            this.MainMenuStrip = this.menuStrip;
             this.Name = "FormMain";
             this.Opacity = 0.9D;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
@@ -323,8 +393,10 @@
             this.tabPageNew.PerformLayout();
             this.tabPageUpdate.ResumeLayout(false);
             this.tabPageUpdate.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEnd)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -348,7 +420,7 @@
         private System.Windows.Forms.TabPage tabPageNew;
         private System.Windows.Forms.TabPage tabPageUpdate;
         private System.Windows.Forms.TextBox textBoxUpdate;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openXMLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openPlayerNamesToolStripMenuItem;
@@ -359,6 +431,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem executeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openConvertedCSVToolStripMenuItem;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerExecute;
+        private System.Windows.Forms.NumericUpDown numericUpDownStart;
+        private System.Windows.Forms.NumericUpDown numericUpDownEnd;
+        private System.Windows.Forms.Label labelAccount;
     }
 }
 
