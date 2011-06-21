@@ -37,7 +37,7 @@ WHILE TRUE
         SLEEP(0.1)
         c = PEEKCOLOR(18,796)
         // MSGBOX(c)
-        IFB c = 16777215 THEN
+        IFB c = 13158600 THEN
             BTN(LEFT,CLICK,133,884,100)
 			BTN(LEFT,CLICK,579,910,100)
 			KBD(VK_A,CLICK,40)
