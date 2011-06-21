@@ -122,6 +122,7 @@ namespace PTRtoNote
             xmlWriter.WriteStartDocument();
             #endregion
 
+            // xmlReader.Readをtry-catchに修正
             while (xmlReader.Read())
             {
                 #region READ_HEADER
@@ -164,6 +165,7 @@ namespace PTRtoNote
                         // PlayerIDを読み込む
                         xmlReader.MoveToAttribute("player");
                         string player_name = xmlReader.Value;
+                        // System.Diagnostics.Debug.WriteLine(player_name);
                         // ToDO : csvから読み込んだプレイヤー一覧から削除する処理を実装
 
                         // ラベル情報を読み込む
