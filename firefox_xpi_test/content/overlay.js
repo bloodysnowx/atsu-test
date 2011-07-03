@@ -1,4 +1,4 @@
-// 0-> EXSummary, 1-> NLSummary, 2-> FLSummary
+// 0-> EXSummary, 1-> NLSummary, 2-> FLSummary, 3-> PLOSummary
 
 function GetPTRSummary(summary_type)
 {
@@ -75,6 +75,7 @@ function getSummary(summary_type)
 // summary_type == 0(EX) 10max‚æ‚è‘å‚«‚¢NL‚©”»’è‚·‚é
 // summary_type == 1(NL)
 // summary_type == 2(FL)
+// summary_type == 3(PLO)
 function isSummaryType(stakesName, summary_type)
 {
     var ret = true;
@@ -93,6 +94,13 @@ function isSummaryType(stakesName, summary_type)
     else if(summary_type == 2)
     {
         if (stakesName.indexOf("FLH") < 0) ret = false;
+    }
+    else if(summary_type == 3)
+    {
+        if (stakesName.indexOf("PLO") < 0) ret = false;
+        else if (stakesName.indexOf("HU") > -1) ret = false;
+        else if (stakesName.indexOf("0.02") > -1) ret = false;
+        else if (stakesName.indexOf("0.05") > -1) ret = false;
     }
     else ret = false;
 

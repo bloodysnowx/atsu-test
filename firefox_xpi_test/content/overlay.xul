@@ -12,5 +12,8 @@
     <menuitem id="PTRFLSummary"
               label="Get Player FL Summary FROM PTR"
               oncommand="GetPTRSummary(2);" />
+    <menuitem id="PTRPLOSummary"
+              label="Get Player PLO Summary FROM PTR"
+              oncommand="GetPTRSummary(3);" />
   </popup>
 </overlay>

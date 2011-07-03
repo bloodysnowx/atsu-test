@@ -6,15 +6,15 @@
     <em:id>GetPTRSummary@bloody_snow</em:id>
     <em:type>2</em:type>
     <em:name>GetPTRSummary</em:name>
-    <em:version>0.3</em:version>
+    <em:version>0.4</em:version>
     <em:description>Get Player EX Summary FROM PTR</em:description>
     <em:creator>bloody_snow</em:creator>
     <em:homepageURL>http://localhost/</em:homepageURL>
     <em:targetApplication>
       <Description>
         <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
-        <em:minVersion>4.0.1</em:minVersion>
-        <em:maxVersion>4.*.*</em:maxVersion>
+        <em:minVersion>5.0.0</em:minVersion>
+        <em:maxVersion>5.*.*</em:maxVersion>
       </Description>
     </em:targetApplication>
   </Description>
