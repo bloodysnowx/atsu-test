@@ -15,5 +15,8 @@
     <menuitem id="PTRPLOSummary"
               label="Get Player PLO Summary FROM PTR"
               oncommand="GetPTRSummary(3);" />
+    <menuitem id="PTRAllSummary"
+              label="Get Player All Summary FROM PTR"
+              oncommand="GetPTRAllSummary();" />
   </popup>
 </overlay>

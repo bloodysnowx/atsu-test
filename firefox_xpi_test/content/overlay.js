@@ -76,6 +76,7 @@ function getSummary(summary_type)
 // summary_type == 1(NL)
 // summary_type == 2(FL)
 // summary_type == 3(PLO)
+// summary_type == 4(HU)
 function isSummaryType(stakesName, summary_type)
 {
     var ret = true;
@@ -102,6 +103,10 @@ function isSummaryType(stakesName, summary_type)
         else if (stakesName.indexOf("0.02") > -1) ret = false;
         else if (stakesName.indexOf("0.05") > -1) ret = false;
     }
+    else if(summary_type == 4)
+    {
+        if (stakesName.indexOf("NLH HU") < 0) ret = false;
+    }
     else ret = false;
 
     return ret;
@@ -118,3 +123,84 @@ function getNumOnly(str)
     return 0;
 }
 
+function GetPTRAllSummary()
+{
+    var strDate = makeDate();
+    // var Rate = getRate();
+    var summariString = getAllSummary();
+
+    const CLIPBOARD = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
+    CLIPBOARD.copyString("R:" + Rate + summariString);
+}
+
+function getHand(target_table_row_cell)
+{
+    var tmp_hand = target_table_row_cell;
+    while(tmp_hand.childNodes.length > 0) tmp_hand = tmp_hand.childNodes[0];
+    var Hand = eval(tmp_hand.nodeValue.replace(/,/g, ""));
+    return Hand;
+}
+
+function getBB(target_table_row_cell, Hand)
+{
+    var tmp_bb = target_table_row_cell;
+    while(tmp_bb.childNodes.length > 0) tmp_bb = tmp_bb.childNodes[0];
+    BB = eval(tmp_bb.nodeValue.replace(/,/g, "")) * Hand;
+    return BB;
+}
+
+function getEarn(target_table_row_cell)
+{
+    var tmp_earn = target_table_row_cell;
+    while(tmp_earn.childNodes.length > 0) tmp_earn = tmp_earn.childNodes[0];
+    var Earn = getNumOnly(tmp_earn.nodeValue.replace(/,/g, ""));
+    return Earn;
+}
+
+function getAllSummary()
+{
+    var BB_sum = 0;
+    var Earns = 0;
+    var Hands = 0;
+    var HUBB_sum = 0;
+    var HUHands = 0;
+    var OBB_sum = 0;
+    var OHands = 0;
+    var target_table = window._content.document.body.getElementsByTagName("table")[0];
+
+    for(var i = 1; i < target_table.rows.length; ++i)
+    {
+        var stakesName = target_table.rows[i].cells[0];
+        while(stakesName.childNodes.length > 0) stakesName = stakesName.childNodes[0];
+
+        if(isSummaryType(stakesName.nodeValue, 0))
+        {
+           var Hand = getHand(target_table.rows[i].cells[1]);
+           Hands += Hand;
+           
+           BB_sum += getBB(target_table.rows[i].cells[3], Hand);
+           
+           Earns += getEarn(target_table.rows[i].cells[2]);
+        }
+        else if(isSummaryType(stakesName.nodeValue, 4))
+        {
+           var HUHand = getHand(target_table.rows[i].cells[1]);
+           HUHands += HUHand;
+           
+           HUBB_sum += getBB(target_table.rows[i].cells[3], HUHand);
+        }
+        else if(isSummaryType(stakesName.nodeValue, 3))
+        {
+           var OHand = getHand(target_table.rows[i].cells[1]);
+           OHands += OHand;
+           
+           OBB_sum += getBB(target_table.rows[i].cells[3], OHand);
+        }
+    }
+    var BB100 = Math.round(BB_sum * 100 / Hands) / 100;
+    var HUBB100 = Math.round(HUBB_sum * 100 / HUHands) / 100;
+    var OBB100 = Math.round(OBB_sum * 100 / OHands) / 100;
+
+    return ", H:" + Hands + ", $:" + Earns + ", BB:" + BB100.toFixed(2) + ", " + makeDate() +
+           ", HUBB:" + HUBB100.toFixed(2) + ", HUH:" + HUHands + ", OBB:" + OBB100.toFixed(2) + ", OH:" + OHands;
+}
