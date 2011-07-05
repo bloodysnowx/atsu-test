@@ -6,7 +6,7 @@
     <em:id>GetPTRSummary@bloody_snow</em:id>
     <em:type>2</em:type>
     <em:name>GetPTRSummary</em:name>
-    <em:version>0.4</em:version>
+    <em:version>0.5</em:version>
     <em:description>Get Player EX Summary FROM PTR</em:description>
     <em:creator>bloody_snow</em:creator>
     <em:homepageURL>http://localhost/</em:homepageURL>
