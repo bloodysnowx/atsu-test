@@ -125,40 +125,50 @@ function getNumOnly(str)
 
 function GetPTRAllSummary()
 {
-    var strDate = makeDate();
+    // window.alert("GetPTRAllSummary");
+    // var strDate = makeDate();
     // var Rate = getRate();
-    var summariString = getAllSummary();
-
+    var summaryString = getAllSummary();
+    // window.alert(summaryString);
+    summaryString = "R:" + getRate() + summaryString;
+    // window.alert(summaryString);
     const CLIPBOARD = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
-    CLIPBOARD.copyString("R:" + Rate + summariString);
+    CLIPBOARD.copyString(summaryString);
 }
 
 function getHand(target_table_row_cell)
 {
+    // window.alert("getHand");
     var tmp_hand = target_table_row_cell;
     while(tmp_hand.childNodes.length > 0) tmp_hand = tmp_hand.childNodes[0];
     var Hand = eval(tmp_hand.nodeValue.replace(/,/g, ""));
+    // window.alert(Hand);
     return Hand;
 }
 
 function getBB(target_table_row_cell, Hand)
 {
+    // window.alert("getBB");
     var tmp_bb = target_table_row_cell;
     while(tmp_bb.childNodes.length > 0) tmp_bb = tmp_bb.childNodes[0];
     BB = eval(tmp_bb.nodeValue.replace(/,/g, "")) * Hand;
+    // window.alert(BB);
     return BB;
 }
 
 function getEarn(target_table_row_cell)
 {
+    // window.alert("getEarn");
     var tmp_earn = target_table_row_cell;
     while(tmp_earn.childNodes.length > 0) tmp_earn = tmp_earn.childNodes[0];
     var Earn = getNumOnly(tmp_earn.nodeValue.replace(/,/g, ""));
+    // window.alert(Earn);
     return Earn;
 }
 
 function getAllSummary()
 {
+    // window.alert("getAllSummary");
     var BB_sum = 0;
     var Earns = 0;
     var Hands = 0;
@@ -197,10 +207,25 @@ function getAllSummary()
            OBB_sum += getBB(target_table.rows[i].cells[3], OHand);
         }
     }
+    // window.alert("BB_sum = " + BB_sum);
+    // window.alert("HUBB_sum = " + HUBB_sum);
+    // window.alert("OBB_sum = " + OBB_sum)
+    // window.alert("Hands = " + Hands);
+    // window.alert("HUHands = " + HUHands);
+    // window.alert("OHands = " + OHands)
+    
     var BB100 = Math.round(BB_sum * 100 / Hands) / 100;
     var HUBB100 = Math.round(HUBB_sum * 100 / HUHands) / 100;
     var OBB100 = Math.round(OBB_sum * 100 / OHands) / 100;
 
-    return ", H:" + Hands + ", $:" + Earns + ", BB:" + BB100.toFixed(2) + ", " + makeDate() +
-           ", HUBB:" + HUBB100.toFixed(2) + ", HUH:" + HUHands + ", OBB:" + OBB100.toFixed(2) + ", OH:" + OHands;
+    // window.alert("BB100 = " + BB100);
+    // window.alert("HUBB100 = " + HUBB100);
+    // window.alert("OBB100 = " + OBB100);
+    var summaryStr = ", H:" + Hands + ", $:" + Earns + ", BB:" + BB100.toFixed(2) + ", " + makeDate();
+    // window.alert(summaryStr);
+    summaryStr += ", HUBB:" + HUBB100.toFixed(2) + ", HUH:" + HUHands;
+    // window.alert(summaryStr);
+    summaryStr += ", OBB:" + OBB100.toFixed(2) + ", OH:" + OHands;
+    // window.alert(summaryStr);
+    return summaryStr;
 }
