@@ -213,10 +213,12 @@ function getAllSummary()
     // window.alert("Hands = " + Hands);
     // window.alert("HUHands = " + HUHands);
     // window.alert("OHands = " + OHands)
-    
-    var BB100 = Math.round(BB_sum * 100 / Hands) / 100;
-    var HUBB100 = Math.round(HUBB_sum * 100 / HUHands) / 100;
-    var OBB100 = Math.round(OBB_sum * 100 / OHands) / 100;
+    var BB100 = 0;
+    if(Hands > 0) BB100 = Math.round(BB_sum * 100 / Hands) / 100;
+    var HUBB100 = 0;
+    if(HUHands > 0) HUBB100 = Math.round(HUBB_sum * 100 / HUHands) / 100;
+    var OBB100 = 0;
+    if(OHands > 0) OBB100 = Math.round(OBB_sum * 100 / OHands) / 100;
 
     // window.alert("BB100 = " + BB100);
     // window.alert("HUBB100 = " + HUBB100);
