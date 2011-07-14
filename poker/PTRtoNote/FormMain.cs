@@ -105,6 +105,15 @@ namespace PTRtoNote
         /// <param name="e"></param>
         private void buttonExecute_Click(object sender, EventArgs e)
         {
+            #region STATE_CHANGE
+            this.buttonExecute.Enabled = false;
+            this.buttonOpen.Enabled = false;
+            this.buttonCSV.Enabled = false;
+            this.openXMLToolStripMenuItem.Enabled = false;
+            this.openPlayerNamesToolStripMenuItem.Enabled = false;
+            this.executeToolStripMenuItem.Enabled = false;
+            #endregion
+
             account_number = System.Convert.ToInt32(numericUpDownStart.Value) - 1;
             player_count = 0;
             uint old_searchedCount = searchedCount;
@@ -275,6 +284,7 @@ namespace PTRtoNote
                             updateLabelExecute(account_number, searchedCount, player_count, aCount);
 
                             this.Refresh();
+                            Application.DoEvents();
                             old_searchedCount = searchedCount;
                         }
                     }
@@ -297,14 +307,6 @@ namespace PTRtoNote
             xmlReader.Close();
             #endregion
             updateLabelExecute(account_number, searchedCount, player_count, aCount);
-            #region STATE_CHANGE
-            this.buttonExecute.Enabled = false;
-            this.buttonOpen.Enabled = false;
-            this.buttonCSV.Enabled = false;
-            this.openXMLToolStripMenuItem.Enabled = false;
-            this.openPlayerNamesToolStripMenuItem.Enabled = false;
-            this.executeToolStripMenuItem.Enabled = false;
-            #endregion
         }
 
         private void addToNewComer(string player_name, PTRData data)
@@ -388,7 +390,7 @@ namespace PTRtoNote
                     {
                         data = conn.GetPTRData(player_name);
                         
-                        System.Threading.Thread.Sleep(1000 + rnd.Next(1000));
+                        System.Threading.Thread.Sleep(Properties.Settings.Default.WaitMainTime + rnd.Next(Properties.Settings.Default.WaitRandTime));
 
                         if (data == null)
                         {

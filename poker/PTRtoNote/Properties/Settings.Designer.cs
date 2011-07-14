@@ -97,7 +97,7 @@ namespace PTRtoNote.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"louise1,louisex2,yylouise,louisetae,louisevvv,tifathefirst,tifadeuce,tifasan,tifashi,tifa-go,shanatan,xxshanaxx,shana4,sh55ana,tenshichan,angelbeat2,angeltaiga,tenoritaiga,aisakataiga,senjogahara,gaogaiga-,tokachi,eternalblizzard,girlsdead,dreameater,tweetImyme,aerithgains,aerithxzz,ttaebbrith,donttouchmine,firegainsok,hanaurinoshojo,kodaishunoikinokori,tifarockheart,oppai_butouka,boinboinfighter,kurokamilongOK,tifatan_no_oppai,mune_ga_okki,tifa_ha_ore_no_yome,yume_ga_oppai,oppai_ha_yume,dream_breast,hinatan_chuchu,GalaxyS2,ImNotaFish,YouAreTheFish,Louise,PowerSmash4,VirtualTennis2009,AHardDaysNight,IShouldHaveKnownBetter,IfIFeel")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"louise1,louisex2,yylouise,louisetae,louisevvv,tifathefirst,tifadeuce,tifasan,tifashi,tifa-go,shanatan,xxshanaxx,shana4,sh55ana,tenshichan,angelbeat2,angeltaiga,tenoritaiga,aisakataiga,senjogahara,gaogaiga-,tokachi,eternalblizzard,girlsdead,dreameater,tweetImyme,aerithgains,aerithxzz,ttaebbrith,donttouchmine,firegainsok,hanaurinoshojo,kodaishunoikinokori,tifarockheart,oppai_butouka,boinboinfighter,kurokamilongOK,tifatan_no_oppai,mune_ga_okki,tifa_ha_ore_no_yome,yume_ga_oppai,oppai_ha_yume,dream_breast,hinatan_chuchu,GalaxyS2,ImNotaFish,YouAreTheFish,Louise,PowerSmash4,VirtualTennis2009,AHardDaysNight,IShouldHaveKnownBetter,IfIFeel,ImHappyJustToDanceWithYou,AndILoveHer,TellMeWhy,CantBuyMeLove,AnyTimeAtAll")]
         public string Logins {
             get {
                 return ((string)(this["Logins"]));
@@ -106,7 +106,7 @@ namespace PTRtoNote.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456")]
         public string Passwords {
             get {
                 return ((string)(this["Passwords"]));
@@ -115,10 +115,28 @@ namespace PTRtoNote.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("53")]
+        [global::System.Configuration.DefaultSettingValueAttribute("58")]
         public int AccountNum {
             get {
                 return ((int)(this["AccountNum"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
+        public int WaitMainTime {
+            get {
+                return ((int)(this["WaitMainTime"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
+        public int WaitRandTime {
+            get {
+                return ((int)(this["WaitRandTime"]));
             }
         }
     }

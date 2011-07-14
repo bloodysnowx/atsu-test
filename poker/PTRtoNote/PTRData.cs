@@ -26,6 +26,10 @@ namespace PTRtoNote
         public decimal HU_BB_100 { get; set; }
         /// <summary>HU時のHands</summary>
         public uint HU_Hands { get; set; }
+        /// <summary>オマハ時のBB/100</summary>
+        public decimal O_BB_100 { get; set; }
+        /// <summary>オマハ時のHands</summary>
+        public uint O_Hands { get; set; }
 
         /// <summary>log4netのインスタンス</summary>
         private static readonly log4net.ILog logger

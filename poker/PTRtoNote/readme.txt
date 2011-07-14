@@ -210,3 +210,6 @@ bloodysnow
 2011/05/09 version 0.2.0
 
 C-M-% \([^>]\)a+< \1<
+
+http://www.pokertableratings.com/buddy_list/buddy_class.php?action=get_offline_buddy_list&result=FALSE&rand=1
+https://www.pokertableratings.com/buddies.php?action=get_buddies
