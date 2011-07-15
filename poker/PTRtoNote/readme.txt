@@ -102,6 +102,8 @@ string summary = "R:" + dr.GetInt32(2).ToString() + ", H:" + dr.GetInt32(3).ToSt
                + ", $:" + dr.GetDouble(5).ToString("f0") + ", BB:" + dr.GetDouble(4).ToString("f2")
                + ", " + dr.GetDateTime(1).ToString("yyyy/MM/dd");
 
+R: , H: , $: , BB: , HUBB: , HUH: , OBB: , OH: 
+
 --- ラベル設定ルール ---
 
 ラベル7の場合はラベル7のまま
