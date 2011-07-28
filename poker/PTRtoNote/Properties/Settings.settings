@@ -36,10 +36,10 @@
       <Value Profile="(Default)">58</Value>
     </Setting>
     <Setting Name="WaitMainTime" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">1000</Value>
+      <Value Profile="(Default)">1500</Value>
     </Setting>
     <Setting Name="WaitRandTime" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">1000</Value>
+      <Value Profile="(Default)">2000</Value>
     </Setting>
   </Settings>
 </SettingsFile>

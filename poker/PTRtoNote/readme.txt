@@ -115,6 +115,11 @@ app.configのLabel_3_Min以上のBB/100の場合は"3"
 app.configのLabel_4_Min以上のBB/100の場合は"4"
 app.configのLabel_4_Min未満のBB/100の場合は"5"
 
+--- 出力形式 ---
+
+PokerClient;Name;RealName;Icon;Notes
+2;Zabava69;;Yellow;
+
 --- app.config ---
 
 Label_0_Min - ラベル"0"になる最小BB/100
