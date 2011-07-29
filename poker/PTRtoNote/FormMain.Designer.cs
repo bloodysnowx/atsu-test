@@ -59,6 +59,8 @@
             this.numericUpDownStart = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownEnd = new System.Windows.Forms.NumericUpDown();
             this.labelAccount = new System.Windows.Forms.Label();
+            this.checkBoxGroup5 = new System.Windows.Forms.CheckBox();
+            this.checkBoxGroup4 = new System.Windows.Forms.CheckBox();
             this.tabControl.SuspendLayout();
             this.tabPageNew.SuspendLayout();
             this.tabPageUpdate.SuspendLayout();
@@ -144,7 +146,7 @@
             this.textBoxNewComer.Location = new System.Drawing.Point(3, 3);
             this.textBoxNewComer.Multiline = true;
             this.textBoxNewComer.Name = "textBoxNewComer";
-            this.textBoxNewComer.Size = new System.Drawing.Size(483, 590);
+            this.textBoxNewComer.Size = new System.Drawing.Size(483, 567);
             this.textBoxNewComer.TabIndex = 8;
             // 
             // openCSVDialog
@@ -181,10 +183,10 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl.Controls.Add(this.tabPageNew);
             this.tabControl.Controls.Add(this.tabPageUpdate);
-            this.tabControl.Location = new System.Drawing.Point(12, 143);
+            this.tabControl.Location = new System.Drawing.Point(12, 166);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(497, 621);
+            this.tabControl.Size = new System.Drawing.Size(497, 598);
             this.tabControl.TabIndex = 11;
             // 
             // tabPageNew
@@ -193,7 +195,7 @@
             this.tabPageNew.Location = new System.Drawing.Point(4, 21);
             this.tabPageNew.Name = "tabPageNew";
             this.tabPageNew.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageNew.Size = new System.Drawing.Size(489, 596);
+            this.tabPageNew.Size = new System.Drawing.Size(489, 573);
             this.tabPageNew.TabIndex = 0;
             this.tabPageNew.Text = "new";
             this.tabPageNew.UseVisualStyleBackColor = true;
@@ -204,7 +206,7 @@
             this.tabPageUpdate.Location = new System.Drawing.Point(4, 21);
             this.tabPageUpdate.Name = "tabPageUpdate";
             this.tabPageUpdate.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageUpdate.Size = new System.Drawing.Size(489, 596);
+            this.tabPageUpdate.Size = new System.Drawing.Size(489, 359);
             this.tabPageUpdate.TabIndex = 1;
             this.tabPageUpdate.Text = "Update";
             this.tabPageUpdate.UseVisualStyleBackColor = true;
@@ -215,7 +217,7 @@
             this.textBoxUpdate.Location = new System.Drawing.Point(3, 3);
             this.textBoxUpdate.Multiline = true;
             this.textBoxUpdate.Name = "textBoxUpdate";
-            this.textBoxUpdate.Size = new System.Drawing.Size(483, 590);
+            this.textBoxUpdate.Size = new System.Drawing.Size(483, 353);
             this.textBoxUpdate.TabIndex = 9;
             // 
             // menuStrip
@@ -364,12 +366,34 @@
             this.labelAccount.TabIndex = 15;
             this.labelAccount.Text = "～";
             // 
+            // checkBoxGroup5
+            // 
+            this.checkBoxGroup5.AutoSize = true;
+            this.checkBoxGroup5.Location = new System.Drawing.Point(12, 144);
+            this.checkBoxGroup5.Name = "checkBoxGroup5";
+            this.checkBoxGroup5.Size = new System.Drawing.Size(101, 16);
+            this.checkBoxGroup5.TabIndex = 16;
+            this.checkBoxGroup5.Text = "Export Group 5";
+            this.checkBoxGroup5.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxGroup4
+            // 
+            this.checkBoxGroup4.AutoSize = true;
+            this.checkBoxGroup4.Location = new System.Drawing.Point(120, 144);
+            this.checkBoxGroup4.Name = "checkBoxGroup4";
+            this.checkBoxGroup4.Size = new System.Drawing.Size(101, 16);
+            this.checkBoxGroup4.TabIndex = 17;
+            this.checkBoxGroup4.Text = "Export Group 4";
+            this.checkBoxGroup4.UseVisualStyleBackColor = true;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(521, 776);
+            this.Controls.Add(this.checkBoxGroup4);
+            this.Controls.Add(this.checkBoxGroup5);
             this.Controls.Add(this.labelAccount);
             this.Controls.Add(this.numericUpDownEnd);
             this.Controls.Add(this.numericUpDownStart);
@@ -435,6 +459,8 @@
         private System.Windows.Forms.NumericUpDown numericUpDownStart;
         private System.Windows.Forms.NumericUpDown numericUpDownEnd;
         private System.Windows.Forms.Label labelAccount;
+        private System.Windows.Forms.CheckBox checkBoxGroup5;
+        private System.Windows.Forms.CheckBox checkBoxGroup4;
     }
 }
 

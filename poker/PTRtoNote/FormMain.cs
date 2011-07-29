@@ -105,6 +105,13 @@ namespace PTRtoNote
         /// <param name="e"></param>
         private void buttonExecute_Click(object sender, EventArgs e)
         {
+            account_number = System.Convert.ToInt32(numericUpDownStart.Value) - 1;
+            player_count = 0;
+            uint old_searchedCount = searchedCount;
+
+            #region XML_INIT
+            if (saveXMLDialog.ShowDialog() != DialogResult.OK) return;
+
             #region STATE_CHANGE
             this.buttonExecute.Enabled = false;
             this.buttonOpen.Enabled = false;
@@ -114,12 +121,6 @@ namespace PTRtoNote
             this.executeToolStripMenuItem.Enabled = false;
             #endregion
 
-            account_number = System.Convert.ToInt32(numericUpDownStart.Value) - 1;
-            player_count = 0;
-            uint old_searchedCount = searchedCount;
-
-            #region XML_INIT
-            if (saveXMLDialog.ShowDialog() != DialogResult.OK) return;
             // XMLを書き込み用に開く
             fs = new FileStream(saveXMLDialog.FileName, FileMode.Create, FileAccess.Write);
             xmlWriter = new XmlTextWriter(fs, new UTF8Encoding(false));
@@ -129,6 +130,15 @@ namespace PTRtoNote
 
             // notesXMLの先頭書き込み
             xmlWriter.WriteStartDocument();
+            #endregion
+
+            #region SMART_BUDDY_OPEN
+            string group_4_path = saveXMLDialog.InitialDirectory + "group_4.txt";
+            FileStream group_4_fs = new FileStream(group_4_path, FileMode.Create, FileAccess.Write);
+            StreamWriter group_4_sw = new StreamWriter(group_4_fs);
+            string group_5_path = saveXMLDialog.InitialDirectory + "group_5.txt";
+            FileStream group_5_fs = new FileStream(group_5_path, FileMode.Create, FileAccess.Write);
+            StreamWriter group_5_sw = new StreamWriter(group_5_fs);
             #endregion
 
             // xmlReader.Readをtry-catchに修正
@@ -262,6 +272,16 @@ namespace PTRtoNote
                         {
                         }
                         else if (data != null) label = DecideLabel(data);
+                        #region SMART_BUDDY_WRITE
+                        if (label == "4")
+                        {
+                            group_4_sw.WriteLine(makeSmartBuddyString(player_name, data));
+                        }
+                        else if (label == "5")
+                        {
+                            group_5_sw.WriteLine(makeSmartBuddyString(player_name, data));
+                        }
+                        #endregion
                         // XMLに要素を書き込む
                         xmlWriter.WriteStartElement("note");
                         xmlWriter.WriteStartAttribute("player");
@@ -305,6 +325,12 @@ namespace PTRtoNote
             xmlWriter.Close();
             fs.Close();
             xmlReader.Close();
+            #endregion
+            #region SMART_BUDDY_CLOSE
+            group_4_sw.Close();
+            group_4_fs.Close();
+            group_5_sw.Close();
+            group_5_fs.Close();
             #endregion
             updateLabelExecute(account_number, searchedCount, player_count, aCount);
         }
@@ -473,6 +499,13 @@ namespace PTRtoNote
         private void bgWorkerExecute_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
 
+        }
+
+        private string makeSmartBuddyString(string player_name, PTRData data)
+        {
+            string smart_buddy_str = "2" + ";" + player_name + ";" + "" + ";" + "Yellow" + ";" + data.GetNoteString();
+
+            return smart_buddy_str;
         }
     }
 }

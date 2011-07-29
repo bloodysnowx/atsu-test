@@ -102,7 +102,7 @@ string summary = "R:" + dr.GetInt32(2).ToString() + ", H:" + dr.GetInt32(3).ToSt
                + ", $:" + dr.GetDouble(5).ToString("f0") + ", BB:" + dr.GetDouble(4).ToString("f2")
                + ", " + dr.GetDateTime(1).ToString("yyyy/MM/dd");
 
-R: , H: , $: , BB: , HUBB: , HUH: , OBB: , OH: 
+R: , H: , $: , BB: , yyyy/mm/dd, HUBB: , HUH: , OBB: , OH: 
 
 --- ラベル設定ルール ---
 
@@ -169,6 +169,7 @@ XP環境を構築するなどの自助努力をお願いします。
 
 --- 変更履歴 ---
 
+2011/07/14 rev 113 状態変更のタイミングを変更, ループ中のイベント処理を追加, 検索待ち時間をconfig化
 2011/05/25 rev 101 PTRアカウントの開始番号と終了番号を設定可能に変更
 2011/05/20 rev 100 メニューを追加
 2011/05/17 rev 096 ラベル6用の再取得処理を追加
@@ -191,13 +192,16 @@ XP環境を構築するなどの自助努力をお願いします。
 
 --- to do ---
 
-1. readmeをプログラムの実態に合わせて更新
-2. エラー処理 -> done?
-3. ログ出力 -> done?
-4. notesXMLのマージ処理
-5. プレイヤー名をCSVから読み込む
-6. ニューカマーリストに表示する条件の検討 -> done?
-7. 新規プレイヤーを自動で取得する仕組み -> AutoNoteによるMacro?
+01. readmeをプログラムの実態に合わせて更新
+02. エラー処理 -> done?
+03. ログ出力 -> done?
+04. notesXMLのマージ処理
+05. プレイヤー名をCSVから読み込む
+06. ニューカマーリストに表示する条件の検討 -> done?
+07. 新規プレイヤーを自動で取得する仕組み -> AutoNoteによるMacro?
+08. Omaha BB対応
+09. Smart Buddy対応
+10. Smart Buddy用チェックボックス有効化
 
 --- 問題点 ---
 
@@ -210,11 +214,11 @@ bloodysnow
 
 --- date ---
 
-2011/04/20
+2011/07/14
 
 --- version ---
 
-2011/05/09 version 0.2.0
+2011/07/14 version 0.3.0
 
 C-M-% \([^>]\)a+< \1<
 
