@@ -352,7 +352,7 @@ namespace PTRtoNote
             // Label 3 以上のカモを発見した場合は、ニューカマーリストに表示する
             if (data.BB_100 < Properties.Settings.Default.Label_3_Min && data.Hands > Properties.Settings.Default.Label_6_Hand_Max)
             {
-                this.textBoxNewComer.Text += player_name + " " + data.GetNoteString() + System.Environment.NewLine;
+                this.textBoxNewComer.Text += "2" + ";" + player_name + ";" + "" + ";" + "" + ";" + data.GetNoteString() + System.Environment.NewLine;
             }
         }
 
@@ -361,7 +361,7 @@ namespace PTRtoNote
             // Label 3 以上のカモを発見した場合は、ニューカマーリストに表示する
             if (data.BB_100 < Properties.Settings.Default.Label_3_Min && data.Hands > Properties.Settings.Default.Label_6_Hand_Max)
             {
-                this.textBoxUpdate.Text += player_name + " " + data.GetNoteString() + System.Environment.NewLine;
+                this.textBoxUpdate.Text += "2" + ";" + player_name + ";" + "" + ";" + "" + ";" + data.GetNoteString() + System.Environment.NewLine;
             }
         }
 
