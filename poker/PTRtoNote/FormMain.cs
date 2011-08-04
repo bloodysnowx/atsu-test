@@ -134,9 +134,9 @@ namespace PTRtoNote
             #endregion
 
             #region SMART_BUDDY_OPEN
-            string group_3_path = saveXMLDialog.InitialDirectory + "group_3.txt";
-            FileStream group_3_fs = new FileStream(group_3_path, FileMode.Create, FileAccess.Write);
-            StreamWriter group_3_sw = new StreamWriter(group_3_fs);
+            // string group_3_path = saveXMLDialog.InitialDirectory + "group_3.txt";
+            // FileStream group_3_fs = new FileStream(group_3_path, FileMode.Create, FileAccess.Write);
+            // StreamWriter group_3_sw = new StreamWriter(group_3_fs);
             string group_4_path = saveXMLDialog.InitialDirectory + "group_4.txt";
             FileStream group_4_fs = new FileStream(group_4_path, FileMode.Create, FileAccess.Write);
             StreamWriter group_4_sw = new StreamWriter(group_4_fs);
@@ -287,10 +287,8 @@ namespace PTRtoNote
                             {
                                 group_4_sw.WriteLine(makeSmartBuddyString(player_name, data));
                             }
-                            else if (data.BB_100 <= Properties.Settings.Default.Label_2_Min)
-                            {
-                                group_3_sw.WriteLine(makeSmartBuddyString(player_name, data));
-                            }
+                            // else if (data.BB_100 <= Properties.Settings.Default.Label_2_Min)
+                                // group_3_sw.WriteLine(makeSmartBuddyString(player_name, data));
                         }
                         #endregion
                         // XMLに要素を書き込む
@@ -338,8 +336,8 @@ namespace PTRtoNote
             xmlReader.Close();
             #endregion
             #region SMART_BUDDY_CLOSE
-            group_3_sw.Close();
-            group_3_fs.Close();
+            // group_3_sw.Close();
+            // group_3_fs.Close();
             group_4_sw.Close();
             group_4_fs.Close();
             group_5_sw.Close();
