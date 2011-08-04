@@ -27,19 +27,22 @@
       <Value Profile="(Default)">365</Value>
     </Setting>
     <Setting Name="Logins" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">louise1,louisex2,yylouise,louisetae,louisevvv,tifathefirst,tifadeuce,tifasan,tifashi,tifa-go,shanatan,xxshanaxx,shana4,sh55ana,tenshichan,angelbeat2,angeltaiga,tenoritaiga,aisakataiga,senjogahara,gaogaiga-,tokachi,eternalblizzard,girlsdead,dreameater,tweetImyme,aerithgains,aerithxzz,ttaebbrith,donttouchmine,firegainsok,hanaurinoshojo,kodaishunoikinokori,tifarockheart,oppai_butouka,boinboinfighter,kurokamilongOK,tifatan_no_oppai,mune_ga_okki,tifa_ha_ore_no_yome,yume_ga_oppai,oppai_ha_yume,dream_breast,hinatan_chuchu,GalaxyS2,ImNotaFish,YouAreTheFish,Louise,PowerSmash4,VirtualTennis2009,AHardDaysNight,IShouldHaveKnownBetter,IfIFeel,ImHappyJustToDanceWithYou,AndILoveHer,TellMeWhy,CantBuyMeLove,AnyTimeAtAll</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Passwords" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456,123456</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="AccountNum" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">58</Value>
+      <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="WaitMainTime" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">1500</Value>
+      <Value Profile="(Default)">1000</Value>
     </Setting>
     <Setting Name="WaitRandTime" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">2000</Value>
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
+    <Setting Name="MaxSearchNum" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">200</Value>
     </Setting>
   </Settings>
 </SettingsFile>

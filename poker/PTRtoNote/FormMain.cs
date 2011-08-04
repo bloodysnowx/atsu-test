@@ -82,6 +82,7 @@ namespace PTRtoNote
             conn.Password = Password[0];
             numericUpDownStart.Maximum = Properties.Settings.Default.AccountNum;
             numericUpDownEnd.Maximum = Properties.Settings.Default.AccountNum;
+            numericUpDownMaxSearch.Value = Properties.Settings.Default.MaxSearchNum;
         }
 
         /// <summary>
@@ -278,11 +279,11 @@ namespace PTRtoNote
                         #region SMART_BUDDY_WRITE
                         if (data != null)
                         {
-                            if (data.BB_100 <= Properties.Settings.Default.Label_4_Min)
+                            if (label == "5") // (data.BB_100 <= Properties.Settings.Default.Label_4_Min)
                             {
                                 group_5_sw.WriteLine(makeSmartBuddyString(player_name, data));
                             }
-                            else if (data.BB_100 <= Properties.Settings.Default.Label_3_Min)
+                            else if (label == "4") //(data.BB_100 <= Properties.Settings.Default.Label_3_Min)
                             {
                                 group_4_sw.WriteLine(makeSmartBuddyString(player_name, data));
                             }
@@ -440,6 +441,8 @@ namespace PTRtoNote
                         else
                         {
                             ++searchedCount;
+                            if (searchedCount >= numericUpDownMaxSearch.Value)
+                                CannotConnect = true;
 
                             if (logger.IsDebugEnabled)
                             {

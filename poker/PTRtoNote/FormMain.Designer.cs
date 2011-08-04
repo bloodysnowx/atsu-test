@@ -61,12 +61,14 @@
             this.labelAccount = new System.Windows.Forms.Label();
             this.checkBoxGroup5 = new System.Windows.Forms.CheckBox();
             this.checkBoxGroup4 = new System.Windows.Forms.CheckBox();
+            this.numericUpDownMaxSearch = new System.Windows.Forms.NumericUpDown();
             this.tabControl.SuspendLayout();
             this.tabPageNew.SuspendLayout();
             this.tabPageUpdate.SuspendLayout();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEnd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSearch)).BeginInit();
             this.SuspendLayout();
             // 
             // openXMLDialog
@@ -206,7 +208,7 @@
             this.tabPageUpdate.Location = new System.Drawing.Point(4, 21);
             this.tabPageUpdate.Name = "tabPageUpdate";
             this.tabPageUpdate.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageUpdate.Size = new System.Drawing.Size(489, 359);
+            this.tabPageUpdate.Size = new System.Drawing.Size(489, 573);
             this.tabPageUpdate.TabIndex = 1;
             this.tabPageUpdate.Text = "Update";
             this.tabPageUpdate.UseVisualStyleBackColor = true;
@@ -386,12 +388,26 @@
             this.checkBoxGroup4.Text = "Export Group 4";
             this.checkBoxGroup4.UseVisualStyleBackColor = true;
             // 
+            // numericUpDownMaxSearch
+            // 
+            this.numericUpDownMaxSearch.Location = new System.Drawing.Point(458, 56);
+            this.numericUpDownMaxSearch.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.numericUpDownMaxSearch.Name = "numericUpDownMaxSearch";
+            this.numericUpDownMaxSearch.Size = new System.Drawing.Size(51, 19);
+            this.numericUpDownMaxSearch.TabIndex = 18;
+            this.numericUpDownMaxSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(521, 776);
+            this.Controls.Add(this.numericUpDownMaxSearch);
             this.Controls.Add(this.checkBoxGroup4);
             this.Controls.Add(this.checkBoxGroup5);
             this.Controls.Add(this.labelAccount);
@@ -421,6 +437,7 @@
             this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEnd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxSearch)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -461,6 +478,7 @@
         private System.Windows.Forms.Label labelAccount;
         private System.Windows.Forms.CheckBox checkBoxGroup5;
         private System.Windows.Forms.CheckBox checkBoxGroup4;
+        private System.Windows.Forms.NumericUpDown numericUpDownMaxSearch;
     }
 }
 
