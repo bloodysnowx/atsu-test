@@ -42,6 +42,8 @@ namespace PTRtoNote
         {
             Hands = 0;
             Earnings = 0;
+            HU_Hands = 0;
+            O_Hands = 0;
         }
 
         /// <summary>
@@ -123,6 +125,27 @@ namespace PTRtoNote
                     else
                         HU_Hands = uint.Parse(tmp_str_2[1]);
                 }
+
+                O_BB_100 = 0;
+                O_Hands = 0;
+                if (tmp_str_1.Count() > 8)
+                {
+                    tmp_str_2 = tmp_str_1[7].Split(':');
+                    if (tmp_str_2.Count() != 2 || tmp_str_2[0].Trim() != "OBB")
+                    {
+                        if (logger.IsWarnEnabled) logger.Warn(player_name + "'s OBB is Broken or old type.");
+                    }
+                    else
+                        O_BB_100 = decimal.Parse(tmp_str_2[1]);
+
+                    tmp_str_2 = tmp_str_1[8].Split(':');
+                    if (tmp_str_2.Count() != 2 || tmp_str_2[0].Trim() != "OH")
+                    {
+                        if (logger.IsWarnEnabled) logger.Warn(player_name + "'s OH is Broken or old type.");
+                    }
+                    else
+                        O_Hands = uint.Parse(tmp_str_2[1]);
+                }
             }
             catch (Exception e)
             {
@@ -155,6 +178,10 @@ namespace PTRtoNote
             note_str.Append(HU_BB_100.ToString("f2"));
             note_str.Append(", HUH:");
             note_str.Append(HU_Hands);
+            note_str.Append(", OBB:");
+            note_str.Append(O_BB_100.ToString("f2"));
+            note_str.Append(", OH:");
+            note_str.Append(O_Hands);
 
             return note_str.ToString();
         }

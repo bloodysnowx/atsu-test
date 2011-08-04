@@ -133,6 +133,17 @@ namespace PTRtoNote
             return ret;
         }
 
+        private bool isOmahaStakes(string stakes_name)
+        {
+            bool ret = true;
+            if (stakes_name.IndexOf("PLO") < 0) ret = false;
+            else if (stakes_name.IndexOf("HU") > -1) ret = false;
+            else if (stakes_name.IndexOf("0.02") > -1) ret = false;
+            else if (stakes_name.IndexOf("0.05") > -1) ret = false;
+
+            return ret;
+        }
+
         /// <summary>
         /// PTRのページからデータを取得する
         /// </summary>
@@ -151,6 +162,7 @@ namespace PTRtoNote
             MatchCollection matchCol;
             decimal bb_sum = 0;
             decimal hu_bb_sum = 0;
+            decimal o_bb_sum = 0;
 
             while (true)
             {
@@ -162,18 +174,27 @@ namespace PTRtoNote
 
                 if (isExStakes(matchCol[1].Groups[1].Value))
                 {
-                    data.Hands += uint.Parse(matchCol[3].Groups[1].Value.Replace(",", ""));
+                    uint tmp_hands = uint.Parse(matchCol[3].Groups[1].Value.Replace(",", ""));
+                    data.Hands += tmp_hands;
                     data.Earnings += int.Parse(matchCol[5].Groups[1].Value.Replace(",", "").Replace("$", "").Replace("&#8364;", ""));
-                    bb_sum += decimal.Parse(matchCol[7].Groups[1].Value.Replace(",", "")) * uint.Parse(matchCol[3].Groups[1].Value.Replace(",", ""));
+                    bb_sum += decimal.Parse(matchCol[7].Groups[1].Value.Replace(",", "")) * tmp_hands;
                 }
                 else if (isHUStakes(matchCol[1].Groups[1].Value))
                 {
-                    data.HU_Hands += uint.Parse(matchCol[3].Groups[1].Value.Replace(",", ""));
-                    hu_bb_sum += decimal.Parse(matchCol[7].Groups[1].Value.Replace(",", "")) * uint.Parse(matchCol[3].Groups[1].Value.Replace(",", ""));
+                    uint tmp_hands = uint.Parse(matchCol[3].Groups[1].Value.Replace(",", ""));
+                    data.HU_Hands += tmp_hands;
+                    hu_bb_sum += decimal.Parse(matchCol[7].Groups[1].Value.Replace(",", "")) * tmp_hands;
+                }
+                else if (isOmahaStakes(matchCol[1].Groups[1].Value))
+                {
+                    uint tmp_hands = uint.Parse(matchCol[3].Groups[1].Value.Replace(",", ""));
+                    data.O_Hands += tmp_hands;
+                    o_bb_sum += decimal.Parse(matchCol[7].Groups[1].Value.Replace(",", "")) * tmp_hands;
                 }
             }
             if (data.Hands != 0) data.BB_100 = bb_sum / data.Hands;
             if (data.HU_Hands != 0) data.HU_BB_100 = hu_bb_sum / data.HU_Hands;
+            if (data.O_Hands != 0) data.O_BB_100 = o_bb_sum / data.O_Hands;
 
             data.GetDate = System.DateTime.Today;
 
