@@ -1,0 +1,32 @@
+
+While True
+	// 警告窓検索 ( クラス名 "SunAwtFrame" )
+	alert_window_id = GETID( "KGS: 警告" )
+
+	// 警告窓があるかどうかの判定
+	Ifb alert_window_id < 0 then
+		// 3分休む
+		Sleep(180)
+	Else
+		// 正しく消えるまで続ける
+		While alert_window_id >= 0
+			// 警告窓を取得する
+			ACW(alert_window_id,265,276,395,127,0)
+			BTN(LEFT,DOWN,346,284,172)
+			ACW(alert_window_id,265,276,395,127,0)
+			BTN(LEFT,UP,346,284,62)
+			// OKをクリック
+			// Sleep(0.1)
+			BTN(LEFT,DOWN,459,380,47)
+			// MMV(459,380,15)
+			BTN(LEFT,UP,459,380,47)
+			Sleep(1)
+
+			// 正しく消えたかをチェック
+			alert_window_id = GETID( "KGS: 警告" )
+		Wend
+		
+		// 10分休む
+		Sleep(600)
+	endif
+Wend
