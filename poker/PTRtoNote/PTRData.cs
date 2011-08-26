@@ -62,9 +62,12 @@ namespace PTRtoNote
         /// <param name="note_str">note文字列</param>
         public bool MakePTRDataFromNoteStr(string player_name, string note_str)
         {
+            string note_str_line = note_str.Split('\r')[0];
+            note_str_line = note_str_line.Split('\n')[0];
+
             try
             {
-                string[] tmp_str_1 = note_str.Split(',');
+                string[] tmp_str_1 = note_str_line.Split(',');
                 if (tmp_str_1.Count() < 5)
                 {
                     if (logger.IsWarnEnabled) logger.Warn(player_name + "'s note_str.Count() < 5");
@@ -182,6 +185,7 @@ namespace PTRtoNote
             note_str.Append(O_BB_100.ToString("f2"));
             note_str.Append(", OH:");
             note_str.Append(O_Hands);
+            note_str.Append(",");
 
             return note_str.ToString();
         }

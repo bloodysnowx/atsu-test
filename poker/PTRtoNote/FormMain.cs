@@ -394,7 +394,7 @@ namespace PTRtoNote
         {
             if (CannotConnect == true) return null;
 
-            while (account_number < numericUpDownEnd.Value)
+            while (account_number < numericUpDownEnd.Value && searchedCount < numericUpDownMaxSearch.Value)
             {
                 conn.Username = Username[account_number];
                 conn.Password = Password[account_number];

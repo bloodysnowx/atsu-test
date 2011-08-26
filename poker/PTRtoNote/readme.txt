@@ -221,6 +221,9 @@ bloodysnow
 2011/07/14 version 0.3.0
 
 C-M-% \([^>]\)a+< \1<
+C-M-% OH:\([0-9]+\) \1,
 
 http://www.pokertableratings.com/buddy_list/buddy_class.php?action=get_offline_buddy_list&result=FALSE&rand=1
 https://www.pokertableratings.com/buddies.php?action=get_buddies
+
+R:0, H:0, $:0, BB:0.0, 2011/01/01, HUBB:0.0, HUH:0, OBB:0.0, OH:0
