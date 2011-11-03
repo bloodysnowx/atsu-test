@@ -351,7 +351,9 @@ namespace PTRtoNote
             // Label 3 以上のカモを発見した場合は、ニューカマーリストに表示する
             if (data.BB_100 < Properties.Settings.Default.Label_3_Min && data.Hands > Properties.Settings.Default.Label_6_Hand_Max)
             {
-                this.textBoxNewComer.Text += "2" + ";" + player_name + ";" + "" + ";" + "" + ";" + data.GetNoteString() + System.Environment.NewLine;
+                string str = "2" + ";" + player_name + ";" + "" + ";" + "" + ";" + data.GetNoteString();
+                this.textBoxNewComer.Text += str + System.Environment.NewLine;
+                System.Diagnostics.Debug.WriteLine(str);
             }
         }
 

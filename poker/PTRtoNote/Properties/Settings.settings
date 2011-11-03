@@ -26,12 +26,6 @@
     <Setting Name="Label6ReacquisitionSpanDays" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">365</Value>
     </Setting>
-    <Setting Name="Logins" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">user</Value>
-    </Setting>
-    <Setting Name="Passwords" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">pass</Value>
-    </Setting>
     <Setting Name="AccountNum" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">1</Value>
     </Setting>
@@ -41,8 +35,14 @@
     <Setting Name="WaitRandTime" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">1000</Value>
     </Setting>
+    <Setting Name="Logins" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">user</Value>
+    </Setting>
+    <Setting Name="Passwords" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">pass</Value>
+    </Setting>
     <Setting Name="MaxSearchNum" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">300</Value>
+      <Value Profile="(Default)">200</Value>
     </Setting>
   </Settings>
 </SettingsFile>
