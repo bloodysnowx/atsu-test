@@ -1,0 +1,39 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PTRtoNote2.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Label_Mins" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">-1,-10,-25,-40,-60</Value>
+    </Setting>
+    <Setting Name="Label_Last_Hand_Max" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
+    <Setting Name="Reacquisition_Span_Days" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">3650</Value>
+    </Setting>
+    <Setting Name="Label_Last_Reacquisition_Span_Days" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">365</Value>
+    </Setting>
+    <Setting Name="Logins" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">user</Value>
+    </Setting>
+    <Setting Name="Passwords" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">pass</Value>
+    </Setting>
+    <Setting Name="Wait_Main_Time" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
+    <Setting Name="Wait_Rand_Time" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
+    <Setting Name="Max_Search_Num" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">200</Value>
+    </Setting>
+    <Setting Name="Max_BB_For_Listing" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">-40</Value>
+    </Setting>
+    <Setting Name="Old_Data_Delete_Span_Days" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">365</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
