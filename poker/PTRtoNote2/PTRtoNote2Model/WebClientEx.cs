@@ -7,6 +7,7 @@ namespace PTRtoNote2.Model
 {
     public class WebClientEx : System.Net.WebClient
     {
+    
         public System.Net.CookieContainer CookieContainer { get; set; }
 
         protected override System.Net.WebRequest GetWebRequest(Uri address)

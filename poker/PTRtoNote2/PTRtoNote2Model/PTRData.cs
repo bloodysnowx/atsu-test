@@ -7,6 +7,21 @@ namespace PTRtoNote2.Model
 {
     public class PTRData
     {
+        public PTRData()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public PTRData(string playerName)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public PTRData(string playerName, string noteStr)
+        {
+            throw new System.NotImplementedException();
+        }
+    
         public decimal BB_100
         {
             get
@@ -129,6 +144,28 @@ namespace PTRtoNote2.Model
         }
 
         public int O_Earnings
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        public DateTime DateOfLastPlay
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        public int Label
         {
             get
             {

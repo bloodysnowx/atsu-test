@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="PTRtoNote2.Model.NotesUpdater">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Position X="2.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <HashCode>AAAggIEQAgAAAAUAAAAAAAAACAAAAAAAAEAAAAAAAAA=</HashCode>
       <FileName>NotesUpdater.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="connection" />
-      <Property Name="notes" />
-      <Property Name="config" />
+      <Property Name="Connection" />
+      <Property Name="Notes" />
+      <Property Name="Config" />
     </ShowAsAssociation>
   </Class>
   <Class Name="PTRtoNote2.Model.PSXMLNotes" BaseTypeListCollapsed="true">
-    <Position X="4" Y="2.5" Width="1.5" />
+    <Position X="6.75" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <HashCode>AAAAgIAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAgAAA=</HashCode>
       <FileName>PSXMLNotes.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -24,9 +24,9 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="PTRtoNote2.Model.PTRWebConnection" BaseTypeListCollapsed="true">
-    <Position X="2.25" Y="3.75" Width="1.5" />
+    <Position X="4.25" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAACAAAAAAAAAAAAAAAAAAAAAAQAACAAAAAAEAACA=</HashCode>
+      <HashCode>AQACIDAAAACAAAAAAAAAQIAAAAgAUAACAAgAAAEAACA=</HashCode>
       <FileName>PTRWebConnection.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -35,39 +35,64 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="PTRtoNote2.Model.PTRData">
-    <Position X="6" Y="4" Width="1.5" />
+    <Position X="9" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAEAAAABAAAAAAAEEIAgAAABgAAAAAmAAAAAAAIAAAA=</HashCode>
+      <HashCode>EBEAAAABEAAAAAAEEIAgAAABgAAAAAmAAAAAAAIAAAA=</HashCode>
       <FileName>PTRData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PTRtoNote2.Model.WebClientEx" Collapsed="true">
-    <Position X="0.5" Y="6.75" Width="1.5" />
+    <Position X="7" Y="7.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
       <FileName>WebClientEx.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="PTRtoNote2.Model.SmartBuddyExport">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SmartBuddy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
   <Interface Name="PTRtoNote2.Model.IConfig">
-    <Position X="0.5" Y="1.75" Width="1.5" />
+    <Position X="2.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EACEAAAAABAkAAAAAAAACAAAAAAAAgACAAAQAAAAIAA=</HashCode>
       <FileName>IConfig.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="PTRtoNote2.Model.IConnection">
-    <Position X="2.25" Y="1.75" Width="1.5" />
+    <Position X="5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAACAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <HashCode>AQAAACAAAAAAAAAAAAAAQAAAAAAAEAACAAAAAAAAAAA=</HashCode>
       <FileName>IConnection.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="PTRtoNote2.Model.INotes">
-    <Position X="4" Y="0.5" Width="1.5" />
+    <Position X="6.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <HashCode>AAAAgIAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAgAAA=</HashCode>
       <FileName>INotes.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Datas" />
+    </ShowAsAssociation>
   </Interface>
+  <Interface Name="PTRtoNote2.Model.IExport">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IExport.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="PTRtoNote2.Model.Stakes">
+    <Position X="2.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ICAAQAAAAAAICAACAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Stakes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
   <Font Name="MS UI Gothic" Size="9" />
 </ClassDiagram>

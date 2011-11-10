@@ -7,6 +7,8 @@ namespace PTRtoNote2.Model
 {
     public class PSXMLNotes : INotes
     {
+        private System.Xml.XmlDocument PSNotesXML;
+    
         public PTRData[] Datas
         {
             get

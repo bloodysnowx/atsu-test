@@ -12,6 +12,12 @@ namespace PTRtoNote2.Model
             get;
             set;
         }
+
+        int ADataCount
+        {
+            get;
+            set;
+        }
     
         void Load();
 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PTRtoNote2.CUI
 {
-    public class AppConfig : PTRtoNote2Model.IConfig
+    public class AppConfig : PTRtoNote2.Model.IConfig
     {
         public AppConfig()
         {

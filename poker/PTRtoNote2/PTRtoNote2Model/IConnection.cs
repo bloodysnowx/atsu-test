@@ -19,6 +19,18 @@ namespace PTRtoNote2.Model
             set;
         }
 
+        bool isConnected
+        {
+            get;
+            set;
+        }
+
+        int SearchedCount
+        {
+            get;
+            set;
+        }
+
         PTRData GetPTRData(string player_name);
     }
 }

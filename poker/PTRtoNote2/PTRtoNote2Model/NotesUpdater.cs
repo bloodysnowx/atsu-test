@@ -17,7 +17,7 @@ namespace PTRtoNote2.Model
             throw new System.NotImplementedException();
         }
 
-        public IConnection connection
+        public IConnection Connection
         {
             get
             {
@@ -28,7 +28,7 @@ namespace PTRtoNote2.Model
             }
         }
 
-        public INotes notes
+        public INotes Notes
         {
             get
             {
@@ -39,7 +39,7 @@ namespace PTRtoNote2.Model
             }
         }
 
-        public IConfig config
+        public IConfig Config
         {
             get
             {
@@ -48,6 +48,47 @@ namespace PTRtoNote2.Model
             set
             {
             }
+        }
+
+        public SmartBuddyExport SmartBuddy
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        public void Execute()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void AddToNewComer()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void AddToUpdateComer()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Load()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Save()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void DecideLabel()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
