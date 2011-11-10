@@ -50,7 +50,7 @@ namespace PTRtoNote2.Model
             }
         }
 
-        public SmartBuddyExport SmartBuddy
+        public IExporter Exporter
         {
             get
             {

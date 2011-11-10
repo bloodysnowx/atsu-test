@@ -3,13 +3,14 @@
   <Class Name="PTRtoNote2.Model.NotesUpdater">
     <Position X="2.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAggIEQAgAAAAUAAAAAAAAACAAAAAAAAEAAAAAAAAA=</HashCode>
+      <HashCode>IAAggIAQAgAAAAUAAAAAAAAACAAAAAAAAEAAAAAAAAA=</HashCode>
       <FileName>NotesUpdater.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Connection" />
       <Property Name="Notes" />
       <Property Name="Config" />
+      <Property Name="Exporter" />
     </ShowAsAssociation>
   </Class>
   <Class Name="PTRtoNote2.Model.PSXMLNotes" BaseTypeListCollapsed="true">
@@ -48,11 +49,11 @@
       <FileName>WebClientEx.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PTRtoNote2.Model.SmartBuddyExport">
-    <Position X="0.5" Y="3.5" Width="1.5" />
+  <Class Name="PTRtoNote2.Model.SmartBuddyExporter">
+    <Position X="0.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>SmartBuddy.cs</FileName>
+      <FileName>SmartBuddyExporter.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -80,11 +81,11 @@
       <Property Name="Datas" />
     </ShowAsAssociation>
   </Interface>
-  <Interface Name="PTRtoNote2.Model.IExport">
-    <Position X="0.5" Y="1.5" Width="1.5" />
+  <Interface Name="PTRtoNote2.Model.IExporter">
+    <Position X="0.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>IExport.cs</FileName>
+      <FileName>IExporter.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="PTRtoNote2.Model.Stakes">
