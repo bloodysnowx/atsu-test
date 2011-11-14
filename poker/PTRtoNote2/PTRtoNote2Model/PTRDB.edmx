@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PTRDB.Store" Alias="Self" Provider="System.Data.SQLite" ProviderManifestToken="ISO8601" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="PTRDBStoreContainer">
+    <EntitySet Name="Players" EntityType="PTRDB.Store.Players" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StakesDatas" EntityType="PTRDB.Store.StakesDatas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Stakes" EntityType="PTRDB.Store.Stakes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Currencies" EntityType="PTRDB.Store.Currencies" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Games" EntityType="PTRDB.Store.Games" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BetTypes" EntityType="PTRDB.Store.BetTypes" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="PlayerStakesData" Association="PTRDB.Store.PlayerStakesData">
+      <End Role="Player" EntitySet="Players" />
+      <End Role="StakesData" EntitySet="StakesDatas" />
+    </AssociationSet>
+    <AssociationSet Name="StakesDataStake" Association="PTRDB.Store.StakesDataStake">
+      <End Role="StakesData" EntitySet="StakesDatas" />
+      <End Role="Stake" EntitySet="Stakes" />
+    </AssociationSet>
+    <AssociationSet Name="CurrencyStake" Association="PTRDB.Store.CurrencyStake">
+      <End Role="Currency" EntitySet="Currencies" />
+      <End Role="Stake" EntitySet="Stakes" />
+    </AssociationSet>
+    <AssociationSet Name="GameStake" Association="PTRDB.Store.GameStake">
+      <End Role="Game" EntitySet="Games" />
+      <End Role="Stake" EntitySet="Stakes" />
+    </AssociationSet>
+    <AssociationSet Name="BetTypeStake" Association="PTRDB.Store.BetTypeStake">
+      <End Role="BetType" EntitySet="BetTypes" />
+      <End Role="Stake" EntitySet="Stakes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Players">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlayerName" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="BB_100" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="Earnings" Type="int" Nullable="false" />
+    <Property Name="Rating" Type="int" Nullable="false" />
+    <Property Name="Hands" Type="int" Nullable="false" />
+    <Property Name="DateOfData" Type="datetime" Nullable="false" />
+    <Property Name="DateOfLastPlay" Type="datetime" Nullable="false" />
+    <Property Name="HU_BB_100" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="HU_Hands" Type="int" Nullable="false" />
+    <Property Name="HU_Earnings" Type="int" Nullable="false" />
+    <Property Name="O_Hands" Type="int" Nullable="false" />
+    <Property Name="O_BB_100" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="O_Earnings" Type="int" Nullable="false" />
+    <Property Name="FL_Hands" Type="int" Nullable="false" />
+    <Property Name="FL_BB_100" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="FL_Earnings" Type="int" Nullable="false" />
+    <Property Name="NL_Hands" Type="int" Nullable="false" />
+    <Property Name="NL_BB_100" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="NL_Earnings" Type="int" Nullable="false" />
+    <Property Name="EX_BB_100" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="EX_Hands" Type="int" Nullable="false" />
+    <Property Name="EX_Earnings" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StakesDatas">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Hands" Type="int" Nullable="false" />
+    <Property Name="BB_100" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="Earnings" Type="int" Nullable="false" />
+    <Property Name="TotalBB" Type="int" Nullable="false" />
+    <Property Name="DateOfLastPlay" Type="datetime" Nullable="false" />
+    <Property Name="Player_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Stakes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rate" Type="int" Nullable="false" />
+    <Property Name="PlayerNum" Type="int" Nullable="false" />
+    <Property Name="StackSize" Type="int" Nullable="false" />
+    <Property Name="StakesData_ID" Type="int" Nullable="false" />
+    <Property Name="Currency_ID" Type="int" Nullable="false" />
+    <Property Name="Game_ID" Type="int" Nullable="false" />
+    <Property Name="BetType_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Currencies">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="16" />
+  </EntityType>
+  <EntityType Name="Games">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="32" />
+  </EntityType>
+  <EntityType Name="BetTypes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="16" />
+  </EntityType>
+  <Association Name="PlayerStakesData">
+    <End Role="Player" Type="PTRDB.Store.Players" Multiplicity="1" />
+    <End Role="StakesData" Type="PTRDB.Store.StakesDatas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Player">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StakesData">
+        <PropertyRef Name="Player_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StakesDataStake">
+    <End Role="StakesData" Type="PTRDB.Store.StakesDatas" Multiplicity="1" />
+    <End Role="Stake" Type="PTRDB.Store.Stakes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StakesData">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Stake">
+        <PropertyRef Name="StakesData_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CurrencyStake">
+    <End Role="Currency" Type="PTRDB.Store.Currencies" Multiplicity="1" />
+    <End Role="Stake" Type="PTRDB.Store.Stakes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Stake">
+        <PropertyRef Name="Currency_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GameStake">
+    <End Role="Game" Type="PTRDB.Store.Games" Multiplicity="1" />
+    <End Role="Stake" Type="PTRDB.Store.Stakes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Stake">
+        <PropertyRef Name="Game_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BetTypeStake">
+    <End Role="BetType" Type="PTRDB.Store.BetTypes" Multiplicity="1" />
+    <End Role="Stake" Type="PTRDB.Store.Stakes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BetType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Stake">
+        <PropertyRef Name="BetType_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="PTRDB" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="PTRDBContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Players" EntityType="PTRDB.Player" />
+          <EntitySet Name="StakesDatas" EntityType="PTRDB.StakesData" />
+          <AssociationSet Name="PlayerStakesData" Association="PTRDB.PlayerStakesData">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="StakesData" EntitySet="StakesDatas" />
+          </AssociationSet>
+          <EntitySet Name="Stakes" EntityType="PTRDB.Stake" />
+          <AssociationSet Name="StakesDataStake" Association="PTRDB.StakesDataStake">
+            <End Role="StakesData" EntitySet="StakesDatas" />
+            <End Role="Stake" EntitySet="Stakes" />
+          </AssociationSet>
+          <EntitySet Name="Currencies" EntityType="PTRDB.Currency" />
+          <AssociationSet Name="CurrencyStake" Association="PTRDB.CurrencyStake">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="Stake" EntitySet="Stakes" />
+          </AssociationSet>
+          <EntitySet Name="Games" EntityType="PTRDB.Game" />
+          <AssociationSet Name="GameStake" Association="PTRDB.GameStake">
+            <End Role="Game" EntitySet="Games" />
+            <End Role="Stake" EntitySet="Stakes" />
+          </AssociationSet>
+          <EntitySet Name="BetTypes" EntityType="PTRDB.BetType" />
+          <AssociationSet Name="BetTypeStake" Association="PTRDB.BetTypeStake">
+            <End Role="BetType" EntitySet="BetTypes" />
+            <End Role="Stake" EntitySet="Stakes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="PlayerName" Nullable="false" MaxLength="128" />
+          <Property Type="Decimal" Name="BB_100" Nullable="false" Scale="2" />
+          <Property Type="Int32" Name="Earnings" Nullable="false" />
+          <Property Type="Int32" Name="Rating" Nullable="false" />
+          <Property Type="Int32" Name="Hands" Nullable="false" />
+          <Property Type="DateTime" Name="DateOfData" Nullable="false" />
+          <Property Type="DateTime" Name="DateOfLastPlay" Nullable="false" />
+          <Property Type="Decimal" Name="HU_BB_100" Nullable="false" Scale="2" />
+          <Property Type="Int32" Name="HU_Hands" Nullable="false" />
+          <Property Type="Int32" Name="HU_Earnings" Nullable="false" />
+          <Property Type="Int32" Name="O_Hands" Nullable="false" />
+          <Property Type="Decimal" Name="O_BB_100" Nullable="false" Scale="2" />
+          <Property Type="Int32" Name="O_Earnings" Nullable="false" />
+          <Property Type="Int32" Name="FL_Hands" Nullable="false" />
+          <Property Type="Decimal" Name="FL_BB_100" Nullable="false" Scale="2" />
+          <Property Type="Int32" Name="FL_Earnings" Nullable="false" />
+          <Property Type="Int32" Name="NL_Hands" Nullable="false" />
+          <Property Type="Decimal" Name="NL_BB_100" Nullable="false" Scale="2" />
+          <Property Type="Int32" Name="NL_Earnings" Nullable="false" />
+          <Property Type="Decimal" Name="EX_BB_100" Nullable="false" Scale="2" />
+          <Property Type="Int32" Name="EX_Hands" Nullable="false" />
+          <Property Type="Int32" Name="EX_Earnings" Nullable="false" />
+          <NavigationProperty Name="StakesDatas" Relationship="PTRDB.PlayerStakesData" FromRole="Player" ToRole="StakesData" />
+        </EntityType>
+        <EntityType Name="StakesData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Hands" Nullable="false" />
+          <Property Type="Decimal" Name="BB_100" Nullable="false" Scale="2" />
+          <Property Type="Int32" Name="Earnings" Nullable="false" />
+          <Property Type="Int32" Name="TotalBB" Nullable="false" />
+          <Property Type="DateTime" Name="DateOfLastPlay" Nullable="false" />
+          <NavigationProperty Name="Player" Relationship="PTRDB.PlayerStakesData" FromRole="StakesData" ToRole="Player" />
+          <NavigationProperty Name="Stakes" Relationship="PTRDB.StakesDataStake" FromRole="StakesData" ToRole="Stake" />
+        </EntityType>
+        <Association Name="PlayerStakesData">
+          <End Type="PTRDB.Player" Role="Player" Multiplicity="1" />
+          <End Type="PTRDB.StakesData" Role="StakesData" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Stake">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="StakesData" Relationship="PTRDB.StakesDataStake" FromRole="Stake" ToRole="StakesData" />
+          <Property Type="Int32" Name="Rate" Nullable="false" />
+          <Property Type="Int32" Name="PlayerNum" Nullable="false" />
+          <Property Type="Int32" Name="StackSize" Nullable="false" />
+          <NavigationProperty Name="Currency" Relationship="PTRDB.CurrencyStake" FromRole="Stake" ToRole="Currency" />
+          <NavigationProperty Name="Game" Relationship="PTRDB.GameStake" FromRole="Stake" ToRole="Game" />
+          <NavigationProperty Name="BetType" Relationship="PTRDB.BetTypeStake" FromRole="Stake" ToRole="BetType" />
+        </EntityType>
+        <Association Name="StakesDataStake">
+          <End Type="PTRDB.StakesData" Role="StakesData" Multiplicity="1" />
+          <End Type="PTRDB.Stake" Role="Stake" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="16" />
+          <NavigationProperty Name="Stakes" Relationship="PTRDB.CurrencyStake" FromRole="Currency" ToRole="Stake" />
+        </EntityType>
+        <Association Name="CurrencyStake">
+          <End Type="PTRDB.Currency" Role="Currency" Multiplicity="1" />
+          <End Type="PTRDB.Stake" Role="Stake" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Stakes" Relationship="PTRDB.GameStake" FromRole="Game" ToRole="Stake" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="32" />
+        </EntityType>
+        <Association Name="GameStake">
+          <End Type="PTRDB.Game" Role="Game" Multiplicity="1" />
+          <End Type="PTRDB.Stake" Role="Stake" Multiplicity="*" />
+        </Association>
+        <EntityType Name="BetType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Stakes" Relationship="PTRDB.BetTypeStake" FromRole="BetType" ToRole="Stake" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="16" />
+        </EntityType>
+        <Association Name="BetTypeStake">
+          <End Type="PTRDB.BetType" Role="BetType" Multiplicity="1" />
+          <End Type="PTRDB.Stake" Role="Stake" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PTRDBStoreContainer" CdmEntityContainer="PTRDBContainer">
+    <EntitySetMapping Name="Players">
+      <EntityTypeMapping TypeName="IsTypeOf(PTRDB.Player)">
+        <MappingFragment StoreEntitySet="Players">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
+          <ScalarProperty Name="BB_100" ColumnName="BB_100" />
+          <ScalarProperty Name="Earnings" ColumnName="Earnings" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Hands" ColumnName="Hands" />
+          <ScalarProperty Name="DateOfData" ColumnName="DateOfData" />
+          <ScalarProperty Name="DateOfLastPlay" ColumnName="DateOfLastPlay" />
+          <ScalarProperty Name="HU_BB_100" ColumnName="HU_BB_100" />
+          <ScalarProperty Name="HU_Hands" ColumnName="HU_Hands" />
+          <ScalarProperty Name="HU_Earnings" ColumnName="HU_Earnings" />
+          <ScalarProperty Name="O_Hands" ColumnName="O_Hands" />
+          <ScalarProperty Name="O_BB_100" ColumnName="O_BB_100" />
+          <ScalarProperty Name="O_Earnings" ColumnName="O_Earnings" />
+          <ScalarProperty Name="FL_Hands" ColumnName="FL_Hands" />
+          <ScalarProperty Name="FL_BB_100" ColumnName="FL_BB_100" />
+          <ScalarProperty Name="FL_Earnings" ColumnName="FL_Earnings" />
+          <ScalarProperty Name="NL_Hands" ColumnName="NL_Hands" />
+          <ScalarProperty Name="NL_BB_100" ColumnName="NL_BB_100" />
+          <ScalarProperty Name="NL_Earnings" ColumnName="NL_Earnings" />
+          <ScalarProperty Name="EX_BB_100" ColumnName="EX_BB_100" />
+          <ScalarProperty Name="EX_Hands" ColumnName="EX_Hands" />
+          <ScalarProperty Name="EX_Earnings" ColumnName="EX_Earnings" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StakesDatas">
+      <EntityTypeMapping TypeName="IsTypeOf(PTRDB.StakesData)">
+        <MappingFragment StoreEntitySet="StakesDatas">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Hands" ColumnName="Hands" />
+          <ScalarProperty Name="BB_100" ColumnName="BB_100" />
+          <ScalarProperty Name="Earnings" ColumnName="Earnings" />
+          <ScalarProperty Name="TotalBB" ColumnName="TotalBB" />
+          <ScalarProperty Name="DateOfLastPlay" ColumnName="DateOfLastPlay" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stakes">
+      <EntityTypeMapping TypeName="IsTypeOf(PTRDB.Stake)">
+        <MappingFragment StoreEntitySet="Stakes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="PlayerNum" ColumnName="PlayerNum" />
+          <ScalarProperty Name="StackSize" ColumnName="StackSize" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Currencies">
+      <EntityTypeMapping TypeName="IsTypeOf(PTRDB.Currency)">
+        <MappingFragment StoreEntitySet="Currencies">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Games">
+      <EntityTypeMapping TypeName="IsTypeOf(PTRDB.Game)">
+        <MappingFragment StoreEntitySet="Games">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BetTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(PTRDB.BetType)">
+        <MappingFragment StoreEntitySet="BetTypes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="PlayerStakesData" TypeName="PTRDB.PlayerStakesData" StoreEntitySet="StakesDatas">
+      <EndProperty Name="Player">
+        <ScalarProperty Name="ID" ColumnName="Player_ID" />
+      </EndProperty>
+      <EndProperty Name="StakesData">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="StakesDataStake" TypeName="PTRDB.StakesDataStake" StoreEntitySet="Stakes">
+      <EndProperty Name="StakesData">
+        <ScalarProperty Name="ID" ColumnName="StakesData_ID" />
+      </EndProperty>
+      <EndProperty Name="Stake">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CurrencyStake" TypeName="PTRDB.CurrencyStake" StoreEntitySet="Stakes">
+      <EndProperty Name="Currency">
+        <ScalarProperty Name="ID" ColumnName="Currency_ID" />
+      </EndProperty>
+      <EndProperty Name="Stake">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GameStake" TypeName="PTRDB.GameStake" StoreEntitySet="Stakes">
+      <EndProperty Name="Game">
+        <ScalarProperty Name="ID" ColumnName="Game_ID" />
+      </EndProperty>
+      <EndProperty Name="Stake">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="BetTypeStake" TypeName="PTRDB.BetTypeStake" StoreEntitySet="Stakes">
+      <EndProperty Name="BetType">
+        <ScalarProperty Name="ID" ColumnName="BetType_ID" />
+      </EndProperty>
+      <EndProperty Name="Stake">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="PTRDB" >
+        <EntityTypeShape EntityType="PTRDB.Player" Width="1.5" PointX="2.5" PointY="0.5" Height="5.1814583333333326" />
+        <EntityTypeShape EntityType="PTRDB.StakesData" Width="1.5" PointX="4.5" PointY="0.5" Height="2.4470833333333331" />
+        <AssociationConnector Association="PTRDB.PlayerStakesData">
+          <ConnectorPoint PointX="4" PointY="1.7235416666666668" />
+          <ConnectorPoint PointX="4.5" PointY="1.7235416666666668" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="PTRDB.Stake" Width="1.5" PointX="6.5" PointY="0.5" Height="2.264791666666667" />
+        <AssociationConnector Association="PTRDB.StakesDataStake">
+          <ConnectorPoint PointX="6" PointY="1.6323958333333337" />
+          <ConnectorPoint PointX="6.5" PointY="1.6323958333333337" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="PTRDB.Currency" Width="1.5" PointX="8.5" PointY="0.5" Height="1.535625" />
+        <AssociationConnector Association="PTRDB.CurrencyStake">
+          <ConnectorPoint PointX="8.5" PointY="1.2678125" />
+          <ConnectorPoint PointX="8" PointY="1.2678125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="PTRDB.Game" Width="1.5" PointX="8.5" PointY="2.5" Height="1.5356249999999996" />
+        <AssociationConnector Association="PTRDB.GameStake">
+          <ConnectorPoint PointX="8.5" PointY="2.7235416666666667" />
+          <ConnectorPoint PointX="8" PointY="2.7235416666666667" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="PTRDB.BetType" Width="1.5" PointX="6.625" PointY="3.625" Height="1.5356249999999996" />
+        <AssociationConnector Association="PTRDB.BetTypeStake">
+          <ConnectorPoint PointX="7.3125" PointY="3.625" />
+          <ConnectorPoint PointX="7.3125" PointY="2.9470833333333335" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
