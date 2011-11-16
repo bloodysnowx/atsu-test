@@ -19,10 +19,10 @@ using System.Runtime.Serialization;
 #region EDM リレーションシップのメタデータ
 
 [assembly: EdmRelationshipAttribute("PTRDB", "PlayerStakesData", "Player", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PTRtoNote2.Model.Player), "StakesData", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PTRtoNote2.Model.StakesData))]
-[assembly: EdmRelationshipAttribute("PTRDB", "StakesDataStake", "StakesData", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PTRtoNote2.Model.StakesData), "Stake", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PTRtoNote2.Model.Stake))]
 [assembly: EdmRelationshipAttribute("PTRDB", "CurrencyStake", "Currency", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PTRtoNote2.Model.Currency), "Stake", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PTRtoNote2.Model.Stake))]
 [assembly: EdmRelationshipAttribute("PTRDB", "GameStake", "Game", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PTRtoNote2.Model.Game), "Stake", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PTRtoNote2.Model.Stake))]
 [assembly: EdmRelationshipAttribute("PTRDB", "BetTypeStake", "BetType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PTRtoNote2.Model.BetType), "Stake", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PTRtoNote2.Model.Stake))]
+[assembly: EdmRelationshipAttribute("PTRDB", "StakeStakesData", "Stake", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PTRtoNote2.Model.Stake), "StakesData", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PTRtoNote2.Model.StakesData))]
 
 #endregion
 
@@ -1338,44 +1338,6 @@ namespace PTRtoNote2.Model
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("PTRDB", "StakesDataStake", "StakesData")]
-        public StakesData StakesData
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StakesData>("PTRDB.StakesDataStake", "StakesData").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StakesData>("PTRDB.StakesDataStake", "StakesData").Value = value;
-            }
-        }
-        /// <summary>
-        /// 使用できるメタデータ ドキュメントはありません。
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<StakesData> StakesDataReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<StakesData>("PTRDB.StakesDataStake", "StakesData");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<StakesData>("PTRDB.StakesDataStake", "StakesData", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// 使用できるメタデータ ドキュメントはありません。
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("PTRDB", "CurrencyStake", "Currency")]
         public Currency Currency
         {
@@ -1480,6 +1442,28 @@ namespace PTRtoNote2.Model
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<BetType>("PTRDB.BetTypeStake", "BetType", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// 使用できるメタデータ ドキュメントはありません。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("PTRDB", "StakeStakesData", "StakesData")]
+        public EntityCollection<StakesData> StakesDatas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<StakesData>("PTRDB.StakeStakesData", "StakesData");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<StakesData>("PTRDB.StakeStakesData", "StakesData", value);
                 }
             }
         }
@@ -1716,18 +1700,34 @@ namespace PTRtoNote2.Model
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("PTRDB", "StakesDataStake", "Stake")]
-        public EntityCollection<Stake> Stakes
+        [EdmRelationshipNavigationPropertyAttribute("PTRDB", "StakeStakesData", "Stake")]
+        public Stake Stake
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Stake>("PTRDB.StakesDataStake", "Stake");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Stake>("PTRDB.StakeStakesData", "Stake").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Stake>("PTRDB.StakeStakesData", "Stake").Value = value;
+            }
+        }
+        /// <summary>
+        /// 使用できるメタデータ ドキュメントはありません。
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Stake> StakeReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Stake>("PTRDB.StakeStakesData", "Stake");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Stake>("PTRDB.StakesDataStake", "Stake", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Stake>("PTRDB.StakeStakesData", "Stake", value);
                 }
             }
         }

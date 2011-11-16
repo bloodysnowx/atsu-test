@@ -2,13 +2,11 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 11/14/2011 15:47:00
+-- Date Created: 11/14/2011 16:24:35
 -- Generated from EDMX file: D:\src\atsu-test\poker\PTRtoNote2\PTRtoNote2Model\PTRDB.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
-GO
-USE [PTR];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -17,11 +15,44 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_PlayerStakesData]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[StakesDatas] DROP CONSTRAINT [FK_PlayerStakesData];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CurrencyStake]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Stakes] DROP CONSTRAINT [FK_CurrencyStake];
+GO
+IF OBJECT_ID(N'[dbo].[FK_GameStake]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Stakes] DROP CONSTRAINT [FK_GameStake];
+GO
+IF OBJECT_ID(N'[dbo].[FK_BetTypeStake]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Stakes] DROP CONSTRAINT [FK_BetTypeStake];
+GO
+IF OBJECT_ID(N'[dbo].[FK_StakeStakesData]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[StakesDatas] DROP CONSTRAINT [FK_StakeStakesData];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[Players]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Players];
+GO
+IF OBJECT_ID(N'[dbo].[StakesDatas]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[StakesDatas];
+GO
+IF OBJECT_ID(N'[dbo].[Stakes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Stakes];
+GO
+IF OBJECT_ID(N'[dbo].[Currencies]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Currencies];
+GO
+IF OBJECT_ID(N'[dbo].[Games]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Games];
+GO
+IF OBJECT_ID(N'[dbo].[BetTypes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[BetTypes];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -63,7 +94,8 @@ CREATE TABLE [dbo].[StakesDatas] (
     [Earnings] int  NOT NULL,
     [TotalBB] int  NOT NULL,
     [DateOfLastPlay] datetime  NOT NULL,
-    [Player_ID] int  NOT NULL
+    [Player_ID] int  NOT NULL,
+    [Stake_ID] int  NOT NULL
 );
 GO
 
@@ -73,7 +105,6 @@ CREATE TABLE [dbo].[Stakes] (
     [Rate] int  NOT NULL,
     [PlayerNum] int  NOT NULL,
     [StackSize] int  NOT NULL,
-    [StakesData_ID] int  NOT NULL,
     [Currency_ID] int  NOT NULL,
     [Game_ID] int  NOT NULL,
     [BetType_ID] int  NOT NULL
@@ -159,20 +190,6 @@ ON [dbo].[StakesDatas]
     ([Player_ID]);
 GO
 
--- Creating foreign key on [StakesData_ID] in table 'Stakes'
-ALTER TABLE [dbo].[Stakes]
-ADD CONSTRAINT [FK_StakesDataStake]
-    FOREIGN KEY ([StakesData_ID])
-    REFERENCES [dbo].[StakesDatas]
-        ([ID])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_StakesDataStake'
-CREATE INDEX [IX_FK_StakesDataStake]
-ON [dbo].[Stakes]
-    ([StakesData_ID]);
-GO
-
 -- Creating foreign key on [Currency_ID] in table 'Stakes'
 ALTER TABLE [dbo].[Stakes]
 ADD CONSTRAINT [FK_CurrencyStake]
@@ -213,6 +230,20 @@ ADD CONSTRAINT [FK_BetTypeStake]
 CREATE INDEX [IX_FK_BetTypeStake]
 ON [dbo].[Stakes]
     ([BetType_ID]);
+GO
+
+-- Creating foreign key on [Stake_ID] in table 'StakesDatas'
+ALTER TABLE [dbo].[StakesDatas]
+ADD CONSTRAINT [FK_StakeStakesData]
+    FOREIGN KEY ([Stake_ID])
+    REFERENCES [dbo].[Stakes]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_StakeStakesData'
+CREATE INDEX [IX_FK_StakeStakesData]
+ON [dbo].[StakesDatas]
+    ([Stake_ID]);
 GO
 
 -- --------------------------------------------------

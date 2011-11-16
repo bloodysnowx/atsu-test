@@ -16,10 +16,6 @@
       <End Role="Player" EntitySet="Players" />
       <End Role="StakesData" EntitySet="StakesDatas" />
     </AssociationSet>
-    <AssociationSet Name="StakesDataStake" Association="PTRDB.Store.StakesDataStake">
-      <End Role="StakesData" EntitySet="StakesDatas" />
-      <End Role="Stake" EntitySet="Stakes" />
-    </AssociationSet>
     <AssociationSet Name="CurrencyStake" Association="PTRDB.Store.CurrencyStake">
       <End Role="Currency" EntitySet="Currencies" />
       <End Role="Stake" EntitySet="Stakes" />
@@ -31,6 +27,10 @@
     <AssociationSet Name="BetTypeStake" Association="PTRDB.Store.BetTypeStake">
       <End Role="BetType" EntitySet="BetTypes" />
       <End Role="Stake" EntitySet="Stakes" />
+    </AssociationSet>
+    <AssociationSet Name="StakeStakesData" Association="PTRDB.Store.StakeStakesData">
+      <End Role="Stake" EntitySet="Stakes" />
+      <End Role="StakesData" EntitySet="StakesDatas" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Players">
@@ -72,6 +72,7 @@
     <Property Name="TotalBB" Type="int" Nullable="false" />
     <Property Name="DateOfLastPlay" Type="datetime" Nullable="false" />
     <Property Name="Player_ID" Type="int" Nullable="false" />
+    <Property Name="Stake_ID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Stakes">
     <Key>
@@ -81,7 +82,6 @@
     <Property Name="Rate" Type="int" Nullable="false" />
     <Property Name="PlayerNum" Type="int" Nullable="false" />
     <Property Name="StackSize" Type="int" Nullable="false" />
-    <Property Name="StakesData_ID" Type="int" Nullable="false" />
     <Property Name="Currency_ID" Type="int" Nullable="false" />
     <Property Name="Game_ID" Type="int" Nullable="false" />
     <Property Name="BetType_ID" Type="int" Nullable="false" />
@@ -116,18 +116,6 @@
       </Principal>
       <Dependent Role="StakesData">
         <PropertyRef Name="Player_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="StakesDataStake">
-    <End Role="StakesData" Type="PTRDB.Store.StakesDatas" Multiplicity="1" />
-    <End Role="Stake" Type="PTRDB.Store.Stakes" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="StakesData">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Stake">
-        <PropertyRef Name="StakesData_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -167,6 +155,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="StakeStakesData">
+    <End Role="Stake" Type="PTRDB.Store.Stakes" Multiplicity="1" />
+    <End Role="StakesData" Type="PTRDB.Store.StakesDatas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stake">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StakesData">
+        <PropertyRef Name="Stake_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -179,10 +179,6 @@
             <End Role="StakesData" EntitySet="StakesDatas" />
           </AssociationSet>
           <EntitySet Name="Stakes" EntityType="PTRDB.Stake" />
-          <AssociationSet Name="StakesDataStake" Association="PTRDB.StakesDataStake">
-            <End Role="StakesData" EntitySet="StakesDatas" />
-            <End Role="Stake" EntitySet="Stakes" />
-          </AssociationSet>
           <EntitySet Name="Currencies" EntityType="PTRDB.Currency" />
           <AssociationSet Name="CurrencyStake" Association="PTRDB.CurrencyStake">
             <End Role="Currency" EntitySet="Currencies" />
@@ -197,6 +193,10 @@
           <AssociationSet Name="BetTypeStake" Association="PTRDB.BetTypeStake">
             <End Role="BetType" EntitySet="BetTypes" />
             <End Role="Stake" EntitySet="Stakes" />
+          </AssociationSet>
+          <AssociationSet Name="StakeStakesData" Association="PTRDB.StakeStakesData">
+            <End Role="Stake" EntitySet="Stakes" />
+            <End Role="StakesData" EntitySet="StakesDatas" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Player">
@@ -239,7 +239,7 @@
           <Property Type="Int32" Name="TotalBB" Nullable="false" />
           <Property Type="DateTime" Name="DateOfLastPlay" Nullable="false" />
           <NavigationProperty Name="Player" Relationship="PTRDB.PlayerStakesData" FromRole="StakesData" ToRole="Player" />
-          <NavigationProperty Name="Stakes" Relationship="PTRDB.StakesDataStake" FromRole="StakesData" ToRole="Stake" />
+          <NavigationProperty Name="Stake" Relationship="PTRDB.StakeStakesData" FromRole="StakesData" ToRole="Stake" />
         </EntityType>
         <Association Name="PlayerStakesData">
           <End Type="PTRDB.Player" Role="Player" Multiplicity="1" />
@@ -250,18 +250,14 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="StakesData" Relationship="PTRDB.StakesDataStake" FromRole="Stake" ToRole="StakesData" />
           <Property Type="Int32" Name="Rate" Nullable="false" />
           <Property Type="Int32" Name="PlayerNum" Nullable="false" />
           <Property Type="Int32" Name="StackSize" Nullable="false" />
           <NavigationProperty Name="Currency" Relationship="PTRDB.CurrencyStake" FromRole="Stake" ToRole="Currency" />
           <NavigationProperty Name="Game" Relationship="PTRDB.GameStake" FromRole="Stake" ToRole="Game" />
           <NavigationProperty Name="BetType" Relationship="PTRDB.BetTypeStake" FromRole="Stake" ToRole="BetType" />
+          <NavigationProperty Name="StakesDatas" Relationship="PTRDB.StakeStakesData" FromRole="Stake" ToRole="StakesData" />
         </EntityType>
-        <Association Name="StakesDataStake">
-          <End Type="PTRDB.StakesData" Role="StakesData" Multiplicity="1" />
-          <End Type="PTRDB.Stake" Role="Stake" Multiplicity="*" />
-        </Association>
         <EntityType Name="Currency">
           <Key>
             <PropertyRef Name="ID" />
@@ -297,6 +293,10 @@
         <Association Name="BetTypeStake">
           <End Type="PTRDB.BetType" Role="BetType" Multiplicity="1" />
           <End Type="PTRDB.Stake" Role="Stake" Multiplicity="*" />
+        </Association>
+        <Association Name="StakeStakesData">
+          <End Type="PTRDB.Stake" Role="Stake" Multiplicity="1" />
+          <End Type="PTRDB.StakesData" Role="StakesData" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -387,14 +387,6 @@
         <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="StakesDataStake" TypeName="PTRDB.StakesDataStake" StoreEntitySet="Stakes">
-      <EndProperty Name="StakesData">
-        <ScalarProperty Name="ID" ColumnName="StakesData_ID" />
-      </EndProperty>
-      <EndProperty Name="Stake">
-        <ScalarProperty Name="ID" ColumnName="ID" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="CurrencyStake" TypeName="PTRDB.CurrencyStake" StoreEntitySet="Stakes">
       <EndProperty Name="Currency">
         <ScalarProperty Name="ID" ColumnName="Currency_ID" />
@@ -416,6 +408,14 @@
         <ScalarProperty Name="ID" ColumnName="BetType_ID" />
       </EndProperty>
       <EndProperty Name="Stake">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="StakeStakesData" TypeName="PTRDB.StakeStakesData" StoreEntitySet="StakesDatas">
+      <EndProperty Name="Stake">
+        <ScalarProperty Name="ID" ColumnName="Stake_ID" />
+      </EndProperty>
+      <EndProperty Name="StakesData">
         <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
     </AssociationSetMapping>
@@ -445,10 +445,6 @@
           <ConnectorPoint PointX="4.5" PointY="1.7235416666666668" />
         </AssociationConnector>
         <EntityTypeShape EntityType="PTRDB.Stake" Width="1.5" PointX="6.5" PointY="0.5" Height="2.264791666666667" />
-        <AssociationConnector Association="PTRDB.StakesDataStake">
-          <ConnectorPoint PointX="6" PointY="1.6323958333333337" />
-          <ConnectorPoint PointX="6.5" PointY="1.6323958333333337" />
-        </AssociationConnector>
         <EntityTypeShape EntityType="PTRDB.Currency" Width="1.5" PointX="8.5" PointY="0.5" Height="1.535625" />
         <AssociationConnector Association="PTRDB.CurrencyStake">
           <ConnectorPoint PointX="8.5" PointY="1.2678125" />
@@ -463,6 +459,10 @@
         <AssociationConnector Association="PTRDB.BetTypeStake">
           <ConnectorPoint PointX="7.3125" PointY="3.625" />
           <ConnectorPoint PointX="7.3125" PointY="2.9470833333333335" />
+        </AssociationConnector>
+        <AssociationConnector Association="PTRDB.StakeStakesData">
+          <ConnectorPoint PointX="6.5" PointY="1.7235416666666668" />
+          <ConnectorPoint PointX="6" PointY="1.7235416666666668" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

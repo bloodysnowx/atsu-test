@@ -63,13 +63,14 @@
     <Compile Include="PTRWebConnection.cs" />
     <Compile Include="SmartBuddyExporter.cs" />
     <Compile Include="SQLiteDB.cs" />
-    <Compile Include="Stakes.cs" />
     <Compile Include="WebClientEx.cs">
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="ClassDiagram.cd" />
     <EntityDeploy Include="PTRDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

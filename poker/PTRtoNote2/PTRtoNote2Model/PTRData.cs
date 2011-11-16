@@ -7,7 +7,7 @@ namespace PTRtoNote2.Model
 {
     public class PTRData
     {
-        public PTRData()
+        public PTRData(Player ptrDB)
         {
             throw new System.NotImplementedException();
         }
@@ -18,6 +18,11 @@ namespace PTRtoNote2.Model
         }
 
         public PTRData(string playerName, string noteStr)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public PTRData()
         {
             throw new System.NotImplementedException();
         }

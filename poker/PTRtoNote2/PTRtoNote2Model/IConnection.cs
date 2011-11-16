@@ -31,6 +31,6 @@ namespace PTRtoNote2.Model
             set;
         }
 
-        PTRData GetPTRData(string player_name);
+        Player GetPTRData(string player_name);
     }
 }

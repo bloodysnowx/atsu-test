@@ -10,7 +10,7 @@ namespace PTRtoNote2.Model
         /// <summary>PTRのログインURL</summary>
         private const string PTR_LOGIN_URL = "http://www.pokertableratings.com/login_action.php";
         /// <summary>PTRの検索URL</summary>
-        private const string PTR_SEARCH_URL = "http://www.pokertableratings.com/stars-player-search/";
+        private const string PTR_SEARCH_URL = "http://www.pokertableratings.com/stars-ptrDB-search/";
         /// <summary>
         /// 残り検索回数
         /// </summary>
@@ -90,7 +90,7 @@ namespace PTRtoNote2.Model
             }
         }
 
-        public PTRData GetPTRData(string playerName)
+        public Player GetPTRData(string playerName)
         {
             throw new NotImplementedException();
         }
@@ -100,12 +100,12 @@ namespace PTRtoNote2.Model
             throw new System.NotImplementedException();
         }
 
-        public Stakes GetStakes(string stakesName)
+        public Stake GetStakes(string stakesName)
         {
             throw new System.NotImplementedException();
         }
 
-        public PTRData GetPTRDataFromWebPage(string webPage)
+        public Player GetPTRDataFromWebPage(string webPage)
         {
             throw new System.NotImplementedException();
         }
@@ -119,7 +119,6 @@ namespace PTRtoNote2.Model
         {
             throw new System.NotImplementedException();
         }
-
 
         public int SearchedCount
         {
