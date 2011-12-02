@@ -91,6 +91,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="design.txt" />
     <Content Include="readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

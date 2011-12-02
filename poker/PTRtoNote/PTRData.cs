@@ -30,6 +30,8 @@ namespace PTRtoNote
         public decimal O_BB_100 { get; set; }
         /// <summary>オマハ時のHands</summary>
         public uint O_Hands { get; set; }
+        /// <summary>最終プレイ日時</summary>
+        public DateTime DateOfLastPlay { get; set; }
 
         /// <summary>log4netのインスタンス</summary>
         private static readonly log4net.ILog logger
