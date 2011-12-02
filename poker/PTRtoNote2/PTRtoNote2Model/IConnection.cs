@@ -32,5 +32,7 @@ namespace PTRtoNote2.Model
         }
 
         Player GetPTRData(string player_name);
+
+        delegate Stake GetStakes(string stakesName);
     }
 }

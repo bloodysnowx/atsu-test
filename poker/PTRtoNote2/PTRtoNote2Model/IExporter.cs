@@ -7,6 +7,11 @@ namespace PTRtoNote2.Model
 {
     public interface IExporter
     {
-        void Export();
+        /// <summary>
+        /// データを出力する
+        /// </summary>
+        /// <param name="fileName">出力ファイル名</param>
+        /// <param name="filePath">出力ファイルパス</param>
+        void Export(string filePath);
     }
 }

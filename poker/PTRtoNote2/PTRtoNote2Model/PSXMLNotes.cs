@@ -30,5 +30,18 @@ namespace PTRtoNote2.Model
         {
             throw new NotImplementedException();
         }
+
+
+        public int ADataCount
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
     }
 }
