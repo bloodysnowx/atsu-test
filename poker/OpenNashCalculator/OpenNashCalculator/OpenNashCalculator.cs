@@ -7,6 +7,11 @@ namespace OpenNashCalculator
 {
     public class OpenNashCalculator
     {
+        public OpenNashCalculator()
+        {
+            throw new System.NotImplementedException();
+        }
+    
         public int[] BB
         {
             get
@@ -101,6 +106,11 @@ namespace OpenNashCalculator
         }
 
         public void Open(int BB, int SB, int Ante, string Structure, int[] chips)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void BlindUp()
         {
             throw new System.NotImplementedException();
         }

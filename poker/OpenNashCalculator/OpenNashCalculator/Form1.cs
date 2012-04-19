@@ -18,10 +18,14 @@ namespace OpenNashCalculator
         }
 
         int level = 0;
+        int bb_pos = 8;
 
         string[] SB   = { "10", "15", "20", "30", "40",  "50",  "60",  "75",  "90", "105", "125", "150", "175", "200", "225", "250" };
         string[] BB   = { "20", "30", "40", "60", "80", "100", "120", "150", "180", "210", "250", "300", "350", "400", "450", "500" };
         string[] Ante = {  "2",  "3",  "4",  "6",  "8",  "10",  "12",  "15",  "18",  "21",  "25",  "30",  "35",  "40",  "45",  "50" };
+        string[] Position = { "BB", "SB", "BU", "CO", "MP+2", "MP+1", "MP", "UTG+1", "UTG" };
+        RadioButton[] positionRadioButtons;
+        TextBox[] chipTextBoxes;
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -33,15 +37,15 @@ namespace OpenNashCalculator
             URL += "&sb=" + textBoxSB.Text.Trim();
             URL += "&ante=" + textBoxAnte.Text.Trim();
             URL += "&structure=" + HttpUtility.UrlEncode(textBoxStructure.Text.Trim());
-            URL += "&s1=" + textBox5.Text.Trim();
-            URL += "&s2=" + textBox6.Text.Trim();
-            URL += "&s3=" + textBox7.Text.Trim();
-            URL += "&s4=" + textBox8.Text.Trim();
-            URL += "&s5=" + textBox9.Text.Trim();
-            URL += "&s6=" + textBox10.Text.Trim();
-            URL += "&s7=" + textBox11.Text.Trim();
-            URL += "&s8=" + textBox12.Text.Trim();
-            URL += "&s9=" + textBox13.Text.Trim();
+            URL += "&s1=" + chipTextBoxes[(bb_pos + 1) % 9].Text.Trim();
+            URL += "&s2=" + chipTextBoxes[(bb_pos + 2) % 9].Text.Trim();
+            URL += "&s3=" + chipTextBoxes[(bb_pos + 3) % 9].Text.Trim();
+            URL += "&s4=" + chipTextBoxes[(bb_pos + 4) % 9].Text.Trim();
+            URL += "&s5=" + chipTextBoxes[(bb_pos + 5) % 9].Text.Trim();
+            URL += "&s6=" + chipTextBoxes[(bb_pos + 6) % 9].Text.Trim();
+            URL += "&s7=" + chipTextBoxes[(bb_pos + 7) % 9].Text.Trim();
+            URL += "&s8=" + chipTextBoxes[(bb_pos + 8) % 9].Text.Trim();
+            URL += "&s9=" + chipTextBoxes[(bb_pos + 9) % 9].Text.Trim();
             // http://www.holdemresources.net/hr/sngs/icmcalculator.html?action=calculate&
             // bb=200&sb=100&ante=0&structure=0.5%2C0.3%2C0.2&s1=100&s2=100&s3=100&s4=100&s5=100&s6=100&s7=100&s8=100&s9=100
             System.Diagnostics.Process.Start(URL);
@@ -49,27 +53,16 @@ namespace OpenNashCalculator
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string tmp = textBox5.Text;
+            string tmp = textBox1.Text;
+            textBox1.Text = textBox2.Text;
+            textBox2.Text = textBox3.Text;
+            textBox3.Text = textBox4.Text;
+            textBox4.Text = textBox5.Text;
             textBox5.Text = textBox6.Text;
             textBox6.Text = textBox7.Text;
             textBox7.Text = textBox8.Text;
             textBox8.Text = textBox9.Text;
-            textBox9.Text = textBox10.Text;
-            textBox10.Text = textBox11.Text;
-            textBox11.Text = textBox12.Text;
-            textBox12.Text = textBox13.Text;
-            textBox13.Text = tmp;
-
-            bool tmp_check = checkBox1.Checked;
-            checkBox1.Checked = checkBox2.Checked;
-            checkBox2.Checked = checkBox3.Checked;
-            checkBox3.Checked = checkBox4.Checked;
-            checkBox4.Checked = checkBox5.Checked;
-            checkBox5.Checked = checkBox6.Checked;
-            checkBox6.Checked = checkBox7.Checked;
-            checkBox7.Checked = checkBox8.Checked;
-            checkBox8.Checked = checkBox9.Checked;
-            checkBox9.Checked = tmp_check;
+            textBox9.Text = tmp;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -79,42 +72,31 @@ namespace OpenNashCalculator
 
         private void BBChange()
         {
-            string tmp_str = textBox5.Text;
-            textBox5.Text = textBox13.Text;
-            textBox13.Text = textBox12.Text;
-            textBox12.Text = textBox11.Text;
-            textBox11.Text = textBox10.Text;
-            textBox10.Text = textBox9.Text;
+            string tmp_str = textBox1.Text;
+            textBox1.Text = textBox9.Text;
             textBox9.Text = textBox8.Text;
             textBox8.Text = textBox7.Text;
             textBox7.Text = textBox6.Text;
-            textBox6.Text = tmp_str;
-
-            bool tmp_check = checkBox1.Checked;
-            checkBox1.Checked = checkBox9.Checked;
-            checkBox9.Checked = checkBox8.Checked;
-            checkBox8.Checked = checkBox7.Checked;
-            checkBox7.Checked = checkBox6.Checked;
-            checkBox6.Checked = checkBox5.Checked;
-            checkBox5.Checked = checkBox4.Checked;
-            checkBox4.Checked = checkBox3.Checked;
-            checkBox3.Checked = checkBox2.Checked;
-            checkBox2.Checked = tmp_check;
+            textBox6.Text = textBox5.Text;
+            textBox5.Text = textBox4.Text;
+            textBox4.Text = textBox3.Text;
+            textBox3.Text = textBox2.Text;
+            textBox2.Text = tmp_str;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (textBox6.Text == "" &&
+            if (textBox2.Text == "" &&
+                textBox3.Text == "" &&
+                textBox4.Text == "" &&
+                textBox5.Text == "" &&
+                textBox6.Text == "" &&
                 textBox7.Text == "" &&
                 textBox8.Text == "" &&
-                textBox9.Text == "" &&
-                textBox10.Text == "" &&
-                textBox11.Text == "" &&
-                textBox12.Text == "" &&
-                textBox13.Text == "")
+                textBox9.Text == "")
                 return;
 
-            while (textBox13.Text == "")
+            while (textBox9.Text == "")
                 BBChange();
             BBChange();
         }
@@ -145,24 +127,19 @@ namespace OpenNashCalculator
                 SetBBSBAnte();
             }
 
-            if (Properties.Settings.Default.PlayerNum > 8)
-                textBox5.Text = Properties.Settings.Default.StartingChip;
-            if (Properties.Settings.Default.PlayerNum > 7)
-                textBox6.Text = Properties.Settings.Default.StartingChip;
-            if (Properties.Settings.Default.PlayerNum > 6)
-                textBox7.Text = Properties.Settings.Default.StartingChip;
-            if (Properties.Settings.Default.PlayerNum > 5)
-                textBox8.Text = Properties.Settings.Default.StartingChip;
-            if (Properties.Settings.Default.PlayerNum > 4)
-                textBox9.Text = Properties.Settings.Default.StartingChip;
-            if (Properties.Settings.Default.PlayerNum > 3)
-                textBox10.Text = Properties.Settings.Default.StartingChip;
-            if (Properties.Settings.Default.PlayerNum > 2)
-                textBox11.Text = Properties.Settings.Default.StartingChip;
-            if (Properties.Settings.Default.PlayerNum > 1)
-                textBox12.Text = Properties.Settings.Default.StartingChip;
-            if (Properties.Settings.Default.PlayerNum > 0)
-                textBox13.Text = Properties.Settings.Default.StartingChip;
+            chipTextBoxes = new TextBox[] { textBox1, textBox2, textBox3, textBox4,
+                textBox5, textBox6, textBox7, textBox8, textBox9 };
+
+            for (int i = 0; i < 9; ++i)
+            {
+                if(Properties.Settings.Default.PlayerNum - i > 0)
+                    chipTextBoxes[8 - i].Text = Properties.Settings.Default.StartingChip;
+            }
+
+            positionRadioButtons = new RadioButton[] { radioButton1, radioButton2, radioButton3,
+                radioButton4, radioButton5, radioButton6, radioButton7, radioButton8, radioButton9 };
+
+            EnabledPositionRadioButton();
         }
 
         private void buttonBBUP_Click(object sender, EventArgs e)
@@ -205,6 +182,49 @@ namespace OpenNashCalculator
         private void textBox_Enter(object sender, EventArgs e)
         {
             ((TextBox)sender).SelectAll();
+        }
+
+        private void EnabledPositionRadioButton()
+        {
+            for (int i = 0; i < 9; ++i)
+            {
+                if (chipTextBoxes[i].Text.Trim() == "")
+                    positionRadioButtons[i].Enabled = false;
+                else
+                    positionRadioButtons[i].Enabled = true;
+            }
+        }
+
+        private void SetPosition()
+        {
+            for (int i = 0; i < 9; ++i)
+            {
+                if (positionRadioButtons[i].Checked == true)
+                    bb_pos = i;
+            }
+
+            EnabledPositionRadioButton();
+
+            int label = 0;
+
+            positionRadioButtons[bb_pos].Text = Position[label++];
+            for(int i = 8; i > 0; --i)
+            {
+                if (positionRadioButtons[(bb_pos + i) % 9].Enabled)
+                    positionRadioButtons[(bb_pos + i) % 9].Text = Position[label++];
+                else
+                    positionRadioButtons[(bb_pos + i) % 9].Text = "";
+            }
+        }
+
+        private void postionRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            SetPosition();
+        }
+
+        private void textBox_Leave(object sender, EventArgs e)
+        {
+            SetPosition();
         }
     }
 }
