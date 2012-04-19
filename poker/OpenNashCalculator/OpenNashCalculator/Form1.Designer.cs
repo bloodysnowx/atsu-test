@@ -49,7 +49,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.buttonBBUP = new System.Windows.Forms.Button();
             this.buttonBBDown = new System.Windows.Forms.Button();
-            this.textBoxStructure = new System.Windows.Forms.TextBox();
             this.checkBox10 = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -70,6 +69,26 @@
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.labelICM0 = new System.Windows.Forms.Label();
+            this.labelICM1 = new System.Windows.Forms.Label();
+            this.labelICM2 = new System.Windows.Forms.Label();
+            this.labelICM3 = new System.Windows.Forms.Label();
+            this.labelICM4 = new System.Windows.Forms.Label();
+            this.labelICM5 = new System.Windows.Forms.Label();
+            this.labelICM6 = new System.Windows.Forms.Label();
+            this.labelICM7 = new System.Windows.Forms.Label();
+            this.labelICM8 = new System.Windows.Forms.Label();
+            this.checkBoxICM = new System.Windows.Forms.CheckBox();
+            this.textBoxStructure = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -133,7 +152,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(213, 172);
+            this.textBox1.Location = new System.Drawing.Point(155, 172);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 19);
             this.textBox1.TabIndex = 8;
@@ -152,7 +171,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(211, 140);
+            this.label6.Location = new System.Drawing.Point(153, 140);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(34, 12);
             this.label6.TabIndex = 10;
@@ -160,7 +179,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(213, 197);
+            this.textBox2.Location = new System.Drawing.Point(155, 197);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 19);
             this.textBox2.TabIndex = 11;
@@ -169,7 +188,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(213, 223);
+            this.textBox3.Location = new System.Drawing.Point(155, 223);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 19);
             this.textBox3.TabIndex = 12;
@@ -178,7 +197,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(213, 249);
+            this.textBox4.Location = new System.Drawing.Point(155, 249);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 19);
             this.textBox4.TabIndex = 13;
@@ -187,7 +206,7 @@
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(213, 275);
+            this.textBox5.Location = new System.Drawing.Point(155, 275);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 19);
             this.textBox5.TabIndex = 14;
@@ -196,7 +215,7 @@
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(213, 301);
+            this.textBox6.Location = new System.Drawing.Point(155, 301);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(100, 19);
             this.textBox6.TabIndex = 15;
@@ -205,7 +224,7 @@
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(213, 327);
+            this.textBox7.Location = new System.Drawing.Point(155, 327);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(100, 19);
             this.textBox7.TabIndex = 16;
@@ -214,7 +233,7 @@
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(213, 353);
+            this.textBox8.Location = new System.Drawing.Point(155, 353);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(100, 19);
             this.textBox8.TabIndex = 17;
@@ -223,7 +242,7 @@
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(213, 379);
+            this.textBox9.Location = new System.Drawing.Point(155, 379);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(100, 19);
             this.textBox9.TabIndex = 18;
@@ -259,14 +278,6 @@
             this.buttonBBDown.Text = "Down";
             this.buttonBBDown.UseVisualStyleBackColor = true;
             this.buttonBBDown.Click += new System.EventHandler(this.buttonBBDown_Click);
-            // 
-            // textBoxStructure
-            // 
-            this.textBoxStructure.Location = new System.Drawing.Point(211, 89);
-            this.textBoxStructure.Name = "textBoxStructure";
-            this.textBoxStructure.Size = new System.Drawing.Size(100, 19);
-            this.textBoxStructure.TabIndex = 5;
-            this.textBoxStructure.Text = "0.65,0.35";
             // 
             // checkBox10
             // 
@@ -371,7 +382,7 @@
             this.groupBox1.Controls.Add(this.radioButton3);
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(121, 140);
+            this.groupBox1.Location = new System.Drawing.Point(63, 140);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(76, 270);
             this.groupBox1.TabIndex = 46;
@@ -429,9 +440,9 @@
             this.radioButton5.AutoSize = true;
             this.radioButton5.Location = new System.Drawing.Point(15, 136);
             this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(51, 16);
+            this.radioButton5.Size = new System.Drawing.Size(58, 16);
             this.radioButton5.TabIndex = 4;
-            this.radioButton5.Text = "MP+2";
+            this.radioButton5.Text = "UTG+4";
             this.radioButton5.UseVisualStyleBackColor = true;
             this.radioButton5.CheckedChanged += new System.EventHandler(this.postionRadioButton_CheckedChanged);
             // 
@@ -440,9 +451,9 @@
             this.radioButton4.AutoSize = true;
             this.radioButton4.Location = new System.Drawing.Point(15, 110);
             this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(51, 16);
+            this.radioButton4.Size = new System.Drawing.Size(58, 16);
             this.radioButton4.TabIndex = 3;
-            this.radioButton4.Text = "MP+1";
+            this.radioButton4.Text = "UTG+3";
             this.radioButton4.UseVisualStyleBackColor = true;
             this.radioButton4.CheckedChanged += new System.EventHandler(this.postionRadioButton_CheckedChanged);
             // 
@@ -451,9 +462,9 @@
             this.radioButton3.AutoSize = true;
             this.radioButton3.Location = new System.Drawing.Point(16, 84);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(39, 16);
+            this.radioButton3.Size = new System.Drawing.Size(58, 16);
             this.radioButton3.TabIndex = 2;
-            this.radioButton3.Text = "MP";
+            this.radioButton3.Text = "UTG+2";
             this.radioButton3.UseVisualStyleBackColor = true;
             this.radioButton3.CheckedChanged += new System.EventHandler(this.postionRadioButton_CheckedChanged);
             // 
@@ -479,11 +490,220 @@
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.postionRadioButton_CheckedChanged);
             // 
+            // labelICM0
+            // 
+            this.labelICM0.AutoSize = true;
+            this.labelICM0.Location = new System.Drawing.Point(320, 175);
+            this.labelICM0.Name = "labelICM0";
+            this.labelICM0.Size = new System.Drawing.Size(25, 12);
+            this.labelICM0.TabIndex = 47;
+            this.labelICM0.Text = "ICM";
+            // 
+            // labelICM1
+            // 
+            this.labelICM1.AutoSize = true;
+            this.labelICM1.Location = new System.Drawing.Point(319, 200);
+            this.labelICM1.Name = "labelICM1";
+            this.labelICM1.Size = new System.Drawing.Size(25, 12);
+            this.labelICM1.TabIndex = 48;
+            this.labelICM1.Text = "ICM";
+            // 
+            // labelICM2
+            // 
+            this.labelICM2.AutoSize = true;
+            this.labelICM2.Location = new System.Drawing.Point(319, 226);
+            this.labelICM2.Name = "labelICM2";
+            this.labelICM2.Size = new System.Drawing.Size(25, 12);
+            this.labelICM2.TabIndex = 49;
+            this.labelICM2.Text = "ICM";
+            // 
+            // labelICM3
+            // 
+            this.labelICM3.AutoSize = true;
+            this.labelICM3.Location = new System.Drawing.Point(319, 252);
+            this.labelICM3.Name = "labelICM3";
+            this.labelICM3.Size = new System.Drawing.Size(25, 12);
+            this.labelICM3.TabIndex = 50;
+            this.labelICM3.Text = "ICM";
+            // 
+            // labelICM4
+            // 
+            this.labelICM4.AutoSize = true;
+            this.labelICM4.Location = new System.Drawing.Point(319, 278);
+            this.labelICM4.Name = "labelICM4";
+            this.labelICM4.Size = new System.Drawing.Size(25, 12);
+            this.labelICM4.TabIndex = 51;
+            this.labelICM4.Text = "ICM";
+            // 
+            // labelICM5
+            // 
+            this.labelICM5.AutoSize = true;
+            this.labelICM5.Location = new System.Drawing.Point(320, 304);
+            this.labelICM5.Name = "labelICM5";
+            this.labelICM5.Size = new System.Drawing.Size(25, 12);
+            this.labelICM5.TabIndex = 52;
+            this.labelICM5.Text = "ICM";
+            // 
+            // labelICM6
+            // 
+            this.labelICM6.AutoSize = true;
+            this.labelICM6.Location = new System.Drawing.Point(319, 330);
+            this.labelICM6.Name = "labelICM6";
+            this.labelICM6.Size = new System.Drawing.Size(25, 12);
+            this.labelICM6.TabIndex = 53;
+            this.labelICM6.Text = "ICM";
+            // 
+            // labelICM7
+            // 
+            this.labelICM7.AutoSize = true;
+            this.labelICM7.Location = new System.Drawing.Point(319, 356);
+            this.labelICM7.Name = "labelICM7";
+            this.labelICM7.Size = new System.Drawing.Size(25, 12);
+            this.labelICM7.TabIndex = 54;
+            this.labelICM7.Text = "ICM";
+            // 
+            // labelICM8
+            // 
+            this.labelICM8.AutoSize = true;
+            this.labelICM8.Location = new System.Drawing.Point(319, 382);
+            this.labelICM8.Name = "labelICM8";
+            this.labelICM8.Size = new System.Drawing.Size(25, 12);
+            this.labelICM8.TabIndex = 55;
+            this.labelICM8.Text = "ICM";
+            // 
+            // checkBoxICM
+            // 
+            this.checkBoxICM.AutoSize = true;
+            this.checkBoxICM.Location = new System.Drawing.Point(321, 140);
+            this.checkBoxICM.Name = "checkBoxICM";
+            this.checkBoxICM.Size = new System.Drawing.Size(78, 16);
+            this.checkBoxICM.TabIndex = 56;
+            this.checkBoxICM.Text = "EnableICM";
+            this.checkBoxICM.UseVisualStyleBackColor = true;
+            this.checkBoxICM.CheckedChanged += new System.EventHandler(this.checkBoxICM_CheckedChanged);
+            // 
+            // textBoxStructure
+            // 
+            this.textBoxStructure.Location = new System.Drawing.Point(211, 89);
+            this.textBoxStructure.Name = "textBoxStructure";
+            this.textBoxStructure.Size = new System.Drawing.Size(100, 19);
+            this.textBoxStructure.TabIndex = 5;
+            this.textBoxStructure.Text = global::OpenNashCalculator.Properties.Settings.Default.DefaultStructure;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(262, 167);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(49, 23);
+            this.button2.TabIndex = 57;
+            this.button2.Text = "Clear";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(261, 195);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(49, 23);
+            this.button3.TabIndex = 58;
+            this.button3.Text = "Clear";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(261, 221);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(49, 23);
+            this.button4.TabIndex = 59;
+            this.button4.Text = "Clear";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(261, 247);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(49, 23);
+            this.button5.TabIndex = 60;
+            this.button5.Text = "Clear";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(261, 273);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(49, 23);
+            this.button6.TabIndex = 61;
+            this.button6.Text = "Clear";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(261, 302);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(49, 23);
+            this.button7.TabIndex = 62;
+            this.button7.Text = "Clear";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(261, 328);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(49, 23);
+            this.button8.TabIndex = 63;
+            this.button8.Text = "Clear";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(261, 354);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(49, 23);
+            this.button9.TabIndex = 64;
+            this.button9.Text = "Clear";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(261, 380);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(49, 23);
+            this.button10.TabIndex = 65;
+            this.button10.Text = "Clear";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(325, 453);
+            this.ClientSize = new System.Drawing.Size(413, 453);
+            this.Controls.Add(this.button10);
+            this.Controls.Add(this.button9);
+            this.Controls.Add(this.button8);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.checkBoxICM);
+            this.Controls.Add(this.labelICM8);
+            this.Controls.Add(this.labelICM7);
+            this.Controls.Add(this.labelICM6);
+            this.Controls.Add(this.labelICM5);
+            this.Controls.Add(this.labelICM4);
+            this.Controls.Add(this.labelICM3);
+            this.Controls.Add(this.labelICM2);
+            this.Controls.Add(this.labelICM1);
+            this.Controls.Add(this.labelICM0);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
@@ -571,6 +791,25 @@
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label labelICM0;
+        private System.Windows.Forms.Label labelICM1;
+        private System.Windows.Forms.Label labelICM2;
+        private System.Windows.Forms.Label labelICM3;
+        private System.Windows.Forms.Label labelICM4;
+        private System.Windows.Forms.Label labelICM5;
+        private System.Windows.Forms.Label labelICM6;
+        private System.Windows.Forms.Label labelICM7;
+        private System.Windows.Forms.Label labelICM8;
+        private System.Windows.Forms.CheckBox checkBoxICM;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
     }
 }
 

@@ -17,15 +17,32 @@ namespace OpenNashCalculator
             InitializeComponent();
         }
 
-        int level = 0;
+        private int level = 0;
+        public int Level
+        {
+            get { return level; }
+            set
+            {
+                if (value < 0) level = 0;
+                else
+                {
+                    level = System.Math.Min(value, BB.Length - 1);
+                    level = System.Math.Min(level, SB.Length - 1);
+                    level = System.Math.Min(level, Ante.Length - 1);
+                    SetBBSBAnte();
+                }
+            }
+
+        }
         int bb_pos = 8;
 
         string[] SB   = { "10", "15", "20", "30", "40",  "50",  "60",  "75",  "90", "105", "125", "150", "175", "200", "225", "250" };
         string[] BB   = { "20", "30", "40", "60", "80", "100", "120", "150", "180", "210", "250", "300", "350", "400", "450", "500" };
         string[] Ante = {  "2",  "3",  "4",  "6",  "8",  "10",  "12",  "15",  "18",  "21",  "25",  "30",  "35",  "40",  "45",  "50" };
-        string[] Position = { "BB", "SB", "BU", "CO", "MP+2", "MP+1", "MP", "UTG+1", "UTG" };
+        string[] Position = { "BB", "SB", "BU", "CO", "UTG+4", "UTG+3", "UTG+2", "UTG+1", "UTG" };
         RadioButton[] positionRadioButtons;
         TextBox[] chipTextBoxes;
+        Label[] ICMlabels;
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -110,6 +127,11 @@ namespace OpenNashCalculator
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            textBoxBB.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.BBMouseWheel);
+            textBoxSB.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.BBMouseWheel);
+            textBoxAnte.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.BBMouseWheel);
+
+            level = Properties.Settings.Default.DefaultLevel - 1;
             BB = Properties.Settings.Default.BB.Split(',');
             SB = Properties.Settings.Default.SB.Split(',');
             Ante = Properties.Settings.Default.Ante.Split(',');
@@ -130,6 +152,9 @@ namespace OpenNashCalculator
             chipTextBoxes = new TextBox[] { textBox1, textBox2, textBox3, textBox4,
                 textBox5, textBox6, textBox7, textBox8, textBox9 };
 
+            foreach (TextBox chipTextBox in chipTextBoxes)
+                chipTextBox.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.ChipMouseWheel);
+
             for (int i = 0; i < 9; ++i)
             {
                 if(Properties.Settings.Default.PlayerNum - i > 0)
@@ -139,12 +164,15 @@ namespace OpenNashCalculator
             positionRadioButtons = new RadioButton[] { radioButton1, radioButton2, radioButton3,
                 radioButton4, radioButton5, radioButton6, radioButton7, radioButton8, radioButton9 };
 
+            ICMlabels = new Label[] { labelICM0, labelICM1, labelICM2, labelICM3, labelICM4, labelICM5,
+                labelICM6, labelICM7, labelICM8 };
+
             EnabledPositionRadioButton();
         }
 
         private void buttonBBUP_Click(object sender, EventArgs e)
         {
-            if (level < BB.Length - 2)
+            if (level < BB.Length - 1)
                 ++level;
             SetBBSBAnte();
         }
@@ -224,6 +252,118 @@ namespace OpenNashCalculator
 
         private void textBox_Leave(object sender, EventArgs e)
         {
+            SetPosition();
+            if (checkBoxICM.Checked) CalcICM();
+        }
+
+        private void CalcICM()
+        {
+            ICMCalculator.ICMCalculator calculator = new ICMCalculator.ICMCalculator();
+
+            int[] chips = new int[9];
+
+            string[] structure_str = textBoxStructure.Text.Split(',');
+            double[] structure = new double[structure_str.Length];
+
+            for (int i = 0; i < 9; ++i)
+            {
+                if (structure_str.Length > i)
+                    System.Double.TryParse(structure_str[i], out structure[i]);
+
+                System.Int32.TryParse(chipTextBoxes[i].Text, out chips[i]);
+            }
+
+            double[] EV = calculator.CalcEV(structure, chips);
+
+            for (int i = 0; i < 9; ++i)
+                ICMlabels[i].Text = (EV[i] * chips.Sum() / structure.Sum()).ToString("f2");
+        }
+
+        private void checkBoxICM_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxICM.Checked) CalcICM();
+        }
+
+        private void BBMouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            // Update the drawing based upon the mouse wheel scrolling.
+
+            int numberOfTextLinesToMove = e.Delta / 120;
+            Level = Level + numberOfTextLinesToMove;
+        }
+
+        private void ChipMouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            // Update the drawing based upon the mouse wheel scrolling.
+
+            int numberOfTextLinesToMove = e.Delta / 120;
+
+            try
+            {
+                int digit = 0;
+                System.Int32.TryParse(textBoxAnte.Text, out digit);
+                if (digit == 0)
+                    digit = System.Convert.ToInt32(textBoxSB.Text);
+
+                int val = System.Math.Max(System.Convert.ToInt32(((TextBox)sender).Text) + digit * numberOfTextLinesToMove, 0);
+                ((TextBox)sender).Text = System.Convert.ToString(val);
+            }
+            catch (FormatException)
+            {
+            }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+            SetPosition();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            textBox2.Clear();
+            SetPosition();
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            textBox3.Clear();
+            SetPosition();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            textBox4.Clear();
+            SetPosition();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            textBox5.Clear();
+            SetPosition();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            textBox6.Clear();
+            SetPosition();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            textBox7.Clear();
+            SetPosition();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            textBox8.Clear();
+            SetPosition();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            textBox9.Clear();
             SetPosition();
         }
     }
