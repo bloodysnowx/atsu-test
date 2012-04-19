@@ -234,12 +234,21 @@ namespace OpenNashCalculator
             EnabledPositionRadioButton();
 
             int label = 0;
-
+            int j;
             positionRadioButtons[bb_pos].Text = Position[label++];
-            for(int i = 8; i > 0; --i)
+            for(j = 8; j > 0　&& label < 4; --j)
+            {
+                if (positionRadioButtons[(bb_pos + j) % 9].Enabled)
+                    positionRadioButtons[(bb_pos + j) % 9].Text = Position[label++];
+                else
+                    positionRadioButtons[(bb_pos + j) % 9].Text = "";
+            }
+
+            label = 8;
+            for (int i = 1; i <= j; ++i)
             {
                 if (positionRadioButtons[(bb_pos + i) % 9].Enabled)
-                    positionRadioButtons[(bb_pos + i) % 9].Text = Position[label++];
+                    positionRadioButtons[(bb_pos + i) % 9].Text = Position[label--];
                 else
                     positionRadioButtons[(bb_pos + i) % 9].Text = "";
             }
@@ -286,16 +295,12 @@ namespace OpenNashCalculator
 
         private void BBMouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            // Update the drawing based upon the mouse wheel scrolling.
-
             int numberOfTextLinesToMove = e.Delta / 120;
             Level = Level + numberOfTextLinesToMove;
         }
 
         private void ChipMouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            // Update the drawing based upon the mouse wheel scrolling.
-
             int numberOfTextLinesToMove = e.Delta / 120;
 
             try
