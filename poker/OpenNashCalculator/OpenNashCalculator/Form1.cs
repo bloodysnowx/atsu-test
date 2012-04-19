@@ -40,9 +40,11 @@ namespace OpenNashCalculator
         string[] BB   = { "20", "30", "40", "60", "80", "100", "120", "150", "180", "210", "250", "300", "350", "400", "450", "500" };
         string[] Ante = {  "2",  "3",  "4",  "6",  "8",  "10",  "12",  "15",  "18",  "21",  "25",  "30",  "35",  "40",  "45",  "50" };
         string[] Position = { "BB", "SB", "BU", "CO", "UTG+4", "UTG+3", "UTG+2", "UTG+1", "UTG" };
+        string[] Seat = { "Seat1", "Seat2", "Seat3", "Seat4", "Seat5", "Seat6", "Seat7", "Seat8", "Seat9" };
         RadioButton[] positionRadioButtons;
         TextBox[] chipTextBoxes;
-        Label[] ICMlabels;
+        Label[] ICMLabels;
+        Label[] SeatLabels;
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -164,8 +166,12 @@ namespace OpenNashCalculator
             positionRadioButtons = new RadioButton[] { radioButton1, radioButton2, radioButton3,
                 radioButton4, radioButton5, radioButton6, radioButton7, radioButton8, radioButton9 };
 
-            ICMlabels = new Label[] { labelICM0, labelICM1, labelICM2, labelICM3, labelICM4, labelICM5,
+            ICMLabels = new Label[] { labelICM0, labelICM1, labelICM2, labelICM3, labelICM4, labelICM5,
                 labelICM6, labelICM7, labelICM8 };
+            SeatLabels = new Label[] { label7, label8, label9, label10, label11,
+              label12, label13, label14, label15 };
+            foreach (Label seatLabel in SeatLabels)
+                seatLabel.DoubleClick += new System.EventHandler(this.SeatLabel_DoubleClick);
 
             EnabledPositionRadioButton();
         }
@@ -217,9 +223,15 @@ namespace OpenNashCalculator
             for (int i = 0; i < 9; ++i)
             {
                 if (chipTextBoxes[i].Text.Trim() == "")
+                {
                     positionRadioButtons[i].Enabled = false;
+                    SeatLabels[i].Enabled = false;
+                }
                 else
+                {
                     positionRadioButtons[i].Enabled = true;
+                    SeatLabels[i].Enabled = true;
+                }
             }
         }
 
@@ -285,7 +297,7 @@ namespace OpenNashCalculator
             double[] EV = calculator.CalcEV(structure, chips);
 
             for (int i = 0; i < 9; ++i)
-                ICMlabels[i].Text = (EV[i] * chips.Sum() / structure.Sum()).ToString("f2");
+                ICMLabels[i].Text = (EV[i] * chips.Sum() / structure.Sum()).ToString("f2");
         }
 
         private void checkBoxICM_CheckedChanged(object sender, EventArgs e)
@@ -371,5 +383,18 @@ namespace OpenNashCalculator
             textBox9.Clear();
             SetPosition();
         }
+
+        private void SeatLabel_DoubleClick(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 9; ++i)
+            {
+                SeatLabels[i].Text = Seat[i];
+                SeatLabels[i].Font = new Font("MS UI Gothic", 9);
+            }
+
+            ((Label)sender).Text = "Hero";
+            ((Label)sender).Font = new Font("MS UI Gothic", 9, FontStyle.Bold);
+        }
+        
     }
 }

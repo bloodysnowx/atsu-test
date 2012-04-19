@@ -329,11 +329,12 @@
             // label11
             // 
             this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label11.Location = new System.Drawing.Point(13, 275);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(34, 12);
+            this.label11.Size = new System.Drawing.Size(33, 12);
             this.label11.TabIndex = 41;
-            this.label11.Text = "Seat5";
+            this.label11.Text = "Hero";
             // 
             // label12
             // 
@@ -574,6 +575,7 @@
             // checkBoxICM
             // 
             this.checkBoxICM.AutoSize = true;
+            this.checkBoxICM.Enabled = false;
             this.checkBoxICM.Location = new System.Drawing.Point(321, 140);
             this.checkBoxICM.Name = "checkBoxICM";
             this.checkBoxICM.Size = new System.Drawing.Size(78, 16);
