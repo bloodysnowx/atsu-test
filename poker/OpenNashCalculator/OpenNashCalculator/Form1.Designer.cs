@@ -205,7 +205,7 @@
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(211, 327);
+            this.textBox7.Location = new System.Drawing.Point(213, 327);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(100, 19);
             this.textBox7.TabIndex = 16;
@@ -223,7 +223,7 @@
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(211, 379);
+            this.textBox9.Location = new System.Drawing.Point(213, 379);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(100, 19);
             this.textBox9.TabIndex = 18;
