@@ -45,8 +45,9 @@ namespace OpenNashCalculator
         TextBox[] chipTextBoxes;
         Label[] ICMLabels;
         Label[] SeatLabels;
+        Button[] ClearButtons;
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonCalc_Click(object sender, EventArgs e)
         {
             if (textBoxAnte.Text.Trim() == "")
                 textBoxAnte.Text = "0";
@@ -68,56 +69,6 @@ namespace OpenNashCalculator
             // http://www.holdemresources.net/hr/sngs/icmcalculator.html?action=calculate&
             // bb=200&sb=100&ante=0&structure=0.5%2C0.3%2C0.2&s1=100&s2=100&s3=100&s4=100&s5=100&s6=100&s7=100&s8=100&s9=100
             System.Diagnostics.Process.Start(URL);
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            string tmp = textBox1.Text;
-            textBox1.Text = textBox2.Text;
-            textBox2.Text = textBox3.Text;
-            textBox3.Text = textBox4.Text;
-            textBox4.Text = textBox5.Text;
-            textBox5.Text = textBox6.Text;
-            textBox6.Text = textBox7.Text;
-            textBox7.Text = textBox8.Text;
-            textBox8.Text = textBox9.Text;
-            textBox9.Text = tmp;
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            BBChange();
-        }
-
-        private void BBChange()
-        {
-            string tmp_str = textBox1.Text;
-            textBox1.Text = textBox9.Text;
-            textBox9.Text = textBox8.Text;
-            textBox8.Text = textBox7.Text;
-            textBox7.Text = textBox6.Text;
-            textBox6.Text = textBox5.Text;
-            textBox5.Text = textBox4.Text;
-            textBox4.Text = textBox3.Text;
-            textBox3.Text = textBox2.Text;
-            textBox2.Text = tmp_str;
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            if (textBox2.Text == "" &&
-                textBox3.Text == "" &&
-                textBox4.Text == "" &&
-                textBox5.Text == "" &&
-                textBox6.Text == "" &&
-                textBox7.Text == "" &&
-                textBox8.Text == "" &&
-                textBox9.Text == "")
-                return;
-
-            while (textBox9.Text == "")
-                BBChange();
-            BBChange();
         }
 
         private void SetBBSBAnte()
@@ -172,6 +123,7 @@ namespace OpenNashCalculator
               label12, label13, label14, label15 };
             foreach (Label seatLabel in SeatLabels)
                 seatLabel.DoubleClick += new System.EventHandler(this.SeatLabel_DoubleClick);
+            ClearButtons = new Button[] { button2, button3, button4, button5, button6, button7, button8, button9, button10 };
 
             EnabledPositionRadioButton();
         }
@@ -190,14 +142,14 @@ namespace OpenNashCalculator
             SetBBSBAnte();
         }
 
-        private void checkBox10_CheckedChanged(object sender, EventArgs e)
+        private void checkBoxGearSB_CheckedChanged(object sender, EventArgs e)
         {
-            textBoxSB.Enabled = !checkBox10.Checked;
+            textBoxSB.Enabled = !checkBoxGearSB.Checked;
         }
 
         private void textBoxBB_TextChanged(object sender, EventArgs e)
         {
-            if (checkBox10.Checked)
+            if (checkBoxGearSB.Checked)
             {
                 int sb;
                 try
@@ -330,57 +282,13 @@ namespace OpenNashCalculator
             }
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
+        private void buttonClear_Click(object sender, EventArgs e)
         {
-            textBox1.Clear();
-            SetPosition();
-        }
-
-        private void button3_Click_1(object sender, EventArgs e)
-        {
-            textBox2.Clear();
-            SetPosition();
-        }
-
-        private void button4_Click_1(object sender, EventArgs e)
-        {
-            textBox3.Clear();
-            SetPosition();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            textBox4.Clear();
-            SetPosition();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            textBox5.Clear();
-            SetPosition();
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            textBox6.Clear();
-            SetPosition();
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            textBox7.Clear();
-            SetPosition();
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            textBox8.Clear();
-            SetPosition();
-        }
-
-        private void button10_Click(object sender, EventArgs e)
-        {
-            textBox9.Clear();
+            for (int i = 0; i < 9; ++i)
+            {
+                if (sender == ClearButtons[i])
+                    chipTextBoxes[i].Clear();
+            }
             SetPosition();
         }
 

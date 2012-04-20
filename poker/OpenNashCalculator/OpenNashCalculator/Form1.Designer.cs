@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelBB = new System.Windows.Forms.Label();
+            this.labelSB = new System.Windows.Forms.Label();
             this.textBoxBB = new System.Windows.Forms.TextBox();
             this.textBoxSB = new System.Windows.Forms.TextBox();
             this.textBoxAnte = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelAnte = new System.Windows.Forms.Label();
+            this.labelStructure = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -46,10 +46,10 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonCalc = new System.Windows.Forms.Button();
             this.buttonBBUP = new System.Windows.Forms.Button();
             this.buttonBBDown = new System.Windows.Forms.Button();
-            this.checkBox10 = new System.Windows.Forms.CheckBox();
+            this.checkBoxGearSB = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -92,23 +92,23 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // labelBB
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(21, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "BB";
+            this.labelBB.AutoSize = true;
+            this.labelBB.Location = new System.Drawing.Point(12, 13);
+            this.labelBB.Name = "labelBB";
+            this.labelBB.Size = new System.Drawing.Size(21, 12);
+            this.labelBB.TabIndex = 0;
+            this.labelBB.Text = "BB";
             // 
-            // label2
+            // labelSB
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 39);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(20, 12);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "SB";
+            this.labelSB.AutoSize = true;
+            this.labelSB.Location = new System.Drawing.Point(12, 39);
+            this.labelSB.Name = "labelSB";
+            this.labelSB.Size = new System.Drawing.Size(20, 12);
+            this.labelSB.TabIndex = 1;
+            this.labelSB.Text = "SB";
             // 
             // textBoxBB
             // 
@@ -132,23 +132,23 @@
             this.textBoxAnte.Size = new System.Drawing.Size(100, 19);
             this.textBoxAnte.TabIndex = 4;
             // 
-            // label3
+            // labelAnte
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 64);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 12);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Ante";
+            this.labelAnte.AutoSize = true;
+            this.labelAnte.Location = new System.Drawing.Point(12, 64);
+            this.labelAnte.Name = "labelAnte";
+            this.labelAnte.Size = new System.Drawing.Size(29, 12);
+            this.labelAnte.TabIndex = 6;
+            this.labelAnte.Text = "Ante";
             // 
-            // label4
+            // labelStructure
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 89);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 12);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Structure";
+            this.labelStructure.AutoSize = true;
+            this.labelStructure.Location = new System.Drawing.Point(13, 89);
+            this.labelStructure.Name = "labelStructure";
+            this.labelStructure.Size = new System.Drawing.Size(52, 12);
+            this.labelStructure.TabIndex = 7;
+            this.labelStructure.Text = "Structure";
             // 
             // textBox1
             // 
@@ -249,15 +249,15 @@
             this.textBox9.Enter += new System.EventHandler(this.textBox_Enter);
             this.textBox9.Leave += new System.EventHandler(this.textBox_Leave);
             // 
-            // button1
+            // buttonCalc
             // 
-            this.button1.Location = new System.Drawing.Point(236, 418);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Calculate!";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonCalc.Location = new System.Drawing.Point(236, 418);
+            this.buttonCalc.Name = "buttonCalc";
+            this.buttonCalc.Size = new System.Drawing.Size(75, 23);
+            this.buttonCalc.TabIndex = 20;
+            this.buttonCalc.Text = "Calculate!";
+            this.buttonCalc.UseVisualStyleBackColor = true;
+            this.buttonCalc.Click += new System.EventHandler(this.buttonCalc_Click);
             // 
             // buttonBBUP
             // 
@@ -279,16 +279,16 @@
             this.buttonBBDown.UseVisualStyleBackColor = true;
             this.buttonBBDown.Click += new System.EventHandler(this.buttonBBDown_Click);
             // 
-            // checkBox10
+            // checkBoxGearSB
             // 
-            this.checkBox10.AutoSize = true;
-            this.checkBox10.Location = new System.Drawing.Point(133, 42);
-            this.checkBox10.Name = "checkBox10";
-            this.checkBox10.Size = new System.Drawing.Size(72, 16);
-            this.checkBox10.TabIndex = 36;
-            this.checkBox10.Text = "BBと連動";
-            this.checkBox10.UseVisualStyleBackColor = true;
-            this.checkBox10.CheckedChanged += new System.EventHandler(this.checkBox10_CheckedChanged);
+            this.checkBoxGearSB.AutoSize = true;
+            this.checkBoxGearSB.Location = new System.Drawing.Point(133, 42);
+            this.checkBoxGearSB.Name = "checkBoxGearSB";
+            this.checkBoxGearSB.Size = new System.Drawing.Size(72, 16);
+            this.checkBoxGearSB.TabIndex = 36;
+            this.checkBoxGearSB.Text = "BBと連動";
+            this.checkBoxGearSB.UseVisualStyleBackColor = true;
+            this.checkBoxGearSB.CheckedChanged += new System.EventHandler(this.checkBoxGearSB_CheckedChanged);
             // 
             // label7
             // 
@@ -600,7 +600,7 @@
             this.button2.TabIndex = 57;
             this.button2.Text = "Clear";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.button2.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // button3
             // 
@@ -610,7 +610,7 @@
             this.button3.TabIndex = 58;
             this.button3.Text = "Clear";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            this.button3.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // button4
             // 
@@ -620,7 +620,7 @@
             this.button4.TabIndex = 59;
             this.button4.Text = "Clear";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            this.button4.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // button5
             // 
@@ -630,7 +630,7 @@
             this.button5.TabIndex = 60;
             this.button5.Text = "Clear";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button5.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // button6
             // 
@@ -640,7 +640,7 @@
             this.button6.TabIndex = 61;
             this.button6.Text = "Clear";
             this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button6.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // button7
             // 
@@ -650,7 +650,7 @@
             this.button7.TabIndex = 62;
             this.button7.Text = "Clear";
             this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.button7.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // button8
             // 
@@ -660,7 +660,7 @@
             this.button8.TabIndex = 63;
             this.button8.Text = "Clear";
             this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.button8.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // button9
             // 
@@ -670,7 +670,7 @@
             this.button9.TabIndex = 64;
             this.button9.Text = "Clear";
             this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.button9.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // button10
             // 
@@ -680,7 +680,7 @@
             this.button10.TabIndex = 65;
             this.button10.Text = "Clear";
             this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
+            this.button10.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // Form1
             // 
@@ -716,10 +716,10 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.checkBox10);
+            this.Controls.Add(this.checkBoxGearSB);
             this.Controls.Add(this.buttonBBDown);
             this.Controls.Add(this.buttonBBUP);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonCalc);
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.textBox8);
             this.Controls.Add(this.textBox7);
@@ -731,14 +731,14 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.labelStructure);
+            this.Controls.Add(this.labelAnte);
             this.Controls.Add(this.textBoxStructure);
             this.Controls.Add(this.textBoxAnte);
             this.Controls.Add(this.textBoxSB);
             this.Controls.Add(this.textBoxBB);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelSB);
+            this.Controls.Add(this.labelBB);
             this.Name = "Form1";
             this.Text = "OpenNashCalculator";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -751,14 +751,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelBB;
+        private System.Windows.Forms.Label labelSB;
         private System.Windows.Forms.TextBox textBoxBB;
         private System.Windows.Forms.TextBox textBoxSB;
         private System.Windows.Forms.TextBox textBoxAnte;
         private System.Windows.Forms.TextBox textBoxStructure;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelAnte;
+        private System.Windows.Forms.Label labelStructure;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -770,10 +770,10 @@
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonCalc;
         private System.Windows.Forms.Button buttonBBUP;
         private System.Windows.Forms.Button buttonBBDown;
-        private System.Windows.Forms.CheckBox checkBox10;
+        private System.Windows.Forms.CheckBox checkBoxGearSB;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
