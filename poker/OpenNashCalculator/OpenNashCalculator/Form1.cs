@@ -42,7 +42,7 @@ namespace OpenNashCalculator
         string[] BB   = { "20", "30", "40", "60", "80", "100", "120", "150", "180", "210", "250", "300", "350", "400", "450", "500" };
         string[] Ante = {  "2",  "3",  "4",  "6",  "8",  "10",  "12",  "15",  "18",  "21",  "25",  "30",  "35",  "40",  "45",  "50" };
         string[] Position = { "BB", "SB", "BU", "CO", "UTG+4", "UTG+3", "UTG+2", "UTG+1", "UTG" };
-        string[] Seat = { "Seat1", "Seat2", "Seat3", "Seat4", "Seat5", "Seat6", "Seat7", "Seat8", "Seat9" };
+        string[] Seat = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
         RadioButton[] positionRadioButtons;
         TextBox[] chipTextBoxes;
         Label[] ICMLabels;
@@ -73,21 +73,37 @@ namespace OpenNashCalculator
 
             if (checkBox1.Checked)
             {
+                foreach (Label label in ICMLabels)
+                    label.Text = "";
+
                 System.Net.WebClient client = new System.Net.WebClient();
 
+                int hero_num = 0;
                 string hero_pos = "";
                 for (int i = 0; i < 9; ++i)
-                    if (SeatLabels[i].Text == "Hero") hero_pos = positionRadioButtons[i].Text;
+                    if (SeatLabels[i].Text == "H") hero_num = i;
+                hero_pos = positionRadioButtons[hero_num].Text;
 
                 string web_page = client.DownloadString(URL);
                 Regex regex = new Regex("<td>" + Regex.Escape(hero_pos) + "</td><td /><td>(.*?)</td>");
                 MatchCollection matchCol = regex.Matches(web_page);
-                string[] callRange = new string[matchCol.Count];
+                int callRangeCount = matchCol.Count - 1;
+
+                for (int i = 1; i < 8 && callRangeCount >= 0; ++i)
+                {
+                    if (positionRadioButtons[(hero_num - i + 9) % 9].Enabled)
+                    {
+                        ICMLabels[(hero_num - i + 9) % 9].Text = matchCol[callRangeCount--].Groups[1].Value;
+                    }
+                }
+
                 regex = new Regex("<td>" + Regex.Escape(hero_pos) + "</td><td /><td /><td>(.*?)</td>");
                 matchCol = regex.Matches(web_page);
-                string pushRange = matchCol[0].Groups[1].Value;
+                string pushRange = "";
+                if(matchCol.Count > 0) pushRange = matchCol[0].Groups[1].Value;
 
-                MessageBox.Show("Push Range" + System.Environment.NewLine + pushRange);
+                ICMLabels[hero_num].Text = pushRange;
+                // MessageBox.Show("Push Range" + System.Environment.NewLine + pushRange);
             }
             System.Diagnostics.Process.Start(URL);
         }
@@ -325,7 +341,7 @@ namespace OpenNashCalculator
                     chipTextBoxes[i].BackColor = Color.White;
             }
 
-            ((Label)sender).Text = "Hero";
+            ((Label)sender).Text = "H";
             ((Label)sender).Font = new Font("MS UI Gothic", 9, FontStyle.Bold);
         }
 
@@ -338,7 +354,7 @@ namespace OpenNashCalculator
         {
             string hero_chips = "";
             for (int i = 0; i < 9; ++i)
-                if (SeatLabels[i].Text == "Hero") hero_chips = chipTextBoxes[i].Text;
+                if (SeatLabels[i].Text == "H") hero_chips = chipTextBoxes[i].Text;
             for (int i = 0; i < 9; ++i)
                 if(positionRadioButtons[i].Enabled) chipTextBoxes[i].Text = hero_chips;
         }
