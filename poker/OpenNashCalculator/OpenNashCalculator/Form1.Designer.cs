@@ -261,7 +261,7 @@
             // 
             // buttonBBUP
             // 
-            this.buttonBBUP.Location = new System.Drawing.Point(50, 8);
+            this.buttonBBUP.Location = new System.Drawing.Point(317, 10);
             this.buttonBBUP.Name = "buttonBBUP";
             this.buttonBBUP.Size = new System.Drawing.Size(51, 23);
             this.buttonBBUP.TabIndex = 25;
@@ -271,7 +271,7 @@
             // 
             // buttonBBDown
             // 
-            this.buttonBBDown.Location = new System.Drawing.Point(107, 8);
+            this.buttonBBDown.Location = new System.Drawing.Point(133, 10);
             this.buttonBBDown.Name = "buttonBBDown";
             this.buttonBBDown.Size = new System.Drawing.Size(51, 23);
             this.buttonBBDown.TabIndex = 26;
