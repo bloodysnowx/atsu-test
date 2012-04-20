@@ -156,6 +156,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 19);
             this.textBox1.TabIndex = 8;
+            this.textBox1.Click += new System.EventHandler(this.textBox_Click);
             this.textBox1.Enter += new System.EventHandler(this.textBox_Enter);
             this.textBox1.Leave += new System.EventHandler(this.textBox_Leave);
             // 
@@ -183,6 +184,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 19);
             this.textBox2.TabIndex = 11;
+            this.textBox2.Click += new System.EventHandler(this.textBox_Click);
             this.textBox2.Enter += new System.EventHandler(this.textBox_Enter);
             this.textBox2.Leave += new System.EventHandler(this.textBox_Leave);
             // 
@@ -192,6 +194,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 19);
             this.textBox3.TabIndex = 12;
+            this.textBox3.Click += new System.EventHandler(this.textBox_Click);
             this.textBox3.Enter += new System.EventHandler(this.textBox_Enter);
             this.textBox3.Leave += new System.EventHandler(this.textBox_Leave);
             // 
@@ -201,6 +204,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 19);
             this.textBox4.TabIndex = 13;
+            this.textBox4.Click += new System.EventHandler(this.textBox_Click);
             this.textBox4.Enter += new System.EventHandler(this.textBox_Enter);
             this.textBox4.Leave += new System.EventHandler(this.textBox_Leave);
             // 
@@ -210,6 +214,7 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 19);
             this.textBox5.TabIndex = 14;
+            this.textBox5.Click += new System.EventHandler(this.textBox_Click);
             this.textBox5.Enter += new System.EventHandler(this.textBox_Enter);
             this.textBox5.Leave += new System.EventHandler(this.textBox_Leave);
             // 
@@ -219,6 +224,7 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(100, 19);
             this.textBox6.TabIndex = 15;
+            this.textBox6.Click += new System.EventHandler(this.textBox_Click);
             this.textBox6.Enter += new System.EventHandler(this.textBox_Enter);
             this.textBox6.Leave += new System.EventHandler(this.textBox_Leave);
             // 
@@ -228,6 +234,7 @@
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(100, 19);
             this.textBox7.TabIndex = 16;
+            this.textBox7.Click += new System.EventHandler(this.textBox_Click);
             this.textBox7.Enter += new System.EventHandler(this.textBox_Enter);
             this.textBox7.Leave += new System.EventHandler(this.textBox_Leave);
             // 
@@ -237,6 +244,7 @@
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(100, 19);
             this.textBox8.TabIndex = 17;
+            this.textBox8.Click += new System.EventHandler(this.textBox_Click);
             this.textBox8.Enter += new System.EventHandler(this.textBox_Enter);
             this.textBox8.Leave += new System.EventHandler(this.textBox_Leave);
             // 
@@ -246,6 +254,7 @@
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(100, 19);
             this.textBox9.TabIndex = 18;
+            this.textBox9.Click += new System.EventHandler(this.textBox_Click);
             this.textBox9.Enter += new System.EventHandler(this.textBox_Enter);
             this.textBox9.Leave += new System.EventHandler(this.textBox_Leave);
             // 

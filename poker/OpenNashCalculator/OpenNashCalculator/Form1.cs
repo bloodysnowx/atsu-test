@@ -125,6 +125,7 @@ namespace OpenNashCalculator
                 seatLabel.DoubleClick += new System.EventHandler(this.SeatLabel_DoubleClick);
             ClearButtons = new Button[] { button2, button3, button4, button5, button6, button7, button8, button9, button10 };
 
+            chipTextBoxes[4].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
             EnabledPositionRadioButton();
         }
 
@@ -270,9 +271,7 @@ namespace OpenNashCalculator
             try
             {
                 int digit = 0;
-                System.Int32.TryParse(textBoxAnte.Text, out digit);
-                if (digit == 0)
-                    digit = System.Convert.ToInt32(textBoxSB.Text);
+                digit = System.Convert.ToInt32(textBoxSB.Text);
 
                 int val = System.Math.Max(System.Convert.ToInt32(((TextBox)sender).Text) + digit * numberOfTextLinesToMove, 0);
                 ((TextBox)sender).Text = System.Convert.ToString(val);
@@ -298,11 +297,20 @@ namespace OpenNashCalculator
             {
                 SeatLabels[i].Text = Seat[i];
                 SeatLabels[i].Font = new Font("MS UI Gothic", 9);
+
+                if(sender == SeatLabels[i])
+                    chipTextBoxes[i].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
+                else
+                    chipTextBoxes[i].BackColor = Color.White;
             }
 
             ((Label)sender).Text = "Hero";
             ((Label)sender).Font = new Font("MS UI Gothic", 9, FontStyle.Bold);
         }
-        
+
+        private void textBox_Click(object sender, EventArgs e)
+        {
+            ((TextBox)sender).SelectAll();
+        }
     }
 }
