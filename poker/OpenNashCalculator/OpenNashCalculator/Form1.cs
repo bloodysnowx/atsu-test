@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Web;
 
+using System.Text.RegularExpressions;
+
 namespace OpenNashCalculator
 {
     public partial class Form1 : Form
@@ -68,6 +70,25 @@ namespace OpenNashCalculator
             URL += "&s9=" + chipTextBoxes[(bb_pos + 9) % 9].Text.Trim();
             // http://www.holdemresources.net/hr/sngs/icmcalculator.html?action=calculate&
             // bb=200&sb=100&ante=0&structure=0.5%2C0.3%2C0.2&s1=100&s2=100&s3=100&s4=100&s5=100&s6=100&s7=100&s8=100&s9=100
+
+            if (checkBox1.Checked)
+            {
+                System.Net.WebClient client = new System.Net.WebClient();
+
+                string hero_pos = "";
+                for (int i = 0; i < 9; ++i)
+                    if (SeatLabels[i].Text == "Hero") hero_pos = positionRadioButtons[i].Text;
+
+                string web_page = client.DownloadString(URL);
+                Regex regex = new Regex("<td>" + Regex.Escape(hero_pos) + "</td><td /><td>(.*?)</td>");
+                MatchCollection matchCol = regex.Matches(web_page);
+                string[] callRange = new string[matchCol.Count];
+                regex = new Regex("<td>" + Regex.Escape(hero_pos) + "</td><td /><td /><td>(.*?)</td>");
+                matchCol = regex.Matches(web_page);
+                string pushRange = matchCol[0].Groups[1].Value;
+
+                MessageBox.Show("Push Range" + System.Environment.NewLine + pushRange);
+            }
             System.Diagnostics.Process.Start(URL);
         }
 
@@ -122,11 +143,11 @@ namespace OpenNashCalculator
             SeatLabels = new Label[] { label7, label8, label9, label10, label11,
               label12, label13, label14, label15 };
             foreach (Label seatLabel in SeatLabels)
-                seatLabel.DoubleClick += new System.EventHandler(this.SeatLabel_DoubleClick);
+                seatLabel.Click += new System.EventHandler(this.SeatLabel_DoubleClick);
             ClearButtons = new Button[] { button2, button3, button4, button5, button6, button7, button8, button9, button10 };
 
             chipTextBoxes[4].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
-            EnabledPositionRadioButton();
+            SetPosition();
         }
 
         private void buttonBBUP_Click(object sender, EventArgs e)
@@ -311,6 +332,15 @@ namespace OpenNashCalculator
         private void textBox_Click(object sender, EventArgs e)
         {
             ((TextBox)sender).SelectAll();
+        }
+
+        private void label6_DoubleClick(object sender, EventArgs e)
+        {
+            string hero_chips = "";
+            for (int i = 0; i < 9; ++i)
+                if (SeatLabels[i].Text == "Hero") hero_chips = chipTextBoxes[i].Text;
+            for (int i = 0; i < 9; ++i)
+                if(positionRadioButtons[i].Enabled) chipTextBoxes[i].Text = hero_chips;
         }
     }
 }
