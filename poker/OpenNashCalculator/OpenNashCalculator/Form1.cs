@@ -49,6 +49,85 @@ namespace OpenNashCalculator
         Label[] SeatLabels;
         Button[] ClearButtons;
 
+        private void EnabledPositionRadioButton()
+        {
+            for (int i = 0; i < 9; ++i)
+            {
+                if (chipTextBoxes[i].Text.Trim() == "")
+                {
+                    positionRadioButtons[i].Enabled = false;
+                    SeatLabels[i].Enabled = false;
+                }
+                else
+                {
+                    positionRadioButtons[i].Enabled = true;
+                    SeatLabels[i].Enabled = true;
+                }
+            }
+        }
+
+        private void SetPosition()
+        {
+            for (int i = 0; i < 9; ++i)
+            {
+                if (positionRadioButtons[i].Checked == true)
+                    bb_pos = i;
+            }
+
+            EnabledPositionRadioButton();
+
+            int label = 0;
+            int j;
+            positionRadioButtons[bb_pos].Text = Position[label++];
+            for (j = 8; j > 0 && label < 4; --j)
+            {
+                if (positionRadioButtons[(bb_pos + j) % 9].Enabled)
+                    positionRadioButtons[(bb_pos + j) % 9].Text = Position[label++];
+                else
+                    positionRadioButtons[(bb_pos + j) % 9].Text = "";
+            }
+
+            label = 8;
+            for (int i = 1; i <= j; ++i)
+            {
+                if (positionRadioButtons[(bb_pos + i) % 9].Enabled)
+                    positionRadioButtons[(bb_pos + i) % 9].Text = Position[label--];
+                else
+                    positionRadioButtons[(bb_pos + i) % 9].Text = "";
+            }
+        }
+
+        private int getHeroNum()
+        {
+            int hero_num = 0;
+            for (int i = 0; i < 9; ++i)
+                if (SeatLabels[i].Text == "H") hero_num = i;
+            return hero_num;
+        }
+
+        private void SetBBSBAnte()
+        {
+            textBoxBB.Text = BB[level];
+            textBoxSB.Text = SB[level];
+            textBoxAnte.Text = Ante[level];
+        }
+
+        private void Reset()
+        {
+            level = Properties.Settings.Default.DefaultLevel - 1;
+            SetBBSBAnte();
+
+            for (int i = 0; i < 9; ++i)
+            {
+                if (Properties.Settings.Default.PlayerNum - i > 0)
+                    chipTextBoxes[8 - i].Text = Properties.Settings.Default.StartingChip;
+            }
+
+            SetPosition();
+        }
+
+
+
         private void buttonCalc_Click(object sender, EventArgs e)
         {
             if (textBoxAnte.Text.Trim() == "")
@@ -101,26 +180,10 @@ namespace OpenNashCalculator
                 if(matchCol.Count > 0) pushRange = matchCol[0].Groups[1].Value;
 
                 ICMLabels[hero_num].Text = pushRange;
-                // MessageBox.Show("Push Range" + System.Environment.NewLine + pushRange);
             }
 
             if (checkBoxWeb.Checked == false)
                 System.Diagnostics.Process.Start(URL);
-        }
-
-        private int getHeroNum()
-        {
-            int hero_num = 0;
-            for (int i = 0; i < 9; ++i)
-                if (SeatLabels[i].Text == "H") hero_num = i;
-            return hero_num;
-        }
-
-        private void SetBBSBAnte()
-        {
-            textBoxBB.Text = BB[level];
-            textBoxSB.Text = SB[level];
-            textBoxAnte.Text = Ante[level];
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -146,7 +209,6 @@ namespace OpenNashCalculator
 
             chipTextBoxes = new TextBox[] { textBox1, textBox2, textBox3, textBox4,
                 textBox5, textBox6, textBox7, textBox8, textBox9 };
-
             foreach (TextBox chipTextBox in chipTextBoxes)
                 chipTextBox.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.ChipMouseWheel);
 
@@ -157,6 +219,7 @@ namespace OpenNashCalculator
 
             ICMLabels = new Label[] { labelICM0, labelICM1, labelICM2, labelICM3, labelICM4, labelICM5,
                 labelICM6, labelICM7, labelICM8 };
+
             SeatLabels = new Label[] { label1, label2, label3, label4, label5,
               label6, label7, label8, label9 };
             foreach (Label seatLabel in SeatLabels)
@@ -210,54 +273,6 @@ namespace OpenNashCalculator
             ((TextBox)sender).SelectAll();
         }
 
-        private void EnabledPositionRadioButton()
-        {
-            for (int i = 0; i < 9; ++i)
-            {
-                if (chipTextBoxes[i].Text.Trim() == "")
-                {
-                    positionRadioButtons[i].Enabled = false;
-                    SeatLabels[i].Enabled = false;
-                }
-                else
-                {
-                    positionRadioButtons[i].Enabled = true;
-                    SeatLabels[i].Enabled = true;
-                }
-            }
-        }
-
-        private void SetPosition()
-        {
-            for (int i = 0; i < 9; ++i)
-            {
-                if (positionRadioButtons[i].Checked == true)
-                    bb_pos = i;
-            }
-
-            EnabledPositionRadioButton();
-
-            int label = 0;
-            int j;
-            positionRadioButtons[bb_pos].Text = Position[label++];
-            for(j = 8; j > 0　&& label < 4; --j)
-            {
-                if (positionRadioButtons[(bb_pos + j) % 9].Enabled)
-                    positionRadioButtons[(bb_pos + j) % 9].Text = Position[label++];
-                else
-                    positionRadioButtons[(bb_pos + j) % 9].Text = "";
-            }
-
-            label = 8;
-            for (int i = 1; i <= j; ++i)
-            {
-                if (positionRadioButtons[(bb_pos + i) % 9].Enabled)
-                    positionRadioButtons[(bb_pos + i) % 9].Text = Position[label--];
-                else
-                    positionRadioButtons[(bb_pos + i) % 9].Text = "";
-            }
-        }
-
         private void postionRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             SetPosition();
@@ -267,29 +282,6 @@ namespace OpenNashCalculator
         {
             SetPosition();
             if (checkBoxICM.Checked) CalcICM();
-        }
-
-        private void CalcICM()
-        {
-            ICMCalculator.ICMCalculator calculator = new ICMCalculator.ICMCalculator();
-
-            int[] chips = new int[9];
-
-            string[] structure_str = textBoxStructure.Text.Split(',');
-            double[] structure = new double[structure_str.Length];
-
-            for (int i = 0; i < 9; ++i)
-            {
-                if (structure_str.Length > i)
-                    System.Double.TryParse(structure_str[i], out structure[i]);
-
-                System.Int32.TryParse(chipTextBoxes[i].Text, out chips[i]);
-            }
-
-            double[] EV = calculator.CalcEV(structure, chips);
-
-            for (int i = 0; i < 9; ++i)
-                ICMLabels[i].Text = (EV[i] * chips.Sum() / structure.Sum()).ToString("f2");
         }
 
         private void checkBoxICM_CheckedChanged(object sender, EventArgs e)
@@ -352,7 +344,7 @@ namespace OpenNashCalculator
             ((TextBox)sender).SelectAll();
         }
 
-        private void label6_DoubleClick(object sender, EventArgs e)
+        private void labelChips_DoubleClick(object sender, EventArgs e)
         {
             int hero_num = getHeroNum();
             string hero_chips = chipTextBoxes[hero_num].Text;
@@ -363,20 +355,6 @@ namespace OpenNashCalculator
         private void buttonReset_Click(object sender, EventArgs e)
         {
             Reset();
-        }
-
-        private void Reset()
-        {
-            level = Properties.Settings.Default.DefaultLevel - 1;
-            SetBBSBAnte();
-
-            for (int i = 0; i < 9; ++i)
-            {
-                if (Properties.Settings.Default.PlayerNum - i > 0)
-                    chipTextBoxes[8 - i].Text = Properties.Settings.Default.StartingChip;
-            }
-
-            SetPosition();
         }
 
         private void buttonOpen_Click(object sender, EventArgs e)
@@ -390,6 +368,29 @@ namespace OpenNashCalculator
         private void checkBoxRefresh_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void CalcICM()
+        {
+            ICMCalculator.ICMCalculator calculator = new ICMCalculator.ICMCalculator();
+
+            int[] chips = new int[9];
+
+            string[] structure_str = textBoxStructure.Text.Split(',');
+            double[] structure = new double[structure_str.Length];
+
+            for (int i = 0; i < 9; ++i)
+            {
+                if (structure_str.Length > i)
+                    System.Double.TryParse(structure_str[i], out structure[i]);
+
+                System.Int32.TryParse(chipTextBoxes[i].Text, out chips[i]);
+            }
+
+            double[] EV = calculator.CalcEV(structure, chips);
+
+            for (int i = 0; i < 9; ++i)
+                ICMLabels[i].Text = (EV[i] * chips.Sum() / structure.Sum()).ToString("f2");
         }
     }
 }

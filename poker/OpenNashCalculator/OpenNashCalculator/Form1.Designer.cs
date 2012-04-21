@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelBB = new System.Windows.Forms.Label();
             this.labelSB = new System.Windows.Forms.Label();
             this.textBoxBB = new System.Windows.Forms.TextBox();
@@ -95,6 +96,7 @@
             this.checkBoxRefresh = new System.Windows.Forms.CheckBox();
             this.textBoxStructure = new System.Windows.Forms.TextBox();
             this.buttonReset = new System.Windows.Forms.Button();
+            this.refreshTimer = new System.Windows.Forms.Timer(this.components);
             this.groupBoxPosition.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -183,7 +185,7 @@
             this.labelChips.Size = new System.Drawing.Size(34, 12);
             this.labelChips.TabIndex = 10;
             this.labelChips.Text = "Chips";
-            this.labelChips.DoubleClick += new System.EventHandler(this.label6_DoubleClick);
+            this.labelChips.DoubleClick += new System.EventHandler(this.labelChips_DoubleClick);
             // 
             // textBox2
             // 
@@ -745,6 +747,10 @@
             this.buttonReset.UseVisualStyleBackColor = true;
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
+            // refreshTimer
+            // 
+            this.refreshTimer.Interval = 1000;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -886,6 +892,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.CheckBox checkBoxRefresh;
         private System.Windows.Forms.Button buttonReset;
+        private System.Windows.Forms.Timer refreshTimer;
     }
 }
 
