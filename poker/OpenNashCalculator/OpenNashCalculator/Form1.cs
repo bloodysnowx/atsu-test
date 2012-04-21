@@ -71,17 +71,15 @@ namespace OpenNashCalculator
             // http://www.holdemresources.net/hr/sngs/icmcalculator.html?action=calculate&
             // bb=200&sb=100&ante=0&structure=0.5%2C0.3%2C0.2&s1=100&s2=100&s3=100&s4=100&s5=100&s6=100&s7=100&s8=100&s9=100
 
-            if (checkBox1.Checked)
+            if (checkBoxShowRange.Checked)
             {
                 foreach (Label label in ICMLabels)
                     label.Text = "";
 
                 System.Net.WebClient client = new System.Net.WebClient();
 
-                int hero_num = 0;
+                int hero_num = getHeroNum();
                 string hero_pos = "";
-                for (int i = 0; i < 9; ++i)
-                    if (SeatLabels[i].Text == "H") hero_num = i;
                 hero_pos = positionRadioButtons[hero_num].Text;
 
                 string web_page = client.DownloadString(URL);
@@ -105,7 +103,17 @@ namespace OpenNashCalculator
                 ICMLabels[hero_num].Text = pushRange;
                 // MessageBox.Show("Push Range" + System.Environment.NewLine + pushRange);
             }
-            System.Diagnostics.Process.Start(URL);
+
+            if (checkBoxWeb.Checked == false)
+                System.Diagnostics.Process.Start(URL);
+        }
+
+        private int getHeroNum()
+        {
+            int hero_num = 0;
+            for (int i = 0; i < 9; ++i)
+                if (SeatLabels[i].Text == "H") hero_num = i;
+            return hero_num;
         }
 
         private void SetBBSBAnte()
@@ -122,21 +130,18 @@ namespace OpenNashCalculator
             textBoxAnte.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.BBMouseWheel);
 
             level = Properties.Settings.Default.DefaultLevel - 1;
-            BB = Properties.Settings.Default.BB.Split(',');
-            SB = Properties.Settings.Default.SB.Split(',');
-            Ante = Properties.Settings.Default.Ante.Split(',');
 
-            if (BB.Length < 2 || SB.Length < 2 || Ante.Length < 2)
+            if (Properties.Settings.Default.BB.Split(',').Length < 2 ||
+                Properties.Settings.Default.SB.Split(',').Length < 2 ||
+                Properties.Settings.Default.Ante.Split(',').Length < 2)
             {
-                textBoxBB.Text = Properties.Settings.Default.BB;
-                textBoxSB.Text = Properties.Settings.Default.SB;
-                textBoxAnte.Text = Properties.Settings.Default.Ante;
-                buttonBBDown.Enabled = false;
-                buttonBBUP.Enabled = false;
+                MessageBox.Show("Please config BB, SS, Ante");
             }
             else
             {
-                SetBBSBAnte();
+                BB = Properties.Settings.Default.BB.Split(',');
+                SB = Properties.Settings.Default.SB.Split(',');
+                Ante = Properties.Settings.Default.Ante.Split(',');
             }
 
             chipTextBoxes = new TextBox[] { textBox1, textBox2, textBox3, textBox4,
@@ -145,25 +150,22 @@ namespace OpenNashCalculator
             foreach (TextBox chipTextBox in chipTextBoxes)
                 chipTextBox.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.ChipMouseWheel);
 
-            for (int i = 0; i < 9; ++i)
-            {
-                if(Properties.Settings.Default.PlayerNum - i > 0)
-                    chipTextBoxes[8 - i].Text = Properties.Settings.Default.StartingChip;
-            }
-
             positionRadioButtons = new RadioButton[] { radioButton1, radioButton2, radioButton3,
                 radioButton4, radioButton5, radioButton6, radioButton7, radioButton8, radioButton9 };
+            foreach (RadioButton positionRadioButton in positionRadioButtons)
+                positionRadioButton.CheckedChanged += new System.EventHandler(this.postionRadioButton_CheckedChanged);
 
             ICMLabels = new Label[] { labelICM0, labelICM1, labelICM2, labelICM3, labelICM4, labelICM5,
                 labelICM6, labelICM7, labelICM8 };
-            SeatLabels = new Label[] { label7, label8, label9, label10, label11,
-              label12, label13, label14, label15 };
+            SeatLabels = new Label[] { label1, label2, label3, label4, label5,
+              label6, label7, label8, label9 };
             foreach (Label seatLabel in SeatLabels)
                 seatLabel.Click += new System.EventHandler(this.SeatLabel_DoubleClick);
             ClearButtons = new Button[] { button2, button3, button4, button5, button6, button7, button8, button9, button10 };
 
             chipTextBoxes[4].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
-            SetPosition();
+
+            Reset();
         }
 
         private void buttonBBUP_Click(object sender, EventArgs e)
@@ -352,11 +354,42 @@ namespace OpenNashCalculator
 
         private void label6_DoubleClick(object sender, EventArgs e)
         {
-            string hero_chips = "";
-            for (int i = 0; i < 9; ++i)
-                if (SeatLabels[i].Text == "H") hero_chips = chipTextBoxes[i].Text;
+            int hero_num = getHeroNum();
+            string hero_chips = chipTextBoxes[hero_num].Text;
             for (int i = 0; i < 9; ++i)
                 if(positionRadioButtons[i].Enabled) chipTextBoxes[i].Text = hero_chips;
+        }
+
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+            Reset();
+        }
+
+        private void Reset()
+        {
+            level = Properties.Settings.Default.DefaultLevel - 1;
+            SetBBSBAnte();
+
+            for (int i = 0; i < 9; ++i)
+            {
+                if (Properties.Settings.Default.PlayerNum - i > 0)
+                    chipTextBoxes[8 - i].Text = Properties.Settings.Default.StartingChip;
+            }
+
+            SetPosition();
+        }
+
+        private void buttonOpen_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                checkBoxRefresh.Enabled = true;
+            }
+        }
+
+        private void checkBoxRefresh_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
