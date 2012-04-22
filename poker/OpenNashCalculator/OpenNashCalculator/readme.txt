@@ -9,6 +9,7 @@ Ante : Anteのブラインドアップストラクチャを指定する
 StartingChip : 開始チップ量を指定する
 PlayerNum : Playerの人数を指定する
 DefaultLevel : 開始時のブラインドレベルを指定する
+BackColorOfMainForm : MainFormの背景色を指定する
 
 使用方法
 
@@ -16,17 +17,18 @@ DefaultLevel : 開始時のブラインドレベルを指定する
 
 ChangeLog
 
-2012/04/22 rev 
+2012/04/22 rev
+ハンドレンジの文字サイズを修正
+
+2012/04/22 rev 155
 SBのBBへの連動チェックボックスを削除(デフォルト連動)
 Show Push Rangeを削除(デフォルト有効化)
 空欄の場合もマウスホイールでチップ増加するように変更
-
 0からマウスホイールで減少させた場合空白になるように変更
 MainFormの背景色(BackColor)をconfigファイルのBackColorOfMainFormで設定可能に変更
 タブ移動を変更
 ハンドレンジをテキストボックス化
 ハンドレンジのHeroの背景色を変更
-
 
 2012/04/21 rev 154
 コード整理

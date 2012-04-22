@@ -664,12 +664,12 @@
             // 
             this.textBoxRange1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxRange1.Font = new System.Drawing.Font("MS UI Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxRange1.Location = new System.Drawing.Point(226, 143);
+            this.textBoxRange1.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxRange1.Location = new System.Drawing.Point(227, 141);
             this.textBoxRange1.Multiline = true;
             this.textBoxRange1.Name = "textBoxRange1";
             this.textBoxRange1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxRange1.Size = new System.Drawing.Size(283, 28);
+            this.textBoxRange1.Size = new System.Drawing.Size(283, 30);
             this.textBoxRange1.TabIndex = 71;
             this.textBoxRange1.TabStop = false;
             // 
@@ -677,12 +677,12 @@
             // 
             this.textBoxRange2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxRange2.Font = new System.Drawing.Font("MS UI Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxRange2.Location = new System.Drawing.Point(227, 177);
+            this.textBoxRange2.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxRange2.Location = new System.Drawing.Point(227, 175);
             this.textBoxRange2.Multiline = true;
             this.textBoxRange2.Name = "textBoxRange2";
             this.textBoxRange2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxRange2.Size = new System.Drawing.Size(283, 28);
+            this.textBoxRange2.Size = new System.Drawing.Size(283, 30);
             this.textBoxRange2.TabIndex = 72;
             this.textBoxRange2.TabStop = false;
             // 
@@ -690,12 +690,12 @@
             // 
             this.textBoxRange3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxRange3.Font = new System.Drawing.Font("MS UI Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxRange3.Location = new System.Drawing.Point(227, 211);
+            this.textBoxRange3.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxRange3.Location = new System.Drawing.Point(227, 209);
             this.textBoxRange3.Multiline = true;
             this.textBoxRange3.Name = "textBoxRange3";
             this.textBoxRange3.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxRange3.Size = new System.Drawing.Size(283, 28);
+            this.textBoxRange3.Size = new System.Drawing.Size(283, 30);
             this.textBoxRange3.TabIndex = 73;
             this.textBoxRange3.TabStop = false;
             // 
@@ -703,12 +703,12 @@
             // 
             this.textBoxRange4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxRange4.Font = new System.Drawing.Font("MS UI Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxRange4.Location = new System.Drawing.Point(227, 245);
+            this.textBoxRange4.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxRange4.Location = new System.Drawing.Point(227, 243);
             this.textBoxRange4.Multiline = true;
             this.textBoxRange4.Name = "textBoxRange4";
             this.textBoxRange4.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxRange4.Size = new System.Drawing.Size(283, 28);
+            this.textBoxRange4.Size = new System.Drawing.Size(283, 30);
             this.textBoxRange4.TabIndex = 74;
             this.textBoxRange4.TabStop = false;
             // 
@@ -716,12 +716,12 @@
             // 
             this.textBoxRange5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxRange5.Font = new System.Drawing.Font("MS UI Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxRange5.Location = new System.Drawing.Point(225, 279);
+            this.textBoxRange5.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxRange5.Location = new System.Drawing.Point(227, 277);
             this.textBoxRange5.Multiline = true;
             this.textBoxRange5.Name = "textBoxRange5";
             this.textBoxRange5.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxRange5.Size = new System.Drawing.Size(283, 28);
+            this.textBoxRange5.Size = new System.Drawing.Size(283, 30);
             this.textBoxRange5.TabIndex = 75;
             this.textBoxRange5.TabStop = false;
             // 
@@ -729,12 +729,12 @@
             // 
             this.textBoxRange6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxRange6.Font = new System.Drawing.Font("MS UI Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxRange6.Location = new System.Drawing.Point(225, 313);
+            this.textBoxRange6.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxRange6.Location = new System.Drawing.Point(227, 311);
             this.textBoxRange6.Multiline = true;
             this.textBoxRange6.Name = "textBoxRange6";
             this.textBoxRange6.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxRange6.Size = new System.Drawing.Size(283, 28);
+            this.textBoxRange6.Size = new System.Drawing.Size(283, 30);
             this.textBoxRange6.TabIndex = 76;
             this.textBoxRange6.TabStop = false;
             // 
@@ -742,12 +742,12 @@
             // 
             this.textBoxRange7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxRange7.Font = new System.Drawing.Font("MS UI Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxRange7.Location = new System.Drawing.Point(225, 347);
+            this.textBoxRange7.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxRange7.Location = new System.Drawing.Point(227, 345);
             this.textBoxRange7.Multiline = true;
             this.textBoxRange7.Name = "textBoxRange7";
             this.textBoxRange7.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxRange7.Size = new System.Drawing.Size(283, 28);
+            this.textBoxRange7.Size = new System.Drawing.Size(283, 30);
             this.textBoxRange7.TabIndex = 77;
             this.textBoxRange7.TabStop = false;
             // 
@@ -755,12 +755,12 @@
             // 
             this.textBoxRange8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxRange8.Font = new System.Drawing.Font("MS UI Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxRange8.Location = new System.Drawing.Point(227, 381);
+            this.textBoxRange8.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxRange8.Location = new System.Drawing.Point(227, 379);
             this.textBoxRange8.Multiline = true;
             this.textBoxRange8.Name = "textBoxRange8";
             this.textBoxRange8.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxRange8.Size = new System.Drawing.Size(283, 28);
+            this.textBoxRange8.Size = new System.Drawing.Size(283, 30);
             this.textBoxRange8.TabIndex = 78;
             this.textBoxRange8.TabStop = false;
             // 
@@ -768,12 +768,12 @@
             // 
             this.textBoxRange9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxRange9.Font = new System.Drawing.Font("MS UI Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxRange9.Location = new System.Drawing.Point(227, 415);
+            this.textBoxRange9.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxRange9.Location = new System.Drawing.Point(227, 413);
             this.textBoxRange9.Multiline = true;
             this.textBoxRange9.Name = "textBoxRange9";
             this.textBoxRange9.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxRange9.Size = new System.Drawing.Size(283, 28);
+            this.textBoxRange9.Size = new System.Drawing.Size(283, 30);
             this.textBoxRange9.TabIndex = 79;
             this.textBoxRange9.TabStop = false;
             // 
