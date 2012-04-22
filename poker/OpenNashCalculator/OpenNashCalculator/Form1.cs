@@ -48,6 +48,8 @@ namespace OpenNashCalculator
         Label[] ICMLabels;
         Label[] SeatLabels;
         Button[] ClearButtons;
+        DateTime updateDate;
+        TextBox[] rangeTextBoxes;
 
         private void EnabledPositionRadioButton()
         {
@@ -150,37 +152,34 @@ namespace OpenNashCalculator
             // http://www.holdemresources.net/hr/sngs/icmcalculator.html?action=calculate&
             // bb=200&sb=100&ante=0&structure=0.5%2C0.3%2C0.2&s1=100&s2=100&s3=100&s4=100&s5=100&s6=100&s7=100&s8=100&s9=100
 
-            if (checkBoxShowRange.Checked)
+            foreach (TextBox rangeTextBox in rangeTextBoxes)
+                rangeTextBox.Text = "";
+
+            System.Net.WebClient client = new System.Net.WebClient();
+
+            int hero_num = getHeroNum();
+            string hero_pos = "";
+            hero_pos = positionRadioButtons[hero_num].Text;
+
+            string web_page = client.DownloadString(URL);
+            Regex regex = new Regex("<td>" + Regex.Escape(hero_pos) + "</td><td /><td>(.*?)</td>");
+            MatchCollection matchCol = regex.Matches(web_page);
+            int callRangeCount = matchCol.Count - 1;
+
+            for (int i = 1; i < 8 && callRangeCount >= 0; ++i)
             {
-                foreach (Label label in ICMLabels)
-                    label.Text = "";
-
-                System.Net.WebClient client = new System.Net.WebClient();
-
-                int hero_num = getHeroNum();
-                string hero_pos = "";
-                hero_pos = positionRadioButtons[hero_num].Text;
-
-                string web_page = client.DownloadString(URL);
-                Regex regex = new Regex("<td>" + Regex.Escape(hero_pos) + "</td><td /><td>(.*?)</td>");
-                MatchCollection matchCol = regex.Matches(web_page);
-                int callRangeCount = matchCol.Count - 1;
-
-                for (int i = 1; i < 8 && callRangeCount >= 0; ++i)
+                if (positionRadioButtons[(hero_num - i + 9) % 9].Enabled)
                 {
-                    if (positionRadioButtons[(hero_num - i + 9) % 9].Enabled)
-                    {
-                        ICMLabels[(hero_num - i + 9) % 9].Text = matchCol[callRangeCount--].Groups[1].Value;
-                    }
+                    rangeTextBoxes[(hero_num - i + 9) % 9].Text = matchCol[callRangeCount--].Groups[1].Value;
                 }
-
-                regex = new Regex("<td>" + Regex.Escape(hero_pos) + "</td><td /><td /><td>(.*?)</td>");
-                matchCol = regex.Matches(web_page);
-                string pushRange = "";
-                if(matchCol.Count > 0) pushRange = matchCol[0].Groups[1].Value;
-
-                ICMLabels[hero_num].Text = pushRange;
             }
+
+            regex = new Regex("<td>" + Regex.Escape(hero_pos) + "</td><td /><td /><td>(.*?)</td>");
+            matchCol = regex.Matches(web_page);
+            string pushRange = "";
+            if(matchCol.Count > 0) pushRange = matchCol[0].Groups[1].Value;
+
+            rangeTextBoxes[hero_num].Text = pushRange;
 
             if (checkBoxWeb.Checked == false)
                 System.Diagnostics.Process.Start(URL);
@@ -217,16 +216,17 @@ namespace OpenNashCalculator
             foreach (RadioButton positionRadioButton in positionRadioButtons)
                 positionRadioButton.CheckedChanged += new System.EventHandler(this.postionRadioButton_CheckedChanged);
 
-            ICMLabels = new Label[] { labelICM0, labelICM1, labelICM2, labelICM3, labelICM4, labelICM5,
-                labelICM6, labelICM7, labelICM8 };
-
             SeatLabels = new Label[] { label1, label2, label3, label4, label5,
               label6, label7, label8, label9 };
             foreach (Label seatLabel in SeatLabels)
                 seatLabel.Click += new System.EventHandler(this.SeatLabel_DoubleClick);
             ClearButtons = new Button[] { button2, button3, button4, button5, button6, button7, button8, button9, button10 };
 
+            rangeTextBoxes = new TextBox[] { textBoxRange1, textBoxRange2, textBoxRange3, textBoxRange4, textBoxRange5,
+                textBoxRange6, textBoxRange7, textBoxRange8, textBoxRange9 };
+
             chipTextBoxes[4].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
+            rangeTextBoxes[4].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
 
             Reset();
         }
@@ -245,27 +245,19 @@ namespace OpenNashCalculator
             SetBBSBAnte();
         }
 
-        private void checkBoxGearSB_CheckedChanged(object sender, EventArgs e)
-        {
-            textBoxSB.Enabled = !checkBoxGearSB.Checked;
-        }
-
         private void textBoxBB_TextChanged(object sender, EventArgs e)
         {
-            if (checkBoxGearSB.Checked)
+            int sb;
+            try
             {
-                int sb;
-                try
-                {
-                    sb = System.Convert.ToInt32(textBoxBB.Text) / 2;
-                }
-                catch (System.FormatException)
-                {
-                    sb = 0;
-                }
-
-                textBoxSB.Text = sb.ToString();
+                sb = System.Convert.ToInt32(textBoxBB.Text) / 2;
             }
+            catch (System.FormatException)
+            {
+                sb = 0;
+            }
+
+            textBoxSB.Text = sb.ToString();
         }
 
         private void textBox_Enter(object sender, EventArgs e)
@@ -281,12 +273,6 @@ namespace OpenNashCalculator
         private void textBox_Leave(object sender, EventArgs e)
         {
             SetPosition();
-            if (checkBoxICM.Checked) CalcICM();
-        }
-
-        private void checkBoxICM_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxICM.Checked) CalcICM();
         }
 
         private void BBMouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -303,9 +289,18 @@ namespace OpenNashCalculator
             {
                 int digit = 0;
                 digit = System.Convert.ToInt32(textBoxSB.Text);
+                int chip = 0;
+                System.Int32.TryParse(((TextBox)sender).Text, out chip);
 
-                int val = System.Math.Max(System.Convert.ToInt32(((TextBox)sender).Text) + digit * numberOfTextLinesToMove, 0);
-                ((TextBox)sender).Text = System.Convert.ToString(val);
+                if (chip == 0 && numberOfTextLinesToMove < 0)
+                {
+                    ((TextBox)sender).Text = "";
+                }
+                else
+                {
+                    int val = System.Math.Max(chip + digit * numberOfTextLinesToMove, 0);
+                    ((TextBox)sender).Text = System.Convert.ToString(val);
+                }
             }
             catch (FormatException)
             {
@@ -329,10 +324,14 @@ namespace OpenNashCalculator
                 SeatLabels[i].Text = Seat[i];
                 SeatLabels[i].Font = new Font("MS UI Gothic", 9);
 
-                if(sender == SeatLabels[i])
-                    chipTextBoxes[i].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
+                if (sender == SeatLabels[i])
+                {
+                    chipTextBoxes[i].BackColor = rangeTextBoxes[i].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
+                }
                 else
-                    chipTextBoxes[i].BackColor = Color.White;
+                {
+                    chipTextBoxes[i].BackColor = rangeTextBoxes[i].BackColor = Color.White;
+                }
             }
 
             ((Label)sender).Text = "H";
@@ -359,10 +358,15 @@ namespace OpenNashCalculator
 
         private void buttonOpen_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (openHandHistoryDialog.ShowDialog() != DialogResult.OK)
             {
-                checkBoxRefresh.Enabled = true;
+                checkBoxRefresh.Enabled = false;
+                return;
             }
+            checkBoxRefresh.Enabled = true;
+
+            updateDate = System.IO.File.GetLastWriteTime(openHandHistoryDialog.FileName);
+            string[] hh = System.IO.File.ReadAllLines(openHandHistoryDialog.FileName);
         }
 
         private void checkBoxRefresh_CheckedChanged(object sender, EventArgs e)
@@ -370,6 +374,7 @@ namespace OpenNashCalculator
 
         }
 
+#if false
         private void CalcICM()
         {
             ICMCalculator.ICMCalculator calculator = new ICMCalculator.ICMCalculator();
@@ -392,5 +397,6 @@ namespace OpenNashCalculator
             for (int i = 0; i < 9; ++i)
                 ICMLabels[i].Text = (EV[i] * chips.Sum() / structure.Sum()).ToString("f2");
         }
+#endif
     }
 }

@@ -85,5 +85,14 @@ namespace OpenNashCalculator.Properties {
                 return ((int)(this["DefaultLevel"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("WhiteSmoke")]
+        public global::System.Drawing.Color BackColorOfMainForm {
+            get {
+                return ((global::System.Drawing.Color)(this["BackColorOfMainForm"]));
+            }
+        }
     }
 }
