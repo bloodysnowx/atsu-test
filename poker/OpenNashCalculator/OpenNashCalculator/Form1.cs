@@ -174,6 +174,11 @@ namespace OpenNashCalculator
                 }
             }
 
+            if (hero_pos == Position[0])
+            {
+                rangeTextBoxes[(hero_num + 1) % 9].Text = matchCol[callRangeCount--].Groups[1].Value;
+            }
+
             regex = new Regex("<td>" + Regex.Escape(hero_pos) + "</td><td /><td /><td>(.*?)</td>");
             matchCol = regex.Matches(web_page);
             string pushRange = "";

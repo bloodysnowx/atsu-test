@@ -17,7 +17,10 @@ BackColorOfMainForm : MainFormの背景色を指定する
 
 ChangeLog
 
-2012/04/22 rev
+2012/04/23 rev 157
+HeroがBBの時にUTGからのPushレンジに対するコールレンジが表示されていなかった不具合を修正
+
+2012/04/22 rev 156
 ハンドレンジの文字サイズを修正
 
 2012/04/22 rev 155
