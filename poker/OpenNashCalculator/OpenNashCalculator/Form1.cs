@@ -370,8 +370,7 @@ namespace OpenNashCalculator
             }
             checkBoxRefresh.Enabled = true;
 
-            updateDate = System.IO.File.GetLastWriteTime(openHandHistoryDialog.FileName);
-            string[] hh = System.IO.File.ReadAllLines(openHandHistoryDialog.FileName);
+            ReadHandHistory();
         }
 
         private void checkBoxRefresh_CheckedChanged(object sender, EventArgs e)
