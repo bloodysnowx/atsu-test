@@ -643,7 +643,6 @@
             this.textBoxStructure.Name = "textBoxStructure";
             this.textBoxStructure.Size = new System.Drawing.Size(100, 19);
             this.textBoxStructure.TabIndex = 5;
-            this.textBoxStructure.Text = "0.65,0.35";
             // 
             // buttonReset
             // 

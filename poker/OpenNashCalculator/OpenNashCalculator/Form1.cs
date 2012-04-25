@@ -233,6 +233,8 @@ namespace OpenNashCalculator
             chipTextBoxes[4].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
             rangeTextBoxes[4].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
 
+            textBoxStructure.Text = Properties.Settings.Default.DefaultStructure;
+
             Reset();
         }
 
