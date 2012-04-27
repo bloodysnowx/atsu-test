@@ -128,9 +128,7 @@ namespace OpenNashCalculator
             SetPosition();
         }
 
-
-
-        private void buttonCalc_Click(object sender, EventArgs e)
+        private void Calc()
         {
             if (textBoxAnte.Text.Trim() == "")
                 textBoxAnte.Text = "0";
@@ -182,12 +180,18 @@ namespace OpenNashCalculator
             regex = new Regex("<td>" + Regex.Escape(hero_pos) + "</td><td /><td /><td>(.*?)</td>");
             matchCol = regex.Matches(web_page);
             string pushRange = "";
-            if(matchCol.Count > 0) pushRange = matchCol[0].Groups[1].Value;
+            if (matchCol.Count > 0) pushRange = matchCol[0].Groups[1].Value;
 
             rangeTextBoxes[hero_num].Text = pushRange;
 
             if (checkBoxWeb.Checked == false)
                 System.Diagnostics.Process.Start(URL);
+        }
+
+
+        private void buttonCalc_Click(object sender, EventArgs e)
+        {
+            Calc();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -324,7 +328,7 @@ namespace OpenNashCalculator
             SetPosition();
         }
 
-        private void SeatLabel_DoubleClick(object sender, EventArgs e)
+        private void SetHeroSeat(Label sender)
         {
             for (int i = 0; i < 9; ++i)
             {
@@ -341,8 +345,13 @@ namespace OpenNashCalculator
                 }
             }
 
-            ((Label)sender).Text = "H";
-            ((Label)sender).Font = new Font("MS UI Gothic", 9, FontStyle.Bold);
+            sender.Text = "H";
+            sender.Font = new Font("MS UI Gothic", 9, FontStyle.Bold);
+        }
+
+        private void SeatLabel_DoubleClick(object sender, EventArgs e)
+        {
+            SetHeroSeat((Label)sender);
         }
 
         private void textBox_Click(object sender, EventArgs e)
@@ -377,7 +386,12 @@ namespace OpenNashCalculator
 
         private void checkBoxRefresh_CheckedChanged(object sender, EventArgs e)
         {
+            refreshTimer.Enabled = ((CheckBox)sender).Checked;
+        }
 
+        private void refreshTimer_Tick(object sender, EventArgs e)
+        {
+            ReadHandHistory();
         }
 
 #if false

@@ -32,8 +32,8 @@ namespace OpenNashCalculator
             // bbとsbを取得
             Regex regex = new Regex(Regex.Escape("(") + "([0-9]+)" + Regex.Escape("/") + "([0-9]+)" + Regex.Escape(")"));
             MatchCollection matchCol = regex.Matches(hh[line]);
-            int bb = System.Convert.ToInt32(matchCol[0].Groups[1].Value);
-            int sb = System.Convert.ToInt32(matchCol[0].Groups[2].Value);
+            int sb = System.Convert.ToInt32(matchCol[0].Groups[1].Value);
+            int bb = System.Convert.ToInt32(matchCol[0].Groups[2].Value);
 
             // ボタンの位置を取得
             line += 1;
@@ -49,6 +49,7 @@ namespace OpenNashCalculator
             string[] position = new string[9];
             int pot = 0;
             int[] posted = new int[9];
+            int ante = 0;
 
             regex = new Regex("Seat" + Regex.Escape(" ") + "([0-9]+):" + Regex.Escape(" ") + "(.+)" + Regex.Escape(" ")
                 + Regex.Escape("(") + "([0-9]+)" + Regex.Escape(" ") + "in" + Regex.Escape(" ") + "chips" + Regex.Escape(")"));
@@ -80,6 +81,9 @@ namespace OpenNashCalculator
                     {
                         if (matchCol[0].Groups[1].Value.Equals(names[j]))
                         {
+                            if(ante < System.Convert.ToInt32(matchCol[0].Groups[2].Value))
+                                ante = System.Convert.ToInt32(matchCol[0].Groups[2].Value);
+
                             chips[j] -= System.Convert.ToInt32(matchCol[0].Groups[2].Value);
                             pot += System.Convert.ToInt32(matchCol[0].Groups[2].Value);
                         }
@@ -145,6 +149,16 @@ namespace OpenNashCalculator
                 + "[2-9JQKA][shdc]" + Regex.Escape(" ") + "[2-9JQKA][shdc]" + Regex.Escape("]"));
             matchCol = regex.Matches(hh[++line]);
             string hero_name = matchCol[0].Groups[1].Value;
+            int hero_index = 0;
+            for (int i = 0; i < 9; ++i)
+            {
+                if (hero_name.Equals(names[i]))
+                {
+                    hero_index = i;
+                    SetHeroSeat(SeatLabels[seats[i] - 1]);
+                    break;
+                }
+            }
 
             // bets, calls, raises, UNCALLED bet, collected
             Regex bets_regex = new Regex("(.+):" + Regex.Escape(" ") + "bets" + Regex.Escape(" ") + "([0-9]+)");
@@ -241,6 +255,60 @@ namespace OpenNashCalculator
                 {
                     break;
                 }
+            }
+
+            // 設定
+            textBoxBB.Text = bb.ToString();
+            textBoxSB.Text = sb.ToString();
+            textBoxAnte.Text = ante.ToString();
+
+            // チップ入力
+            foreach (TextBox chipTextBox in chipTextBoxes)
+                chipTextBox.Text = "";
+            for (int i = 0; i < 9; ++i)
+            {
+                if (chips[i] > 0)
+                    chipTextBoxes[seats[i] - 1].Text = chips[i].ToString();
+            }
+
+            // ボタンの位置を決定
+            int player_num = 0;
+            for (int i = 0; i < 9; ++i)
+            {
+                if (chips[i] > 0) player_num++;
+            }
+
+            for (int i = 0; i < 9; ++i)
+            {
+                if (button == seats[i])
+                {
+                    if (player_num < 3)
+                    {
+                        positionRadioButtons[button - 1].Checked = true;
+                    }
+                    else
+                    {
+                        for (int j = 1, count = 0; j < 10; ++j)
+                        {
+                            if (chips[(i + j) % 9] > 0)
+                            {
+                                if (++count == 3)
+                                {
+                                    positionRadioButtons[seats[(i + j) % 9] - 1].Checked = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                    }
+                    break;
+                }
+            }
+            SetPosition();
+
+            if (chips[hero_index] > 0)
+            {
+                Calc();
             }
         }
     }
