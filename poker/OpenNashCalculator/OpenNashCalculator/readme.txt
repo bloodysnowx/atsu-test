@@ -26,7 +26,7 @@ BackColorOfMainForm : MainFormの背景色を指定する
 05. SBがPostしたSBを取得し、SB分のチップをSBから減算し、ポットに加える
 06. BBがPostしたBBを取得し、BB分のチップをBBから減算し、ポットに加える
 07. *** HOLE CARDS ***の次の行にDealt to ...が存在することを確認する
-08. 全員のアクションをname: calls [0-9]+またはname: raises [0-9]+ to [0-9]+で取得し、
+08. 全員のアクションをname: bets [0-9]+またはname: calls [0-9]+またはname: raises [0-9]+ to [0-9]+で取得し、
 支払ったチップ分を減算し、ポットに加えていく
 09. UNCALLED bet ([0-9]+) returned to nameが存在した場合、ポットから減算し、プレイヤーに戻す
 10. name collected [0-9]+ from ...が存在した場合、ポットから減算し、プレイヤーに加える

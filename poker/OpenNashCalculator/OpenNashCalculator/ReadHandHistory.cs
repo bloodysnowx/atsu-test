@@ -48,6 +48,7 @@ namespace OpenNashCalculator
             int[] chips = new int[9];
             string[] position = new string[9];
             int pot = 0;
+            int[] posted = new int[9];
 
             regex = new Regex("Seat" + Regex.Escape(" ") + "([0-9]+):" + Regex.Escape(" ") + "(.+)" + Regex.Escape(" ")
                 + Regex.Escape("(") + "([0-9]+)" + Regex.Escape(" ") + "in" + Regex.Escape(" ") + "chips" + Regex.Escape(")"));
@@ -101,8 +102,9 @@ namespace OpenNashCalculator
                 {
                     if (matchCol[0].Groups[1].Value.Equals(names[j]))
                     {
-                        chips[j] -= System.Convert.ToInt32(matchCol[0].Groups[2].Value);
-                        pot += System.Convert.ToInt32(matchCol[0].Groups[2].Value);
+                        posted[j] = System.Convert.ToInt32(matchCol[0].Groups[2].Value);
+                        chips[j] -= posted[j];
+                        pot += posted[j];
                     }
                 }
             }
@@ -120,14 +122,125 @@ namespace OpenNashCalculator
                 {
                     if (matchCol[0].Groups[1].Value.Equals(names[j]))
                     {
-                        chips[j] -= System.Convert.ToInt32(matchCol[0].Groups[2].Value);
-                        pot += System.Convert.ToInt32(matchCol[0].Groups[2].Value);
+                        posted[j] = System.Convert.ToInt32(matchCol[0].Groups[2].Value);
+                        chips[j] -= posted[j];
+                        pot += posted[j];
                     }
                 }
             }
             else
             {
                 line -= 1;
+            }
+
+            // Heroの名前を取得
+            for (; line < hh.Length; ++line)
+            {
+                if (hh[line].StartsWith("*** HOLE CARDS ***"))
+                {
+                    break;
+                }
+            }
+            regex = new Regex("Dealt" + Regex.Escape(" ") + "to" + Regex.Escape(" ") + "(.+)" + Regex.Escape(" [")
+                + "[2-9JQKA][shdc]" + Regex.Escape(" ") + "[2-9JQKA][shdc]" + Regex.Escape("]"));
+            matchCol = regex.Matches(hh[++line]);
+            string hero_name = matchCol[0].Groups[1].Value;
+
+            // bets, calls, raises, UNCALLED bet, collected
+            Regex bets_regex = new Regex("(.+):" + Regex.Escape(" ") + "bets" + Regex.Escape(" ") + "([0-9]+)");
+            Regex calls_regex = new Regex("(.+):" + Regex.Escape(" ") + "calls" + Regex.Escape(" ") + "([0-9]+)");
+            Regex raises_regex = new Regex("(.+):" + Regex.Escape(" ") + "raises" + Regex.Escape(" ") + "([0-9]+)"
+                + Regex.Escape(" ") + "to" + Regex.Escape(" ") + "([0-9]+)");
+            Regex uncalled_regex = new Regex("Uncalled" + Regex.Escape(" ") + "bet" + Regex.Escape(" (") + "([0-9]+)"
+                + Regex.Escape(") ") + "returned" + Regex.Escape(" ") + "to" + Regex.Escape(" ") + "(.+)");
+            Regex collected_regex = new Regex("(.+)" + Regex.Escape(" ") + "collected" + Regex.Escape(" ") + "([0-9]+)"
+                + Regex.Escape(" ") + "from" + Regex.Escape(" "));
+
+            for (; line < hh.Length; ++line)
+            {
+                matchCol = bets_regex.Matches(hh[line]);
+                if (matchCol.Count > 0)
+                {
+                    for (int j = 0; j < 9; ++j)
+                    {
+                        if (matchCol[0].Groups[1].Value.Equals(names[j]))
+                        {
+                            chips[j] -= System.Convert.ToInt32(matchCol[0].Groups[2].Value);
+                            pot += System.Convert.ToInt32(matchCol[0].Groups[2].Value);
+                            posted[j] += System.Convert.ToInt32(matchCol[0].Groups[2].Value);
+                            break;
+                        }
+                    }
+                    continue;
+                }
+                matchCol = calls_regex.Matches(hh[line]);
+                if (matchCol.Count > 0)
+                {
+                    for (int j = 0; j < 9; ++j)
+                    {
+                        if (matchCol[0].Groups[1].Value.Equals(names[j]))
+                        {
+                            chips[j] -= System.Convert.ToInt32(matchCol[0].Groups[2].Value);
+                            pot += System.Convert.ToInt32(matchCol[0].Groups[2].Value);
+                            posted[j] += System.Convert.ToInt32(matchCol[0].Groups[2].Value);
+                            break;
+                        }
+                    }
+                    continue;
+                }
+                matchCol = raises_regex.Matches(hh[line]);
+                if (matchCol.Count > 0)
+                {
+                    for (int j = 0; j < 9; ++j)
+                    {
+                        if (matchCol[0].Groups[1].Value.Equals(names[j]))
+                        {
+                            chips[j] -= System.Convert.ToInt32(matchCol[0].Groups[3].Value) - posted[j];
+                            pot += System.Convert.ToInt32(matchCol[0].Groups[3].Value) - posted[j];
+                            posted[j] = System.Convert.ToInt32(matchCol[0].Groups[3].Value);
+                            break;
+                        }
+                    }
+                    continue;
+                }
+                matchCol = uncalled_regex.Matches(hh[line]);
+                if (matchCol.Count > 0)
+                {
+                    for (int j = 0; j < 9; ++j)
+                    {
+                        if (matchCol[0].Groups[2].Value.Equals(names[j]))
+                        {
+                            chips[j] += System.Convert.ToInt32(matchCol[0].Groups[1].Value);
+                            pot -= System.Convert.ToInt32(matchCol[0].Groups[1].Value);
+                            break;
+                        }
+                    }
+                    continue;
+                }
+                matchCol = collected_regex.Matches(hh[line]);
+                if (matchCol.Count > 0)
+                {
+                    for (int j = 0; j < 9; ++j)
+                    {
+                        if (matchCol[0].Groups[1].Value.Equals(names[j]))
+                        {
+                            chips[j] += System.Convert.ToInt32(matchCol[0].Groups[2].Value);
+                            pot -= System.Convert.ToInt32(matchCol[0].Groups[2].Value);
+                            break;
+                        }
+                    }
+                    continue;
+                }
+
+                if (hh[line].StartsWith("*** FLOP ***") || hh[line].StartsWith("*** TURN ***") || hh[line].StartsWith("*** RIVER ***"))
+                {
+                    for (int i = 0; i < 9; ++i)
+                        posted[i] = 0;
+                }
+                else if(hh[line].StartsWith("*** SUMMARY ***"))
+                {
+                    break;
+                }
             }
         }
     }
