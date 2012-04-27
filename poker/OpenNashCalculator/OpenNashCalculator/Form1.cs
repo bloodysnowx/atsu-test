@@ -164,7 +164,7 @@ namespace OpenNashCalculator
             MatchCollection matchCol = regex.Matches(web_page);
             int callRangeCount = matchCol.Count - 1;
 
-            for (int i = 1; i < 8 && callRangeCount >= 0; ++i)
+            for (int i = 1; i < 9 && callRangeCount >= 0; ++i)
             {
                 if (positionRadioButtons[(hero_num - i + 9) % 9].Enabled)
                 {
@@ -172,10 +172,12 @@ namespace OpenNashCalculator
                 }
             }
 
+#if false
             if (hero_pos == Position[0])
             {
                 rangeTextBoxes[(hero_num + 1) % 9].Text = matchCol[callRangeCount--].Groups[1].Value;
             }
+#endif
 
             regex = new Regex("<td>" + Regex.Escape(hero_pos) + "</td><td /><td /><td>(.*?)</td>");
             matchCol = regex.Matches(web_page);

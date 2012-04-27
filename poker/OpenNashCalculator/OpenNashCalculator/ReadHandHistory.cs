@@ -146,7 +146,7 @@ namespace OpenNashCalculator
                 }
             }
             regex = new Regex("Dealt" + Regex.Escape(" ") + "to" + Regex.Escape(" ") + "(.+)" + Regex.Escape(" [")
-                + "[2-9JQKA][shdc]" + Regex.Escape(" ") + "[2-9JQKA][shdc]" + Regex.Escape("]"));
+                + "[2-9TJQKA][shdc]" + Regex.Escape(" ") + "[2-9TJQKA][shdc]" + Regex.Escape("]"));
             matchCol = regex.Matches(hh[++line]);
             string hero_name = matchCol[0].Groups[1].Value;
             int hero_index = 0;
@@ -306,7 +306,7 @@ namespace OpenNashCalculator
             }
             SetPosition();
 
-            if (chips[hero_index] > 0)
+            if (chips[hero_index] > 0 && player_num > 1 && checkBoxCalc.Checked)
             {
                 Calc();
             }
