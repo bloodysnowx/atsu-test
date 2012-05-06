@@ -310,6 +310,11 @@ namespace OpenNashCalculator
             {
                 Calc();
             }
+            else
+            {
+                foreach (TextBox x in rangeTextBoxes)
+                    x.Clear();
+            }
         }
     }
 }

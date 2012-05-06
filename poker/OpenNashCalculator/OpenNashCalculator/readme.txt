@@ -13,7 +13,10 @@ BackColorOfMainForm : MainFormの背景色を指定する
 
 使用方法
 
-未記載
+01. 起動する
+02. トーナメントにエントリーし、2ハンド目が配られるのを待つ
+03. "Open Hand History"ボタンにて、02のトーナメントのハンドヒストリを開く
+04. Auto Calc
 
 ハンドヒストリ読み込み
 
@@ -39,6 +42,11 @@ BackColorOfMainForm : MainFormの背景色を指定する
 16. ハンドレンジを取得し、表示する
 
 ChangeLog
+
+2012/05/06 rev 164
+
+Auto Refreshのチェック状態を修正
+Refresh時に前回の計算結果をクリア
 
 2012/04/27 rev 163
 範囲の数え間違えを修正

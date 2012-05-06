@@ -378,10 +378,10 @@ namespace OpenNashCalculator
         {
             if (openHandHistoryDialog.ShowDialog() != DialogResult.OK)
             {
-                checkBoxRefresh.Enabled = false;
+                checkBoxRefresh.Enabled = checkBoxRefresh.Checked = false;
                 return;
             }
-            checkBoxRefresh.Enabled = true;
+            checkBoxRefresh.Enabled = checkBoxRefresh.Checked = true;
 
             ReadHandHistory();
         }

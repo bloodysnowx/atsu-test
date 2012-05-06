@@ -285,6 +285,7 @@
             this.buttonBBUP.TabStop = false;
             this.buttonBBUP.Text = "BBUP";
             this.buttonBBUP.UseVisualStyleBackColor = true;
+            this.buttonBBUP.Visible = false;
             this.buttonBBUP.Click += new System.EventHandler(this.buttonBBUP_Click);
             // 
             // buttonBBDown
@@ -296,6 +297,7 @@
             this.buttonBBDown.TabStop = false;
             this.buttonBBDown.Text = "Down";
             this.buttonBBDown.UseVisualStyleBackColor = true;
+            this.buttonBBDown.Visible = false;
             this.buttonBBDown.Click += new System.EventHandler(this.buttonBBDown_Click);
             // 
             // label1
@@ -500,6 +502,7 @@
             this.checkBoxICM.TabStop = false;
             this.checkBoxICM.Text = "EnableICM";
             this.checkBoxICM.UseVisualStyleBackColor = true;
+            this.checkBoxICM.Visible = false;
             // 
             // button2
             // 
@@ -780,8 +783,6 @@
             // checkBoxCalc
             // 
             this.checkBoxCalc.AutoSize = true;
-            this.checkBoxCalc.Checked = true;
-            this.checkBoxCalc.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxCalc.Location = new System.Drawing.Point(398, 65);
             this.checkBoxCalc.Name = "checkBoxCalc";
             this.checkBoxCalc.Size = new System.Drawing.Size(75, 16);

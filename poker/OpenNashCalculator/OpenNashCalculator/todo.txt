@@ -46,8 +46,9 @@ WEBから結果を引っ張る
 
 
 
+オプションとして、Heroのシートを上から何番目にするかを追加
 
-
+試しにBBを一番下にのモードもつけてみますか。
 
 ・H(HERO)の代わりにこのアイコンを設置。
 　http://www.electrobeat.dk/v3/gfx/smiley.smile.png
