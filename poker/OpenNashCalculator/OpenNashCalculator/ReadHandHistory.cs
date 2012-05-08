@@ -304,6 +304,20 @@ namespace OpenNashCalculator
                     break;
                 }
             }
+
+
+            if (Properties.Settings.Default.SetBBLast)
+            {
+                // while(
+            }
+            else if (0 < Properties.Settings.Default.PreferredSeat && Properties.Settings.Default.PreferredSeat < 10)
+            {
+                for (int i = 0; i < (Properties.Settings.Default.PreferredSeat - 1 - hero_index + 9) % 9; ++i)
+                    SeatRotateF();
+
+                SetHeroSeat(SeatLabels[Properties.Settings.Default.PreferredSeat - 1]);
+            }
+
             SetPosition();
 
             if (chips[hero_index] > 0 && player_num > 1 && checkBoxCalc.Checked)
@@ -315,6 +329,28 @@ namespace OpenNashCalculator
                 foreach (TextBox x in rangeTextBoxes)
                     x.Clear();
             }
+        }
+
+        void SeatRotateF()
+        {
+            string tmp_seat = SeatLabels[8].Text;
+            string tmp_chip = chipTextBoxes[8].Text;
+            bool tmp_checked = positionRadioButtons[8].Checked;
+
+            for (int i = 7; i >= 0; --i)
+            {
+                SeatLabels[i + 1].Text = SeatLabels[i].Text;
+                chipTextBoxes[i + 1].Text = chipTextBoxes[i].Text;
+                positionRadioButtons[i + 1].Checked = positionRadioButtons[i].Checked;
+            }
+
+            SeatLabels[0].Text = tmp_seat;
+            chipTextBoxes[0].Text = tmp_chip;
+            positionRadioButtons[0].Checked = tmp_checked;
+        }
+
+        void SeatRotateR()
+        {
         }
     }
 }

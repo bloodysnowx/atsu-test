@@ -10,6 +10,8 @@ StartingChip : 開始チップ量を指定する
 PlayerNum : Playerの人数を指定する
 DefaultLevel : 開始時のブラインドレベルを指定する
 BackColorOfMainForm : MainFormの背景色を指定する
+PreferredSeat : Heroの座席位置を指定する(指定しない場合は0)
+SetBBLast : BBの座席位置を一番下にするかどうかを指定する(PreferredSeatの指定よりも優先される) <- 現状未実装
 
 使用方法
 
@@ -28,7 +30,7 @@ BackColorOfMainForm : MainFormの背景色を指定する
 04. 全員がPostしたアンテを取得し、アンテ分のチップを全員から減算し、ポットに加える
 05. SBがPostしたSBを取得し、SB分のチップをSBから減算し、ポットに加える
 06. BBがPostしたBBを取得し、BB分のチップをBBから減算し、ポットに加える
-07. *** HOLE CARDS ***の次の行にDealt to ...が存在することを確認する
+07. *** HOLE CARDS ***の次の行にDealt to ...が存在することを確認し、Heroの名前を取得し、HeroのSeatを設定する
 08. 全員のアクションをname: bets [0-9]+またはname: calls [0-9]+またはname: raises [0-9]+ to [0-9]+で取得し、
 支払ったチップ分を減算し、ポットに加えていく
 09. UNCALLED bet ([0-9]+) returned to nameが存在した場合、ポットから減算し、プレイヤーに戻す
@@ -43,8 +45,10 @@ BackColorOfMainForm : MainFormの背景色を指定する
 
 ChangeLog
 
-2012/05/06 rev 164
+2012/05/08 rev 165
+ハンドヒストリ読み込み時のHeroの座席位置をPreferredSeatによって指定できる機能を実装
 
+2012/05/06 rev 164
 Auto Refreshのチェック状態を修正
 Refresh時に前回の計算結果をクリア
 

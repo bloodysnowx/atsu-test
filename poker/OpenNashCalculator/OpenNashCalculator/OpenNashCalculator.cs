@@ -99,6 +99,61 @@ namespace OpenNashCalculator
             {
             }
         }
+
+        public int[] Chips
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        public string[] Names
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        public string[] Positions
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        public int HeroSeat
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        public string[] HandRanges
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
     
         public void Open()
         {
@@ -111,6 +166,11 @@ namespace OpenNashCalculator
         }
 
         public void BlindUp()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Calc()
         {
             throw new System.NotImplementedException();
         }
