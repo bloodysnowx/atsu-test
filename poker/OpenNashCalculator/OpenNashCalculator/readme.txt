@@ -11,7 +11,7 @@ PlayerNum : Playerの人数を指定する
 DefaultLevel : 開始時のブラインドレベルを指定する
 BackColorOfMainForm : MainFormの背景色を指定する
 PreferredSeat : Heroの座席位置を指定する(指定しない場合は0)
-SetBBLast : BBの座席位置を一番下にするかどうかを指定する(PreferredSeatの指定よりも優先される) <- 現状未実装
+SetBBLast : BBの座席位置を一番下にするかどうかを指定する(PreferredSeatの指定よりも優先される)
 
 使用方法
 
@@ -44,6 +44,9 @@ SetBBLast : BBの座席位置を一番下にするかどうかを指定する(Pr
 16. ハンドレンジを取得し、表示する
 
 ChangeLog
+
+2012/05/08 rev 166
+ハンドヒストリ読み込み時にBBを一番下に設定するSetBBLast機能を実装
 
 2012/05/08 rev 165
 ハンドヒストリ読み込み時のHeroの座席位置をPreferredSeatによって指定できる機能を実装

@@ -305,14 +305,19 @@ namespace OpenNashCalculator
                 }
             }
 
-
             if (Properties.Settings.Default.SetBBLast)
             {
-                // while(
+                while (positionRadioButtons[8].Text != Position[0])
+                {
+                    SeatRotateF();
+                    seats[hero_index]++;
+                }
+                if(seats[hero_index] > 9) seats[hero_index] = seats[hero_index] % 9;
+                SetHeroSeat(SeatLabels[seats[hero_index] - 1]);
             }
             else if (0 < Properties.Settings.Default.PreferredSeat && Properties.Settings.Default.PreferredSeat < 10)
             {
-                for (int i = 0; i < (Properties.Settings.Default.PreferredSeat - 1 - hero_index + 9) % 9; ++i)
+                for (int i = 0; i < (Properties.Settings.Default.PreferredSeat -  seats[hero_index] + 9) % 9; ++i)
                     SeatRotateF();
 
                 SetHeroSeat(SeatLabels[Properties.Settings.Default.PreferredSeat - 1]);
