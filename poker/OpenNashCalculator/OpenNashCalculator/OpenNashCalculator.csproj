@@ -92,6 +92,11 @@
     <Content Include="todo.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(ProjectDir)readme.txt $(TargetDir)readme.txt
+del $(TargetDir)Release.zip
+C:\"Program Files"\WinRAR\WinRAR.exe a -ep1 $(TargetDir)Release.zip $(TargetPath) $(TargetPath).config $(TargetDir)readme.txt</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

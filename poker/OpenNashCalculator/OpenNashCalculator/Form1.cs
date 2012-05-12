@@ -51,6 +51,8 @@ namespace OpenNashCalculator
         DateTime updateDate;
         TextBox[] rangeTextBoxes;
 
+        string currentSB;
+
         private void EnabledPositionRadioButton()
         {
             for (int i = 0; i < 9; ++i)
@@ -110,7 +112,7 @@ namespace OpenNashCalculator
         private void SetBBSBAnte()
         {
             textBoxBB.Text = BB[level];
-            textBoxSB.Text = SB[level];
+            currentSB = SB[level];
             textBoxAnte.Text = Ante[level];
         }
 
@@ -135,7 +137,7 @@ namespace OpenNashCalculator
 
             string URL = "http://www.holdemresources.net/hr/sngs/icmcalculator.html?action=calculate&bb=";
             URL += textBoxBB.Text;
-            URL += "&sb=" + textBoxSB.Text.Trim();
+            URL += "&sb=" + currentSB.Trim();
             URL += "&ante=" + textBoxAnte.Text.Trim();
             URL += "&structure=" + HttpUtility.UrlEncode(textBoxStructure.Text.Trim());
             URL += "&s1=" + chipTextBoxes[(bb_pos + 1) % 9].Text.Trim();
@@ -199,7 +201,6 @@ namespace OpenNashCalculator
         private void Form1_Load(object sender, EventArgs e)
         {
             textBoxBB.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.BBMouseWheel);
-            textBoxSB.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.BBMouseWheel);
             textBoxAnte.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.BBMouseWheel);
 
             level = Properties.Settings.Default.DefaultLevel - 1;
@@ -270,7 +271,7 @@ namespace OpenNashCalculator
                 sb = 0;
             }
 
-            textBoxSB.Text = sb.ToString();
+            currentSB = sb.ToString();
         }
 
         private void textBox_Enter(object sender, EventArgs e)
@@ -301,7 +302,7 @@ namespace OpenNashCalculator
             try
             {
                 int digit = 0;
-                digit = System.Convert.ToInt32(textBoxSB.Text);
+                digit = System.Convert.ToInt32(currentSB);
                 int chip = 0;
                 System.Int32.TryParse(((TextBox)sender).Text, out chip);
 

@@ -259,7 +259,7 @@ namespace OpenNashCalculator
 
             // 設定
             textBoxBB.Text = bb.ToString();
-            textBoxSB.Text = sb.ToString();
+            currentSB = sb.ToString();
             textBoxAnte.Text = ante.ToString();
 
             // チップ入力
@@ -267,6 +267,9 @@ namespace OpenNashCalculator
                 chipTextBox.Text = "";
             for (int i = 0; i < 9; ++i)
             {
+                if (chips[i] <= 0 && names[i] != string.Empty && checkBoxRebuy.Checked)
+                    chips[i] = System.Convert.ToInt32(Properties.Settings.Default.StartingChip);
+
                 if (chips[i] > 0)
                     chipTextBoxes[seats[i] - 1].Text = chips[i].ToString();
             }
