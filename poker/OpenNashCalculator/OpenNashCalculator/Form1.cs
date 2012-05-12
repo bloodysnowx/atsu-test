@@ -383,6 +383,9 @@ namespace OpenNashCalculator
                 return;
             }
             checkBoxRefresh.Enabled = checkBoxRefresh.Checked = true;
+            startingChip = 0;
+            updateDate = new DateTime();
+            this.Text = "OpenNashCalculator - " + System.IO.Path.GetFileName(openHandHistoryDialog.FileName);
 
             ReadHandHistory();
         }

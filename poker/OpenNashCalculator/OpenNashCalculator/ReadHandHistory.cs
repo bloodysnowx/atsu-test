@@ -14,6 +14,8 @@ namespace OpenNashCalculator
 {
     public partial class Form1 : Form
     {
+        int startingChip = 0;
+
         void ReadHandHistory()
         {
             if (updateDate >= System.IO.File.GetLastWriteTime(openHandHistoryDialog.FileName))
@@ -21,6 +23,36 @@ namespace OpenNashCalculator
 
             updateDate = System.IO.File.GetLastWriteTime(openHandHistoryDialog.FileName);
             string[] hh = System.IO.File.ReadAllLines(openHandHistoryDialog.FileName);
+            Regex regex;
+            MatchCollection matchCol;
+            string hero_name = "";
+
+            // リバイ時のチップを取得する
+            if (startingChip == 0)
+            {
+                regex = new Regex("Dealt" + Regex.Escape(" ") + "to" + Regex.Escape(" ") + "(.+)" + Regex.Escape(" [")
+                    + "[2-9TJQKA][shdc]" + Regex.Escape(" ") + "[2-9TJQKA][shdc]" + Regex.Escape("]"));
+
+                for (int i = 0; i < hh.Length; ++i)
+                {
+                    matchCol = regex.Matches(hh[i]);
+                    if(matchCol.Count > 0)
+                        hero_name = matchCol[0].Groups[1].Value;
+                }
+
+                regex = new Regex("Seat" + Regex.Escape(" ") + "([0-9]+):" + Regex.Escape(" ") + "(.+)" + Regex.Escape(" ")
+                    + Regex.Escape("(") + "([0-9]+)" + Regex.Escape(" ") + "in" + Regex.Escape(" ") + "chips" + Regex.Escape(")"));
+
+                for (int i = 0; i < hh.Length; ++i)
+                {
+                    matchCol = regex.Matches(hh[i]);
+                    if (matchCol.Count > 0 && matchCol[0].Groups[2].Value == hero_name)
+                    {
+                        startingChip = System.Convert.ToInt32(matchCol[0].Groups[3].Value);
+                        break;
+                    }
+                }
+            }
 
             int line = 0;
             for (int i = 0; i < hh.Length; ++i)
@@ -30,8 +62,8 @@ namespace OpenNashCalculator
             }
 
             // bbとsbを取得
-            Regex regex = new Regex(Regex.Escape("(") + "([0-9]+)" + Regex.Escape("/") + "([0-9]+)" + Regex.Escape(")"));
-            MatchCollection matchCol = regex.Matches(hh[line]);
+            regex = new Regex(Regex.Escape("(") + "([0-9]+)" + Regex.Escape("/") + "([0-9]+)" + Regex.Escape(")"));
+            matchCol = regex.Matches(hh[line]);
             int sb = System.Convert.ToInt32(matchCol[0].Groups[1].Value);
             int bb = System.Convert.ToInt32(matchCol[0].Groups[2].Value);
 
@@ -148,7 +180,7 @@ namespace OpenNashCalculator
             regex = new Regex("Dealt" + Regex.Escape(" ") + "to" + Regex.Escape(" ") + "(.+)" + Regex.Escape(" [")
                 + "[2-9TJQKA][shdc]" + Regex.Escape(" ") + "[2-9TJQKA][shdc]" + Regex.Escape("]"));
             matchCol = regex.Matches(hh[++line]);
-            string hero_name = matchCol[0].Groups[1].Value;
+            hero_name = matchCol[0].Groups[1].Value;
             int hero_index = 0;
             for (int i = 0; i < 9; ++i)
             {
@@ -268,7 +300,7 @@ namespace OpenNashCalculator
             for (int i = 0; i < 9; ++i)
             {
                 if (chips[i] <= 0 && names[i] != string.Empty && checkBoxRebuy.Checked)
-                    chips[i] = System.Convert.ToInt32(Properties.Settings.Default.StartingChip);
+                    chips[i] = startingChip;
 
                 if (chips[i] > 0)
                     chipTextBoxes[seats[i] - 1].Text = chips[i].ToString();
