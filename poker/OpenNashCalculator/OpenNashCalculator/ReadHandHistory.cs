@@ -52,6 +52,11 @@ namespace OpenNashCalculator
                         break;
                     }
                 }
+
+                if (startingChip == 0)
+                {
+                    startingChip = System.Convert.ToInt32(Properties.Settings.Default.StartingChip);
+                }
             }
 
             int line = 0;
