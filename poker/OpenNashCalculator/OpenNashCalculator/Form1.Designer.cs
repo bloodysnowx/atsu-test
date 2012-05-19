@@ -101,7 +101,11 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.chipContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.Addon30kToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Addon50kToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBoxPosition.SuspendLayout();
+            this.chipContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelBB
@@ -751,7 +755,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(113, 114);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(41, 12);
+            this.label10.Size = new System.Drawing.Size(43, 12);
             this.label10.TabIndex = 82;
             this.label10.Text = "Player1";
             // 
@@ -760,7 +764,7 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(113, 148);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(41, 12);
+            this.label11.Size = new System.Drawing.Size(43, 12);
             this.label11.TabIndex = 83;
             this.label11.Text = "Player2";
             // 
@@ -769,7 +773,7 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(113, 182);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(41, 12);
+            this.label12.Size = new System.Drawing.Size(43, 12);
             this.label12.TabIndex = 84;
             this.label12.Text = "Player3";
             // 
@@ -778,7 +782,7 @@
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(113, 216);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(41, 12);
+            this.label13.Size = new System.Drawing.Size(43, 12);
             this.label13.TabIndex = 85;
             this.label13.Text = "Player4";
             // 
@@ -787,7 +791,7 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(113, 250);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(41, 12);
+            this.label14.Size = new System.Drawing.Size(43, 12);
             this.label14.TabIndex = 86;
             this.label14.Text = "Player5";
             // 
@@ -796,7 +800,7 @@
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(113, 284);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(41, 12);
+            this.label15.Size = new System.Drawing.Size(43, 12);
             this.label15.TabIndex = 87;
             this.label15.Text = "Player6";
             // 
@@ -805,7 +809,7 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(113, 318);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(41, 12);
+            this.label16.Size = new System.Drawing.Size(43, 12);
             this.label16.TabIndex = 88;
             this.label16.Text = "Player7";
             // 
@@ -814,7 +818,7 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(113, 352);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(41, 12);
+            this.label17.Size = new System.Drawing.Size(43, 12);
             this.label17.TabIndex = 89;
             this.label17.Text = "Player8";
             // 
@@ -823,9 +827,30 @@
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(113, 389);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(41, 12);
+            this.label18.Size = new System.Drawing.Size(43, 12);
             this.label18.TabIndex = 90;
             this.label18.Text = "Player9";
+            // 
+            // chipContextMenuStrip
+            // 
+            this.chipContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Addon30kToolStripMenuItem,
+            this.Addon50kToolStripMenuItem});
+            this.chipContextMenuStrip.Name = "chipContextMenuStrip";
+            this.chipContextMenuStrip.Size = new System.Drawing.Size(153, 70);
+            this.chipContextMenuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.chipContextMenuStrip_ItemClicked);
+            // 
+            // Addon30kToolStripMenuItem
+            // 
+            this.Addon30kToolStripMenuItem.Name = "Addon30kToolStripMenuItem";
+            this.Addon30kToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.Addon30kToolStripMenuItem.Text = "Addon 30k";
+            // 
+            // Addon50kToolStripMenuItem
+            // 
+            this.Addon50kToolStripMenuItem.Name = "Addon50kToolStripMenuItem";
+            this.Addon50kToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.Addon50kToolStripMenuItem.Text = "Addon 50k";
             // 
             // Form1
             // 
@@ -899,6 +924,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBoxPosition.ResumeLayout(false);
             this.groupBoxPosition.PerformLayout();
+            this.chipContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -978,6 +1004,9 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ContextMenuStrip chipContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem Addon30kToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Addon50kToolStripMenuItem;
     }
 }
 

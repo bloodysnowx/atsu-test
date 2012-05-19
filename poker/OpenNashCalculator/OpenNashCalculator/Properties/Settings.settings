@@ -32,5 +32,14 @@
     <Setting Name="SetBBLast" Type="System.Boolean" Scope="Application">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="AddonChip" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">30000</Value>
+    </Setting>
+    <Setting Name="AddonBB" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">12000</Value>
+    </Setting>
+    <Setting Name="AddonAnte" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">1200</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

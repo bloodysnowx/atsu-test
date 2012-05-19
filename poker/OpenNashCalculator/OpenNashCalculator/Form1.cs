@@ -52,6 +52,8 @@ namespace OpenNashCalculator
         TextBox[] rangeTextBoxes;
         Label[] PlayerNameLabels;
 
+        int retry_num = 0;
+
         string currentSB;
 
         private void EnabledPositionRadioButton()
@@ -227,6 +229,8 @@ namespace OpenNashCalculator
             {
                 chipTextBox.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.ChipMouseWheel);
                 chipTextBox.Click +=  new System.EventHandler(textBox_Click);
+                chipTextBox.DoubleClick += new System.EventHandler(chipTextBoxes_DoubleClick);
+                chipTextBox.ContextMenuStrip = chipContextMenuStrip;
             }
 
             positionRadioButtons = new RadioButton[] { radioButton1, radioButton2, radioButton3,
@@ -366,6 +370,16 @@ namespace OpenNashCalculator
             ((TextBox)sender).SelectAll();
         }
 
+        private void chipTextBoxes_DoubleClick(object sender, EventArgs e)
+        {
+            int chips = System.Convert.ToInt32(((TextBox)sender).Text);
+            chips += Properties.Settings.Default.AddonChip;
+            ((TextBox)sender).Text = chips.ToString();
+
+            textBoxBB.Text = Properties.Settings.Default.AddonBB.ToString();
+            textBoxAnte.Text = Properties.Settings.Default.AddonAnte.ToString();
+        }
+
         private void labelChips_DoubleClick(object sender, EventArgs e)
         {
             int hero_num = getHeroNum();
@@ -386,12 +400,38 @@ namespace OpenNashCalculator
                 checkBoxRefresh.Enabled = checkBoxRefresh.Checked = false;
                 return;
             }
-            checkBoxRefresh.Enabled = checkBoxRefresh.Checked = true;
+            
             startingChip = 0;
             updateDate = new DateTime();
+            
             this.Text = "ONC - " + System.IO.Path.GetFileName(openHandHistoryDialog.FileName);
 
-            ReadHandHistory();
+            for (retry_num = 0; retry_num < 3; ++retry_num)
+            {
+                try
+                {
+                    ReadHandHistory();
+                    retry_num = 0;
+                    break;
+                }
+                catch
+                {
+                    updateDate = new DateTime();
+                    System.Threading.Thread.Sleep(10);
+                }
+            }
+
+            if (retry_num > 0)
+            {
+                checkBoxRefresh.Enabled = checkBoxRefresh.Checked = false;
+                MessageBox.Show(System.IO.Path.GetFileName(openHandHistoryDialog.FileName) + " may be broken."
+                    + System.Environment.NewLine + "This program cannot read this hand history."
+                    + System.Environment.NewLine + "Please choose another file.");
+            }
+            else
+            {
+                checkBoxRefresh.Enabled = checkBoxRefresh.Checked = true;
+            }
         }
 
         private void checkBoxRefresh_CheckedChanged(object sender, EventArgs e)
@@ -401,7 +441,48 @@ namespace OpenNashCalculator
 
         private void refreshTimer_Tick(object sender, EventArgs e)
         {
-            ReadHandHistory();
+            try
+            {
+                ReadHandHistory();
+                retry_num = 0;
+            }
+            catch
+            {
+                updateDate = new DateTime();
+                retry_num++;
+            }
+
+            if (retry_num > 3)
+            {
+                checkBoxRefresh.Enabled = checkBoxRefresh.Checked = false;
+                MessageBox.Show(System.IO.Path.GetFileName(openHandHistoryDialog.FileName) + " may be broken."
+                    + System.Environment.NewLine + "This program cannot read this hand history."
+                    + System.Environment.NewLine + "Please choose another file.");
+            }
+        }
+
+        private void chipContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            TextBox source = (sender as ContextMenuStrip).SourceControl as TextBox;
+            int chips = System.Convert.ToInt32(source.Text);
+
+            textBoxBB.Text = Properties.Settings.Default.AddonBB.ToString();
+            textBoxAnte.Text = Properties.Settings.Default.AddonAnte.ToString();
+
+            switch (e.ClickedItem.Name)
+            {
+                case "Addon30kToolStripMenuItem":
+                    chips += 30000;
+                    break;
+                case "Addon50kToolStripMenuItem":
+                    chips += 50000;
+                    break;
+                default:
+                    break;
+            }
+            source.Text = chips.ToString();
+            textBoxBB.Text = Properties.Settings.Default.AddonBB.ToString();
+            textBoxAnte.Text = Properties.Settings.Default.AddonAnte.ToString();
         }
 
 #if false
