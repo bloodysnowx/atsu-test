@@ -299,11 +299,13 @@ namespace OpenNashCalculator
             currentSB = sb.ToString();
             textBoxAnte.Text = ante.ToString();
 
-            // チップ入力
+            // チップと名前入力
             foreach (TextBox chipTextBox in chipTextBoxes)
                 chipTextBox.Text = "";
             for (int i = 0; i < 9; ++i)
             {
+                PlayerNameLabels[i].Text = names[i];
+
                 if (chips[i] <= 0 && names[i] != string.Empty && checkBoxRebuy.Checked)
                     chips[i] = startingChip;
 
@@ -381,17 +383,20 @@ namespace OpenNashCalculator
             string tmp_seat = SeatLabels[8].Text;
             string tmp_chip = chipTextBoxes[8].Text;
             bool tmp_checked = positionRadioButtons[8].Checked;
+            string tmp_name = PlayerNameLabels[8].Text;
 
             for (int i = 7; i >= 0; --i)
             {
                 SeatLabels[i + 1].Text = SeatLabels[i].Text;
                 chipTextBoxes[i + 1].Text = chipTextBoxes[i].Text;
                 positionRadioButtons[i + 1].Checked = positionRadioButtons[i].Checked;
+                PlayerNameLabels[i + 1].Text = PlayerNameLabels[i].Text;
             }
 
             SeatLabels[0].Text = tmp_seat;
             chipTextBoxes[0].Text = tmp_chip;
             positionRadioButtons[0].Checked = tmp_checked;
+            PlayerNameLabels[0].Text = tmp_name;
         }
 
         void SeatRotateR()

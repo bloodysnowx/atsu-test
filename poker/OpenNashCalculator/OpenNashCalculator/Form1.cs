@@ -50,6 +50,7 @@ namespace OpenNashCalculator
         Button[] ClearButtons;
         DateTime updateDate;
         TextBox[] rangeTextBoxes;
+        Label[] PlayerNameLabels;
 
         string currentSB;
 
@@ -120,6 +121,8 @@ namespace OpenNashCalculator
         {
             level = Properties.Settings.Default.DefaultLevel - 1;
             SetBBSBAnte();
+
+            textBoxStructure.Text = Properties.Settings.Default.DefaultStructure;
 
             for (int i = 0; i < 9; ++i)
             {
@@ -192,7 +195,6 @@ namespace OpenNashCalculator
                 System.Diagnostics.Process.Start(URL);
         }
 
-
         private void buttonCalc_Click(object sender, EventArgs e)
         {
             Calc();
@@ -202,8 +204,6 @@ namespace OpenNashCalculator
         {
             textBoxBB.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.BBMouseWheel);
             textBoxAnte.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.BBMouseWheel);
-
-            level = Properties.Settings.Default.DefaultLevel - 1;
 
             if (Properties.Settings.Default.BB.Split(',').Length < 2 ||
                 Properties.Settings.Default.SB.Split(',').Length < 2 ||
@@ -218,10 +218,16 @@ namespace OpenNashCalculator
                 Ante = Properties.Settings.Default.Ante.Split(',');
             }
 
+            PlayerNameLabels = new Label[] { label10, label11, label12, label13, label14,
+                label15, label16, label17, label18 };
+
             chipTextBoxes = new TextBox[] { textBox1, textBox2, textBox3, textBox4,
                 textBox5, textBox6, textBox7, textBox8, textBox9 };
             foreach (TextBox chipTextBox in chipTextBoxes)
+            {
                 chipTextBox.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.ChipMouseWheel);
+                chipTextBox.Click +=  new System.EventHandler(textBox_Click);
+            }
 
             positionRadioButtons = new RadioButton[] { radioButton1, radioButton2, radioButton3,
                 radioButton4, radioButton5, radioButton6, radioButton7, radioButton8, radioButton9 };
@@ -239,8 +245,6 @@ namespace OpenNashCalculator
 
             chipTextBoxes[4].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
             rangeTextBoxes[4].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
-
-            textBoxStructure.Text = Properties.Settings.Default.DefaultStructure;
 
             Reset();
         }
@@ -385,7 +389,7 @@ namespace OpenNashCalculator
             checkBoxRefresh.Enabled = checkBoxRefresh.Checked = true;
             startingChip = 0;
             updateDate = new DateTime();
-            this.Text = "OpenNashCalculator - " + System.IO.Path.GetFileName(openHandHistoryDialog.FileName);
+            this.Text = "ONC - " + System.IO.Path.GetFileName(openHandHistoryDialog.FileName);
 
             ReadHandHistory();
         }
