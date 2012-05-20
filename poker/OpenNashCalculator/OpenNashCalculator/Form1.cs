@@ -372,7 +372,8 @@ namespace OpenNashCalculator
 
         private void chipTextBoxes_DoubleClick(object sender, EventArgs e)
         {
-            int chips = System.Convert.ToInt32(((TextBox)sender).Text);
+            int chips = 0;
+            Int32.TryParse(((TextBox)sender).Text, out chips);
             chips += Properties.Settings.Default.AddonChip;
             ((TextBox)sender).Text = chips.ToString();
 
@@ -464,7 +465,8 @@ namespace OpenNashCalculator
         private void chipContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             TextBox source = (sender as ContextMenuStrip).SourceControl as TextBox;
-            int chips = System.Convert.ToInt32(source.Text);
+            int chips = 0;
+            Int32.TryParse(source.Text, out chips);
 
             textBoxBB.Text = Properties.Settings.Default.AddonBB.ToString();
             textBoxAnte.Text = Properties.Settings.Default.AddonAnte.ToString();

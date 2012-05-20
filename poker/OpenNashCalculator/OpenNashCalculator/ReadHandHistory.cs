@@ -304,13 +304,14 @@ namespace OpenNashCalculator
                 chipTextBox.Text = "";
             for (int i = 0; i < 9; ++i)
             {
-                PlayerNameLabels[i].Text = names[i];
-
                 if (chips[i] <= 0 && names[i] != string.Empty && checkBoxRebuy.Checked)
                     chips[i] = startingChip;
 
                 if (chips[i] > 0)
+                {
                     chipTextBoxes[seats[i] - 1].Text = chips[i].ToString();
+                    PlayerNameLabels[seats[i] - 1].Text = names[i];
+                }
             }
 
             // ボタンの位置を決定
