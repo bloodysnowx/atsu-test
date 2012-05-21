@@ -383,10 +383,25 @@ namespace OpenNashCalculator
 
         private void labelChips_DoubleClick(object sender, EventArgs e)
         {
+            /*
             int hero_num = getHeroNum();
             string hero_chips = chipTextBoxes[hero_num].Text;
             for (int i = 0; i < 9; ++i)
                 if(positionRadioButtons[i].Enabled) chipTextBoxes[i].Text = hero_chips;
+            */
+            int chips = 0;
+
+            foreach (TextBox chipTextBox in chipTextBoxes)
+            {
+                if (Int32.TryParse(chipTextBox.Text, out chips))
+                {
+                    chips += Properties.Settings.Default.AddonChip;
+                    chipTextBox.Text = chips.ToString();
+                }
+            }
+
+            textBoxBB.Text = Properties.Settings.Default.AddonBB.ToString();
+            textBoxAnte.Text = Properties.Settings.Default.AddonAnte.ToString();
         }
 
         private void buttonReset_Click(object sender, EventArgs e)
