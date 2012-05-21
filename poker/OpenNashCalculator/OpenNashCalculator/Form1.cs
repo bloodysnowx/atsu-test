@@ -45,7 +45,6 @@ namespace OpenNashCalculator
         string[] Seat = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
         RadioButton[] positionRadioButtons;
         TextBox[] chipTextBoxes;
-        Label[] ICMLabels;
         Label[] SeatLabels;
         Button[] ClearButtons;
         DateTime updateDate;
@@ -144,6 +143,7 @@ namespace OpenNashCalculator
             URL += textBoxBB.Text;
             URL += "&sb=" + currentSB.Trim();
             URL += "&ante=" + textBoxAnte.Text.Trim();
+            textBoxStructure.Text = textBoxStructure.Text.Replace('+', ',').Replace(' ', ',');
             URL += "&structure=" + HttpUtility.UrlEncode(textBoxStructure.Text.Trim());
             URL += "&s1=" + chipTextBoxes[(bb_pos + 1) % 9].Text.Trim();
             URL += "&s2=" + chipTextBoxes[(bb_pos + 2) % 9].Text.Trim();
@@ -206,6 +206,9 @@ namespace OpenNashCalculator
         {
             textBoxBB.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.BBMouseWheel);
             textBoxAnte.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.BBMouseWheel);
+            textBoxBB.Click += new System.EventHandler(textBox_Click);
+            textBoxAnte.Click += new System.EventHandler(textBox_Click);
+            textBoxStructure.Click += new System.EventHandler(textBox_Click);
 
             if (Properties.Settings.Default.BB.Split(',').Length < 2 ||
                 Properties.Settings.Default.SB.Split(',').Length < 2 ||
