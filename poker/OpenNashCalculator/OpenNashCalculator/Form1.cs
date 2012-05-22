@@ -209,6 +209,7 @@ namespace OpenNashCalculator
             textBoxBB.Click += new System.EventHandler(textBox_Click);
             textBoxAnte.Click += new System.EventHandler(textBox_Click);
             textBoxStructure.Click += new System.EventHandler(textBox_Click);
+            labelChips.ContextMenuStrip = chipContextMenuStrip;
 
             if (Properties.Settings.Default.BB.Split(',').Length < 2 ||
                 Properties.Settings.Default.SB.Split(',').Length < 2 ||
@@ -494,27 +495,41 @@ namespace OpenNashCalculator
 
         private void chipContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            TextBox source = (sender as ContextMenuStrip).SourceControl as TextBox;
-            int chips = 0;
-            Int32.TryParse(source.Text, out chips);
-
-            textBoxBB.Text = Properties.Settings.Default.AddonBB.ToString();
-            textBoxAnte.Text = Properties.Settings.Default.AddonAnte.ToString();
-
-            switch (e.ClickedItem.Name)
+            Control source = (sender as ContextMenuStrip).SourceControl;
+            TextBox[] textBoxes = chipTextBoxes;
+            if (source.GetType() == typeof(TextBox))
             {
-                case "Addon30kToolStripMenuItem":
-                    chips += 30000;
-                    break;
-                case "Addon50kToolStripMenuItem":
-                    chips += 50000;
-                    break;
-                default:
-                    break;
+                textBoxes = new TextBox[] { source as TextBox };
             }
-            source.Text = chips.ToString();
+            foreach (TextBox textBox in textBoxes)
+            {
+                int chips = 0;
+                if (Int32.TryParse(textBox.Text, out chips) == false)
+                    continue;
+
+                switch (e.ClickedItem.Name)
+                {
+                    case "Addon30kToolStripMenuItem":
+                        chips += 30000;
+                        break;
+                    case "Addon50kToolStripMenuItem":
+                        chips += 50000;
+                        break;
+                    default:
+                        break;
+                }
+                textBox.Text = chips.ToString();
+            }
             textBoxBB.Text = Properties.Settings.Default.AddonBB.ToString();
             textBoxAnte.Text = Properties.Settings.Default.AddonAnte.ToString();
+        }
+
+        private void buttonReread_Click(object sender, EventArgs e)
+        {
+            if (openHandHistoryDialog.FileName != String.Empty)
+            {
+                openHandHistory();
+            }
         }
 
 #if false

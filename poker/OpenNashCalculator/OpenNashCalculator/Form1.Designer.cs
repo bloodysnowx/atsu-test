@@ -104,6 +104,7 @@
             this.chipContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.Addon30kToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Addon50kToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonReread = new System.Windows.Forms.Button();
             this.groupBoxPosition.SuspendLayout();
             this.chipContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -607,8 +608,8 @@
             // 
             // textBoxRange1
             // 
-            this.textBoxRange1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxRange1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxRange1.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxRange1.Location = new System.Drawing.Point(227, 93);
             this.textBoxRange1.Multiline = true;
@@ -620,8 +621,8 @@
             // 
             // textBoxRange2
             // 
-            this.textBoxRange2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxRange2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxRange2.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxRange2.Location = new System.Drawing.Point(227, 127);
             this.textBoxRange2.Multiline = true;
@@ -633,8 +634,8 @@
             // 
             // textBoxRange3
             // 
-            this.textBoxRange3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxRange3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxRange3.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxRange3.Location = new System.Drawing.Point(227, 161);
             this.textBoxRange3.Multiline = true;
@@ -646,8 +647,8 @@
             // 
             // textBoxRange4
             // 
-            this.textBoxRange4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxRange4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxRange4.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxRange4.Location = new System.Drawing.Point(227, 195);
             this.textBoxRange4.Multiline = true;
@@ -659,8 +660,8 @@
             // 
             // textBoxRange5
             // 
-            this.textBoxRange5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxRange5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxRange5.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxRange5.Location = new System.Drawing.Point(227, 229);
             this.textBoxRange5.Multiline = true;
@@ -672,8 +673,8 @@
             // 
             // textBoxRange6
             // 
-            this.textBoxRange6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxRange6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxRange6.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxRange6.Location = new System.Drawing.Point(227, 263);
             this.textBoxRange6.Multiline = true;
@@ -685,8 +686,8 @@
             // 
             // textBoxRange7
             // 
-            this.textBoxRange7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxRange7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxRange7.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxRange7.Location = new System.Drawing.Point(227, 297);
             this.textBoxRange7.Multiline = true;
@@ -698,8 +699,8 @@
             // 
             // textBoxRange8
             // 
-            this.textBoxRange8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxRange8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxRange8.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxRange8.Location = new System.Drawing.Point(227, 331);
             this.textBoxRange8.Multiline = true;
@@ -711,8 +712,8 @@
             // 
             // textBoxRange9
             // 
-            this.textBoxRange9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxRange9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxRange9.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxRange9.Location = new System.Drawing.Point(227, 365);
             this.textBoxRange9.Multiline = true;
@@ -852,12 +853,23 @@
             this.Addon50kToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.Addon50kToolStripMenuItem.Text = "Addon 50k";
             // 
+            // buttonReread
+            // 
+            this.buttonReread.Location = new System.Drawing.Point(269, 65);
+            this.buttonReread.Name = "buttonReread";
+            this.buttonReread.Size = new System.Drawing.Size(75, 23);
+            this.buttonReread.TabIndex = 91;
+            this.buttonReread.Text = "ReRead";
+            this.buttonReread.UseVisualStyleBackColor = true;
+            this.buttonReread.Click += new System.EventHandler(this.buttonReread_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = global::OpenNashCalculator.Properties.Settings.Default.BackColorOfMainForm;
             this.ClientSize = new System.Drawing.Size(522, 431);
+            this.Controls.Add(this.buttonReread);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
@@ -1007,6 +1019,7 @@
         private System.Windows.Forms.ContextMenuStrip chipContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem Addon30kToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem Addon50kToolStripMenuItem;
+        private System.Windows.Forms.Button buttonReread;
     }
 }
 
