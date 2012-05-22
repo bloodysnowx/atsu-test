@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenNashCalculator", "OpenNashCalculator\OpenNashCalculator.csproj", "{80FB1CB3-14CE-4ACD-9C19-8087513AF804}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ONCDaemon", "ONCDaemon\ONCDaemon.csproj", "{952CF671-77F2-4A81-8812-E11D6EB9FDBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -13,6 +15,10 @@ Global
 		{80FB1CB3-14CE-4ACD-9C19-8087513AF804}.Debug|x86.Build.0 = Debug|x86
 		{80FB1CB3-14CE-4ACD-9C19-8087513AF804}.Release|x86.ActiveCfg = Release|x86
 		{80FB1CB3-14CE-4ACD-9C19-8087513AF804}.Release|x86.Build.0 = Release|x86
+		{952CF671-77F2-4A81-8812-E11D6EB9FDBC}.Debug|x86.ActiveCfg = Debug|x86
+		{952CF671-77F2-4A81-8812-E11D6EB9FDBC}.Debug|x86.Build.0 = Debug|x86
+		{952CF671-77F2-4A81-8812-E11D6EB9FDBC}.Release|x86.ActiveCfg = Release|x86
+		{952CF671-77F2-4A81-8812-E11D6EB9FDBC}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
