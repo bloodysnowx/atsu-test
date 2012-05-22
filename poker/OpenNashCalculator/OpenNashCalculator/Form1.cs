@@ -254,6 +254,13 @@ namespace OpenNashCalculator
             rangeTextBoxes[4].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
 
             Reset();
+
+            string[] args = System.Environment.GetCommandLineArgs();
+            if (args.Length > 1)
+            {
+                openHandHistoryDialog.FileName = args[1];
+                openHandHistory();
+            }
         }
 
         private void buttonBBUP_Click(object sender, EventArgs e)
@@ -412,17 +419,11 @@ namespace OpenNashCalculator
             Reset();
         }
 
-        private void buttonOpen_Click(object sender, EventArgs e)
+        private void openHandHistory()
         {
-            if (openHandHistoryDialog.ShowDialog() != DialogResult.OK)
-            {
-                checkBoxRefresh.Enabled = checkBoxRefresh.Checked = false;
-                return;
-            }
-            
             startingChip = 0;
             updateDate = new DateTime();
-            
+
             this.Text = "ONC - " + System.IO.Path.GetFileName(openHandHistoryDialog.FileName);
 
             for (retry_num = 0; retry_num < 3; ++retry_num)
@@ -451,6 +452,17 @@ namespace OpenNashCalculator
             {
                 checkBoxRefresh.Enabled = checkBoxRefresh.Checked = true;
             }
+        }
+
+        private void buttonOpen_Click(object sender, EventArgs e)
+        {
+            if (openHandHistoryDialog.ShowDialog() != DialogResult.OK)
+            {
+                checkBoxRefresh.Enabled = checkBoxRefresh.Checked = false;
+                return;
+            }
+
+            openHandHistory();
         }
 
         private void checkBoxRefresh_CheckedChanged(object sender, EventArgs e)
