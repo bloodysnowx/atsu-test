@@ -93,9 +93,11 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy $(ProjectDir)readme.txt $(TargetDir)readme.txt
+    <PostBuildEvent>copy $(ProjectDir)readme.txt $(TargetDir)
+copy $(SolutionDir)ONCDaemon\bin\Release\ONCDaemon.exe $(TargetDir)
+copy $(SolutionDir)ONCDaemon\bin\Release\ONCDaemon.exe.config $(TargetDir)
 del $(TargetDir)Release.zip
-C:\"Program Files"\WinRAR\WinRAR.exe a -ep1 $(TargetDir)Release.zip $(TargetPath) $(TargetPath).config $(TargetDir)readme.txt</PostBuildEvent>
+C:\"Program Files"\WinRAR\WinRAR.exe a -ep1 $(TargetDir)Release.zip $(TargetPath) $(TargetPath).config $(TargetDir)readme.txt $(TargetDir)ONCDaemon.exe $(TargetDir)ONCDaemon.exe.config</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenNashCalculator", "OpenNashCalculator\OpenNashCalculator.csproj", "{80FB1CB3-14CE-4ACD-9C19-8087513AF804}"
+	ProjectSection(ProjectDependencies) = postProject
+		{952CF671-77F2-4A81-8812-E11D6EB9FDBC} = {952CF671-77F2-4A81-8812-E11D6EB9FDBC}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ONCDaemon", "ONCDaemon\ONCDaemon.csproj", "{952CF671-77F2-4A81-8812-E11D6EB9FDBC}"
 EndProject

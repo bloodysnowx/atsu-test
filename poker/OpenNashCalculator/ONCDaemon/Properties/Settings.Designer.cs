@@ -25,7 +25,7 @@ namespace ONCDaemon.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D:\\src\\atsu-test\\poker")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\poker\\HandHistory\\chiyuki")]
         public string HandHistoryFolder {
             get {
                 return ((string)(this["HandHistoryFolder"]));

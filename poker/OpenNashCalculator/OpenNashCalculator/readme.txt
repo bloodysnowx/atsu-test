@@ -18,8 +18,15 @@ AddonChip : アドオン時のチップ量を指定する
 AddonBB : アドオン時のBBを指定
 AddonAnte : アドオン時のAnteを指定
 
+ONCDaemon.exe.configを編集する
+
+HandHistoryFolder : PokerStarsのHandHistoryフォルダを指定する
 
 使用方法
+
+ONCDaemon.exeを起動する
+
+または
 
 01. 起動する
 02. トーナメントにエントリーし、2ハンド目が配られるのを待つ
@@ -108,6 +115,8 @@ rebuyチェックボックスを追加(ハンドヒストリ読み込み時に�
 2012/05/06 rev 164
 Auto Refreshのチェック状態を修正
 Refresh時に前回の計算結果をクリア
+
+1st release
 
 2012/04/27 rev 163
 範囲の数え間違えを修正
