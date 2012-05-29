@@ -17,6 +17,7 @@ namespace OpenNashCalculator
         public Form1()
         {
             InitializeComponent();
+            FindWindow();
         }
 
         private int level = 0;
@@ -425,7 +426,8 @@ namespace OpenNashCalculator
             startingChip = 0;
             updateDate = new DateTime();
 
-            this.Text = "ONC - " + System.IO.Path.GetFileName(openHandHistoryDialog.FileName);
+            this.Text = System.IO.Path.GetFileName(openHandHistoryDialog.FileName).Split('.')[0];
+            this.Text = this.Text.Substring(this.Text.IndexOf('T'));
 
             for (retry_num = 0; retry_num < 3; ++retry_num)
             {
