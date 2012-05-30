@@ -66,10 +66,13 @@ namespace OpenNashCalculator
         }
 
 
-        bool FindWindow()
+        bool FindTournamentWindow()
         {
             bool result = false;
+            close_flg = true;
             EnumWindows(EnumerateWindow, IntPtr.Zero);
+            if (close_flg == true)
+                Application.Exit();
             return result;
         }
 
@@ -78,13 +81,16 @@ namespace OpenNashCalculator
             int processId;
             GetWindowThreadProcessId(hWnd, out processId);
             Process p = Process.GetProcessById(processId);
+            // PokerStarsのウィンドウかプロセスを確認
 
             StringBuilder caption = new StringBuilder(0x1000);
             GetWindowText(hWnd, caption, caption.Capacity);
+            // トーナメント名が存在するか確認
             // if (IsWindowVisible(hWnd) && caption.ToString().Contains("PokerStars Lobby - Logged in as "))
             if (IsWindowVisible(hWnd) && caption.ToString().Contains("JPT"))
             {
                 EnumChildWindows(hWnd, EnumerateChildWindow, lParam);
+                close_flg = false;
             }
             return true;
         }
@@ -96,6 +102,19 @@ namespace OpenNashCalculator
                 string title = GetControlText(hWnd);
             }
             return true;
+        }
+
+        [System.Runtime.InteropServices.DllImport("user32.dll", SetLastError = true)]
+        static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
+
+        void GoBack()
+        {
+            IntPtr tmpdesktop = FindWindow(null, "Program Manager");
+            if (tmpdesktop != null)
+                SetParent(this.Handle, tmpdesktop);
         }
     }
 }

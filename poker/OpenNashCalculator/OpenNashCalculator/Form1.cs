@@ -17,7 +17,7 @@ namespace OpenNashCalculator
         public Form1()
         {
             InitializeComponent();
-            FindWindow();
+            FindTournamentWindow();
         }
 
         private int level = 0;
@@ -51,6 +51,9 @@ namespace OpenNashCalculator
         DateTime updateDate;
         TextBox[] rangeTextBoxes;
         Label[] PlayerNameLabels;
+        CheckBox[] AllinCheckBoxes;
+        bool close_flg = false;
+        string recent_web_page;
 
         int retry_num = 0;
 
@@ -167,9 +170,9 @@ namespace OpenNashCalculator
             string hero_pos = "";
             hero_pos = positionRadioButtons[hero_num].Text;
 
-            string web_page = client.DownloadString(URL);
+            recent_web_page = client.DownloadString(URL);
             Regex regex = new Regex("<td>" + Regex.Escape(hero_pos) + "</td><td /><td>(.*?)</td>");
-            MatchCollection matchCol = regex.Matches(web_page);
+            MatchCollection matchCol = regex.Matches(recent_web_page);
             int callRangeCount = matchCol.Count - 1;
 
             for (int i = 1; i < 9 && callRangeCount >= 0; ++i)
@@ -188,7 +191,7 @@ namespace OpenNashCalculator
 #endif
 
             regex = new Regex("<td>" + Regex.Escape(hero_pos) + "</td><td /><td /><td>(.*?)</td>");
-            matchCol = regex.Matches(web_page);
+            matchCol = regex.Matches(recent_web_page);
             string pushRange = "";
             if (matchCol.Count > 0) pushRange = matchCol[0].Groups[1].Value;
 
@@ -255,12 +258,18 @@ namespace OpenNashCalculator
             chipTextBoxes[4].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
             rangeTextBoxes[4].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
 
+            AllinCheckBoxes = new CheckBox[] { checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6, 
+                checkBox7, checkBox8, checkBox9 };
+            foreach (CheckBox checkBox in AllinCheckBoxes)
+                checkBox.CheckedChanged += new System.EventHandler(this.AllinCheckBox_CheckedChanged);
+
             Reset();
 
             string[] args = System.Environment.GetCommandLineArgs();
             if (args.Length > 1)
             {
                 openHandHistoryDialog.FileName = args[1];
+                checkBoxClose.Checked = true;
                 openHandHistory();
             }
         }
@@ -475,6 +484,8 @@ namespace OpenNashCalculator
 
         private void refreshTimer_Tick(object sender, EventArgs e)
         {
+            FindTournamentWindow();
+
             try
             {
                 ReadHandHistory();
@@ -532,6 +543,19 @@ namespace OpenNashCalculator
             {
                 openHandHistory();
             }
+        }
+
+        private void AllinCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            int count = 0;
+            foreach (CheckBox checkBox in AllinCheckBoxes)
+            {
+                if (checkBox.Checked == true)
+                    count++;
+            }
+
+            if(count == 2)
+                Help.ShowPopup(this, "こんにちは。", Control.MousePosition);
         }
 
 #if false

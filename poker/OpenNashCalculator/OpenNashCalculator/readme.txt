@@ -24,11 +24,11 @@ HandHistoryFolder : PokerStarsのHandHistoryフォルダを指定する
 
 使用方法
 
-ONCDaemon.exeを起動する
+ONCDaemon.exeを起動しておく
 
 または
 
-01. 起動する
+01. OpenNashCalculator.exeを起動する
 02. トーナメントにエントリーし、2ハンド目が配られるのを待つ
 03. "Open Hand History"ボタンにて、02のトーナメントのハンドヒストリを開く
 04. Auto Calc
