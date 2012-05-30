@@ -368,12 +368,16 @@ namespace OpenNashCalculator
 
             SetPosition();
 
+            foreach (CheckBox checkBox in AllinCheckBoxes)
+                checkBox.Checked = false;
+
             if (chips[hero_index] > 0 && player_num > 1 && checkBoxCalc.Checked)
             {
                 Calc();
             }
             else
             {
+                recent_web_page = String.Empty;
                 foreach (TextBox x in rangeTextBoxes)
                     x.Clear();
             }
