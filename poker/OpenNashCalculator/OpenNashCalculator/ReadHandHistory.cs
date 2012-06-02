@@ -304,7 +304,7 @@ namespace OpenNashCalculator
                 chipTextBox.Text = "";
             for (int i = 0; i < 9; ++i)
             {
-                if (chips[i] <= 0 && names[i] != string.Empty && checkBoxRebuy.Checked)
+                if (chips[i] <= 0 && names[i] != string.Empty && seats[i] > 0 && checkBoxRebuy.Checked)
                     chips[i] = startingChip;
 
                 if (chips[i] > 0)

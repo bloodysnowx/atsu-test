@@ -83,14 +83,16 @@ namespace OpenNashCalculator
             Process p = Process.GetProcessById(processId);
             // PokerStarsのウィンドウかプロセスを確認
 
-            StringBuilder caption = new StringBuilder(0x1000);
-            GetWindowText(hWnd, caption, caption.Capacity);
-            // トーナメント名が存在するか確認
-            // if (IsWindowVisible(hWnd) && caption.ToString().Contains("PokerStars Lobby - Logged in as "))
-            if (IsWindowVisible(hWnd) && caption.ToString().Contains("JPT"))
+            if (p.ProcessName == "PokerStars")
             {
-                EnumChildWindows(hWnd, EnumerateChildWindow, lParam);
-                close_flg = false;
+                StringBuilder caption = new StringBuilder(0x1000);
+                GetWindowText(hWnd, caption, caption.Capacity);
+                // if (IsWindowVisible(hWnd) && caption.ToString().Contains("PokerStars Lobby - Logged in as "))
+                if (IsWindowVisible(hWnd) && caption.ToString().Contains(tourney_ID))
+                {
+					 close_flg = false;
+                    // EnumChildWindows(hWnd, EnumerateChildWindow, lParam);
+                }
             }
             return true;
         }
