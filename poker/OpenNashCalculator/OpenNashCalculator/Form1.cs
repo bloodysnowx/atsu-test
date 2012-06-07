@@ -441,14 +441,8 @@ namespace OpenNashCalculator
             Reset();
         }
 
-        private void openHandHistory()
+        private void ReadHandHistoryWithRetry()
         {
-            startingChip = 0;
-            updateDate = new DateTime();
-
-            this.Text = System.IO.Path.GetFileName(openHandHistoryDialog.FileName).Split('.')[0];
-            this.Text = this.Text.Substring(this.Text.IndexOf('T'));
-
             for (retry_num = 0; retry_num < 3; ++retry_num)
             {
                 try
@@ -475,6 +469,17 @@ namespace OpenNashCalculator
             {
                 checkBoxRefresh.Enabled = checkBoxRefresh.Checked = true;
             }
+        }
+
+        private void openHandHistory()
+        {
+            startingChip = 0;
+            updateDate = new DateTime();
+
+            this.Text = System.IO.Path.GetFileName(openHandHistoryDialog.FileName).Split('.')[0];
+            this.Text = this.Text.Substring(this.Text.IndexOf('T'));
+
+            ReadHandHistoryWithRetry();
         }
 
         private void buttonOpen_Click(object sender, EventArgs e)

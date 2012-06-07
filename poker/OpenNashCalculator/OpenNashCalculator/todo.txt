@@ -80,7 +80,7 @@ System.IndexOutOfRangeException: インデックスが配列の境界外です�
 [20:02:53] hyahhoo: あと、タイトルにあるONC - HH 2012526 までは不要な気もします
 [20:03:38] hyahhoo: 必要なのはT562566351　No Limit Hold'em $100+$9 だけなので・・
 
-
+あ、あとテーブルが終了したら勝手に消えて欲しいかも
 
 
 
@@ -109,7 +109,6 @@ http://emojies.cocolog-nifty.com/emoticon/chair.gif
 4. その位置から20ピクセルぐらい上にずらした位置に表示
 って感じですかね
 
-あ、あとテーブルが終了したら勝手に消えて欲しいかも
 
 [19:36:14] hyahhoo: それもいいのですが
 [19:36:26] hyahhoo: たとえば、UTGレイズ、COコール、自分がBTNだとして

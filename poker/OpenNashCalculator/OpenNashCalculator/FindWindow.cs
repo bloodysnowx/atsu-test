@@ -65,7 +65,6 @@ namespace OpenNashCalculator
             return title.ToString();
         }
 
-
         bool FindTournamentWindow()
         {
             bool result = false;
@@ -87,7 +86,6 @@ namespace OpenNashCalculator
             {
                 StringBuilder caption = new StringBuilder(0x1000);
                 GetWindowText(hWnd, caption, caption.Capacity);
-                // if (IsWindowVisible(hWnd) && caption.ToString().Contains("PokerStars Lobby - Logged in as "))
                 if (IsWindowVisible(hWnd) && caption.ToString().Contains(tourney_ID))
                 {
 					 close_flg = false;
