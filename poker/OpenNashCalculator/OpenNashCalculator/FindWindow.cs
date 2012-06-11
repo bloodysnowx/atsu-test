@@ -70,7 +70,7 @@ namespace OpenNashCalculator
             bool result = false;
             close_flg = true;
             EnumWindows(EnumerateWindow, IntPtr.Zero);
-            if (close_flg == true)
+            if (close_flg == true && checkBoxClose.Checked)
                 Application.Exit();
             return result;
         }

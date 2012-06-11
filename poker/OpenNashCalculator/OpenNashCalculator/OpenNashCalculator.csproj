@@ -48,6 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calc.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FindWindow.cs">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Form</SubType>
