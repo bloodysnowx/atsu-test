@@ -50,7 +50,7 @@ namespace OpenNashCalculator
         DateTime updateDate;
         TextBox[] rangeTextBoxes;
         Label[] PlayerNameLabels;
-        string tourney_ID;
+        string tourney_ID = "xxxxxxxxxxxxxxxxxxxxx";
         CheckBox[] AllinCheckBoxes;
         bool close_flg = false;
         string recent_web_page;
@@ -212,6 +212,7 @@ namespace OpenNashCalculator
                 tourney_ID = getTourneyID(openHandHistoryDialog.FileName);
                 checkBoxClose.Checked = true;
                 FindTournamentWindow();
+                GoBack();
                 openHandHistory();
             }
         }
@@ -432,6 +433,7 @@ namespace OpenNashCalculator
 
             tourney_ID = getTourneyID(openHandHistoryDialog.FileName);
             FindTournamentWindow();
+            GoBack();
             openHandHistory();
         }
 
@@ -442,8 +444,6 @@ namespace OpenNashCalculator
 
         private void refreshTimer_Tick(object sender, EventArgs e)
         {
-            FindTournamentWindow();
-
             try
             {
                 ReadHandHistory();
@@ -530,8 +530,18 @@ namespace OpenNashCalculator
 
             if (count == 2 && Position.ToList().IndexOf(hero_pos) < Position.ToList().IndexOf(oc_pos))
             {
-                Help.ShowPopup(this, "こんにちは。", Control.MousePosition);
+                Help.ShowPopup(this, "このように2つだけチェックを" + Environment.NewLine + "入れるとポップアップ", Control.MousePosition);
             }
+        }
+
+        private void findTimer_Tick(object sender, EventArgs e)
+        {
+            FindTournamentWindow();
+        }
+
+        private void checkBoxClose_CheckedChanged(object sender, EventArgs e)
+        {
+            findTimer.Enabled = (sender as CheckBox).Checked;
         }
 
 #if false
