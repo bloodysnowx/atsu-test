@@ -54,6 +54,7 @@ namespace OpenNashCalculator
         CheckBox[] AllinCheckBoxes;
         bool close_flg = false;
         string recent_web_page;
+        RECT tourneyWindowRect = new RECT();
 
         int retry_num = 0;
 

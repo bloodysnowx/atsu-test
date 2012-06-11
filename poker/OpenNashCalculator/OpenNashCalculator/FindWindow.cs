@@ -88,8 +88,9 @@ namespace OpenNashCalculator
                 GetWindowText(hWnd, caption, caption.Capacity);
                 if (IsWindowVisible(hWnd) && caption.ToString().Contains(tourney_ID))
                 {
-					 close_flg = false;
+					close_flg = false;
                     // EnumChildWindows(hWnd, EnumerateChildWindow, lParam);
+                    GetWindowRect(hWnd, out tourneyWindowRect);
                 }
             }
             return true;
@@ -116,5 +117,17 @@ namespace OpenNashCalculator
             if (tmpdesktop != null)
                 SetParent(this.Handle, tmpdesktop);
         }
+
+        [StructLayout(LayoutKind.Sequential, Pack = 4)]
+        private struct RECT
+        {
+            public int left;
+            public int top;
+            public int right;
+            public int bottom;
+        }
+
+        [DllImport("User32.Dll")]
+        static extern int GetWindowRect(IntPtr hWnd, out RECT rect);
     }
 }

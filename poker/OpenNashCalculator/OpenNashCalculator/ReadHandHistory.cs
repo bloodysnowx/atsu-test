@@ -21,6 +21,9 @@ namespace OpenNashCalculator
             if (updateDate >= System.IO.File.GetLastWriteTime(openHandHistoryDialog.FileName))
                 return;
 
+            this.Location = new Point(tourneyWindowRect.left + 5, tourneyWindowRect.top - 5);
+            GoBack();
+
             updateDate = System.IO.File.GetLastWriteTime(openHandHistoryDialog.FileName);
             string[] hh = System.IO.File.ReadAllLines(openHandHistoryDialog.FileName);
             Regex regex;
