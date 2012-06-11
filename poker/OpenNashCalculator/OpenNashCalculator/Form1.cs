@@ -68,11 +68,13 @@ namespace OpenNashCalculator
                 {
                     positionRadioButtons[i].Enabled = false;
                     SeatLabels[i].Enabled = false;
+                    AllinCheckBoxes[i].Checked = AllinCheckBoxes[i].Enabled = false;
                 }
                 else
                 {
                     positionRadioButtons[i].Enabled = true;
                     SeatLabels[i].Enabled = true;
+                    AllinCheckBoxes[i].Enabled = true;
                 }
             }
         }
