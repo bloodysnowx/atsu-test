@@ -16,6 +16,7 @@ namespace OpenNashCalculator
 {
     public partial class Form1 : Form
     {
+#if false
         [DllImport("user32")]
         private static extern bool EnumWindows(WNDENUMPROC lpEnumFunc, IntPtr lParam);
         private delegate bool WNDENUMPROC(IntPtr hWnd, IntPtr lParam);
@@ -116,13 +117,11 @@ namespace OpenNashCalculator
             this.Location = new Point(tourneyWindowRect.left + 20, tourneyWindowRect.top - 25);
 
             IntPtr tmpdesktop = FindWindow(null, "Program Manager");
-#if true
+
             if (tmpdesktop != null)
                 SetParent(this.Handle, tmpdesktop);
 
             SetParent(this.Handle, IntPtr.Zero);
-
-#endif
         }
 
         [StructLayout(LayoutKind.Sequential, Pack = 4)]
@@ -136,5 +135,6 @@ namespace OpenNashCalculator
 
         [DllImport("User32.Dll")]
         static extern int GetWindowRect(IntPtr hWnd, out RECT rect);
+#endif
     }
 }

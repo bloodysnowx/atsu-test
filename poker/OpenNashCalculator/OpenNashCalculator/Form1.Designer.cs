@@ -883,6 +883,7 @@
             this.checkBoxClose.TabIndex = 92;
             this.checkBoxClose.Text = "Auto Close";
             this.checkBoxClose.UseVisualStyleBackColor = true;
+            this.checkBoxClose.Visible = false;
             this.checkBoxClose.CheckedChanged += new System.EventHandler(this.checkBoxClose_CheckedChanged);
             // 
             // checkBox1

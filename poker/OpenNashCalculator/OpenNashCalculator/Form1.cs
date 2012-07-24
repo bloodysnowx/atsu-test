@@ -52,9 +52,9 @@ namespace OpenNashCalculator
         Label[] PlayerNameLabels;
         string tourney_ID = "xxxxxxxxxxxxxxxxxxxxx";
         CheckBox[] AllinCheckBoxes;
-        bool close_flg = false;
+        // bool close_flg = false;
         string recent_web_page;
-        RECT tourneyWindowRect = new RECT();
+        // RECT tourneyWindowRect = new RECT();
 
         int retry_num = 0;
 
@@ -211,8 +211,8 @@ namespace OpenNashCalculator
                 openHandHistoryDialog.FileName = args[1];
                 tourney_ID = getTourneyID(openHandHistoryDialog.FileName);
                 checkBoxClose.Checked = true;
-                FindTournamentWindow();
-                GoBack();
+                // FindTournamentWindow();
+                // GoBack();
                 openHandHistory();
             }
         }
@@ -432,8 +432,8 @@ namespace OpenNashCalculator
             }
 
             tourney_ID = getTourneyID(openHandHistoryDialog.FileName);
-            FindTournamentWindow();
-            GoBack();
+            // FindTournamentWindow();
+            // GoBack();
             openHandHistory();
         }
 
@@ -536,7 +536,7 @@ namespace OpenNashCalculator
 
         private void findTimer_Tick(object sender, EventArgs e)
         {
-            FindTournamentWindow();
+            // FindTournamentWindow();
         }
 
         private void checkBoxClose_CheckedChanged(object sender, EventArgs e)
