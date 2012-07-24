@@ -530,7 +530,12 @@ namespace OpenNashCalculator
 
             if (count == 2 && Position.ToList().IndexOf(hero_pos) < Position.ToList().IndexOf(oc_pos))
             {
-                Help.ShowPopup(this, "このように2つだけチェックを" + Environment.NewLine + "入れるとポップアップ", Control.MousePosition);
+                string tmp = recent_web_page.Substring(recent_web_page.IndexOf("</tr><tr><td>" + push_pos + "</td><td /><td /><td>"));
+                tmp = tmp.Substring(tmp.IndexOf("</tr><tr><td /><td>" + oc_pos + "</td><td /><td>"));
+                Regex regex = new Regex("</tr><tr><td /><td /><td>" + Regex.Escape(hero_pos) + "</td><td>(.*?)</td></tr>");
+                MatchCollection matchCol = regex.Matches(tmp);
+                Help.ShowPopup(this, matchCol[0].Groups[1].Value, Control.MousePosition);
+                // Help.ShowPopup(this, "このように2つだけチェックを" + Environment.NewLine + "入れるとポップアップ", Control.MousePosition);
             }
         }
 
