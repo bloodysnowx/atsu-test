@@ -1,0 +1,38 @@
+<html>
+  <body>
+    <form name="CalcAddon">
+      参加者数 : <input type="text" name="player_num" value=""><br />
+      リバイ数 : <input type="text" name="rebuy_num" value=""><br />
+      アドオン数 : <input type="text" name="addon_num" value=""><br />
+      参加費 : <input type="text" name="buyin" value=""><br />
+      フィー : <input type="text" name="fee" value=""><br />
+      バイインチップ数 : <input type="text" name="buyin_chips" value=""><br />
+      アドオンチップ数 : <input type="text" name="addon_chips" value=""><br />
+      <input type="button" value="計算" onclick="Calc()"><br>
+    </form>
+    <script type="text/javascript">
+      <!--
+          function Calc()
+          {
+            var player_num = Number(document.CalcAddon.player_num.value);
+            var rebuy_num = Number(document.CalcAddon.rebuy_num.value);
+            var addon_num = Number(document.CalcAddon.addon_num.value);
+            var buyin = Number(document.CalcAddon.buyin.value);
+            var fee = Number(document.CalcAddon.fee.value);
+            var buyin_chips = Number(document.CalcAddon.buyin_chips.value);
+            var addon_chips = Number(document.CalcAddon.addon_chips.value);
+            var prize_pool = (player_num + rebuy_num + addon_num) * buyin;
+            var all_chips = (player_num + rebuy_num) * buyin_chips + addon_num * addon_chips;
+            var one_chip_value = prize_pool / all_chips;
+            var buyin_value = buyin_chips * one_chip_value;
+            var addon_value = addon_chips * one_chip_value;
+            alert("賞金総額 = " + prize_pool + "\n"
+            + "総チップ量 = " + all_chips + "\n"
+            + "1チップの価値 = " + one_chip_value + "\n"
+            + "バイインおよびリバイの価値 = " + buyin_value + "\n"
+            + "アドオンの価値 = " + addon_value + "\n");
+          }
+      // -->
+    </script>
+  </body>
+</html>
