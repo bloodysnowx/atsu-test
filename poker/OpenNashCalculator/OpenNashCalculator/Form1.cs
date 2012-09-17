@@ -152,7 +152,7 @@ namespace OpenNashCalculator
             textBoxAnte.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.BBMouseWheel);
             textBoxBB.Click += new System.EventHandler(textBox_Click);
             textBoxAnte.Click += new System.EventHandler(textBox_Click);
-            textBoxStructure.Click += new System.EventHandler(textBox_Click);
+            // textBoxStructure.Click += new System.EventHandler(textBox_Click);
             labelChips.ContextMenuStrip = chipContextMenuStrip;
 
             if (Properties.Settings.Default.BB.Split(',').Length < 2 ||

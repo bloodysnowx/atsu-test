@@ -39,7 +39,7 @@ namespace ONCDaemon
                     if (System.IO.File.GetLastWriteTime(file) > DateTime.Now.AddMinutes(-10))
                     {
                         string tmp_file = "\"" + file + "\"";
-                        System.Diagnostics.Process.Start(System.IO.Directory.GetCurrentDirectory() + "/OpenNashCalculator.exe", tmp_file);
+                        System.Diagnostics.Process.Start(System.IO.Directory.GetCurrentDirectory() + "/スタンド.exe", tmp_file);
                     }
                 }
             }
@@ -58,7 +58,7 @@ namespace ONCDaemon
                     if (regex.IsMatch(e.FullPath))
                     {
                         string tmp_file = "\"" + e.FullPath + "\"";
-                        System.Diagnostics.Process.Start(System.IO.Directory.GetCurrentDirectory() + "/OpenNashCalculator.exe", tmp_file);
+                        System.Diagnostics.Process.Start(System.IO.Directory.GetCurrentDirectory() + "/スタンド.exe", tmp_file);
                     }
                     break;
                 default:
