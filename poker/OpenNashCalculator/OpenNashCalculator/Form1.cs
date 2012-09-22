@@ -57,6 +57,7 @@ namespace OpenNashCalculator
         // RECT tourneyWindowRect = new RECT();
         int hero_num;
         string hero_pos;
+        int hh_back_num = 0;
 
         int retry_num = 0;
 
@@ -390,6 +391,7 @@ namespace OpenNashCalculator
             {
                 try
                 {
+                    hh_back_num = 0;
                     ReadHandHistory();
                     retry_num = 0;
                     break;
@@ -450,6 +452,7 @@ namespace OpenNashCalculator
         {
             try
             {
+                hh_back_num = 0;
                 ReadHandHistory();
                 retry_num = 0;
             }
@@ -551,6 +554,19 @@ namespace OpenNashCalculator
         private void checkBoxClose_CheckedChanged(object sender, EventArgs e)
         {
             findTimer.Enabled = (sender as CheckBox).Checked;
+        }
+
+        private void button_back_Click(object sender, EventArgs e)
+        {
+            ++hh_back_num;
+            checkBoxRefresh.Checked = false;
+            ReadHandHistory();
+        }
+
+        private void button_fore_Click(object sender, EventArgs e)
+        {
+            if(hh_back_num > 0) --hh_back_num;
+            ReadHandHistory();
         }
 
 #if false

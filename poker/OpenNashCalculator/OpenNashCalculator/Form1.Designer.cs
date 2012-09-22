@@ -675,12 +675,15 @@
             resources.ApplyResources(this.button_back, "button_back");
             this.button_back.Name = "button_back";
             this.button_back.UseVisualStyleBackColor = true;
+            this.button_back.Click += new System.EventHandler(this.button_back_Click);
             // 
             // button_fore
             // 
             resources.ApplyResources(this.button_fore, "button_fore");
             this.button_fore.Name = "button_fore";
             this.button_fore.UseVisualStyleBackColor = true;
+            this.button_fore.UseWaitCursor = true;
+            this.button_fore.Click += new System.EventHandler(this.button_fore_Click);
             // 
             // webBrowser1
             // 

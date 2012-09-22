@@ -29,7 +29,7 @@ namespace OpenNashCalculator
                     Application.Exit();
             }
 
-            if (updateDate >= System.IO.File.GetLastWriteTime(openHandHistoryDialog.FileName))
+            if (hh_back_num == 0 && updateDate >= System.IO.File.GetLastWriteTime(openHandHistoryDialog.FileName))
                 return;
 
             updateDate = System.IO.File.GetLastWriteTime(openHandHistoryDialog.FileName);
@@ -70,16 +70,24 @@ namespace OpenNashCalculator
                 }
             }
 
-            int line = 0;
+            List<int> hh_line_list = new List<int>();
             for (int i = 0; i < hh.Length; ++i)
             {
                 if (hh[i].StartsWith("PokerStars Hand"))
-                    line = i;
+                    hh_line_list.Add(i);
             }
+            hh_line_list.Add(hh.Length - 1);
 
+            List<string> now_hh = new List<string>();
+            if (hh_back_num + 1 >= hh_line_list.Count) hh_back_num = hh_line_list.Count - 2;
+            for (int i = hh_line_list[hh_line_list.Count - 2 - hh_back_num]; i < hh_line_list[hh_line_list.Count - 1 - hh_back_num]; ++i)
+            {
+                now_hh.Add(hh[i]);
+            }
+            int line = 0;
             // bbとsbを取得
             regex = new Regex(Regex.Escape("(") + "([0-9]+)" + Regex.Escape("/") + "([0-9]+)" + Regex.Escape(")"));
-            matchCol = regex.Matches(hh[line]);
+            matchCol = regex.Matches(now_hh[line]);
             int sb = System.Convert.ToInt32(matchCol[0].Groups[1].Value);
             int bb = System.Convert.ToInt32(matchCol[0].Groups[2].Value);
 
@@ -87,7 +95,7 @@ namespace OpenNashCalculator
             line += 1;
             regex = new Regex("Seat" + Regex.Escape(" #") + "([0-9]+)" + Regex.Escape(" ") + "is" + Regex.Escape(" ") 
                 + "the" + Regex.Escape(" ") + "button");
-            matchCol = regex.Matches(hh[line]);
+            matchCol = regex.Matches(now_hh[line]);
             int button = System.Convert.ToInt32(matchCol[0].Groups[1].Value);
 
             // ハンド開始状況を取得
@@ -103,7 +111,7 @@ namespace OpenNashCalculator
                 + Regex.Escape("(") + "([0-9]+)" + Regex.Escape(" ") + "in" + Regex.Escape(" ") + "chips" + Regex.Escape(")"));
             for (int i = 0; i < 9; ++i)
             {
-                matchCol = regex.Matches(hh[++line]);
+                matchCol = regex.Matches(now_hh[++line]);
                 if (matchCol.Count > 0)
                 {
                     seats[i] = System.Convert.ToInt32(matchCol[0].Groups[1].Value);
@@ -122,7 +130,7 @@ namespace OpenNashCalculator
                 "ante" + Regex.Escape(" ") + "([0-9]+)");
             for (int i = 0; i < 9; ++i)
             {
-                matchCol = regex.Matches(hh[++line]);
+                matchCol = regex.Matches(now_hh[++line]);
                 if (matchCol.Count > 0)
                 {
                     for (int j = 0; j < 9; ++j)
@@ -147,7 +155,7 @@ namespace OpenNashCalculator
             // blind
             regex = new Regex("(.+):" + Regex.Escape(" ") + "posts" + Regex.Escape(" ") + "small" + Regex.Escape(" ") +
                 "blind" + Regex.Escape(" ") + "([0-9]+)");
-            matchCol = regex.Matches(hh[++line]);
+            matchCol = regex.Matches(now_hh[++line]);
             if (matchCol.Count > 0)
             {
                 for (int j = 0; j < 9; ++j)
@@ -167,7 +175,7 @@ namespace OpenNashCalculator
 
             regex = new Regex("(.+):" + Regex.Escape(" ") + "posts" + Regex.Escape(" ") + "big" + Regex.Escape(" ") +
                 "blind" + Regex.Escape(" ") + "([0-9]+)");
-            matchCol = regex.Matches(hh[++line]);
+            matchCol = regex.Matches(now_hh[++line]);
             if (matchCol.Count > 0)
             {
                 for (int j = 0; j < 9; ++j)
@@ -186,16 +194,16 @@ namespace OpenNashCalculator
             }
 
             // Heroの名前を取得
-            for (; line < hh.Length; ++line)
+            for (; line < now_hh.Count; ++line)
             {
-                if (hh[line].StartsWith("*** HOLE CARDS ***"))
+                if (now_hh[line].StartsWith("*** HOLE CARDS ***"))
                 {
                     break;
                 }
             }
             regex = new Regex("Dealt" + Regex.Escape(" ") + "to" + Regex.Escape(" ") + "(.+)" + Regex.Escape(" [")
                 + "[2-9TJQKA][shdc]" + Regex.Escape(" ") + "[2-9TJQKA][shdc]" + Regex.Escape("]"));
-            matchCol = regex.Matches(hh[++line]);
+            matchCol = regex.Matches(now_hh[++line]);
             hero_name = matchCol[0].Groups[1].Value;
             int hero_index = 0;
             for (int i = 0; i < 9; ++i)
@@ -218,9 +226,9 @@ namespace OpenNashCalculator
             Regex collected_regex = new Regex("(.+)" + Regex.Escape(" ") + "collected" + Regex.Escape(" ") + "([0-9]+)"
                 + Regex.Escape(" ") + "from" + Regex.Escape(" "));
 
-            for (; line < hh.Length; ++line)
+            for (; line < now_hh.Count; ++line)
             {
-                matchCol = bets_regex.Matches(hh[line]);
+                matchCol = bets_regex.Matches(now_hh[line]);
                 if (matchCol.Count > 0)
                 {
                     for (int j = 0; j < 9; ++j)
@@ -235,7 +243,7 @@ namespace OpenNashCalculator
                     }
                     continue;
                 }
-                matchCol = calls_regex.Matches(hh[line]);
+                matchCol = calls_regex.Matches(now_hh[line]);
                 if (matchCol.Count > 0)
                 {
                     for (int j = 0; j < 9; ++j)
@@ -250,7 +258,7 @@ namespace OpenNashCalculator
                     }
                     continue;
                 }
-                matchCol = raises_regex.Matches(hh[line]);
+                matchCol = raises_regex.Matches(now_hh[line]);
                 if (matchCol.Count > 0)
                 {
                     for (int j = 0; j < 9; ++j)
@@ -265,7 +273,7 @@ namespace OpenNashCalculator
                     }
                     continue;
                 }
-                matchCol = uncalled_regex.Matches(hh[line]);
+                matchCol = uncalled_regex.Matches(now_hh[line]);
                 if (matchCol.Count > 0)
                 {
                     for (int j = 0; j < 9; ++j)
@@ -279,7 +287,7 @@ namespace OpenNashCalculator
                     }
                     continue;
                 }
-                matchCol = collected_regex.Matches(hh[line]);
+                matchCol = collected_regex.Matches(now_hh[line]);
                 if (matchCol.Count > 0)
                 {
                     for (int j = 0; j < 9; ++j)
@@ -294,12 +302,12 @@ namespace OpenNashCalculator
                     continue;
                 }
 
-                if (hh[line].StartsWith("*** FLOP ***") || hh[line].StartsWith("*** TURN ***") || hh[line].StartsWith("*** RIVER ***"))
+                if (now_hh[line].StartsWith("*** FLOP ***") || now_hh[line].StartsWith("*** TURN ***") || now_hh[line].StartsWith("*** RIVER ***"))
                 {
                     for (int i = 0; i < 9; ++i)
                         posted[i] = 0;
                 }
-                else if(hh[line].StartsWith("*** SUMMARY ***"))
+                else if(now_hh[line].StartsWith("*** SUMMARY ***"))
                 {
                     break;
                 }
