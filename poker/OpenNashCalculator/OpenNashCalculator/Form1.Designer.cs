@@ -119,6 +119,8 @@
             this.findTimer = new System.Windows.Forms.Timer(this.components);
             this.button_back = new System.Windows.Forms.Button();
             this.button_fore = new System.Windows.Forms.Button();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.webBrowserTimer = new System.Windows.Forms.Timer(this.components);
             this.groupBoxPosition.SuspendLayout();
             this.chipContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -676,11 +678,24 @@
             this.button_fore.Name = "button_fore";
             this.button_fore.UseVisualStyleBackColor = true;
             // 
+            // webBrowser1
+            // 
+            resources.ApplyResources(this.webBrowser1, "webBrowser1");
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
+            // 
+            // webBrowserTimer
+            // 
+            this.webBrowserTimer.Interval = 500;
+            this.webBrowserTimer.Tick += new System.EventHandler(this.webBrowserTimer_Tick);
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = global::OpenNashCalculator.Properties.Settings.Default.BackColorOfMainForm;
+            this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.button_fore);
             this.Controls.Add(this.button_back);
             this.Controls.Add(this.checkBox9);
@@ -856,6 +871,8 @@
         private System.Windows.Forms.Timer findTimer;
         private System.Windows.Forms.Button button_back;
         private System.Windows.Forms.Button button_fore;
+        private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.Timer webBrowserTimer;
     }
 }
 

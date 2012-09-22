@@ -27,29 +27,46 @@ namespace OpenNashCalculator
             URL += "&ante=" + textBoxAnte.Text.Trim();
             textBoxStructure.Text = textBoxStructure.Text.Replace('+', ',').Replace(' ', ',');
             URL += "&structure=" + HttpUtility.UrlEncode(textBoxStructure.Text.Trim());
-            URL += "&s1=" + chipTextBoxes[(bb_pos + 1) % 9].Text.Trim();
-            URL += "&s2=" + chipTextBoxes[(bb_pos + 2) % 9].Text.Trim();
-            URL += "&s3=" + chipTextBoxes[(bb_pos + 3) % 9].Text.Trim();
-            URL += "&s4=" + chipTextBoxes[(bb_pos + 4) % 9].Text.Trim();
-            URL += "&s5=" + chipTextBoxes[(bb_pos + 5) % 9].Text.Trim();
-            URL += "&s6=" + chipTextBoxes[(bb_pos + 6) % 9].Text.Trim();
-            URL += "&s7=" + chipTextBoxes[(bb_pos + 7) % 9].Text.Trim();
-            URL += "&s8=" + chipTextBoxes[(bb_pos + 8) % 9].Text.Trim();
-            URL += "&s9=" + chipTextBoxes[(bb_pos + 9) % 9].Text.Trim();
+            for (int i = 1, j = 1; i < 10; ++i)
+            {
+                if (chipTextBoxes[(bb_pos + i) % 9].Text.Trim() != string.Empty)
+                {
+                    URL += "&s" + (j++).ToString() + "=" + chipTextBoxes[(bb_pos + i) % 9].Text.Trim();
+                }
+            }
             // http://www.holdemresources.net/hr/sngs/icmcalculator.html?action=calculate&
             // bb=200&sb=100&ante=0&structure=0.5%2C0.3%2C0.2&s1=100&s2=100&s3=100&s4=100&s5=100&s6=100&s7=100&s8=100&s9=100
 
             foreach (TextBox rangeTextBox in rangeTextBoxes)
                 rangeTextBox.Text = "";
 
-            System.Net.WebClient client = new System.Net.WebClient();
+            // System.Net.WebClient client = new System.Net.WebClient();
+            // System.Windows.Forms.WebBrowser client = new WebBrowser();
 
-            int hero_num = getHeroNum();
-            string hero_pos = "";
+            hero_num = getHeroNum();
+            hero_pos = "";
             hero_pos = positionRadioButtons[hero_num].Text;
 
-            recent_web_page = client.DownloadString(URL);
-            Regex regex = new Regex("<td>" + Regex.Escape(hero_pos) + "</td><td /><td>(.*?)</td>");
+            webBrowser1.Navigate(URL);
+
+            if (checkBoxWeb.Checked == false)
+                System.Diagnostics.Process.Start(URL);
+        }
+
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            webBrowserTimer.Enabled = true;
+        }
+
+
+        private void webBrowserTimer_Tick(object sender, EventArgs e)
+        {
+            recent_web_page = webBrowser1.Document.Body.OuterHtml;
+            int range_num = recent_web_page.IndexOf("<TH>Range</TH></TR>");
+            if (range_num < 1) return;
+            recent_web_page = recent_web_page.Substring(range_num);
+            // recent_web_page = client.DownloadString(URL);
+            Regex regex = new Regex("<TR>\r\n<TD>\r\n<TD>" + Regex.Escape(hero_pos) + "</TD>\r\n<TD>\r\n<TD>(.*?)</TD>");
             MatchCollection matchCol = regex.Matches(recent_web_page);
             int callRangeCount = matchCol.Count - 1;
 
@@ -68,15 +85,12 @@ namespace OpenNashCalculator
             }
 #endif
 
-            regex = new Regex("<td>" + Regex.Escape(hero_pos) + "</td><td /><td /><td>(.*?)</td>");
+            regex = new Regex("<TD>" + Regex.Escape(hero_pos) + "</TD>\r\n<TD>\r\n<TD>\r\n<TD>(.*?)</TD>");
             matchCol = regex.Matches(recent_web_page);
             string pushRange = "";
             if (matchCol.Count > 0) pushRange = matchCol[0].Groups[1].Value;
 
             rangeTextBoxes[hero_num].Text = pushRange;
-
-            if (checkBoxWeb.Checked == false)
-                System.Diagnostics.Process.Start(URL);
         }
 
     }
