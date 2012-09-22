@@ -154,6 +154,13 @@
   <data name="checkBoxClose.Text" xml:space="preserve">
     <value>自動終了</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="button_back.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="button_fore.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>スタンド</value>
   </data>
