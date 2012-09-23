@@ -62,6 +62,8 @@ namespace OpenNashCalculator
         private void webBrowserTimer_Tick(object sender, EventArgs e)
         {
             recent_web_page = webBrowser1.Document.Body.OuterHtml;
+            if (last_web_page == recent_web_page) return;
+            last_web_page = recent_web_page;
             int range_num = recent_web_page.IndexOf("<TH>Range</TH></TR>");
             if (range_num < 1) return;
             recent_web_page = recent_web_page.Substring(range_num);

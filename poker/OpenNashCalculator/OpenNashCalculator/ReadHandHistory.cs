@@ -22,10 +22,10 @@ namespace OpenNashCalculator
             {
                 if(DateTime.Now.Minute <= 5 || DateTime.Now.Minute >= 55)
                 {
-                    if(System.IO.File.GetLastWriteTime(openHandHistoryDialog.FileName).AddMinutes(10) < DateTime.Now)
+                    if(System.IO.File.GetLastWriteTime(openHandHistoryDialog.FileName).AddMinutes(5 + Properties.Settings.Default.AutoCloseMin) < DateTime.Now)
                         Application.Exit();
                 }
-                else if (System.IO.File.GetLastWriteTime(openHandHistoryDialog.FileName).AddMinutes(5) < DateTime.Now)
+                else if (System.IO.File.GetLastWriteTime(openHandHistoryDialog.FileName).AddMinutes(Properties.Settings.Default.AutoCloseMin) < DateTime.Now)
                     Application.Exit();
             }
 

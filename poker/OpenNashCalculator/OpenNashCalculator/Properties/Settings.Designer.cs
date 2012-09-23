@@ -139,5 +139,14 @@ namespace OpenNashCalculator.Properties {
                 return ((int)(this["AddonAnte"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int AutoCloseMin {
+            get {
+                return ((int)(this["AutoCloseMin"]));
+            }
+        }
     }
 }
