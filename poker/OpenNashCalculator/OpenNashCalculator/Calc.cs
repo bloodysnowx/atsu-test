@@ -18,6 +18,8 @@ namespace OpenNashCalculator
     {
         private void Calc()
         {
+            webBrowserTimer.Enabled = false;
+
             if (textBoxAnte.Text.Trim() == "")
                 textBoxAnte.Text = "0";
 
@@ -93,6 +95,7 @@ namespace OpenNashCalculator
             if (matchCol.Count > 0) pushRange = matchCol[0].Groups[1].Value;
 
             rangeTextBoxes[hero_num].Text = pushRange;
+            webBrowserTimer.Enabled = false;
         }
 
     }
