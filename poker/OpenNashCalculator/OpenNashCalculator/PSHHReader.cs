@@ -140,7 +140,7 @@ namespace OpenNashCalculator
         {
             Regex regex = new Regex("Seat" + Regex.Escape(" ") + "([0-9]+):" + Regex.Escape(" ") + "(.+)" + Regex.Escape(" ")
                 + Regex.Escape("(") + "([0-9]+)" + Regex.Escape(" ") + "in" + Regex.Escape(" ") + "chips" + Regex.Escape(")"));
-            for (int i = 0; i < 9; ++i)
+            for (int i = 0; i < maxSeatNum; ++i)
             {
                 MatchCollection matchCol = regex.Matches(hh[++line]);
                 if (matchCol.Count > 0)
@@ -187,11 +187,6 @@ namespace OpenNashCalculator
                     break;
                 }
             }
-        }
-
-        enum Blind
-        {
-            small, big
         }
 
         /// <summary>指定されたBlindの支払い処理を計算する</summary>

@@ -15,4 +15,9 @@ namespace OpenNashCalculator
 
         string getTourneyID(string fileName);
     }
+
+    enum Blind
+    {
+        small, big
+    }
 }
