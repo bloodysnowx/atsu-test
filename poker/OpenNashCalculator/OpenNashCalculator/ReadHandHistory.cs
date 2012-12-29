@@ -57,7 +57,6 @@ namespace OpenNashCalculator
             string[] names = new string[9];
             int[] chips = new int[9];
             string[] position = new string[9];
-            int pot = 0;
             int[] posted = new int[9];
             int ante = 0;
 
@@ -217,28 +216,23 @@ namespace OpenNashCalculator
         void ReadHandHistory()
         {
             if (openHandHistoryDialog.FileName == String.Empty) return;
+            DateTime lastWriteTime = System.IO.File.GetLastWriteTime(openHandHistoryDialog.FileName);
             if(checkBoxClose.Checked)
             {
                 if(DateTime.Now.Minute <= 5 || DateTime.Now.Minute >= 55)
                 {
-                    if(System.IO.File.GetLastWriteTime(openHandHistoryDialog.FileName).AddMinutes(5 + Properties.Settings.Default.AutoCloseMin) < DateTime.Now)
+                    if(lastWriteTime.AddMinutes(5 + Properties.Settings.Default.AutoCloseMin) < DateTime.Now)
                         Application.Exit();
                 }
-                else if (System.IO.File.GetLastWriteTime(openHandHistoryDialog.FileName).AddMinutes(Properties.Settings.Default.AutoCloseMin) < DateTime.Now)
+                else if (lastWriteTime.AddMinutes(Properties.Settings.Default.AutoCloseMin) < DateTime.Now)
                     Application.Exit();
             }
 
-            if (hh_back_num > 0)
-            {
-                ReadHandHistoryNative();
-                return;
-            }
-            else if (hh_back_num == 0 && updateDate >= System.IO.File.GetLastWriteTime(openHandHistoryDialog.FileName)) return;
+            if (hh_back_num == 0 && updateDate >= lastWriteTime) return;
 
-            updateDate = System.IO.File.GetLastWriteTime(openHandHistoryDialog.FileName);
-            string[] hh = System.IO.File.ReadAllLines(openHandHistoryDialog.FileName);
-
+            updateDate = lastWriteTime;
             TableData result = reader.read(openHandHistoryDialog.FileName, hh_back_num);
+
 
             // 設定
             textBoxBB.Text = result.BB.ToString();
@@ -278,11 +272,11 @@ namespace OpenNashCalculator
                     }
                     else
                     {
-                        for (int j = 1, count = 0; j < result.MaxSeatNum; ++j)
+                        for (int j = 1, count = 0; j < result.MaxSeatNum + 1; ++j)
                         {
                             if (result.chips[(i + j) % result.MaxSeatNum] > 0)
                             {
-                                if (++count == 3)
+                                if (++count == 2)
                                 {
                                     positionRadioButtons[result.seats[(i + j) % result.MaxSeatNum] - 1].Checked = true;
                                     break;
@@ -305,7 +299,7 @@ namespace OpenNashCalculator
                 if(result.seats[result.getHeroIndex()] > result.MaxSeatNum) result.seats[result.getHeroIndex()] = result.seats[result.getHeroIndex()] % result.MaxSeatNum;
                 SetHeroSeat(SeatLabels[result.getHeroSeat() - 1]);
             }
-            else if (0 < Properties.Settings.Default.PreferredSeat && Properties.Settings.Default.PreferredSeat < 10)
+            else if (0 < Properties.Settings.Default.PreferredSeat && Properties.Settings.Default.PreferredSeat < result.MaxSeatNum + 1)
             {
                 for (int i = 0; i < (Properties.Settings.Default.PreferredSeat -  result.seats[result.getHeroIndex()] + result.MaxSeatNum) % result.MaxSeatNum; ++i)
                     SeatRotateF();

@@ -54,5 +54,21 @@ namespace OpenNashCalculator
         {
             return seats[getHeroIndex()];
         }
+
+        public void nextButton()
+        {
+            // 現在のボタンの次に存在するシートにボタンを移動する
+            int nowIndex;
+            for (nowIndex = 0; nowIndex < MaxSeatNum; ++nowIndex)
+                if (seats[nowIndex] == this.buttonPos) break;
+            for (int i = 0; i < MaxSeatNum; ++i)
+            {
+                if (seats[(i + nowIndex) % MaxSeatNum] > 0)
+                {
+                    this.buttonPos = seats[(i + nowIndex) % MaxSeatNum];
+                    break;
+                }
+            }
+        }
     }
 }

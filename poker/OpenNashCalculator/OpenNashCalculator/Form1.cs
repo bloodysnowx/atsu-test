@@ -213,21 +213,13 @@ namespace OpenNashCalculator
             if (args.Length > 1)
             {
                 openHandHistoryDialog.FileName = args[1];
-                tourney_ID = getTourneyID(openHandHistoryDialog.FileName);
+                this.reader = HandHistoryReaderFactory.create(openHandHistoryDialog.FileName);
+                tourney_ID = reader.getTourneyID(openHandHistoryDialog.FileName);
                 checkBoxClose.Checked = true;
                 // FindTournamentWindow();
                 // GoBack();
                 openHandHistory();
             }
-        }
-
-        private string getTourneyID(string fileName)
-        {
-            Regex regex = new Regex("HH[0-9]+" + Regex.Escape(" ") + "T([0-9]+)" + Regex.Escape(" ") + "No" + Regex.Escape(" ")
-                + "Limit" + Regex.Escape(" ") + "Hold");
-            MatchCollection matchCol = regex.Matches(fileName);
-            string tourney = matchCol[0].Groups[1].Value;
-            return tourney;
         }
 
         private void buttonBBUP_Click(object sender, EventArgs e)
@@ -437,8 +429,9 @@ namespace OpenNashCalculator
                 checkBoxRefresh.Enabled = checkBoxRefresh.Checked = false;
                 return;
             }
+            this.reader = HandHistoryReaderFactory.create(openHandHistoryDialog.FileName);
+            tourney_ID = reader.getTourneyID(openHandHistoryDialog.FileName);
 
-            tourney_ID = getTourneyID(openHandHistoryDialog.FileName);
             // FindTournamentWindow();
             // GoBack();
             openHandHistory();

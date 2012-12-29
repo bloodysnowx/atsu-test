@@ -16,6 +16,14 @@ namespace OpenNashCalculator
             maxSeatNum = Properties.Settings.Default.MaxSeatNum;
         }
 
+        public string getTourneyID(string fileName)
+        {
+            Regex regex = new Regex("HH[0-9]+" + Regex.Escape(" ") + "T([0-9]+)" + Regex.Escape(" ") + "No" + Regex.Escape(" ")
+                + "Limit" + Regex.Escape(" ") + "Hold");
+            MatchCollection matchCol = regex.Matches(fileName);
+            return matchCol[0].Groups[1].Value;
+        }
+
         /// <summary>HEROの名前を取得する</summary>
         /// <param name="hh"></param>
         /// <returns>HEROの名前</returns>
@@ -334,7 +342,6 @@ namespace OpenNashCalculator
         TableData HandHistoryReader.read(string fileName, int backNum)
         {
             TableData result = new TableData();
-            DateTime updateDate = System.IO.File.GetLastWriteTime(fileName);
             string[] hh = System.IO.File.ReadAllLines(fileName);
 
             result.heroName = getHeroName(hh);
@@ -343,8 +350,7 @@ namespace OpenNashCalculator
             string[] now_hh = getNowHH(hh, hhLineList, backNum);
 
             int line = 0;
-            setBBSB(ref result, now_hh[line]);
-            line += 1;
+            setBBSB(ref result, now_hh[line++]);
             result.buttonPos = getButtonPos(now_hh[line]);
             getStartSituation(ref result, now_hh, ref line);
             calcAntePayment(ref result, now_hh, ref line);
@@ -370,6 +376,7 @@ namespace OpenNashCalculator
                         break;
                     }
                 }
+                result.nextButton();
             }
 
             return result;

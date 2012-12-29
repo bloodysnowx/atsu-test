@@ -12,5 +12,7 @@ namespace OpenNashCalculator
         /// <param name="backNum">何ハンド前か？</param>
         /// <returns>読み込んだ結果のテーブル状況(NashCalculateするために用いる)</returns>
         TableData read(string fileName, int backNum);
+
+        string getTourneyID(string fileName);
     }
 }

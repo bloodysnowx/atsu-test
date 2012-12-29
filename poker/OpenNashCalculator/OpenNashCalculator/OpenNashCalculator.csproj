@@ -76,7 +76,9 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FTHHReader.cs" />
     <Compile Include="HandHistoryReader.cs" />
+    <Compile Include="HandHistoryReaderFactory.cs" />
     <Compile Include="OpenNashCalculator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
