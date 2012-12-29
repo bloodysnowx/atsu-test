@@ -76,13 +76,16 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="HandHistoryReader.cs" />
     <Compile Include="OpenNashCalculator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PSHHReader.cs" />
     <Compile Include="ReadHandHistory.cs">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="TableData.cs" />
     <EmbeddedResource Include="Form1.ja-JP.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -142,8 +145,8 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy $(ProjectDir)readme.txt $(TargetDir)
-copy $(SolutionDir)ONCDaemon\bin\Release\自動発動.exe $(TargetDir)
-copy $(SolutionDir)ONCDaemon\bin\Release\自動発動.exe.config $(TargetDir)
+copy $(SolutionDir)ONCDaemon\bin\$(ConfigurationName)\自動発動.exe $(TargetDir)
+copy $(SolutionDir)ONCDaemon\bin\$(ConfigurationName)\自動発動.exe.config $(TargetDir)
 del $(TargetDir)Release.zip
 C:\"Program Files"\WinRAR\WinRAR.exe a -ep1 $(TargetDir)Release.zip $(TargetPath) $(TargetPath).config $(TargetDir)readme.txt $(TargetDir)自動発動.exe $(TargetDir)自動発動.exe.config</PostBuildEvent>
   </PropertyGroup>
