@@ -25,7 +25,7 @@ namespace OpenNashCalculator.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.65,0.35")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1,1")]
         public string DefaultStructure {
             get {
                 return ((string)(this["DefaultStructure"]));
@@ -34,7 +34,7 @@ namespace OpenNashCalculator.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("20,30,40,60,80,100,120,150,180,210,250,300,350,400,450,500")]
+        [global::System.Configuration.DefaultSettingValueAttribute("50,100,200,400,600,800,1200,1600,2000,3000")]
         public string BB {
             get {
                 return ((string)(this["BB"]));
@@ -43,7 +43,7 @@ namespace OpenNashCalculator.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10,15,20,30,40,50,60,75,90,105,125,150,175,200,225,250")]
+        [global::System.Configuration.DefaultSettingValueAttribute("25,50,100,200,300,400,600,800,1000,1500")]
         public string SB {
             get {
                 return ((string)(this["SB"]));
@@ -52,7 +52,7 @@ namespace OpenNashCalculator.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2,3,4,6,8,10,12,15,18,21,25,30,35,40,45,50")]
+        [global::System.Configuration.DefaultSettingValueAttribute("10,20,40,80,120,160,240,320,400,600")]
         public string Ante {
             get {
                 return ((string)(this["Ante"]));
