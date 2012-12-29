@@ -41,8 +41,8 @@ namespace OpenNashCalculator
         string[] SB   = { "10", "15", "20", "30", "40",  "50",  "60",  "75",  "90", "105", "125", "150", "175", "200", "225", "250" };
         string[] BB   = { "20", "30", "40", "60", "80", "100", "120", "150", "180", "210", "250", "300", "350", "400", "450", "500" };
         string[] Ante = {  "2",  "3",  "4",  "6",  "8",  "10",  "12",  "15",  "18",  "21",  "25",  "30",  "35",  "40",  "45",  "50" };
-        string[] Position = { "BB", "SB", "BU", "CO", "UTG+4", "UTG+3", "UTG+2", "UTG+1", "UTG" };
-        string[] Seat = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+        string[] Position = { "BB", "SB", "BU", "CO", /*"UTG+5",*/ "UTG+4", "UTG+3", "UTG+2", "UTG+1", "UTG" };
+        string[] Seat = { "1", "2", "3", "4", "5", "6", "7", "8", "9", /*"10"*/ };
         RadioButton[] positionRadioButtons;
         TextBox[] chipTextBoxes;
         Label[] SeatLabels;

@@ -148,7 +148,7 @@
 copy $(SolutionDir)ONCDaemon\bin\$(ConfigurationName)\自動発動.exe $(TargetDir)
 copy $(SolutionDir)ONCDaemon\bin\$(ConfigurationName)\自動発動.exe.config $(TargetDir)
 del $(TargetDir)Release.zip
-C:\"Program Files"\WinRAR\WinRAR.exe a -ep1 $(TargetDir)Release.zip $(TargetPath) $(TargetPath).config $(TargetDir)readme.txt $(TargetDir)自動発動.exe $(TargetDir)自動発動.exe.config</PostBuildEvent>
+</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

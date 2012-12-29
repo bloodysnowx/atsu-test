@@ -7,7 +7,7 @@ namespace OpenNashCalculator
 {
     class TableData
     {
-        private int maxSeatNum;
+        public int MaxSeatNum { get; private set; }
         public int BB { get; set; }
         public int SB { get; set; }
         public int Ante { get; set; }
@@ -21,18 +21,26 @@ namespace OpenNashCalculator
         public int buttonPos { get; set; }
         public int pot { get; set; }
         public int[] posted { get; set; }
+        public int StartingChip { get; set; }
+        private int heroIndex = -1;
 
         public TableData()
         {
-            maxSeatNum = Properties.Settings.Default.MaxSeatNum;
-            seats = new int[maxSeatNum];
-            positions = new string[maxSeatNum];
-            playerNames = new string[maxSeatNum];
-            chips = new int[maxSeatNum];
-            posted = new int[maxSeatNum];
+            MaxSeatNum = Properties.Settings.Default.MaxSeatNum;
+            seats = new int[MaxSeatNum];
+            positions = new string[MaxSeatNum];
+            playerNames = new string[MaxSeatNum];
+            chips = new int[MaxSeatNum];
+            posted = new int[MaxSeatNum];
         }
 
         public int getHeroIndex()
+        {
+            if (heroIndex < 0) heroIndex = calcHeroIndex();
+            return heroIndex;
+        }
+
+        private int calcHeroIndex()
         {
             for (int i = 0; i < playerNames.Length; ++i)
             {
@@ -40,6 +48,11 @@ namespace OpenNashCalculator
                     return i;
             }
             return 0;
+        }
+
+        public int getHeroSeat()
+        {
+            return seats[getHeroIndex()];
         }
     }
 }

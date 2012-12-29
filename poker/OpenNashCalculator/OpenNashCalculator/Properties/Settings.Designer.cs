@@ -151,7 +151,7 @@ namespace OpenNashCalculator.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        [global::System.Configuration.DefaultSettingValueAttribute("9")]
         public int MaxSeatNum {
             get {
                 return ((int)(this["MaxSeatNum"]));

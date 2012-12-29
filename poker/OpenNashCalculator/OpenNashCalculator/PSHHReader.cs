@@ -9,7 +9,6 @@ namespace OpenNashCalculator
 {
     class PSHHReader : HandHistoryReader
     {
-        private int startingChip = 0;
         private int maxSeatNum = 10;
 
         public PSHHReader()
@@ -37,7 +36,7 @@ namespace OpenNashCalculator
         /// <param name="hh"></param>
         /// <param name="defaultValue">リバイ時のチップが決定できなかった場合のデフォルト値</param>
         /// <returns>リバイ時のチップ</returns>
-        private int getStartingChip(string[] hh, int defaultValue)
+        private int getStartingChip(string hero_name, string[] hh, int defaultValue)
         {
             int ret = 0;
             Regex regex = new Regex("Seat" + Regex.Escape(" ") + "([0-9]+):" + Regex.Escape(" ") + "(.+)" + Regex.Escape(" ")
@@ -82,7 +81,7 @@ namespace OpenNashCalculator
         /// <param name="lineList"></param>
         /// <param name="backNum"></param>
         /// <returns></returns>
-        private List<string> getNowHH(string[] hh, List<int> lineList, int backNum)
+        private string[] getNowHH(string[] hh, List<int> lineList, int backNum)
         {
             List<string> now_hh = new List<string>();
             if (backNum == 0)
@@ -100,7 +99,7 @@ namespace OpenNashCalculator
                     now_hh.Add(hh[i]);
                 }
             }
-            return now_hh;
+            return now_hh.ToArray();
         }
 
         /// <summary>BBとSBを取得し、設定する</summary>
@@ -297,7 +296,7 @@ namespace OpenNashCalculator
             MatchCollection matchCol = uncalled_regex.Matches(line);
             if (matchCol.Count > 0)
             {
-                for (int j = 0; j < 9; ++j)
+                for (int j = 0; j < maxSeatNum; ++j)
                 {
                     if (matchCol[0].Groups[2].Value.Equals(result.playerNames[j]))
                     {
@@ -311,59 +310,60 @@ namespace OpenNashCalculator
             return false;
         }
 
+        private bool calcCollectedPayment(ref TableData result, string line)
+        {
+            Regex collected_regex = new Regex("(.+)" + Regex.Escape(" ") + "collected" + Regex.Escape(" ") + "([0-9]+)"
+                    + Regex.Escape(" ") + "from" + Regex.Escape(" "));
+            MatchCollection matchCol = collected_regex.Matches(line);
+            if (matchCol.Count > 0)
+            {
+                for (int j = 0; j < maxSeatNum; ++j)
+                {
+                    if (matchCol[0].Groups[1].Value.Equals(result.playerNames[j]))
+                    {
+                        result.chips[j] += System.Convert.ToInt32(matchCol[0].Groups[2].Value);
+                        result.pot -= System.Convert.ToInt32(matchCol[0].Groups[2].Value);
+                        break;
+                    }
+                }
+                return true;
+            }
+            return false;
+        }
+
         TableData HandHistoryReader.read(string fileName, int backNum)
         {
             TableData result = new TableData();
             DateTime updateDate = System.IO.File.GetLastWriteTime(fileName);
             string[] hh = System.IO.File.ReadAllLines(fileName);
-            Regex regex;
-            MatchCollection matchCol;
 
-            if (result.heroName == string.Empty) result.heroName = getHeroName(hh);
-            if (startingChip == 0) startingChip = getStartingChip(hh, System.Convert.ToInt32(Properties.Settings.Default.StartingChip));
+            result.heroName = getHeroName(hh);
+            result.StartingChip = getStartingChip(result.heroName, hh, System.Convert.ToInt32(Properties.Settings.Default.StartingChip));
             List<int> hhLineList = getHHLineList(hh);
-            List<string> now_hh = getNowHH(hh, hhLineList, backNum);
+            string[] now_hh = getNowHH(hh, hhLineList, backNum);
 
             int line = 0;
             setBBSB(ref result, now_hh[line]);
             line += 1;
             result.buttonPos = getButtonPos(now_hh[line]);
-            getStartSituation(ref result, hh, ref line);
-            calcAntePayment(ref result, hh, ref line);
+            getStartSituation(ref result, now_hh, ref line);
+            calcAntePayment(ref result, now_hh, ref line);
+            calcBlindsPayment(ref result, now_hh, ref line);
 
             if (backNum == 0)
             {
                 // bets, calls, raises, UNCALLED bet, collected
-                
-                Regex collected_regex = new Regex("(.+)" + Regex.Escape(" ") + "collected" + Regex.Escape(" ") + "([0-9]+)"
-                    + Regex.Escape(" ") + "from" + Regex.Escape(" "));
-
-                for (; line < now_hh.Count; ++line)
+                for (; line < now_hh.Length; ++line)
                 {
-                    if (calcBetPayment(ref result, hh[line])) continue;
-                    if (calcCallPayment(ref result, hh[line])) continue;
-                    if (calcRaisePayment(ref result, hh[line])) continue;
-                    if (calcUncalledPayment(ref result, hh[line])) continue;
-                    
-                    matchCol = collected_regex.Matches(now_hh[line]);
-                    if (matchCol.Count > 0)
-                    {
-                        for (int j = 0; j < 9; ++j)
-                        {
-                            if (matchCol[0].Groups[1].Value.Equals(names[j]))
-                            {
-                                chips[j] += System.Convert.ToInt32(matchCol[0].Groups[2].Value);
-                                pot -= System.Convert.ToInt32(matchCol[0].Groups[2].Value);
-                                break;
-                            }
-                        }
-                        continue;
-                    }
+                    if (calcBetPayment(ref result, now_hh[line])) continue;
+                    if (calcCallPayment(ref result, now_hh[line])) continue;
+                    if (calcRaisePayment(ref result, now_hh[line])) continue;
+                    if (calcUncalledPayment(ref result, now_hh[line])) continue;
+                    if (calcCollectedPayment(ref result, now_hh[line])) continue;
 
                     if (now_hh[line].StartsWith("*** FLOP ***") || now_hh[line].StartsWith("*** TURN ***") || now_hh[line].StartsWith("*** RIVER ***"))
                     {
-                        for (int i = 0; i < 9; ++i)
-                            posted[i] = 0;
+                        result.posted.Initialize();
                     }
                     else if (now_hh[line].StartsWith("*** SUMMARY ***"))
                     {
@@ -372,95 +372,7 @@ namespace OpenNashCalculator
                 }
             }
 
-            // 設定
-            SetHeroSeat(SeatLabels[seats[hero_index] - 1]);
-            textBoxBB.Text = bb.ToString();
-            currentSB = sb.ToString();
-            textBoxAnte.Text = ante.ToString();
-
-            // チップと名前入力
-            foreach (TextBox chipTextBox in chipTextBoxes)
-                chipTextBox.Text = "";
-            for (int i = 0; i < 9; ++i)
-            {
-                if (chips[i] <= 0 && names[i] != string.Empty && seats[i] > 0 && checkBoxRebuy.Checked)
-                    chips[i] = startingChip;
-
-                if (chips[i] > 0)
-                {
-                    chipTextBoxes[seats[i] - 1].Text = chips[i].ToString();
-                    PlayerNameLabels[seats[i] - 1].Text = names[i];
-                }
-            }
-
-            // ボタンの位置を決定
-            int player_num = 0;
-            for (int i = 0; i < 9; ++i)
-            {
-                if (chips[i] > 0) player_num++;
-            }
-
-            for (int i = 0; i < 9; ++i)
-            {
-                if (button == seats[i])
-                {
-                    if (player_num < 3)
-                    {
-                        positionRadioButtons[button - 1].Checked = true;
-                    }
-                    else
-                    {
-                        for (int j = 1, count = 0; j < 10; ++j)
-                        {
-                            if (chips[(i + j) % 9] > 0)
-                            {
-                                if (++count == 3)
-                                {
-                                    positionRadioButtons[seats[(i + j) % 9] - 1].Checked = true;
-                                    break;
-                                }
-                            }
-                        }
-
-                    }
-                    break;
-                }
-            }
-
-            if (Properties.Settings.Default.SetBBLast)
-            {
-                while (positionRadioButtons[8].Text != Position[0])
-                {
-                    SeatRotateF();
-                    seats[hero_index]++;
-                }
-                if (seats[hero_index] > 9) seats[hero_index] = seats[hero_index] % 9;
-                SetHeroSeat(SeatLabels[seats[hero_index] - 1]);
-            }
-            else if (0 < Properties.Settings.Default.PreferredSeat && Properties.Settings.Default.PreferredSeat < 10)
-            {
-                for (int i = 0; i < (Properties.Settings.Default.PreferredSeat - seats[hero_index] + 9) % 9; ++i)
-                    SeatRotateF();
-
-                SetHeroSeat(SeatLabels[Properties.Settings.Default.PreferredSeat - 1]);
-            }
-
-            SetPosition();
-
-            foreach (CheckBox checkBox in AllinCheckBoxes)
-                checkBox.Checked = false;
-
-            if (chips[hero_index] > 0 && player_num > 1 && checkBoxCalc.Checked)
-            {
-                Calc();
-            }
-            else
-            {
-                recent_web_page = String.Empty;
-                foreach (TextBox x in rangeTextBoxes)
-                    x.Clear();
-            }
-            throw new NotImplementedException();
+            return result;
         }
     }
 }
