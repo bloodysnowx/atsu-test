@@ -58,6 +58,16 @@ ONCDaemon.exeを起動しておく
 
 ChangeLog
 
+rev 204
+テーブルの最大人数への依存を削除
+
+rev 203
+UIとテーブル情報を分離
+PokerStarsのハンド読み込みをリファクタリング(FullTilt流用のために)
+
+rev 202
+PokerStars, FullTiltの切り替えに対応するために、インターフェース定義
+
 2012/10/04 rev 200
 ウェブブラウザー読み込み完了確認タイマーを常時ONから必要に応じてOFFに修正
 ファイルをオープンしていない時にforeとbackを押すと落ちる問題を修正
