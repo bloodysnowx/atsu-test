@@ -58,6 +58,9 @@ ONCDaemon.exeを起動しておく
 
 ChangeLog
 
+2012/12/31 rev 208
+自動発動のFullTilt暫定対応
+
 2012/12/30 rev 207
 FullTilt暫定対応版の完了(ただし、AnteとSplit Potの扱いはハンドヒストリーが存在しないため、不明)
 
