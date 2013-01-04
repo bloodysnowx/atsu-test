@@ -61,7 +61,7 @@ namespace OpenNashCalculator
             int nowIndex;
             for (nowIndex = 0; nowIndex < MaxSeatNum; ++nowIndex)
                 if (seats[nowIndex] == this.buttonPos) break;
-            for (int i = 0; i < MaxSeatNum; ++i)
+            for (int i = 1; i < MaxSeatNum; ++i)
             {
                 if (seats[(i + nowIndex) % MaxSeatNum] > 0)
                 {

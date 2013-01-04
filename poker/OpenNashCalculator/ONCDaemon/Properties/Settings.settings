@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="HandHistoryFolder" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">C:\poker\HandHistory\chiyuki</Value>
+      <Value Profile="(Default)">C:\poker\FullTilt\chiyuki</Value>
     </Setting>
   </Settings>
 </SettingsFile>

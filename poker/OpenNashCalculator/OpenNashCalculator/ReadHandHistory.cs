@@ -216,7 +216,7 @@ namespace OpenNashCalculator
         void ReadHandHistory()
         {
             if (openHandHistoryDialog.FileName == String.Empty) return;
-            DateTime lastWriteTime = System.IO.File.GetLastWriteTime(openHandHistoryDialog.FileName);
+            DateTime lastWriteTime =reader.GetLastWriteTime(openHandHistoryDialog.FileName);
             if(checkBoxClose.Checked)
             {
                 if(DateTime.Now.Minute <= 5 || DateTime.Now.Minute >= 55)

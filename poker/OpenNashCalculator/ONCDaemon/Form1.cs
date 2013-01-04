@@ -12,6 +12,8 @@ namespace ONCDaemon
 {
     public partial class Form1 : Form
     {
+        int count = 0;
+
         System.IO.FileSystemWatcher watcher;
         Regex regexPS = new Regex("HH[0-9]+" + Regex.Escape(" ") + "T[0-9]+" + Regex.Escape(" ") + "No" + Regex.Escape(" ")
                 + "Limit" + Regex.Escape(" ") + "Hold");
@@ -21,6 +23,8 @@ namespace ONCDaemon
         public Form1()
         {
             InitializeComponent();
+            this.labelFolder.Text = Properties.Settings.Default.HandHistoryFolder;
+            this.labelCount.Text = count.ToString();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -43,11 +47,10 @@ namespace ONCDaemon
                     {
                         string tmp_file = "\"" + file + "\"";
                         System.Diagnostics.Process.Start(System.IO.Directory.GetCurrentDirectory() + "/スタンド.exe", tmp_file);
+                        this.labelCount.Text = (++count).ToString();
                     }
                 }
             }
-
-
 
             watcher.EnableRaisingEvents = true;
         }
@@ -61,6 +64,7 @@ namespace ONCDaemon
                     {
                         string tmp_file = "\"" + e.FullPath + "\"";
                         System.Diagnostics.Process.Start(System.IO.Directory.GetCurrentDirectory() + "/スタンド.exe", tmp_file);
+                        this.labelCount.Text = (++count).ToString();
                     }
                     break;
                 default:

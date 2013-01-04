@@ -376,5 +376,10 @@ namespace OpenNashCalculator
 
             return result;
         }
+
+        public DateTime GetLastWriteTime(string fileName)
+        {
+            return System.IO.File.GetLastWriteTime(fileName);
+        }
     }
 }

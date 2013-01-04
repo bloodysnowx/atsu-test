@@ -14,6 +14,7 @@ namespace OpenNashCalculator
         TableData read(string fileName, int backNum);
 
         string getTourneyID(string fileName);
+        DateTime GetLastWriteTime(string fileName);
     }
 
     enum Blind

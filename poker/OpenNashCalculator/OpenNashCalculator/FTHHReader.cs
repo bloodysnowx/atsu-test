@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.IO;
 
 namespace OpenNashCalculator
 {
@@ -15,10 +16,24 @@ namespace OpenNashCalculator
             maxSeatNum = Properties.Settings.Default.MaxSeatNum;
         }
 
+        private string[] ReadAllLines(string fileName)
+        {
+            FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            StreamReader sr = new StreamReader(fs);
+            List<string> hhList = new List<string>();
+            while (sr.Peek() >= 0)
+            {
+                hhList.Add(sr.ReadLine());
+            }
+            return hhList.ToArray();
+        }
+
         public TableData read(string fileName, int backNum)
         {
             TableData result = new TableData();
-            string[] hh = System.IO.File.ReadAllLines(fileName);
+            
+            // string[] hh = System.IO.File.ReadAllLines(fileName);
+            string[] hh = ReadAllLines(fileName);
 
             result.heroName = getHeroName(hh);
             result.StartingChip = getStartingChip(result.heroName, hh, System.Convert.ToInt32(Properties.Settings.Default.StartingChip));
@@ -305,6 +320,28 @@ namespace OpenNashCalculator
             Regex regex = new Regex(Regex.Escape("(") + "([0-9]+)" + Regex.Escape("), No Limit Hold'em"));
             MatchCollection matchCol = regex.Matches(fileName);
             return matchCol[0].Groups[1].Value;
+        }
+
+        public DateTime GetLastWriteTime(string fileName)
+        {
+            Regex regex = new Regex(Regex.Escape(" - ") + "([0-9]+):([0-9]+):([0-9]+)" + Regex.Escape(" JST - ")
+                + "([0-9]+)/([0-9]+)/([0-9]+)");
+            string[] hh = ReadAllLines(fileName);
+            DateTime lastWriteTime = System.IO.File.GetLastWriteTime(fileName);
+            foreach (string line in hh)
+            {
+                MatchCollection matchCol = regex.Matches(line);
+                if (matchCol.Count > 0)
+                {
+                    lastWriteTime = new DateTime(System.Convert.ToInt32(matchCol[0].Groups[4].Value), 
+                        System.Convert.ToInt32(matchCol[0].Groups[5].Value),
+                        System.Convert.ToInt32(matchCol[0].Groups[6].Value),
+                        System.Convert.ToInt32(matchCol[0].Groups[1].Value), 
+                        System.Convert.ToInt32(matchCol[0].Groups[2].Value), 
+                        System.Convert.ToInt32(matchCol[0].Groups[3].Value));
+                }
+            }
+            return lastWriteTime;
         }
     }
 }
