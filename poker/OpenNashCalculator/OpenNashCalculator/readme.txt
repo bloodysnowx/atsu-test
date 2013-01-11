@@ -20,7 +20,8 @@ AddonAnte : アドオン時のAnteを指定
 
 ONCDaemon.exe.configを編集する
 
-HandHistoryFolder : PokerStarsのHandHistoryフォルダを指定する
+HandHistoryFolderPS : PokerStarsのHandHistoryフォルダを指定する
+HandHistoryFolderFT : FullTiltのHandHistoryフォルダを指定する
 
 使用方法
 
@@ -57,6 +58,10 @@ ONCDaemon.exeを起動しておく
 16. ハンドレンジを取得し、表示する
 
 ChangeLog
+
+2013/01/10 rev 210
+Blindに,(カンマ)が入った場合に正しく読み込めない現象に対処
+Anteに対応
 
 2013/01/04 rev 209
 自動発動にフォルダと開いた数を表示

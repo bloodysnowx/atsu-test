@@ -25,10 +25,22 @@ namespace ONCDaemon.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\poker\\FullTilt\\chiyuki")]
-        public string HandHistoryFolder {
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\poker\\PokerStars")]
+        public string PSHandHistoryFolder {
             get {
-                return ((string)(this["HandHistoryFolder"]));
+                return ((string)(this["PSHandHistoryFolder"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\poker\\FullTilt")]
+        public string FTHandHistoryFolder {
+            get {
+                return ((string)(this["FTHandHistoryFolder"]));
+            }
+            set {
+                this["FTHandHistoryFolder"] = value;
             }
         }
     }
