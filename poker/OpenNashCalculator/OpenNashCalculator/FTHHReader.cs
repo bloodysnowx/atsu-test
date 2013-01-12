@@ -28,12 +28,20 @@ namespace OpenNashCalculator
             return hhList.ToArray();
         }
 
+        private string[] removeSitsDown(string[] hh)
+        {
+            List<string> hhList = hh.ToList();
+            hhList.RemoveAll(line => line.Contains("sits down"));
+            return hhList.ToArray();
+        }
+
         public TableData read(string fileName, int backNum)
         {
             TableData result = new TableData();
             
             // string[] hh = System.IO.File.ReadAllLines(fileName);
             string[] hh = ReadAllLines(fileName);
+            hh = removeSitsDown(hh);
 
             result.heroName = getHeroName(hh);
             result.StartingChip = getStartingChip(result.heroName, hh, System.Convert.ToInt32(Properties.Settings.Default.StartingChip));
