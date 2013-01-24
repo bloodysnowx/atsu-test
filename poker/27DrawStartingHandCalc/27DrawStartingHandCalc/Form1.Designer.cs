@@ -36,6 +36,8 @@
             this.buttonCalc = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.buttonCalc2 = new System.Windows.Forms.Button();
+            this.backgroundWorkerCalc = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,7 +107,7 @@
             0,
             0});
             this.numericUpDown1.Minimum = new decimal(new int[] {
-            10000,
+            100,
             0,
             0,
             0});
@@ -125,11 +127,31 @@
             this.progressBar.Size = new System.Drawing.Size(259, 23);
             this.progressBar.TabIndex = 8;
             // 
+            // buttonCalc2
+            // 
+            this.buttonCalc2.Enabled = false;
+            this.buttonCalc2.Location = new System.Drawing.Point(85, 160);
+            this.buttonCalc2.Name = "buttonCalc2";
+            this.buttonCalc2.Size = new System.Drawing.Size(75, 23);
+            this.buttonCalc2.TabIndex = 9;
+            this.buttonCalc2.Text = "並列？";
+            this.buttonCalc2.UseVisualStyleBackColor = true;
+            this.buttonCalc2.Visible = false;
+            this.buttonCalc2.Click += new System.EventHandler(this.buttonCalc2_Click);
+            // 
+            // backgroundWorkerCalc
+            // 
+            this.backgroundWorkerCalc.WorkerReportsProgress = true;
+            this.backgroundWorkerCalc.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerCalc_DoWork);
+            this.backgroundWorkerCalc.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerCalc_ProgressChanged);
+            this.backgroundWorkerCalc.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerCalc_RunWorkerCompleted);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.buttonCalc2);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.buttonCalc);
@@ -156,6 +178,8 @@
         private System.Windows.Forms.Button buttonCalc;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Button buttonCalc2;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerCalc;
     }
 }
 

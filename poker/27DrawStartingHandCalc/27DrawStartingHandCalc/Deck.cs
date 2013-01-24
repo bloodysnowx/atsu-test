@@ -7,11 +7,12 @@ namespace _27DrawStartingHandCalc
 {
     public class Deck
     {
-        Random rand;
-        List<int> dealt;
+        static Random rand = new jp.takel.PseudoRandom.MersenneTwister();
+
+        protected List<int> dealt;
         public Deck()
         {
-            rand = new System.Random();
+            // rand = new System.Random();
             dealt = new List<int>();
         }
 
@@ -29,6 +30,7 @@ namespace _27DrawStartingHandCalc
             }
             while(dealt.Contains(newCard));
 
+            dealt.Add(newCard);
             return newCard;
         }
 
@@ -36,6 +38,31 @@ namespace _27DrawStartingHandCalc
         {
             dealt.Sort();
             int newCard = rand.Next(52 - dealt.Count);
+
+            for (int i = 0; i < dealt.Count; ++i)
+            {
+                if (dealt[i] < newCard) ++newCard;
+                else break;
+            }
+
+            dealt.Add(newCard);
+
+            return newCard;
+        }
+    }
+
+    public class DeckForParallel : Deck
+    {
+        Random randForParallel;
+        public DeckForParallel()
+        {
+            randForParallel = new jp.takel.PseudoRandom.MersenneTwister();
+        }
+
+        public int DrawB()
+        {
+            dealt.Sort();
+            int newCard = randForParallel.Next(52 - dealt.Count);
 
             for (int i = 0; i < dealt.Count; ++i)
             {

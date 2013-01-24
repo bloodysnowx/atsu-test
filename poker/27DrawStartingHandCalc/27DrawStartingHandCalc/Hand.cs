@@ -11,10 +11,10 @@ namespace _27DrawStartingHandCalc
 
         public Hand(string hand)
         {
-            Cards = new List<int>();
-            for (int i = 0; i < 5; ++i)
+            Cards = new List<int>(){-1,-1,-1,-1,-1};
+            for (int i = 0; i < hand.Length; ++i)
             {
-                Cards.Add(charToInt(hand[i]));
+                Cards[i] = charToInt(hand[i]);
             }
         }
 
@@ -22,7 +22,7 @@ namespace _27DrawStartingHandCalc
         {
             Cards = new List<int>();
             for (int i = 0; i < 5; ++i)
-                Cards.Add((deck.DrawB() % 13));
+                Cards.Add((deck.DrawA() % 13));
 
             // Cards.Sort();
         }
@@ -72,6 +72,17 @@ namespace _27DrawStartingHandCalc
         public bool isEqualTo(string target)
         {
             return isEqualTo(new Hand(target));
+        }
+
+        public string toString()
+        {
+            StringBuilder str = new StringBuilder();
+            for (int i = 0; i < Cards.Count; ++i)
+            {
+                str.Append(Cards[i]);
+                str.Append(',');
+            }
+            return str.ToString();
         }
     }
 }
