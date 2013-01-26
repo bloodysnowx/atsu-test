@@ -27,6 +27,11 @@ namespace _27DrawStartingHandCalc
             // Cards.Sort();
         }
 
+        public Hand(List<int> cards)
+        {
+            Cards = cards;
+        }
+
         public int charToInt(char c)
         {
             switch (c)
@@ -74,7 +79,7 @@ namespace _27DrawStartingHandCalc
             return isEqualTo(new Hand(target));
         }
 
-        public string toString()
+        public override string ToString()
         {
             StringBuilder str = new StringBuilder();
             for (int i = 0; i < Cards.Count; ++i)

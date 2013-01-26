@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Diagnostics;
 
 namespace _27DrawStartingHandCalc
 {
@@ -15,34 +16,38 @@ namespace _27DrawStartingHandCalc
     {
         int count;
         Hand target;
+        Button[] buttons;
+        Stopwatch sw = new Stopwatch(); 
 
         public Form1()
         {
             InitializeComponent();
+            buttons = new Button[] { buttonCalc, buttonCalcAll, buttonCalcAllAsync };
         }
 
         private void buttonCalc_Click(object sender, EventArgs e)
         {
-            this.progressBar.Maximum = (int)this.numericUpDown1.Value;
-            this.buttonCalc.Enabled = false;
+            sw.Start();
+            this.progressBar.Maximum = (int)this.numericUpDownCount.Value;
+            foreach (Button button in buttons) button.Enabled = false;
             this.backgroundWorkerCalc.RunWorkerAsync();
         }
 
         private void buttonCalc2_Click(object sender, EventArgs e)
         {
-            this.progressBar.Maximum = (int)this.numericUpDown1.Value;
+            this.progressBar.Maximum = (int)this.numericUpDownCount.Value;
             this.progressBar.Value = 0;
             Hand target = new Hand(this.textBoxStartingHand.Text);
 
-            var data = Enumerable.Range(0, (int)this.numericUpDown1.Value);
+            var data = Enumerable.Range(0, (int)this.numericUpDownCount.Value);
             var count = data.AsParallel().Sum(x =>
             {
                 Hand test = new Hand(new DeckForParallel());
                 return test.isEqualTo(target) ? 1 : 0;
             });
 
-            this.progressBar.Value = (int)this.numericUpDown1.Value;
-            this.textBoxResult.Text = ((decimal)count * 100 / this.numericUpDown1.Value).ToString("F8");
+            this.progressBar.Value = (int)this.numericUpDownCount.Value;
+            this.textBoxResult.Text = ((decimal)count * 100 / this.numericUpDownCount.Value).ToString("F8");
         }
 
         private int countHandOf(int all)
@@ -73,7 +78,7 @@ namespace _27DrawStartingHandCalc
             {
                 tasks[i] = Task.Factory.StartNew(() =>
                     {
-                        return countHandOf((int)this.numericUpDown1.Value / thread_count);
+                        return countHandOf((int)this.numericUpDownCount.Value / thread_count);
                     });
             }
             for (int i = 0; i < thread_count; ++i)
@@ -89,9 +94,75 @@ namespace _27DrawStartingHandCalc
 
         private void backgroundWorkerCalc_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            this.progressBar.Value = (int)this.numericUpDown1.Value;
-            this.textBoxResult.Text = ((decimal)count * 100 / this.numericUpDown1.Value).ToString("F8");
-            this.buttonCalc.Enabled = true;
+            this.progressBar.Value = this.progressBar.Maximum;
+            this.textBoxResult.Text = ((decimal)count * 100 / (decimal)this.progressBar.Maximum).ToString("F8");
+            foreach (Button button in buttons) button.Enabled = true;
+            sw.Stop();
+            this.textBoxTime.Text = sw.ElapsedMilliseconds.ToString();
+            sw.Reset();
+        }
+
+        private void buttonCalcAll_Click(object sender, EventArgs e)
+        {
+            sw.Start();
+            this.progressBar.Maximum = AllHands.MAX_LENGTH;
+            this.progressBar.Value = 0;
+            foreach (Button button in buttons) button.Enabled = false;
+            if(sender == buttonCalcAll)
+                this.backgroundWorkerCalcAll.RunWorkerAsync();
+            else if(sender == buttonCalcAllAsync)
+                this.backgroundWorkerCalcAllAsync.RunWorkerAsync();
+        }
+
+        private void backgroundWorkerCalcAll_DoWork(object sender, DoWorkEventArgs e)
+        {
+            target = new Hand(this.textBoxStartingHand.Text);
+
+            AllHands hands = new AllHands(AllHands.ORDER.ASC);
+            count = 0;
+            Hand test;
+            for (int i = 0; i < AllHands.MAX_LENGTH; ++i)
+            {
+                test = hands.Next();
+                if (test.isEqualTo(target))
+                {
+                    count++;
+                    if (count % 100 == 99) this.backgroundWorkerCalcAll.ReportProgress(i);
+                }
+            }
+        }
+
+        private void backgroundWorkerCalcAllAsync_DoWork(object sender, DoWorkEventArgs e)
+        {
+            target = new Hand(this.textBoxStartingHand.Text);
+
+            Task<int> taskAsc = Task<int>.Factory.StartNew(() =>
+            {
+                AllHands handsAsc = new AllHands(AllHands.ORDER.ASC);
+                Hand test;
+                int countAsc = 0;
+                for (int i = 0; i < AllHands.MAX_LENGTH / 2; ++i)
+                {
+                    test = handsAsc.Next();
+                    if (test.isEqualTo(target)) countAsc++;
+                }
+                return countAsc;
+            });
+
+            Task<int> taskDesc = Task<int>.Factory.StartNew(() =>
+            {
+                AllHands handsDesc = new AllHands(AllHands.ORDER.DESC);
+                Hand test;
+                int countDesc = 0;
+                for (int i = 0; i < AllHands.MAX_LENGTH / 2; ++i)
+                {
+                    test = handsDesc.Prev();
+                    if (test.isEqualTo(target)) countDesc++;
+                }
+                return countDesc;
+            });
+
+            count = taskAsc.Result + taskDesc.Result;
         }
     }
 }
