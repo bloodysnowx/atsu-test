@@ -174,7 +174,7 @@ namespace OpenNashCalculator
                     {
                         if (matchCol[0].Groups[1].Value.Equals(result.playerNames[j]))
                         {
-                            result.Ante = Math.Min(result.Ante, System.Convert.ToInt32(matchCol[0].Groups[2].Value));
+                            result.Ante = Math.Max(result.Ante, System.Convert.ToInt32(matchCol[0].Groups[2].Value));
 
                             result.chips[j] -= System.Convert.ToInt32(matchCol[0].Groups[2].Value);
                             result.pot += System.Convert.ToInt32(matchCol[0].Groups[2].Value);

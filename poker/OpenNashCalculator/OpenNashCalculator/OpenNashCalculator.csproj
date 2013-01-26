@@ -149,12 +149,15 @@
     <PostBuildEvent>copy $(ProjectDir)readme.txt $(TargetDir)
 copy $(SolutionDir)ONCDaemon\bin\$(ConfigurationName)\自動発動.exe $(TargetDir)
 copy $(SolutionDir)ONCDaemon\bin\$(ConfigurationName)\自動発動.exe.config $(TargetDir)
+copy $(SolutionDir)ONCDaemon\bin\$(ConfigurationName)\ja-JP\自動発動.resources.dll $(TargetDir)\ja-jp\
 del $(TargetDir)Release.zip
 copy $(TargetPath) $(TargetPath).bak
 copy $(TargetPath).config $(TargetPath).config.bak
-C:\"Program Files"\WinRAR\WinRAR.exe a -ep1 $(TargetDir)Release.zip $(TargetPath) $(TargetPath).config $(TargetDir)readme.txt $(TargetDir)自動発動.exe $(TargetDir)自動発動.exe.config
+C:\"Program Files"\WinRAR\WinRAR.exe a -ep1 $(TargetDir)Release.zip $(TargetPath) $(TargetPath).config $(TargetDir)readme.txt $(TargetDir)自動発動.exe $(TargetDir)自動発動.exe.config $(TargetDir)ja-JP
 copy $(TargetPath).bak $(TargetPath)
-copy $(TargetPath).config.bak $(TargetPath).config</PostBuildEvent>
+copy $(TargetPath).config.bak $(TargetPath).config
+copy $(SolutionDir)ONCDaemon\bin\$(ConfigurationName)\自動発動.exe $(TargetDir)
+copy $(SolutionDir)ONCDaemon\bin\$(ConfigurationName)\自動発動.exe.config $(TargetDir)</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

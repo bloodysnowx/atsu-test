@@ -189,7 +189,7 @@ namespace OpenNashCalculator
                         if (matchCol[0].Groups[1].Value.Equals(result.playerNames[j]))
                         {
                             int value = System.Convert.ToInt32(matchCol[0].Groups[2].Value.Replace(",", string.Empty));
-                            result.Ante = value;
+                            result.Ante = Math.Max(value, result.Ante);
                             result.chips[j] -= value;
                             result.pot += value;
                         }
