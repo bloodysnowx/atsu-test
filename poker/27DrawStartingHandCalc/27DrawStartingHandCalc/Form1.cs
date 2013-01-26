@@ -22,7 +22,7 @@ namespace _27DrawStartingHandCalc
         public Form1()
         {
             InitializeComponent();
-            buttons = new Button[] { buttonCalc, buttonCalcAll, buttonCalcAllAsync };
+            buttons = new Button[] { buttonCalc, buttonCalcAll, buttonCalcAllAsyncTwo };
         }
 
         private void buttonCalc_Click(object sender, EventArgs e)
@@ -108,10 +108,12 @@ namespace _27DrawStartingHandCalc
             this.progressBar.Maximum = AllHands.MAX_LENGTH;
             this.progressBar.Value = 0;
             foreach (Button button in buttons) button.Enabled = false;
-            if(sender == buttonCalcAll)
+            if (sender == buttonCalcAll)
                 this.backgroundWorkerCalcAll.RunWorkerAsync();
-            else if(sender == buttonCalcAllAsync)
-                this.backgroundWorkerCalcAllAsync.RunWorkerAsync();
+            else if (sender == buttonCalcAllAsyncTwo)
+                this.backgroundWorkerCalcAllAsyncTwo.RunWorkerAsync();
+            else if (sender == buttonCalcAllAsyncFour)
+                this.backgroundWorkerCalcAllAsyncFour.RunWorkerAsync();
         }
 
         private void backgroundWorkerCalcAll_DoWork(object sender, DoWorkEventArgs e)
@@ -163,6 +165,42 @@ namespace _27DrawStartingHandCalc
             });
 
             count = taskAsc.Result + taskDesc.Result;
+        }
+
+        private int countStartWithPosition(AllHands.POSITION pos)
+        {
+            AllHands hands = new AllHands(pos);
+            Hand test;
+            int count = 0;
+            for (int i = 0; i < AllHands.MAX_LENGTH / 4; ++i)
+            {
+                test = hands.Next();
+                if (test.isEqualTo(target)) count++;
+            }
+            return count;
+        }
+
+        private void backgroundWorkerCalcAllAsyncFour_DoWork(object sender, DoWorkEventArgs e)
+        {
+            target = new Hand(this.textBoxStartingHand.Text);
+
+            Task<int> taskA = Task<int>.Factory.StartNew(() =>
+            {
+                return countStartWithPosition(AllHands.POSITION.ZERO);
+            });
+            Task<int> taskB = Task<int>.Factory.StartNew(() =>
+            {
+                return countStartWithPosition(AllHands.POSITION.ONE);
+            });
+            Task<int> taskC = Task<int>.Factory.StartNew(() =>
+            {
+                return countStartWithPosition(AllHands.POSITION.TWO);
+            });
+            Task<int> taskD = Task<int>.Factory.StartNew(() =>
+            {
+                return countStartWithPosition(AllHands.POSITION.THREE);
+            });
+            count = taskA.Result + taskB.Result + taskC.Result + taskD.Result;
         }
     }
 }

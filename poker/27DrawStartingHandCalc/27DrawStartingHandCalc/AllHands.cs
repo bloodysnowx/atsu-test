@@ -8,19 +8,34 @@ namespace _27DrawStartingHandCalc
     class AllHands
     {
         public enum ORDER { ASC, DESC }
+        public enum POSITION { ZERO, ONE, TWO, THREE }
 
         public const int MAX_LENGTH = 2598960;
         int i = 0, j = 1, k = 2, l = 3, m = 3;
+
+        int count = 0;
 
         public AllHands(ORDER order)
         {
             if (order == ORDER.DESC)
             {
-                i = 48;
-                j = 48;
-                k = 49;
-                l = 50;
-                m = 52;
+                i = 47; j = 48; k = 49; l = 50; m = 52;
+            }
+        }
+
+        public AllHands(POSITION pos)
+        {
+            if (pos == POSITION.ONE)
+            {
+                i = 2; j = 18; k = 30; l = 38; m = 43;
+            }
+            else if (pos == POSITION.TWO)
+            {
+                i = 6; j = 13; k = 22; l = 29; m = 30;
+            }
+            else if (pos == POSITION.THREE)
+            {
+                i = 12; j = 13; k = 40; l = 48; m = 51;
             }
         }
 

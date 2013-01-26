@@ -40,10 +40,12 @@
             this.backgroundWorkerCalc = new System.ComponentModel.BackgroundWorker();
             this.buttonCalcAll = new System.Windows.Forms.Button();
             this.backgroundWorkerCalcAll = new System.ComponentModel.BackgroundWorker();
-            this.buttonCalcAllAsync = new System.Windows.Forms.Button();
-            this.backgroundWorkerCalcAllAsync = new System.ComponentModel.BackgroundWorker();
+            this.buttonCalcAllAsyncTwo = new System.Windows.Forms.Button();
+            this.backgroundWorkerCalcAllAsyncTwo = new System.ComponentModel.BackgroundWorker();
             this.labelTime = new System.Windows.Forms.Label();
             this.textBoxTime = new System.Windows.Forms.TextBox();
+            this.buttonCalcAllAsyncFour = new System.Windows.Forms.Button();
+            this.backgroundWorkerCalcAllAsyncFour = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCount)).BeginInit();
             this.SuspendLayout();
             // 
@@ -136,7 +138,7 @@
             // buttonCalcParallel
             // 
             this.buttonCalcParallel.Enabled = false;
-            this.buttonCalcParallel.Location = new System.Drawing.Point(12, 159);
+            this.buttonCalcParallel.Location = new System.Drawing.Point(166, 64);
             this.buttonCalcParallel.Name = "buttonCalcParallel";
             this.buttonCalcParallel.Size = new System.Drawing.Size(75, 23);
             this.buttonCalcParallel.TabIndex = 9;
@@ -154,7 +156,7 @@
             // 
             // buttonCalcAll
             // 
-            this.buttonCalcAll.Location = new System.Drawing.Point(93, 159);
+            this.buttonCalcAll.Location = new System.Drawing.Point(12, 159);
             this.buttonCalcAll.Name = "buttonCalcAll";
             this.buttonCalcAll.Size = new System.Drawing.Size(75, 23);
             this.buttonCalcAll.TabIndex = 10;
@@ -169,22 +171,22 @@
             this.backgroundWorkerCalcAll.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerCalc_ProgressChanged);
             this.backgroundWorkerCalcAll.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerCalc_RunWorkerCompleted);
             // 
-            // buttonCalcAllAsync
+            // buttonCalcAllAsyncTwo
             // 
-            this.buttonCalcAllAsync.Location = new System.Drawing.Point(174, 159);
-            this.buttonCalcAllAsync.Name = "buttonCalcAllAsync";
-            this.buttonCalcAllAsync.Size = new System.Drawing.Size(75, 23);
-            this.buttonCalcAllAsync.TabIndex = 11;
-            this.buttonCalcAllAsync.Text = "並列総当り";
-            this.buttonCalcAllAsync.UseVisualStyleBackColor = true;
-            this.buttonCalcAllAsync.Click += new System.EventHandler(this.buttonCalcAll_Click);
+            this.buttonCalcAllAsyncTwo.Location = new System.Drawing.Point(93, 159);
+            this.buttonCalcAllAsyncTwo.Name = "buttonCalcAllAsyncTwo";
+            this.buttonCalcAllAsyncTwo.Size = new System.Drawing.Size(75, 23);
+            this.buttonCalcAllAsyncTwo.TabIndex = 11;
+            this.buttonCalcAllAsyncTwo.Text = "並列(2)";
+            this.buttonCalcAllAsyncTwo.UseVisualStyleBackColor = true;
+            this.buttonCalcAllAsyncTwo.Click += new System.EventHandler(this.buttonCalcAll_Click);
             // 
-            // backgroundWorkerCalcAllAsync
+            // backgroundWorkerCalcAllAsyncTwo
             // 
-            this.backgroundWorkerCalcAllAsync.WorkerReportsProgress = true;
-            this.backgroundWorkerCalcAllAsync.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerCalcAllAsync_DoWork);
-            this.backgroundWorkerCalcAllAsync.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerCalc_ProgressChanged);
-            this.backgroundWorkerCalcAllAsync.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerCalc_RunWorkerCompleted);
+            this.backgroundWorkerCalcAllAsyncTwo.WorkerReportsProgress = true;
+            this.backgroundWorkerCalcAllAsyncTwo.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerCalcAllAsync_DoWork);
+            this.backgroundWorkerCalcAllAsyncTwo.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerCalc_ProgressChanged);
+            this.backgroundWorkerCalcAllAsyncTwo.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerCalc_RunWorkerCompleted);
             // 
             // labelTime
             // 
@@ -202,14 +204,32 @@
             this.textBoxTime.Size = new System.Drawing.Size(100, 19);
             this.textBoxTime.TabIndex = 13;
             // 
+            // buttonCalcAllAsyncFour
+            // 
+            this.buttonCalcAllAsyncFour.Location = new System.Drawing.Point(175, 159);
+            this.buttonCalcAllAsyncFour.Name = "buttonCalcAllAsyncFour";
+            this.buttonCalcAllAsyncFour.Size = new System.Drawing.Size(75, 23);
+            this.buttonCalcAllAsyncFour.TabIndex = 14;
+            this.buttonCalcAllAsyncFour.Text = "並列(4)";
+            this.buttonCalcAllAsyncFour.UseVisualStyleBackColor = true;
+            this.buttonCalcAllAsyncFour.Click += new System.EventHandler(this.buttonCalcAll_Click);
+            // 
+            // backgroundWorkerCalcAllAsyncFour
+            // 
+            this.backgroundWorkerCalcAllAsyncFour.WorkerReportsProgress = true;
+            this.backgroundWorkerCalcAllAsyncFour.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerCalcAllAsyncFour_DoWork);
+            this.backgroundWorkerCalcAllAsyncFour.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerCalc_ProgressChanged);
+            this.backgroundWorkerCalcAllAsyncFour.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerCalc_RunWorkerCompleted);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.buttonCalcAllAsyncFour);
             this.Controls.Add(this.textBoxTime);
             this.Controls.Add(this.labelTime);
-            this.Controls.Add(this.buttonCalcAllAsync);
+            this.Controls.Add(this.buttonCalcAllAsyncTwo);
             this.Controls.Add(this.buttonCalcAll);
             this.Controls.Add(this.buttonCalcParallel);
             this.Controls.Add(this.progressBar);
@@ -242,10 +262,12 @@
         private System.ComponentModel.BackgroundWorker backgroundWorkerCalc;
         private System.Windows.Forms.Button buttonCalcAll;
         private System.ComponentModel.BackgroundWorker backgroundWorkerCalcAll;
-        private System.Windows.Forms.Button buttonCalcAllAsync;
-        private System.ComponentModel.BackgroundWorker backgroundWorkerCalcAllAsync;
+        private System.Windows.Forms.Button buttonCalcAllAsyncTwo;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerCalcAllAsyncTwo;
         private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.TextBox textBoxTime;
+        private System.Windows.Forms.Button buttonCalcAllAsyncFour;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerCalcAllAsyncFour;
     }
 }
 
