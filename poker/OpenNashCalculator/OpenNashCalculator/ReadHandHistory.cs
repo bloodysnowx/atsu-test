@@ -232,7 +232,7 @@ namespace OpenNashCalculator
 
             updateDate = lastWriteTime;
             TableData result = reader.read(openHandHistoryDialog.FileName, hh_back_num);
-
+            if (checkBoxClose.Checked && result.getLivePlayerCount() <= 1) Application.Exit();
 
             // 設定
             textBoxBB.Text = result.BB.ToString();

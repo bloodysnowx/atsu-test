@@ -70,5 +70,15 @@ namespace OpenNashCalculator
                 }
             }
         }
+
+        public int getLivePlayerCount()
+        {
+            int count = 0;
+            foreach (int chip in chips)
+            {
+                if (chip > 0) ++count;
+            }
+            return count;
+        }
     }
 }

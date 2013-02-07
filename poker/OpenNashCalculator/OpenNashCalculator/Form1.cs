@@ -413,11 +413,7 @@ namespace OpenNashCalculator
         {
             startingChip = 0;
             updateDate = new DateTime();
-
-            this.Text = System.IO.Path.GetFileName(openHandHistoryDialog.FileName).Split('.')[0];
-            this.Text = this.Text.Substring(this.Text.IndexOf('T'));
-            this.Text = System.IO.Path.GetFileName(this.Text).Split(' ')[0];
-            this.Text = this.Text.Substring(this.Text.Length - 4);
+            this.Text = tourney_ID.Substring(tourney_ID.Length - 4);
 
             ReadHandHistoryWithRetry();
         }
@@ -430,7 +426,7 @@ namespace OpenNashCalculator
                 return;
             }
             this.reader = HandHistoryReaderFactory.create(openHandHistoryDialog.FileName);
-            tourney_ID = reader.getTourneyID(openHandHistoryDialog.FileName);
+            this.Text = tourney_ID.Substring(tourney_ID.Length - 4);
 
             // FindTournamentWindow();
             // GoBack();
