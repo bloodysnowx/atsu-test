@@ -268,7 +268,18 @@ namespace OpenNashCalculator
                 {
                     if (player_num < 3)
                     {
-                        positionRadioButtons[result.buttonPos - 1].Checked = true;
+                        for (int j = 1, count = 0; j < result.MaxSeatNum + 1; ++j)
+                        {
+                            if (result.chips[(i + j) % result.MaxSeatNum] > 0)
+                            {
+                                if (++count == 1)
+                                {
+                                    positionRadioButtons[result.seats[(i + j) % result.MaxSeatNum] - 1].Checked = true;
+                                    break;
+                                }
+                            }
+                        }
+                        // positionRadioButtons[result.buttonPos - 1].Checked = true;
                     }
                     else
                     {
