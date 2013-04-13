@@ -129,6 +129,8 @@
             // 
             resources.ApplyResources(this.labelBB, "labelBB");
             this.labelBB.Name = "labelBB";
+            this.labelBB.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            this.labelBB.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             // 
             // textBoxBB
             // 
@@ -145,6 +147,8 @@
             // 
             resources.ApplyResources(this.labelStructure, "labelStructure");
             this.labelStructure.Name = "labelStructure";
+            this.labelStructure.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            this.labelStructure.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             // 
             // textBox1
             // 
@@ -157,6 +161,8 @@
             // 
             resources.ApplyResources(this.labelSeat, "labelSeat");
             this.labelSeat.Name = "labelSeat";
+            this.labelSeat.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            this.labelSeat.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             // 
             // labelChips
             // 
@@ -682,7 +688,6 @@
             resources.ApplyResources(this.button_fore, "button_fore");
             this.button_fore.Name = "button_fore";
             this.button_fore.UseVisualStyleBackColor = true;
-            this.button_fore.UseWaitCursor = true;
             this.button_fore.Click += new System.EventHandler(this.button_fore_Click);
             // 
             // webBrowser1
@@ -777,6 +782,7 @@
             this.Controls.Add(this.textBoxAnte);
             this.Controls.Add(this.textBoxBB);
             this.Controls.Add(this.labelBB);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);

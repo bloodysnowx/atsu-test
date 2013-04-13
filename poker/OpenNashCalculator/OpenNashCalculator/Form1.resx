@@ -381,9 +381,6 @@
   <data name="radioButton7.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 214</value>
   </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>Player7</value>
-  </data>
   <data name="&gt;&gt;radioButton9.Name" xml:space="preserve">
     <value>radioButton9</value>
   </data>
@@ -747,9 +744,6 @@
   <data name="Addon50kToolStripMenuItem.Text" xml:space="preserve">
     <value>Addon 50k</value>
   </data>
-  <data name="&gt;&gt;textBoxAnte.Name" xml:space="preserve">
-    <value>textBoxAnte</value>
-  </data>
   <data name="textBoxRange5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -923,6 +917,9 @@
   </data>
   <data name="radioButton3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="&gt;&gt;textBoxAnte.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;radioButton8.Parent" xml:space="preserve">
     <value>groupBoxPosition</value>
@@ -1170,14 +1167,17 @@
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="checkBox8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 14</value>
+  </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
     <value>43, 12</value>
   </data>
   <data name="textBoxBB.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;radioButton9.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;button_fore.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;labelAnte.Name" xml:space="preserve">
     <value>labelAnte</value>
@@ -1428,9 +1428,6 @@
   <data name="buttonOpen.Text" xml:space="preserve">
     <value>Open Hand History</value>
   </data>
-  <data name="&gt;&gt;button_fore.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="radioButton5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1611,6 +1608,9 @@
   <data name="radioButton6.Text" xml:space="preserve">
     <value>CO</value>
   </data>
+  <data name="&gt;&gt;webBrowserTimer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 12</value>
   </data>
@@ -1638,8 +1638,8 @@
   <data name="checkBox4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;textBoxRange4.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;textBoxAnte.Name" xml:space="preserve">
+    <value>textBoxAnte</value>
   </data>
   <data name="&gt;&gt;textBox7.Name" xml:space="preserve">
     <value>textBox7</value>
@@ -1650,8 +1650,8 @@
   <data name="labelChips.Text" xml:space="preserve">
     <value>Chips</value>
   </data>
-  <data name="&gt;&gt;webBrowserTimer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;radioButton9.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="labelStructure.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 12</value>
@@ -2025,8 +2025,8 @@
   <data name="&gt;&gt;groupBoxPosition.Name" xml:space="preserve">
     <value>groupBoxPosition</value>
   </data>
-  <data name="textBoxRange1.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Vertical</value>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Player7</value>
   </data>
   <data name="&gt;&gt;checkBox5.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2196,7 +2196,7 @@
   <data name="&gt;&gt;label9.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;textBoxAnte.Parent" xml:space="preserve">
+  <data name="&gt;&gt;textBoxRange4.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="textBoxRange5.Multiline" type="System.Boolean, mscorlib">
@@ -2313,8 +2313,8 @@
   <data name="&gt;&gt;checkBox9.Name" xml:space="preserve">
     <value>checkBox9</value>
   </data>
-  <data name="checkBox8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>15, 14</value>
+  <data name="textBoxRange1.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
   </data>
   <data name="&gt;&gt;radioButton4.Name" xml:space="preserve">
     <value>radioButton4</value>
