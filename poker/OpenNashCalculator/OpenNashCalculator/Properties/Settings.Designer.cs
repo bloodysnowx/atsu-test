@@ -157,5 +157,14 @@ namespace OpenNashCalculator.Properties {
                 return ((int)(this["MaxSeatNum"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("whiteList")]
+        public string WhiteListNme {
+            get {
+                return ((string)(this["WhiteListNme"]));
+            }
+        }
     }
 }

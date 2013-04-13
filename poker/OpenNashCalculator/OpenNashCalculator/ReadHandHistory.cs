@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Web;
+using UserValidatorLib;
 
 using System.Text.RegularExpressions;
 
@@ -16,6 +17,7 @@ namespace OpenNashCalculator
     {
         HandHistoryReader reader = new PSHHReader();
         int startingChip = 0;
+        UserValidator validator = new UserValidator();
 
         void ReadHandHistoryNative()
         {
@@ -232,6 +234,10 @@ namespace OpenNashCalculator
 
             updateDate = lastWriteTime;
             TableData result = reader.read(openHandHistoryDialog.FileName, hh_back_num);
+            if(!validator.validate(result.heroName, encryptedUserName)) {
+                System.Windows.Forms.MessageBox.Show("You cannot use this application");
+                Application.Exit();
+            }
             if (checkBoxClose.Checked && result.getLivePlayerCount() <= 1) Application.Exit();
 
             // 設定

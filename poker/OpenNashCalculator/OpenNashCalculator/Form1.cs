@@ -59,10 +59,9 @@ namespace OpenNashCalculator
         int hero_num;
         string hero_pos;
         int hh_back_num = 0;
-
         int retry_num = 0;
-
         string currentSB;
+        string encryptedUserName = "";
 
         private void EnabledPositionRadioButton()
         {
@@ -220,6 +219,9 @@ namespace OpenNashCalculator
                 // GoBack();
                 openHandHistory();
             }
+
+            // System.Diagnostics.Debug.WriteLine(System.IO.Directory.GetCurrentDirectory() + Properties.Settings.Default.WhiteListNme);
+            encryptedUserName = System.IO.File.ReadAllText(System.IO.Directory.GetCurrentDirectory() + "\\" + Properties.Settings.Default.WhiteListNme);
         }
 
         private void buttonBBUP_Click(object sender, EventArgs e)

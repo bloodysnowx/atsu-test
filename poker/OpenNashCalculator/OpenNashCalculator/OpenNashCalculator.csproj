@@ -144,17 +144,22 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UserValidatorLib\UserValidatorLib.csproj">
+      <Project>{53FC59DF-73FC-41F2-8F16-57CCEF7D99CC}</Project>
+      <Name>UserValidatorLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy $(ProjectDir)readme.txt $(TargetDir)
-copy $(SolutionDir)ONCDaemon\bin\$(ConfigurationName)\自動発動.exe $(TargetDir)
-copy $(SolutionDir)ONCDaemon\bin\$(ConfigurationName)\自動発動.exe.config $(TargetDir)
+copy $(SolutionDir)ONCDaemon\bin\$(ConfigurationName)\自動発動.ex* $(TargetDir)
 copy $(SolutionDir)ONCDaemon\bin\$(ConfigurationName)\ja-JP\自動発動.resources.dll $(TargetDir)\ja-jp\
 copy $(SolutionDir)WhiteListGenerator\bin\$(ConfigurationName)\WhiteListGenerator.exe $(TargetDir)
 del $(TargetDir)Release.zip
 copy $(TargetPath) $(TargetPath).bak
 copy $(TargetPath).config $(TargetPath).config.bak
-C:\"Program Files"\WinRAR\WinRAR.exe a -ep1 $(TargetDir)Release.zip $(TargetPath) $(TargetPath).config $(TargetDir)readme.txt $(TargetDir)自動発動.exe $(TargetDir)自動発動.exe.config $(TargetDir)ja-JP $(TargetDir)WhiteListGenerator.exe
+C:\"Program Files"\WinRAR\WinRAR.exe a -ep1 $(TargetDir)Release.zip $(TargetPath) $(TargetPath).config $(TargetDir)readme.txt $(TargetDir)自動発動.exe $(TargetDir)自動発動.exe.config $(TargetDir)ja-JP $(TargetDir)WhiteListGenerator.exe $(TargetDir)UserValidatorLib.dll
 copy $(TargetPath).bak $(TargetPath)
 copy $(TargetPath).config.bak $(TargetPath).config
 copy $(SolutionDir)ONCDaemon\bin\$(ConfigurationName)\自動発動.exe $(TargetDir)
