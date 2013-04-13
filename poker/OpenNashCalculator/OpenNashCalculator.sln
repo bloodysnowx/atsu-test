@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenNashCalculator", "OpenN
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ONCDaemon", "ONCDaemon\ONCDaemon.csproj", "{952CF671-77F2-4A81-8812-E11D6EB9FDBC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiteListGeneratorUI", "WhiteListGenerator\WhiteListGeneratorUI.csproj", "{7FB7F3A4-C6F2-460F-9C97-8A3894FF049C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -22,6 +24,10 @@ Global
 		{952CF671-77F2-4A81-8812-E11D6EB9FDBC}.Debug|x86.Build.0 = Debug|x86
 		{952CF671-77F2-4A81-8812-E11D6EB9FDBC}.Release|x86.ActiveCfg = Release|x86
 		{952CF671-77F2-4A81-8812-E11D6EB9FDBC}.Release|x86.Build.0 = Release|x86
+		{7FB7F3A4-C6F2-460F-9C97-8A3894FF049C}.Debug|x86.ActiveCfg = Debug|x86
+		{7FB7F3A4-C6F2-460F-9C97-8A3894FF049C}.Debug|x86.Build.0 = Debug|x86
+		{7FB7F3A4-C6F2-460F-9C97-8A3894FF049C}.Release|x86.ActiveCfg = Release|x86
+		{7FB7F3A4-C6F2-460F-9C97-8A3894FF049C}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
