@@ -360,6 +360,11 @@ namespace OpenNashCalculator
             chipTextBoxes[0].Text = tmp_chip;
             positionRadioButtons[0].Checked = tmp_checked;
             PlayerNameLabels[0].Text = tmp_name;
+
+            for (int i = 0; i < chipTextBoxes.Length; ++i)
+            {
+                if (chipTextBoxes[i].Text.Trim() == String.Empty) PlayerNameLabels[i].Text = String.Empty;
+            }
         }
 
         void SeatRotateR()
