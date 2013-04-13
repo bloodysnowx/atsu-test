@@ -13,7 +13,7 @@ using System.Text.RegularExpressions;
 
 namespace OpenNashCalculator
 {
-    public partial class Form1 : Form
+    public partial class OpenNashCalculatorViewController : Form
     {
         HandHistoryReader reader = new PSHHReader();
         int startingChip = 0;

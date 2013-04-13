@@ -59,7 +59,8 @@ ONCDaemon.exeを起動しておく
 
 ChangeLog
 
-
+2013/04/13 rev 227
+ONCPublisherへのリネームとクラス分割
 
 2013/04/13 rev 226
 UIを調整

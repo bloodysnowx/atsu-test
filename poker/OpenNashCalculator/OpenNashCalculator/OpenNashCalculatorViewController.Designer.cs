@@ -1,6 +1,6 @@
 ﻿namespace OpenNashCalculator
 {
-    partial class Form1
+    partial class OpenNashCalculatorViewController
     {
         /// <summary>
         /// 必要なデザイナー変数です。
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OpenNashCalculatorViewController));
             this.labelBB = new System.Windows.Forms.Label();
             this.textBoxBB = new System.Windows.Forms.TextBox();
             this.labelAnte = new System.Windows.Forms.Label();

@@ -12,9 +12,9 @@ using System.Text.RegularExpressions;
 
 namespace OpenNashCalculator
 {
-    public partial class Form1 : Form
+    public partial class OpenNashCalculatorViewController : Form
     {
-        public Form1()
+        public OpenNashCalculatorViewController()
         {
             InitializeComponent();
         }
