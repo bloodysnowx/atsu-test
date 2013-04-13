@@ -32,6 +32,7 @@
             this.userNameTextBox = new System.Windows.Forms.TextBox();
             this.generateButton = new System.Windows.Forms.Button();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.releaseButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -66,16 +67,27 @@
             this.generateButton.UseVisualStyleBackColor = true;
             this.generateButton.Click += new System.EventHandler(this.generateButton_Click);
             // 
-            // WhiteListGenerator
+            // releaseButton
+            // 
+            this.releaseButton.Location = new System.Drawing.Point(15, 84);
+            this.releaseButton.Name = "releaseButton";
+            this.releaseButton.Size = new System.Drawing.Size(192, 23);
+            this.releaseButton.TabIndex = 3;
+            this.releaseButton.Text = "Release";
+            this.releaseButton.UseVisualStyleBackColor = true;
+            this.releaseButton.Click += new System.EventHandler(this.releaseButton_Click);
+            // 
+            // WhiteListGeneratorViewController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(219, 89);
+            this.ClientSize = new System.Drawing.Size(219, 114);
+            this.Controls.Add(this.releaseButton);
             this.Controls.Add(this.generateButton);
             this.Controls.Add(this.userNameTextBox);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
-            this.Name = "WhiteListGenerator";
+            this.Name = "WhiteListGeneratorViewController";
             this.Text = "WhiteListGenerator";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -88,6 +100,7 @@
         private System.Windows.Forms.TextBox userNameTextBox;
         private System.Windows.Forms.Button generateButton;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.Button releaseButton;
 
     }
 }

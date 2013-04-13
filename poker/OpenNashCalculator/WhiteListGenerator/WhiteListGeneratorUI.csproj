@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ionic.Zip">
+      <HintPath>zip-v1.9\Release\Ionic.Zip.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -77,7 +80,23 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UserValidatorLib\UserValidatorLib.csproj">
+      <Project>{53FC59DF-73FC-41F2-8F16-57CCEF7D99CC}</Project>
+      <Name>UserValidatorLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(SolutionDir)OpenNashCalculator\readme.txt $(TargetDir)files\
+copy $(SolutionDir)ONCDaemon\bin\$(ConfigurationName)\自動発動.ex* $(TargetDir)files\
+copy $(SolutionDir)ONCDaemon\bin\$(ConfigurationName)\ja-JP\自動発動.resources.dll $(TargetDir)files\ja-JP\
+copy $(SolutionDir)OpenNashCalculator\bin\$(ConfigurationName)\スタンド.ex* $(TargetDir)files\
+copy $(SolutionDir)OpenNashCalculator\bin\$(ConfigurationName)\ja-JP\スタンド.resources.dll $(TargetDir)files\ja-jp\
+del $(TargetDir)files\*.bak
+copy $(SolutionDir)UserValidatorLib\bin\$(ConfigurationName)\UserValidatorLib.dll $(TargetDir)files\
+</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
