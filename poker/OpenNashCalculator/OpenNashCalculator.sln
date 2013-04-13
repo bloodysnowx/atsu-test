@@ -11,6 +11,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserValidatorLib", "UserValidatorLib\UserValidatorLib.csproj", "{53FC59DF-73FC-41F2-8F16-57CCEF7D99CC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ONCPublisherUI", "ONCPublisher\ONCPublisherUI.csproj", "{7FB7F3A4-C6F2-460F-9C97-8A3894FF049C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{952CF671-77F2-4A81-8812-E11D6EB9FDBC} = {952CF671-77F2-4A81-8812-E11D6EB9FDBC}
+		{80FB1CB3-14CE-4ACD-9C19-8087513AF804} = {80FB1CB3-14CE-4ACD-9C19-8087513AF804}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

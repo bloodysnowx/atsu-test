@@ -149,63 +149,78 @@ namespace OpenNashCalculator
             Calc();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void setupEventHandler()
         {
             textBoxBB.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.BBMouseWheel);
             textBoxAnte.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.BBMouseWheel);
             textBoxBB.Click += new System.EventHandler(textBox_Click);
             textBoxAnte.Click += new System.EventHandler(textBox_Click);
             // textBoxStructure.Click += new System.EventHandler(textBox_Click);
-            labelChips.ContextMenuStrip = chipContextMenuStrip;
-
-            if (Properties.Settings.Default.BB.Split(',').Length < 2 ||
-                Properties.Settings.Default.SB.Split(',').Length < 2 ||
-                Properties.Settings.Default.Ante.Split(',').Length < 2)
-            {
-                MessageBox.Show("Please config BB, SS, Ante");
-            }
-            else
-            {
-                BB = Properties.Settings.Default.BB.Split(',');
-                SB = Properties.Settings.Default.SB.Split(',');
-                Ante = Properties.Settings.Default.Ante.Split(',');
-            }
-
-            PlayerNameLabels = new Label[] { label10, label11, label12, label13, label14,
-                label15, label16, label17, label18 };
-
-            chipTextBoxes = new TextBox[] { textBox1, textBox2, textBox3, textBox4,
-                textBox5, textBox6, textBox7, textBox8, textBox9 };
             foreach (TextBox chipTextBox in chipTextBoxes)
             {
                 chipTextBox.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.ChipMouseWheel);
-                chipTextBox.Click +=  new System.EventHandler(textBox_Click);
+                chipTextBox.Click += new System.EventHandler(textBox_Click);
                 chipTextBox.DoubleClick += new System.EventHandler(chipTextBoxes_DoubleClick);
-                chipTextBox.ContextMenuStrip = chipContextMenuStrip;
             }
-
-            positionRadioButtons = new RadioButton[] { radioButton1, radioButton2, radioButton3,
-                radioButton4, radioButton5, radioButton6, radioButton7, radioButton8, radioButton9 };
             foreach (RadioButton positionRadioButton in positionRadioButtons)
                 positionRadioButton.CheckedChanged += new System.EventHandler(this.postionRadioButton_CheckedChanged);
-
-            SeatLabels = new Label[] { label1, label2, label3, label4, label5,
-              label6, label7, label8, label9 };
             foreach (Label seatLabel in SeatLabels)
                 seatLabel.Click += new System.EventHandler(this.SeatLabel_DoubleClick);
-            ClearButtons = new Button[] { button2, button3, button4, button5, button6, button7, button8, button9, button10 };
-
-            rangeTextBoxes = new TextBox[] { textBoxRange1, textBoxRange2, textBoxRange3, textBoxRange4, textBoxRange5,
-                textBoxRange6, textBoxRange7, textBoxRange8, textBoxRange9 };
-
-            chipTextBoxes[4].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
-            rangeTextBoxes[4].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
-
-            AllinCheckBoxes = new CheckBox[] { checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6, 
-                checkBox7, checkBox8, checkBox9 };
             foreach (CheckBox checkBox in AllinCheckBoxes)
                 checkBox.CheckedChanged += new System.EventHandler(this.AllinCheckBox_CheckedChanged);
+        }
 
+        private bool checkConfig()
+        {
+            return Properties.Settings.Default.BB.Split(',').Length >= 2
+                && Properties.Settings.Default.SB.Split(',').Length >= 2
+                && Properties.Settings.Default.Ante.Split(',').Length >= 2;
+        }
+
+        private void readFromConfig()
+        {
+            BB = Properties.Settings.Default.BB.Split(',');
+            SB = Properties.Settings.Default.SB.Split(',');
+            Ante = Properties.Settings.Default.Ante.Split(',');
+        }
+
+        private void setViewsToArray()
+        {
+            PlayerNameLabels = new Label[] { label10, label11, label12, label13, label14,
+                label15, label16, label17, label18 };
+            chipTextBoxes = new TextBox[] { textBox1, textBox2, textBox3, textBox4,
+                textBox5, textBox6, textBox7, textBox8, textBox9 };
+            positionRadioButtons = new RadioButton[] { radioButton1, radioButton2, radioButton3,
+                radioButton4, radioButton5, radioButton6, radioButton7, radioButton8, radioButton9 };
+            SeatLabels = new Label[] { label1, label2, label3, label4, label5,
+              label6, label7, label8, label9 };
+            ClearButtons = new Button[] { button2, button3, button4, button5, button6, button7, button8, button9, button10 };
+            rangeTextBoxes = new TextBox[] { textBoxRange1, textBoxRange2, textBoxRange3, textBoxRange4, textBoxRange5,
+                textBoxRange6, textBoxRange7, textBoxRange8, textBoxRange9 };
+            AllinCheckBoxes = new CheckBox[] { checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6, 
+                checkBox7, checkBox8, checkBox9 };
+        }
+
+        private void setupViews()
+        {
+            labelChips.ContextMenuStrip = chipContextMenuStrip;
+            foreach (TextBox chipTextBox in chipTextBoxes)
+                chipTextBox.ContextMenuStrip = chipContextMenuStrip;
+            chipTextBoxes[4].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
+            rangeTextBoxes[4].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            setViewsToArray();
+            setupEventHandler();
+            setupViews();
+
+            if (checkConfig() == false)
+                MessageBox.Show("Please config BB, SS, Ante");
+            else
+                readFromConfig();
+            
             Reset();
 
             string[] args = System.Environment.GetCommandLineArgs();
