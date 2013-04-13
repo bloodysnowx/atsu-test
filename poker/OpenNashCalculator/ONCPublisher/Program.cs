@@ -15,7 +15,7 @@ namespace WhiteListGeneratorUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WhiteListGeneratorViewController());
+            Application.Run(new ONCPublisherViewController());
         }
     }
 }

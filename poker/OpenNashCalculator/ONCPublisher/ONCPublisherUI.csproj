@@ -49,16 +49,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="WhiteListGeneratorViewController.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WhiteListGeneratorViewController.Designer.cs">
-      <DependentUpon>WhiteListGeneratorViewController.cs</DependentUpon>
+    <Compile Include="ONCPublisher.cs" />
+    <Compile Include="ONCPublisherViewController.cs" />
+    <Compile Include="ONCPublisherViewController.Designer.cs">
+      <DependentUpon>ONCPublisherViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="WhiteListGeneratorViewController.resx">
-      <DependentUpon>WhiteListGeneratorViewController.cs</DependentUpon>
+    <EmbeddedResource Include="ONCPublisherViewController.resx">
+      <DependentUpon>ONCPublisherViewController.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

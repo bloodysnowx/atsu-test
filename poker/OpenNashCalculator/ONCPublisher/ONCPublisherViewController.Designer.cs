@@ -1,6 +1,6 @@
 ﻿namespace WhiteListGeneratorUI
 {
-    partial class WhiteListGeneratorViewController
+    partial class ONCPublisherViewController
     {
         /// <summary>
         /// 必要なデザイナー変数です。
@@ -30,9 +30,8 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.userNameTextBox = new System.Windows.Forms.TextBox();
-            this.generateButton = new System.Windows.Forms.Button();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.releaseButton = new System.Windows.Forms.Button();
+            this.publishButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -55,40 +54,27 @@
             this.userNameTextBox.Size = new System.Drawing.Size(192, 19);
             this.userNameTextBox.TabIndex = 1;
             // 
-            // generateButton
+            // publishButton
             // 
-            this.generateButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.generateButton.Location = new System.Drawing.Point(15, 54);
-            this.generateButton.Name = "generateButton";
-            this.generateButton.Size = new System.Drawing.Size(192, 23);
-            this.generateButton.TabIndex = 2;
-            this.generateButton.Text = "generate";
-            this.generateButton.UseVisualStyleBackColor = true;
-            this.generateButton.Click += new System.EventHandler(this.generateButton_Click);
+            this.publishButton.Location = new System.Drawing.Point(15, 54);
+            this.publishButton.Name = "publishButton";
+            this.publishButton.Size = new System.Drawing.Size(192, 23);
+            this.publishButton.TabIndex = 3;
+            this.publishButton.Text = "Publish";
+            this.publishButton.UseVisualStyleBackColor = true;
+            this.publishButton.Click += new System.EventHandler(this.publishButton_Click);
             // 
-            // releaseButton
-            // 
-            this.releaseButton.Location = new System.Drawing.Point(15, 84);
-            this.releaseButton.Name = "releaseButton";
-            this.releaseButton.Size = new System.Drawing.Size(192, 23);
-            this.releaseButton.TabIndex = 3;
-            this.releaseButton.Text = "Release";
-            this.releaseButton.UseVisualStyleBackColor = true;
-            this.releaseButton.Click += new System.EventHandler(this.releaseButton_Click);
-            // 
-            // WhiteListGeneratorViewController
+            // ONCPublisherViewController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(219, 114);
-            this.Controls.Add(this.releaseButton);
-            this.Controls.Add(this.generateButton);
+            this.ClientSize = new System.Drawing.Size(219, 88);
+            this.Controls.Add(this.publishButton);
             this.Controls.Add(this.userNameTextBox);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
-            this.Name = "WhiteListGeneratorViewController";
-            this.Text = "WhiteListGenerator";
+            this.Name = "ONCPublisherViewController";
+            this.Text = "ONCPublisher";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -98,9 +84,8 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox userNameTextBox;
-        private System.Windows.Forms.Button generateButton;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
-        private System.Windows.Forms.Button releaseButton;
+        private System.Windows.Forms.Button publishButton;
 
     }
 }
