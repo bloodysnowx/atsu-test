@@ -55,7 +55,8 @@ namespace OpenNashCalculator
             if (checkBoxClose.Checked)
             {
                 if ((result.getLivePlayerCount() <= 1)
-                    ||(result.getLivePlayerCount() == 2 && isHyper()))
+                    ||(result.getLivePlayerCount() == 2 && isHyper())
+                    ||(result.getHeroChip() <= 0 && isHyper()))
                     Application.Exit();
             }
 

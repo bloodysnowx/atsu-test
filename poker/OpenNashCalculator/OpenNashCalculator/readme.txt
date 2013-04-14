@@ -64,6 +64,9 @@ ONCDaemon.exeを起動しておく
 
 ChangeLog
 
+2013/04/14 rev 236
+ハイパーサテのバイインリストの編集に対応
+
 2013/04/14 rev 235
 デフォルトストラクチャをONCDaemonにて指定可能にした
 PSHHFolderをONCDaemon上にて指定できるようにした

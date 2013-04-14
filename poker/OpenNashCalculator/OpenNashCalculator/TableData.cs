@@ -80,5 +80,10 @@ namespace OpenNashCalculator
             }
             return count;
         }
+
+        public int getHeroChip()
+        {
+            return chips[getHeroIndex()];
+        }
     }
 }
