@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <StartArguments>
-    </StartArguments>
+    <StartArguments>"C:\HM2Archive\PokerStars\2013\04\07\HH20130407 T715618869 No Limit Hold'em $1.44 + $0.06.txt" "100,50,30" "20,20"</StartArguments>
   </PropertyGroup>
 </Project>

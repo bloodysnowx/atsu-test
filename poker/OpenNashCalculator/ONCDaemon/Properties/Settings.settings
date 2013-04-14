@@ -5,8 +5,11 @@
     <Setting Name="PSHandHistoryFolder" Type="System.String" Scope="Application">
       <Value Profile="(Default)">C:\poker\PokerStars\HandHistory\chiyuki</Value>
     </Setting>
-    <Setting Name="FTHandHistoryFolder" Type="System.String" Scope="User">
+    <Setting Name="FTHandHistoryFolder" Type="System.String" Scope="Application">
       <Value Profile="(Default)">C:\poker\FullTilt\chiyuki</Value>
+    </Setting>
+    <Setting Name="HyperSatBuyinListName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">HyperSatBuyinList.txt</Value>
     </Setting>
   </Settings>
 </SettingsFile>

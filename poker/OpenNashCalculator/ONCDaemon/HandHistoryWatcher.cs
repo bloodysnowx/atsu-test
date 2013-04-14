@@ -29,9 +29,8 @@ namespace ONCDaemon
         public void addFolder(String path, System.ComponentModel.ISynchronizeInvoke synchroObj)
         {
             var watcher = createWatcher(path, synchroObj);
-            System.IO.Directory.GetFiles(path).Where(file => System.IO.File.GetLastWriteTime(file) > DateTime.Now.AddMinutes(-10)).All(
-                file => { watcher_Changed(this, new System.IO.FileSystemEventArgs(System.IO.WatcherChangeTypes.Created, path, System.IO.Path.GetFileName(file)));
-                    return true; });
+            foreach(var file in System.IO.Directory.GetFiles(path).Where(file => System.IO.File.GetLastWriteTime(file) > DateTime.Now.AddMinutes(-10)))
+                watcher_Changed(this, new System.IO.FileSystemEventArgs(System.IO.WatcherChangeTypes.Created, path, System.IO.Path.GetFileName(file)));
             watchers.Add(watcher);
         }
 

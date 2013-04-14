@@ -28,11 +28,7 @@ namespace OpenNashCalculator
             string hero_name = "";
 
             List<int> hh_line_list = new List<int>();
-            for (int i = 0; i < hh.Length; ++i)
-            {
-                if (hh[i].StartsWith("PokerStars Hand"))
-                    hh_line_list.Add(i);
-            }
+            hh_line_list.AddRange(Enumerable.Range(0, hh.Length).Where(i => hh[i].StartsWith("PokerStars Hand")));
             hh_line_list.Add(hh.Length - 1);
 
             List<string> now_hh = new List<string>();
@@ -64,6 +60,7 @@ namespace OpenNashCalculator
 
             regex = new Regex("Seat" + Regex.Escape(" ") + "([0-9]+):" + Regex.Escape(" ") + "(.+)" + Regex.Escape(" ")
                 + Regex.Escape("(") + "([0-9]+)" + Regex.Escape(" ") + "in" + Regex.Escape(" ") + "chips" + Regex.Escape(")"));
+            
             for (int i = 0; i < 9; ++i)
             {
                 matchCol = regex.Matches(now_hh[++line]);
@@ -236,7 +233,9 @@ namespace OpenNashCalculator
             TableData result = reader.read(openHandHistoryDialog.FileName, hh_back_num);
             if(!validator.validate(result.heroName, encryptedUserName)) {
                 System.Windows.Forms.MessageBox.Show("You cannot use this application");
+#if !DEBUG
                 Application.Exit();
+#endif
             }
             if (checkBoxClose.Checked && result.getLivePlayerCount() <= 1) Application.Exit();
 
@@ -245,6 +244,7 @@ namespace OpenNashCalculator
             currentSB = result.SB.ToString();
             textBoxAnte.Text = result.Ante.ToString();
             SetHeroSeat(SeatLabels[result.getHeroSeat() - 1]);
+            if(hyperSatBuyinList.Any( buyin => openHandHistoryDialog.FileName.Contains(buyin))) textBoxStructure.Text= "1,1";
 
             // チップと名前入力
             foreach (TextBox chipTextBox in chipTextBoxes)
@@ -262,11 +262,7 @@ namespace OpenNashCalculator
             }
 
             // ボタンの位置を決定
-            int player_num = 0;
-            for (int i = 0; i < result.MaxSeatNum; ++i)
-            {
-                if (result.chips[i] > 0) player_num++;
-            }
+            int player_num = result.chips.Count(chip => chip > 0);
 
             for (int i = 0; i < result.MaxSeatNum; ++i)
             {

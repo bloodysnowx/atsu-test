@@ -166,5 +166,14 @@ namespace OpenNashCalculator.Properties {
                 return ((string)(this["WhiteListNme"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("HyperSatBuyinList.txt")]
+        public string HyperSatBuyinListName {
+            get {
+                return ((string)(this["HyperSatBuyinListName"]));
+            }
+        }
     }
 }

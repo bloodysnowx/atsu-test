@@ -32,15 +32,21 @@ namespace ONCDaemon.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C:\\poker\\FullTilt\\chiyuki")]
         public string FTHandHistoryFolder {
             get {
                 return ((string)(this["FTHandHistoryFolder"]));
             }
-            set {
-                this["FTHandHistoryFolder"] = value;
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("HyperSatBuyinList.txt")]
+        public string HyperSatBuyinListName {
+            get {
+                return ((string)(this["HyperSatBuyinListName"]));
             }
         }
     }

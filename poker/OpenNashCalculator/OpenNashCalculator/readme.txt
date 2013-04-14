@@ -57,6 +57,11 @@ ONCDaemon.exeを起動しておく
 15. ブラインドをテキストボックスに設定する
 16. ハンドレンジを取得し、表示する
 
+引数
+1. ハンドヒストリのパス (ex. "C:\poker\PokerStars\HandHistory\chiyuki")
+2. デフォルトストラクチャ (ex. "5,3,2")
+3. 起動する位置 (ex. "10,10")
+
 ChangeLog
 
 2013/04/14 rev 230

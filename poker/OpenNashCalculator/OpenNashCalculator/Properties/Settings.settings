@@ -50,5 +50,8 @@
     <Setting Name="WhiteListNme" Type="System.String" Scope="Application">
       <Value Profile="(Default)">whiteList</Value>
     </Setting>
+    <Setting Name="HyperSatBuyinListName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">HyperSatBuyinList.txt</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

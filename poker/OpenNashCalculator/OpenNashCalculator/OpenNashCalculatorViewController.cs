@@ -62,6 +62,9 @@ namespace OpenNashCalculator
         int retry_num = 0;
         string currentSB;
         string encryptedUserName = "";
+        string defaultStructure = "";
+        Point formOrigin = new Point(0, 0);
+        IEnumerable<string> hyperSatBuyinList;
 
         private void EnabledPositionRadioButton()
         {
@@ -133,7 +136,7 @@ namespace OpenNashCalculator
             level = Properties.Settings.Default.DefaultLevel - 1;
             SetBBSBAnte();
 
-            textBoxStructure.Text = Properties.Settings.Default.DefaultStructure;
+            textBoxStructure.Text = defaultStructure;
 
             for (int i = 0; i < 9; ++i)
             {
@@ -182,6 +185,8 @@ namespace OpenNashCalculator
             BB = Properties.Settings.Default.BB.Split(',');
             SB = Properties.Settings.Default.SB.Split(',');
             Ante = Properties.Settings.Default.Ante.Split(',');
+            defaultStructure = Properties.Settings.Default.DefaultStructure;
+            hyperSatBuyinList = readHyperSatBuyinList(System.IO.Directory.GetCurrentDirectory() + "\\" + Properties.Settings.Default.HyperSatBuyinListName);
         }
 
         private void setViewsToArray()
@@ -220,23 +225,45 @@ namespace OpenNashCalculator
                 MessageBox.Show("Please config BB, SS, Ante");
             else
                 readFromConfig();
-            
-            Reset();
 
             string[] args = System.Environment.GetCommandLineArgs();
-            if (args.Length > 1)
+            readArgs(args);
+            Reset();
+            this.SetDesktopLocation(formOrigin.X, formOrigin.Y);
+            if (isRunFromDaemon(args)) openHandHistory();
+
+            encryptedUserName = System.IO.File.ReadAllText(System.IO.Directory.GetCurrentDirectory() + "\\" + Properties.Settings.Default.WhiteListNme);
+        }
+
+        private IEnumerable<string> readHyperSatBuyinList(string path)
+        {
+            if(!System.IO.File.Exists(path)) yield break;
+            string[] lines = System.IO.File.ReadAllLines(path);
+            foreach (string line in lines)
+                yield return line.Trim();
+        }
+
+        private bool isRunFromDaemon(string[] args)
+        {
+            return args.Length > 1;
+        }
+
+        private void readArgs(string[] args)
+        {
+            if (isRunFromDaemon(args))
             {
                 openHandHistoryDialog.FileName = args[1];
                 this.reader = HandHistoryReaderFactory.create(openHandHistoryDialog.FileName);
                 tourney_ID = reader.getTourneyID(openHandHistoryDialog.FileName);
+#if !DEBUG
                 checkBoxClose.Checked = true;
+#endif
                 // FindTournamentWindow();
                 // GoBack();
-                openHandHistory();
+                defaultStructure = args[2];
+                string[] formOriginStr = args[3].Split(',');
+                formOrigin = new Point(System.Int32.Parse(formOriginStr[0]), System.Int32.Parse(formOriginStr[1]));
             }
-
-            // System.Diagnostics.Debug.WriteLine(System.IO.Directory.GetCurrentDirectory() + Properties.Settings.Default.WhiteListNme);
-            encryptedUserName = System.IO.File.ReadAllText(System.IO.Directory.GetCurrentDirectory() + "\\" + Properties.Settings.Default.WhiteListNme);
         }
 
         private void buttonBBUP_Click(object sender, EventArgs e)
