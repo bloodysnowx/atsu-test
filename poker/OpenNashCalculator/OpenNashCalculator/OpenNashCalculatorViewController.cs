@@ -455,7 +455,6 @@ namespace OpenNashCalculator
 
         private void openHandHistory()
         {
-            startingChip = 0;
             updateDate = new DateTime();
             this.Text = tourney_ID.Substring(tourney_ID.Length - 4);
 

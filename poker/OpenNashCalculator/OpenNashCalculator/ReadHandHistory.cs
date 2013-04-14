@@ -16,201 +16,7 @@ namespace OpenNashCalculator
     public partial class OpenNashCalculatorViewController : Form
     {
         HandHistoryReader reader = new PSHHReader();
-        int startingChip = 0;
         UserValidator validator = new UserValidator();
-
-        void ReadHandHistoryNative()
-        {
-            updateDate = System.IO.File.GetLastWriteTime(openHandHistoryDialog.FileName);
-            string[] hh = System.IO.File.ReadAllLines(openHandHistoryDialog.FileName);
-            Regex regex;
-            MatchCollection matchCol;
-            string hero_name = "";
-
-            List<int> hh_line_list = new List<int>();
-            hh_line_list.AddRange(Enumerable.Range(0, hh.Length).Where(i => hh[i].StartsWith("PokerStars Hand")));
-            hh_line_list.Add(hh.Length - 1);
-
-            List<string> now_hh = new List<string>();
-            if (hh_back_num >= hh_line_list.Count) hh_back_num = hh_line_list.Count - 1;
-            for (int i = hh_line_list[hh_line_list.Count - 1 - hh_back_num]; i < hh_line_list[hh_line_list.Count - hh_back_num]; ++i)
-                now_hh.Add(hh[i]);
-
-            int line = 0;
-            // bbとsbを取得
-            regex = new Regex(Regex.Escape("(") + "([0-9]+)" + Regex.Escape("/") + "([0-9]+)" + Regex.Escape(")"));
-            matchCol = regex.Matches(now_hh[line]);
-            int sb = System.Convert.ToInt32(matchCol[0].Groups[1].Value);
-            int bb = System.Convert.ToInt32(matchCol[0].Groups[2].Value);
-
-            // ボタンの位置を取得
-            line += 1;
-            regex = new Regex("Seat" + Regex.Escape(" #") + "([0-9]+)" + Regex.Escape(" ") + "is" + Regex.Escape(" ")
-                + "the" + Regex.Escape(" ") + "button");
-            matchCol = regex.Matches(now_hh[line]);
-            int button = System.Convert.ToInt32(matchCol[0].Groups[1].Value);
-
-            // ハンド開始状況を取得
-            int[] seats = new int[9];
-            string[] names = new string[9];
-            int[] chips = new int[9];
-            string[] position = new string[9];
-            int[] posted = new int[9];
-            int ante = 0;
-
-            regex = new Regex("Seat" + Regex.Escape(" ") + "([0-9]+):" + Regex.Escape(" ") + "(.+)" + Regex.Escape(" ")
-                + Regex.Escape("(") + "([0-9]+)" + Regex.Escape(" ") + "in" + Regex.Escape(" ") + "chips" + Regex.Escape(")"));
-            
-            for (int i = 0; i < 9; ++i)
-            {
-                matchCol = regex.Matches(now_hh[++line]);
-                if (matchCol.Count > 0)
-                {
-                    seats[i] = System.Convert.ToInt32(matchCol[0].Groups[1].Value);
-                    names[i] = matchCol[0].Groups[2].Value;
-                    chips[i] = System.Convert.ToInt32(matchCol[0].Groups[3].Value);
-                }
-                else
-                {
-                    line -= 1;
-                    break;
-                }
-            }
-
-            regex = new Regex("(.+):" + Regex.Escape(" ") + "posts" + Regex.Escape(" ") + "the" + Regex.Escape(" ") +
-                "ante" + Regex.Escape(" ") + "([0-9]+)");
-            for (int i = 0; i < 9; ++i)
-            {
-                matchCol = regex.Matches(now_hh[++line]);
-                if (matchCol.Count > 0)
-                {
-                    for (int j = 0; j < 9; ++j)
-                    {
-                        if (matchCol[0].Groups[1].Value.Equals(names[j]))
-                        {
-                            if (ante < System.Convert.ToInt32(matchCol[0].Groups[2].Value))
-                                ante = System.Convert.ToInt32(matchCol[0].Groups[2].Value);
-                        }
-                    }
-                }
-                else
-                {
-                    line -= 1;
-                    break;
-                }
-            }
-
-            // Heroの名前を取得
-            for (; line < now_hh.Count; ++line)
-            {
-                if (now_hh[line].StartsWith("*** HOLE CARDS ***"))
-                {
-                    break;
-                }
-            }
-            regex = new Regex("Dealt" + Regex.Escape(" ") + "to" + Regex.Escape(" ") + "(.+)" + Regex.Escape(" [")
-                + "[2-9TJQKA][shdc]" + Regex.Escape(" ") + "[2-9TJQKA][shdc]" + Regex.Escape("]"));
-            matchCol = regex.Matches(now_hh[++line]);
-            hero_name = matchCol[0].Groups[1].Value;
-            int hero_index = 0;
-            for (int i = 0; i < 9; ++i)
-            {
-                if (hero_name.Equals(names[i]))
-                {
-                    hero_index = i;
-                    SetHeroSeat(SeatLabels[seats[i] - 1]);
-                    break;
-                }
-            }
-
-            // 設定
-            textBoxBB.Text = bb.ToString();
-            currentSB = sb.ToString();
-            textBoxAnte.Text = ante.ToString();
-
-            // チップと名前入力
-            foreach (TextBox chipTextBox in chipTextBoxes)
-                chipTextBox.Text = "";
-            for (int i = 0; i < 9; ++i)
-            {
-                if (chips[i] <= 0 && names[i] != string.Empty && seats[i] > 0 && checkBoxRebuy.Checked)
-                    chips[i] = startingChip;
-
-                if (chips[i] > 0)
-                {
-                    chipTextBoxes[seats[i] - 1].Text = chips[i].ToString();
-                    PlayerNameLabels[seats[i] - 1].Text = names[i];
-                }
-            }
-
-            // ボタンの位置を決定
-            int player_num = 0;
-            for (int i = 0; i < 9; ++i)
-            {
-                if (chips[i] > 0) player_num++;
-            }
-
-            for (int i = 0; i < 9; ++i)
-            {
-                if (button == seats[i])
-                {
-                    if (player_num < 3)
-                    {
-                        positionRadioButtons[seats[1 - i] - 1].Checked = true;
-                    }
-                    else
-                    {
-                        for (int j = 1, count = 0; j < 10; ++j)
-                        {
-                            if (chips[(i + j) % 9] > 0)
-                            {
-                                if (++count == 2)
-                                {
-                                    positionRadioButtons[seats[(i + j) % 9] - 1].Checked = true;
-                                    break;
-                                }
-                            }
-                        }
-
-                    }
-                    break;
-                }
-            }
-
-            if (Properties.Settings.Default.SetBBLast)
-            {
-                while (positionRadioButtons[8].Text != Position[0])
-                {
-                    SeatRotateF();
-                    seats[hero_index]++;
-                }
-                if (seats[hero_index] > 9) seats[hero_index] = seats[hero_index] % 9;
-                SetHeroSeat(SeatLabels[seats[hero_index] - 1]);
-            }
-            else if (0 < Properties.Settings.Default.PreferredSeat && Properties.Settings.Default.PreferredSeat < 10)
-            {
-                for (int i = 0; i < (Properties.Settings.Default.PreferredSeat - seats[hero_index] + 9) % 9; ++i)
-                    SeatRotateF();
-
-                SetHeroSeat(SeatLabels[Properties.Settings.Default.PreferredSeat - 1]);
-            }
-
-            SetPosition();
-
-            foreach (CheckBox checkBox in AllinCheckBoxes)
-                checkBox.Checked = false;
-
-            if (chips[hero_index] > 0 && player_num > 1 && checkBoxCalc.Checked)
-            {
-                Calc();
-            }
-            else
-            {
-                recent_web_page = String.Empty;
-                foreach (TextBox x in rangeTextBoxes)
-                    x.Clear();
-            }
-        }
 
         void ReadHandHistory()
         {
@@ -264,42 +70,37 @@ namespace OpenNashCalculator
             // ボタンの位置を決定
             int player_num = result.chips.Count(chip => chip > 0);
 
-            for (int i = 0; i < result.MaxSeatNum; ++i)
-            {
-                if (result.buttonPos == result.seats[i])
-                {
-                    if (player_num < 3)
-                    {
-                        for (int j = 1, count = 0; j < result.MaxSeatNum + 1; ++j)
-                        {
-                            if (result.chips[(i + j) % result.MaxSeatNum] > 0)
-                            {
-                                if (++count == 1)
-                                {
-                                    positionRadioButtons[result.seats[(i + j) % result.MaxSeatNum] - 1].Checked = true;
-                                    break;
-                                }
-                            }
-                        }
-                        // positionRadioButtons[result.buttonPos - 1].Checked = true;
-                    }
-                    else
-                    {
-                        for (int j = 1, count = 0; j < result.MaxSeatNum + 1; ++j)
-                        {
-                            if (result.chips[(i + j) % result.MaxSeatNum] > 0)
-                            {
-                                if (++count == 2)
-                                {
-                                    positionRadioButtons[result.seats[(i + j) % result.MaxSeatNum] - 1].Checked = true;
-                                    break;
-                                }
-                            }
-                        }
+            int buttonIndex = Enumerable.Range(0, result.MaxSeatNum).First(j => result.buttonPos == result.seats[j]);
 
+            if (player_num < 3)
+            {
+                for (int j = 1, count = 0; j < result.MaxSeatNum + 1; ++j)
+                {
+                    if (result.chips[(buttonIndex + j) % result.MaxSeatNum] > 0)
+                    {
+                        if (++count == 1)
+                        {
+                            positionRadioButtons[result.seats[(buttonIndex + j) % result.MaxSeatNum] - 1].Checked = true;
+                            break;
+                        }
                     }
-                    break;
                 }
+                // positionRadioButtons[result.buttonPos - 1].Checked = true;
+            }
+            else
+            {
+                for (int j = 1, count = 0; j < result.MaxSeatNum + 1; ++j)
+                {
+                    if (result.chips[(buttonIndex + j) % result.MaxSeatNum] > 0)
+                    {
+                        if (++count == 2)
+                        {
+                            positionRadioButtons[result.seats[(buttonIndex + j) % result.MaxSeatNum] - 1].Checked = true;
+                            break;
+                        }
+                    }
+                }
+
             }
 
             if (Properties.Settings.Default.SetBBLast)
