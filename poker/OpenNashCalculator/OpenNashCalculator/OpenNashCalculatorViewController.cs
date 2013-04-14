@@ -210,7 +210,7 @@ namespace OpenNashCalculator
             rangeTextBoxes[4].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form_Load(object sender, EventArgs e)
         {
             setViewsToArray();
             setupEventHandler();

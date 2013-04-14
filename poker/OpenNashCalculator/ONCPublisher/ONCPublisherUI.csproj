@@ -50,7 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ONCPublisher.cs" />
-    <Compile Include="ONCPublisherViewController.cs" />
+    <Compile Include="ONCPublisherViewController.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ONCPublisherViewController.Designer.cs">
       <DependentUpon>ONCPublisherViewController.cs</DependentUpon>
     </Compile>

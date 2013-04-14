@@ -1,6 +1,6 @@
 ﻿namespace ONCDaemon
 {
-    partial class Form1
+    partial class ONCDaemonViewController
     {
         /// <summary>
         /// 必要なデザイナー変数です。
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ONCDaemonViewController));
             this.label1 = new System.Windows.Forms.Label();
             this.labelFolderPS = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -80,7 +80,7 @@
             this.Controls.Add(this.labelFolderPS);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.Form_Load);
             this.ResumeLayout(false);
 
         }

@@ -9,12 +9,12 @@ using System.Windows.Forms;
 
 namespace ONCDaemon
 {
-    public partial class Form1 : Form
+    public partial class ONCDaemonViewController : Form
     {
         int count = 0;
         HandHistoryWatcher watcher;
 
-        public Form1()
+        public ONCDaemonViewController()
         {
             InitializeComponent();
             this.labelFolderPS.Text = Properties.Settings.Default.PSHandHistoryFolder;
@@ -22,7 +22,7 @@ namespace ONCDaemon
             this.labelCount.Text = count.ToString();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form_Load(object sender, EventArgs e)
         {
             watcher = new HandHistoryWatcher();
             watcher.NewHandHistory += new HandHistoryWatcher.NewHandHistoryEventHandler(this.newHandHistoryCreated);
