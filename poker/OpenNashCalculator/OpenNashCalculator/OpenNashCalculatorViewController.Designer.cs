@@ -280,6 +280,7 @@
             // 
             // groupBoxPosition
             // 
+            resources.ApplyResources(this.groupBoxPosition, "groupBoxPosition");
             this.groupBoxPosition.Controls.Add(this.radioButton9);
             this.groupBoxPosition.Controls.Add(this.radioButton8);
             this.groupBoxPosition.Controls.Add(this.radioButton7);
@@ -289,7 +290,6 @@
             this.groupBoxPosition.Controls.Add(this.radioButton3);
             this.groupBoxPosition.Controls.Add(this.radioButton2);
             this.groupBoxPosition.Controls.Add(this.radioButton1);
-            resources.ApplyResources(this.groupBoxPosition, "groupBoxPosition");
             this.groupBoxPosition.Name = "groupBoxPosition";
             this.groupBoxPosition.TabStop = false;
             // 
@@ -438,6 +438,10 @@
             this.buttonOpen.UseVisualStyleBackColor = true;
             this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
             // 
+            // openHandHistoryDialog
+            // 
+            resources.ApplyResources(this.openHandHistoryDialog, "openHandHistoryDialog");
+            // 
             // checkBoxRefresh
             // 
             resources.ApplyResources(this.checkBoxRefresh, "checkBoxRefresh");
@@ -582,22 +586,22 @@
             // 
             // chipContextMenuStrip
             // 
+            resources.ApplyResources(this.chipContextMenuStrip, "chipContextMenuStrip");
             this.chipContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Addon30kToolStripMenuItem,
             this.Addon50kToolStripMenuItem});
             this.chipContextMenuStrip.Name = "chipContextMenuStrip";
-            resources.ApplyResources(this.chipContextMenuStrip, "chipContextMenuStrip");
             this.chipContextMenuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.chipContextMenuStrip_ItemClicked);
             // 
             // Addon30kToolStripMenuItem
             // 
-            this.Addon30kToolStripMenuItem.Name = "Addon30kToolStripMenuItem";
             resources.ApplyResources(this.Addon30kToolStripMenuItem, "Addon30kToolStripMenuItem");
+            this.Addon30kToolStripMenuItem.Name = "Addon30kToolStripMenuItem";
             // 
             // Addon50kToolStripMenuItem
             // 
-            this.Addon50kToolStripMenuItem.Name = "Addon50kToolStripMenuItem";
             resources.ApplyResources(this.Addon50kToolStripMenuItem, "Addon50kToolStripMenuItem");
+            this.Addon50kToolStripMenuItem.Name = "Addon50kToolStripMenuItem";
             // 
             // buttonReread
             // 

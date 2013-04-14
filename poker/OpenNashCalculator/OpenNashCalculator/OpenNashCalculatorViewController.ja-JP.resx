@@ -117,15 +117,36 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="labelStructure.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 12</value>
+  </data>
+  <data name="labelStructure.Text" xml:space="preserve">
+    <value>ストラクチャ</value>
+  </data>
+  <data name="labelSeat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 12</value>
+  </data>
+  <data name="labelSeat.Text" xml:space="preserve">
+    <value>シート</value>
+  </data>
+  <data name="labelChips.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 12</value>
+  </data>
+  <data name="labelChips.Text" xml:space="preserve">
+    <value>チップ量</value>
+  </data>
   <data name="buttonCalc.Text" xml:space="preserve">
     <value>計算</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="checkBoxWeb.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 16</value>
   </data>
   <data name="checkBoxWeb.Text" xml:space="preserve">
     <value>ウェブページを開かない</value>
+  </data>
+  <data name="buttonOpen.Text" xml:space="preserve">
+    <value>ヒストリファイルを開く</value>
   </data>
   <data name="checkBoxRefresh.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 16</value>
@@ -142,33 +163,6 @@
   <data name="checkBoxCalc.Text" xml:space="preserve">
     <value>自動計算</value>
   </data>
-  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 12</value>
-  </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 12</value>
-  </data>
-  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 12</value>
-  </data>
-  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 12</value>
-  </data>
-  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 12</value>
-  </data>
-  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 12</value>
-  </data>
-  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 12</value>
-  </data>
-  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 12</value>
-  </data>
-  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 12</value>
-  </data>
   <data name="buttonReread.Text" xml:space="preserve">
     <value>再読み込み</value>
   </data>
@@ -181,7 +175,13 @@
   <data name="checkBoxClose.Text" xml:space="preserve">
     <value>自動終了</value>
   </data>
+  <data name="button_back.Text" xml:space="preserve">
+    <value>前のハンドへ</value>
+  </data>
+  <data name="button_fore.Text" xml:space="preserve">
+    <value>次のハンドへ</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>スタンド</value>
+    <value>ナッシュ先生</value>
   </data>
 </root>

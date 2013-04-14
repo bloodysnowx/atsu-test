@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ONCDaemonViewController));
             this.label1 = new System.Windows.Forms.Label();
             this.labelFolderPS = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.labelCount = new System.Windows.Forms.Label();
             this.labelFolderFT = new System.Windows.Forms.Label();
             this.PSFolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.FTFolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
@@ -56,19 +54,6 @@
             this.labelFolderPS.Name = "labelFolderPS";
             this.labelFolderPS.Click += new System.EventHandler(this.labelFolderPS_Click);
             // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // labelCount
-            // 
-            resources.ApplyResources(this.labelCount, "labelCount");
-            this.labelCount.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.labelCount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labelCount.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.labelCount.Name = "labelCount";
-            // 
             // labelFolderFT
             // 
             resources.ApplyResources(this.labelFolderFT, "labelFolderFT");
@@ -81,6 +66,10 @@
             // 
             resources.ApplyResources(this.PSFolderBrowserDialog, "PSFolderBrowserDialog");
             this.PSFolderBrowserDialog.ShowNewFolderButton = false;
+            // 
+            // FTFolderBrowserDialog
+            // 
+            resources.ApplyResources(this.FTFolderBrowserDialog, "FTFolderBrowserDialog");
             // 
             // label2
             // 
@@ -112,8 +101,6 @@
             this.Controls.Add(this.textBoxDefaultStructure);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.labelFolderFT);
-            this.Controls.Add(this.labelCount);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.labelFolderPS);
             this.Controls.Add(this.label1);
             this.Name = "ONCDaemonViewController";
@@ -128,8 +115,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelFolderPS;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label labelCount;
         private System.Windows.Forms.Label labelFolderFT;
         private System.Windows.Forms.FolderBrowserDialog PSFolderBrowserDialog;
         private System.Windows.Forms.FolderBrowserDialog FTFolderBrowserDialog;

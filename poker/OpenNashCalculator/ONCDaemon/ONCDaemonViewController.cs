@@ -34,7 +34,6 @@ namespace ONCDaemon
         {
             this.labelFolderPS.Text = Properties.Settings.Default.PSHandHistoryFolder;
             this.labelFolderFT.Text = Properties.Settings.Default.FTHandHistoryFolder;
-            this.labelCount.Text = count.ToString();
             this.textBoxDefaultStructure.Text = Properties.Settings.Default.DefaultStructure;
         }
 
@@ -82,7 +81,6 @@ namespace ONCDaemon
                         + " \"" + count % 10 * 40 + "," + count % 10 * 20 + "\"";
                     syncHyperSatBuyinList();
                     System.Diagnostics.Process.Start(System.IO.Directory.GetCurrentDirectory() + "/スタンド.exe", tmp_file);
-                    this.labelCount.Text = (++count).ToString();
                     break;
                 default:
                     break;
@@ -113,6 +111,18 @@ namespace ONCDaemon
 
         private void showPSFolderBrowser()
         {
+
+            string result = Microsoft.VisualBasic.Interaction.InputBox("ポーカースターズのハンドヒストリフォルダを指定してください", "ポーカースターズのハンドヒストリフォルダ", Properties.Settings.Default.PSHandHistoryFolder, this.Location.X + 20, this.Location.Y + 100);
+            if (result == string.Empty) return;
+            if (!System.IO.Directory.Exists(result)) {
+                System.Windows.Forms.MessageBox.Show("指定されたディレクトリは存在しません");
+                return;
+            }
+            Properties.Settings.Default.PSHandHistoryFolder = result;
+            watcher.clear();
+            registFolders();
+            setLabels();
+#if false
             if (PSFolderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
                 Properties.Settings.Default.PSHandHistoryFolder = PSFolderBrowserDialog.SelectedPath;
@@ -120,6 +130,7 @@ namespace ONCDaemon
                 registFolders();
                 setLabels();
             }
+#endif
         }
 
         private void textBoxHyperSatBuyinList_TextChanged(object sender, EventArgs e)
