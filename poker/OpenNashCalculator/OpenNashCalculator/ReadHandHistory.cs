@@ -18,6 +18,15 @@ namespace OpenNashCalculator
         HandHistoryReader reader = new PSHHReader();
         UserValidator validator = new UserValidator();
 
+        bool isHyper()
+        {
+            return hyperSatBuyinList.Any(buyin => openHandHistoryDialog.FileName.Contains(buyin));
+        }
+        void setHyperStructure()
+        {
+            textBoxStructure.Text = "1,1";
+        }
+
         void ReadHandHistory()
         {
             if (openHandHistoryDialog.FileName == String.Empty) return;
@@ -43,14 +52,19 @@ namespace OpenNashCalculator
                 Application.Exit();
 #endif
             }
-            if (checkBoxClose.Checked && result.getLivePlayerCount() <= 1) Application.Exit();
+            if (checkBoxClose.Checked)
+            {
+                if ((result.getLivePlayerCount() <= 1)
+                    ||(result.getLivePlayerCount() == 2 && isHyper()))
+                    Application.Exit();
+            }
 
             // 設定
             textBoxBB.Text = result.BB.ToString();
             currentSB = result.SB.ToString();
             textBoxAnte.Text = result.Ante.ToString();
             SetHeroSeat(SeatLabels[result.getHeroSeat() - 1]);
-            if(hyperSatBuyinList.Any( buyin => openHandHistoryDialog.FileName.Contains(buyin))) textBoxStructure.Text= "1,1";
+            if (isHyper()) setHyperStructure();
 
             // チップと名前入力
             foreach (TextBox chipTextBox in chipTextBoxes)
