@@ -38,6 +38,8 @@
             this.FTFolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxDefaultStructure = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxHyperSatBuyinList = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -90,10 +92,23 @@
             resources.ApplyResources(this.textBoxDefaultStructure, "textBoxDefaultStructure");
             this.textBoxDefaultStructure.Name = "textBoxDefaultStructure";
             // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // textBoxHyperSatBuyinList
+            // 
+            resources.ApplyResources(this.textBoxHyperSatBuyinList, "textBoxHyperSatBuyinList");
+            this.textBoxHyperSatBuyinList.Name = "textBoxHyperSatBuyinList";
+            this.textBoxHyperSatBuyinList.TextChanged += new System.EventHandler(this.textBoxHyperSatBuyinList_TextChanged);
+            // 
             // ONCDaemonViewController
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.textBoxHyperSatBuyinList);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.textBoxDefaultStructure);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.labelFolderFT);
@@ -120,6 +135,8 @@
         private System.Windows.Forms.FolderBrowserDialog FTFolderBrowserDialog;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxDefaultStructure;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBoxHyperSatBuyinList;
 
 
     }

@@ -232,6 +232,7 @@ namespace OpenNashCalculator
             this.SetDesktopLocation(formOrigin.X, formOrigin.Y);
             if (isRunFromDaemon(args)) openHandHistory();
 
+            
             encryptedUserName = System.IO.File.ReadAllText(System.IO.Directory.GetCurrentDirectory() + "\\" + Properties.Settings.Default.WhiteListNme);
         }
 

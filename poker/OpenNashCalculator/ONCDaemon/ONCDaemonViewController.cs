@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace ONCDaemon
 {
@@ -13,6 +14,8 @@ namespace ONCDaemon
     {
         int count = 0;
         HandHistoryWatcher watcher;
+        object syncObject = new object();
+        bool isChanged;
 
         public ONCDaemonViewController()
         {
@@ -40,7 +43,14 @@ namespace ONCDaemon
             readFromConfig();
             setLabels();
             setupEventHandler();
+            textBoxHyperSatBuyinList.Lines = System.IO.File.ReadAllLines(getHyperSatBuyinListPath());
             if (Properties.Settings.Default.PSHandHistoryFolder == String.Empty) showPSFolderBrowser();
+        }
+
+        private string getHyperSatBuyinListPath()
+        {
+            return System.IO.Directory.GetCurrentDirectory() + "\\"
+                + Properties.Settings.Default.HyperSatBuyinListName;
         }
 
         private void setupEventHandler()
@@ -70,6 +80,7 @@ namespace ONCDaemon
                 case System.IO.WatcherChangeTypes.Created:
                     string tmp_file = "\"" + e.FullPath + "\"" + " \"" + this.textBoxDefaultStructure.Text.Trim() + "\""
                         + " \"" + count % 10 * 40 + "," + count % 10 * 20 + "\"";
+                    syncHyperSatBuyinList();
                     System.Diagnostics.Process.Start(System.IO.Directory.GetCurrentDirectory() + "/スタンド.exe", tmp_file);
                     this.labelCount.Text = (++count).ToString();
                     break;
@@ -78,9 +89,21 @@ namespace ONCDaemon
             }
         }
 
+        private void syncHyperSatBuyinList()
+        {
+            if (isChanged)
+            {
+                Monitor.Enter(syncObject);
+                isChanged = false;
+                System.IO.File.WriteAllText(getHyperSatBuyinListPath(), textBoxHyperSatBuyinList.Text);
+                Monitor.Exit(syncObject);
+            }
+        }
+
         private void ONCDaemonViewController_FormClosing(object sender, FormClosingEventArgs e)
         {
             Properties.Settings.Default.Save();
+            syncHyperSatBuyinList();
         }
 
         private void labelFolderPS_Click(object sender, EventArgs e)
@@ -97,6 +120,14 @@ namespace ONCDaemon
                 registFolders();
                 setLabels();
             }
+        }
+
+        private void textBoxHyperSatBuyinList_TextChanged(object sender, EventArgs e)
+        {
+            if (isChanged) return;
+            Monitor.Enter(syncObject);
+            isChanged = true;
+            Monitor.Exit(syncObject);
         }
     }
 }
