@@ -23,21 +23,27 @@ namespace ONCDaemon.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C:\\poker\\PokerStars\\HandHistory\\chiyuki")]
         public string PSHandHistoryFolder {
             get {
                 return ((string)(this["PSHandHistoryFolder"]));
             }
+            set {
+                this["PSHandHistoryFolder"] = value;
+            }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C:\\poker\\FullTilt\\chiyuki")]
         public string FTHandHistoryFolder {
             get {
                 return ((string)(this["FTHandHistoryFolder"]));
+            }
+            set {
+                this["FTHandHistoryFolder"] = value;
             }
         }
         
@@ -47,6 +53,18 @@ namespace ONCDaemon.Properties {
         public string HyperSatBuyinListName {
             get {
                 return ((string)(this["HyperSatBuyinListName"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1,1")]
+        public string DefaultStructure {
+            get {
+                return ((string)(this["DefaultStructure"]));
+            }
+            set {
+                this["DefaultStructure"] = value;
             }
         }
     }

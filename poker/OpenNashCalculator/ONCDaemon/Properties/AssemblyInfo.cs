@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("ONCDaemon")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("bloodysnow")]
 [assembly: AssemblyProduct("ONCDaemon")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]

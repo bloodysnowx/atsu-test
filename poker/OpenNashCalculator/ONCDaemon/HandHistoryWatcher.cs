@@ -49,6 +49,13 @@ namespace ONCDaemon
             }
         }
 
+        public void clear()
+        {
+            foreach (var watcher in watchers)
+                watcher.Created -= new System.IO.FileSystemEventHandler(watcher_Changed);
+            watchers.RemoveAll( watcher => true );
+        }
+
         Regex regexPS = new Regex("HH[0-9]+" + Regex.Escape(" ") + "T[0-9]+" + Regex.Escape(" ") + "No" + Regex.Escape(" ")
                 + "Limit" + Regex.Escape(" ") + "Hold");
         Regex regexFT = new Regex("FT[0-9]+" + Regex.Escape(" ") + ".+" + Regex.Escape("(")

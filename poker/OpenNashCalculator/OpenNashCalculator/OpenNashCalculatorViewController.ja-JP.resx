@@ -142,6 +142,33 @@
   <data name="checkBoxCalc.Text" xml:space="preserve">
     <value>自動計算</value>
   </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 12</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 12</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 12</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 12</value>
+  </data>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 12</value>
+  </data>
+  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 12</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 12</value>
+  </data>
+  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 12</value>
+  </data>
+  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 12</value>
+  </data>
   <data name="buttonReread.Text" xml:space="preserve">
     <value>再読み込み</value>
   </data>
@@ -153,10 +180,6 @@
   </data>
   <data name="checkBoxClose.Text" xml:space="preserve">
     <value>自動終了</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>スタンド</value>
