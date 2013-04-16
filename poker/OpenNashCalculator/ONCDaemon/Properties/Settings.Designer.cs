@@ -25,7 +25,7 @@ namespace ONCDaemon.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\poker\\PokerStars\\HandHistory\\chiyuki")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\poker\\PokerStars\\HandHistory\\")]
         public string PSHandHistoryFolder {
             get {
                 return ((string)(this["PSHandHistoryFolder"]));
@@ -37,7 +37,7 @@ namespace ONCDaemon.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\poker\\FullTilt\\chiyuki")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\poker\\FullTilt\\")]
         public string FTHandHistoryFolder {
             get {
                 return ((string)(this["FTHandHistoryFolder"]));

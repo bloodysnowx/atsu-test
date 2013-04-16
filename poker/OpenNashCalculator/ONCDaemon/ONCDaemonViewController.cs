@@ -16,6 +16,7 @@ namespace ONCDaemon
         HandHistoryWatcher watcher;
         object syncObject = new object();
         bool isChanged;
+        FilePathManager pathManager = new FilePathManager();
 
         public ONCDaemonViewController()
         {
@@ -42,14 +43,8 @@ namespace ONCDaemon
             readFromConfig();
             setLabels();
             setupEventHandler();
-            textBoxHyperSatBuyinList.Lines = System.IO.File.ReadAllLines(getHyperSatBuyinListPath());
+            textBoxHyperSatBuyinList.Lines = System.IO.File.ReadAllLines(pathManager.getHyperSatBuyinListPath());
             if (Properties.Settings.Default.PSHandHistoryFolder == String.Empty) showPSFolderBrowser();
-        }
-
-        private string getHyperSatBuyinListPath()
-        {
-            return System.IO.Directory.GetCurrentDirectory() + "\\"
-                + Properties.Settings.Default.HyperSatBuyinListName;
         }
 
         private void setupEventHandler()
@@ -77,14 +72,18 @@ namespace ONCDaemon
             switch (e.ChangeType)
             {
                 case System.IO.WatcherChangeTypes.Created:
-                    string tmp_file = "\"" + e.FullPath + "\"" + " \"" + this.textBoxDefaultStructure.Text.Trim() + "\""
-                        + " \"" + count % 10 * 40 + "," + count % 10 * 20 + "\"";
                     syncHyperSatBuyinList();
-                    System.Diagnostics.Process.Start(System.IO.Directory.GetCurrentDirectory() + "/スタンド.exe", tmp_file);
+                    System.Diagnostics.Process.Start(pathManager.getONCPath(), makeHandHistoryArgs(e.FullPath));
                     break;
                 default:
                     break;
             }
+        }
+
+        private string makeHandHistoryArgs(string hhPath)
+        {
+            return "\"" + hhPath + "\"" + " \"" + this.textBoxDefaultStructure.Text.Trim() + "\""
+                + " \"" + count % 10 * 40 + "," + count % 10 * 20 + "\"";
         }
 
         private void syncHyperSatBuyinList()
@@ -93,7 +92,7 @@ namespace ONCDaemon
             {
                 Monitor.Enter(syncObject);
                 isChanged = false;
-                System.IO.File.WriteAllText(getHyperSatBuyinListPath(), textBoxHyperSatBuyinList.Text);
+                System.IO.File.WriteAllText(pathManager.getHyperSatBuyinListPath(), textBoxHyperSatBuyinList.Text);
                 Monitor.Exit(syncObject);
             }
         }

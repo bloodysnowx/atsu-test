@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="PSHandHistoryFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\poker\PokerStars\HandHistory\chiyuki</Value>
+      <Value Profile="(Default)">C:\poker\PokerStars\HandHistory\</Value>
     </Setting>
     <Setting Name="FTHandHistoryFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\poker\FullTilt\chiyuki</Value>
+      <Value Profile="(Default)">C:\poker\FullTilt\</Value>
     </Setting>
     <Setting Name="HyperSatBuyinListName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">HyperSatBuyinList.txt</Value>
