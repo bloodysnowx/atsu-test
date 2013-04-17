@@ -27,24 +27,42 @@ namespace OpenNashCalculator
             textBoxStructure.Text = "1,1";
         }
 
+        bool shouldCloseTime(DateTime lastWriteTime)
+        {
+            
+            if (DateTime.Now.Minute <= 5 || DateTime.Now.Minute >= 55)
+            {
+                if (lastWriteTime.AddMinutes(5 + Properties.Settings.Default.AutoCloseMin) < DateTime.Now) return true;
+            }
+            else if (lastWriteTime.AddMinutes(Properties.Settings.Default.AutoCloseMin) < DateTime.Now) return true;
+            return false;
+        }
+
+        bool shouldReloadTime(DateTime lastWriteTime)
+        {
+            return !(hh_back_num == 0 && updateDate >= lastWriteTime);
+        }
+
+        bool shouldCloseSituation(TableData result)
+        {
+            return (result.getLivePlayerCount() <= 1)
+                || (result.getLivePlayerCount() == 2 && isHyper())
+                || (result.getHeroChip() <= 0 && isHyper());
+        }
+
         void ReadHandHistory()
         {
             if (openHandHistoryDialog.FileName == String.Empty) return;
-            DateTime lastWriteTime =reader.GetLastWriteTime(openHandHistoryDialog.FileName);
+            DateTime lastWriteTime = reader.GetLastWriteTime(openHandHistoryDialog.FileName);
+
             if(checkBoxClose.Checked)
             {
-                if(DateTime.Now.Minute <= 5 || DateTime.Now.Minute >= 55)
-                {
-                    if(lastWriteTime.AddMinutes(5 + Properties.Settings.Default.AutoCloseMin) < DateTime.Now)
-                        Application.Exit();
-                }
-                else if (lastWriteTime.AddMinutes(Properties.Settings.Default.AutoCloseMin) < DateTime.Now)
-                    Application.Exit();
+                if (shouldCloseTime(lastWriteTime)) Application.Exit();
             }
 
-            if (hh_back_num == 0 && updateDate >= lastWriteTime) return;
+            if (shouldReloadTime(lastWriteTime) == false) return;
 
-            updateDate = lastWriteTime;
+            updateDate = hh_back_num == 0 ? lastWriteTime : new DateTime();
             TableData result = reader.read(openHandHistoryDialog.FileName, hh_back_num);
             if(!validator.validate(result.heroName, encryptedUserName)) {
                 System.Windows.Forms.MessageBox.Show("You cannot use this application");
@@ -54,10 +72,7 @@ namespace OpenNashCalculator
             }
             if (checkBoxClose.Checked)
             {
-                if ((result.getLivePlayerCount() <= 1)
-                    ||(result.getLivePlayerCount() == 2 && isHyper())
-                    ||(result.getHeroChip() <= 0 && isHyper()))
-                    Application.Exit();
+                if (shouldCloseSituation(result)) Application.Exit();
             }
 
             // 設定
@@ -85,7 +100,7 @@ namespace OpenNashCalculator
             // ボタンの位置を決定
             int player_num = result.chips.Count(chip => chip > 0);
 
-            int buttonIndex = Enumerable.Range(0, result.MaxSeatNum).First(j => result.buttonPos == result.seats[j]);
+            int buttonIndex = Enumerable.Range(0, result.MaxSeatNum).First(i => result.buttonPos == result.seats[i]);
 
             if (player_num < 3)
             {
