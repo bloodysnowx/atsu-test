@@ -157,6 +157,11 @@ namespace OpenNashCalculator
             }
         }
 
+        private int getIndexFromPlayerName(string name, TableData result)
+        {
+            return Enumerable.Range(0, result.MaxSeatNum).First(i => result.playerNames[i] == name);
+        }
+
         /// <summary>Anteの支払い処理を計算する</summary>
         /// <param name="result"></param>
         /// <param name="hh"></param>
@@ -170,16 +175,11 @@ namespace OpenNashCalculator
                 MatchCollection matchCol = regex.Matches(hh[++line]);
                 if (matchCol.Count > 0)
                 {
-                    for (int j = 0; j < maxSeatNum; ++j)
-                    {
-                        if (matchCol[0].Groups[1].Value.Equals(result.playerNames[j]))
-                        {
-                            result.Ante = Math.Max(result.Ante, System.Convert.ToInt32(matchCol[0].Groups[2].Value));
+                    int j = getIndexFromPlayerName(matchCol[0].Groups[1].Value, result);
+                    result.Ante = Math.Max(result.Ante, System.Convert.ToInt32(matchCol[0].Groups[2].Value));
 
-                            result.chips[j] -= System.Convert.ToInt32(matchCol[0].Groups[2].Value);
-                            result.pot += System.Convert.ToInt32(matchCol[0].Groups[2].Value);
-                        }
-                    }
+                    result.chips[j] -= System.Convert.ToInt32(matchCol[0].Groups[2].Value);
+                    result.pot += System.Convert.ToInt32(matchCol[0].Groups[2].Value);
                 }
                 else
                 {
