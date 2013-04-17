@@ -14,6 +14,8 @@ namespace OpenNashCalculator
 {
     public partial class OpenNashCalculatorViewController : Form
     {
+        const int MAX_SEAT_NUM = 9;
+
         public OpenNashCalculatorViewController()
         {
             InitializeComponent();
@@ -65,6 +67,7 @@ namespace OpenNashCalculator
         string defaultStructure = "";
         Point formOrigin = new Point(0, 0);
         IEnumerable<string> hyperSatBuyinList;
+        IEnumerable<int> indexes = Enumerable.Range(0, MAX_SEAT_NUM);
 
         private void EnabledPositionRadioButton()
         {
@@ -87,11 +90,7 @@ namespace OpenNashCalculator
 
         private void SetPosition()
         {
-            for (int i = 0; i < 9; ++i)
-            {
-                if (positionRadioButtons[i].Checked == true)
-                    bb_pos = i;
-            }
+            bb_pos = indexes.First(i => positionRadioButtons[i].Checked);
 
             EnabledPositionRadioButton();
 
@@ -118,10 +117,7 @@ namespace OpenNashCalculator
 
         private int getHeroNum()
         {
-            int hero_num = 0;
-            for (int i = 0; i < 9; ++i)
-                if (SeatLabels[i].Text == "H") hero_num = i;
-            return hero_num;
+            return indexes.First(i => SeatLabels[i].Text == "H");
         }
 
         private void SetBBSBAnte()
@@ -138,10 +134,9 @@ namespace OpenNashCalculator
 
             textBoxStructure.Text = defaultStructure;
 
-            for (int i = 0; i < 9; ++i)
+            foreach (var i in indexes.Where(i => Properties.Settings.Default.PlayerNum - i > 0))
             {
-                if (Properties.Settings.Default.PlayerNum - i > 0)
-                    chipTextBoxes[8 - i].Text = Properties.Settings.Default.StartingChip;
+                chipTextBoxes[8 - i].Text = Properties.Settings.Default.StartingChip;
             }
 
             SetPosition();
@@ -231,7 +226,6 @@ namespace OpenNashCalculator
             Reset();
             this.SetDesktopLocation(formOrigin.X, formOrigin.Y);
             if (isRunFromDaemon(args)) openHandHistory();
-
             
             encryptedUserName = System.IO.File.ReadAllText(System.IO.Directory.GetCurrentDirectory() + "\\" + Properties.Settings.Default.WhiteListNme);
         }
@@ -345,31 +339,25 @@ namespace OpenNashCalculator
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < 9; ++i)
-            {
-                if (sender == ClearButtons[i])
-                    chipTextBoxes[i].Clear();
-            }
+            chipTextBoxes[indexes.First(i => sender == ClearButtons[i])].Clear();
             SetPosition();
+        }
+
+        private void resetSeats()
+        {
+            for (int i = 0; i < MAX_SEAT_NUM; ++i)
+            {
+                SeatLabels[i].Text = Seat[i];
+                SeatLabels[i].Font = new Font("MS UI Gothic", 9);
+                chipTextBoxes[i].BackColor = rangeTextBoxes[i].BackColor = Color.White;
+            }
         }
 
         private void SetHeroSeat(Label sender)
         {
-            for (int i = 0; i < 9; ++i)
-            {
-                SeatLabels[i].Text = Seat[i];
-                SeatLabels[i].Font = new Font("MS UI Gothic", 9);
-
-                if (sender == SeatLabels[i])
-                {
-                    chipTextBoxes[i].BackColor = rangeTextBoxes[i].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
-                }
-                else
-                {
-                    chipTextBoxes[i].BackColor = rangeTextBoxes[i].BackColor = Color.White;
-                }
-            }
-
+            resetSeats();
+            int index = indexes.First(i => sender == SeatLabels[i]);
+            chipTextBoxes[index].BackColor = rangeTextBoxes[index].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
             sender.Text = "H";
             sender.Font = new Font("MS UI Gothic", 9, FontStyle.Bold);
         }
@@ -443,15 +431,20 @@ namespace OpenNashCalculator
 
             if (retry_num > 0)
             {
-                checkBoxRefresh.Enabled = checkBoxRefresh.Checked = false;
-                MessageBox.Show(System.IO.Path.GetFileName(openHandHistoryDialog.FileName) + " may be broken."
-                    + System.Environment.NewLine + "This program cannot read this hand history."
-                    + System.Environment.NewLine + "Please choose another file.");
+                reportHandHistoryReadError();
             }
             else
             {
                 checkBoxRefresh.Enabled = checkBoxRefresh.Checked = true;
             }
+        }
+
+        private void reportHandHistoryReadError()
+        {
+            checkBoxRefresh.Enabled = checkBoxRefresh.Checked = false;
+            MessageBox.Show(System.IO.Path.GetFileName(openHandHistoryDialog.FileName) + " may be broken."
+                + System.Environment.NewLine + "This program cannot read this hand history."
+                + System.Environment.NewLine + "Please choose another file.");
         }
 
         private void openHandHistory()
@@ -498,10 +491,7 @@ namespace OpenNashCalculator
 
             if (retry_num > 3)
             {
-                checkBoxRefresh.Enabled = checkBoxRefresh.Checked = false;
-                MessageBox.Show(System.IO.Path.GetFileName(openHandHistoryDialog.FileName) + " may be broken."
-                    + System.Environment.NewLine + "This program cannot read this hand history."
-                    + System.Environment.NewLine + "Please choose another file.");
+                reportHandHistoryReadError();
             }
         }
 
@@ -551,22 +541,19 @@ namespace OpenNashCalculator
             string oc_pos = string.Empty;
             string hero_pos = positionRadioButtons[getHeroNum()].Text;
 
-            for(int i = 0; i < 9; ++i)
+            foreach (var i in indexes.Where(i => AllinCheckBoxes[i].Checked))
             {
-                if (AllinCheckBoxes[i].Checked == true)
+                if (count == 0) push_pos = positionRadioButtons[i].Text;
+                else if (count == 1)
                 {
-                    if (count == 0) push_pos = positionRadioButtons[i].Text;
-                    else if(count == 1)
+                    oc_pos = positionRadioButtons[i].Text;
+                    if (Position.ToList().IndexOf(push_pos) < Position.ToList().IndexOf(oc_pos))
                     {
-                        oc_pos = positionRadioButtons[i].Text;
-                        if (Position.ToList().IndexOf(push_pos) < Position.ToList().IndexOf(oc_pos))
-                        {
-                            oc_pos = push_pos;
-                            push_pos = positionRadioButtons[i].Text;
-                        }
+                        oc_pos = push_pos;
+                        push_pos = positionRadioButtons[i].Text;
                     }
-                    count++;
                 }
+                count++;
             }
 
             if (count == 2 && Position.ToList().IndexOf(hero_pos) < Position.ToList().IndexOf(oc_pos))
@@ -576,7 +563,6 @@ namespace OpenNashCalculator
                 Regex regex = new Regex("</TR>\r\n<TR>\r\n<TD>\r\n<TD>\r\n<TD>" + Regex.Escape(hero_pos) + "</TD>\r\n<TD>(.*?)</TD></TR>");
                 MatchCollection matchCol = regex.Matches(tmp);
                 Help.ShowPopup(this, matchCol[0].Groups[1].Value, Control.MousePosition);
-                // Help.ShowPopup(this, "このように2つだけチェックを" + Environment.NewLine + "入れるとポップアップ", Control.MousePosition);
             }
         }
 
