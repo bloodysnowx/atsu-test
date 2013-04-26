@@ -92,8 +92,8 @@
     <PostBuildEvent>copy $(SolutionDir)OpenNashCalculator\readme.txt $(TargetDir)files\
 copy $(SolutionDir)ONCDaemon\bin\$(ConfigurationName)\自動発動.ex* $(TargetDir)files\
 copy $(SolutionDir)ONCDaemon\bin\$(ConfigurationName)\ja-JP\自動発動.resources.dll $(TargetDir)files\ja-JP\
-copy $(SolutionDir)OpenNashCalculator\bin\$(ConfigurationName)\スタンド.ex* $(TargetDir)files\
-copy $(SolutionDir)OpenNashCalculator\bin\$(ConfigurationName)\ja-JP\スタンド.resources.dll $(TargetDir)files\ja-jp\
+copy $(SolutionDir)OpenNashCalculator\bin\$(ConfigurationName)\ナッシュ先生.ex* $(TargetDir)files\
+copy $(SolutionDir)OpenNashCalculator\bin\$(ConfigurationName)\ja-JP\ナッシュ先生.resources.dll $(TargetDir)files\ja-jp\
 del $(TargetDir)files\*.bak
 copy $(SolutionDir)UserValidatorLib\bin\$(ConfigurationName)\UserValidatorLib.dll $(TargetDir)files\
 </PostBuildEvent>
