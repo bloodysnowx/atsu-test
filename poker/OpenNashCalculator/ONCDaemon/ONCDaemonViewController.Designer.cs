@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ONCDaemonViewController));
             this.label1 = new System.Windows.Forms.Label();
             this.labelFolderPS = new System.Windows.Forms.Label();
@@ -38,6 +39,7 @@
             this.textBoxDefaultStructure = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxHyperSatBuyinList = new System.Windows.Forms.TextBox();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -66,10 +68,6 @@
             // 
             resources.ApplyResources(this.PSFolderBrowserDialog, "PSFolderBrowserDialog");
             this.PSFolderBrowserDialog.ShowNewFolderButton = false;
-            // 
-            // FTFolderBrowserDialog
-            // 
-            resources.ApplyResources(this.FTFolderBrowserDialog, "FTFolderBrowserDialog");
             // 
             // label2
             // 
@@ -122,6 +120,7 @@
         private System.Windows.Forms.TextBox textBoxDefaultStructure;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxHyperSatBuyinList;
+        private System.Windows.Forms.ToolTip toolTip;
 
 
     }
