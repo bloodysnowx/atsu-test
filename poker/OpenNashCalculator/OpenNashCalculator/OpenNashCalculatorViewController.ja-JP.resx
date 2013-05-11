@@ -181,7 +181,10 @@
   <data name="button_fore.Text" xml:space="preserve">
     <value>次のハンドへ</value>
   </data>
+  <data name="webBrowser1.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>ナッシュ先生</value>
+    <value>ナッシュさん</value>
   </data>
 </root>

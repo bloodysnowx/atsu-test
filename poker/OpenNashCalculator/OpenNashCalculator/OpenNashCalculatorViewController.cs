@@ -260,6 +260,19 @@ namespace OpenNashCalculator
             }
         }
 
+        private void setBBLevel()
+        {
+            for (int i = BB.Length - 1; i >= 0; --i)
+            {
+                level = i;
+                if (System.Convert.ToInt32(BB[i]) <= System.Convert.ToInt32(textBoxBB.Text))
+                {
+                    return;
+                }
+            }
+
+        }
+
         private void buttonBBUP_Click(object sender, EventArgs e)
         {
             if (level < BB.Length - 1)
@@ -604,6 +617,12 @@ namespace OpenNashCalculator
             {
                 this.SetDesktopLocation(this.Left - mousePoint.X + e.X, this.Top - mousePoint.Y + e.Y);
             }
+        }
+
+        private void labelBB_Click(object sender, EventArgs e)
+        {
+            setBBLevel();
+            buttonBBUP_Click(sender, e);
         }
 
 

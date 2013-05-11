@@ -129,6 +129,7 @@
             // 
             resources.ApplyResources(this.labelBB, "labelBB");
             this.labelBB.Name = "labelBB";
+            this.labelBB.Click += new System.EventHandler(this.labelBB_Click);
             this.labelBB.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.labelBB.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             // 
@@ -693,7 +694,6 @@
             // webBrowser1
             // 
             resources.ApplyResources(this.webBrowser1, "webBrowser1");
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
             // 
@@ -782,7 +782,7 @@
             this.Controls.Add(this.textBoxAnte);
             this.Controls.Add(this.textBoxBB);
             this.Controls.Add(this.labelBB);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "OpenNashCalculatorViewController";
             this.Load += new System.EventHandler(this.Form_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
