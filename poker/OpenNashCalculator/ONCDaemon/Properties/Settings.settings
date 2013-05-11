@@ -12,7 +12,7 @@
       <Value Profile="(Default)">HyperSatBuyinList.txt</Value>
     </Setting>
     <Setting Name="DefaultStructure" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1,1</Value>
+      <Value Profile="(Default)">1</Value>
     </Setting>
   </Settings>
 </SettingsFile>
