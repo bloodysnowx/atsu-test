@@ -24,7 +24,7 @@
       <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="BackColorOfMainForm" Type="System.Drawing.Color" Scope="Application">
-      <Value Profile="(Default)">WhiteSmoke</Value>
+      <Value Profile="(Default)">Gainsboro</Value>
     </Setting>
     <Setting Name="PreferredSeat" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">0</Value>

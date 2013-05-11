@@ -627,6 +627,13 @@ namespace OpenNashCalculator
             buttonBBUP_Click(sender, e);
         }
 
+        private void textBoxStructure_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxStructure.Text.Trim() == "1,1")
+                this.BackColor = Color.FromArgb(255, 255, 240);
+            else this.BackColor = Color.Gainsboro;
+        }
+
 
 
 #if false

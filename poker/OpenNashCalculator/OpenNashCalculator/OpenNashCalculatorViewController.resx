@@ -127,6 +127,9 @@
   <data name="&gt;&gt;label11.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
+  <data name="&gt;&gt;checkBoxRebuy.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="button4.TabIndex" type="System.Int32, mscorlib">
     <value>59</value>
@@ -393,8 +396,8 @@
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 333</value>
   </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 129</value>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 231</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
     <value />
@@ -406,6 +409,9 @@
     <value>13, 163</value>
   </data>
   <data name="textBox6.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="checkBox5.AutoSize" type="System.Boolean, mscorlib">
@@ -777,8 +783,8 @@
   <data name="textBoxRange8.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="radioButton9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 280</value>
+  <data name="labelStructure.Text" xml:space="preserve">
+    <value>Structure</value>
   </data>
   <data name="labelSeat.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 71</value>
@@ -878,6 +884,9 @@
   </data>
   <data name="&gt;&gt;textBoxRange1.Parent" xml:space="preserve">
     <value>$this</value>
+  </data>
+  <data name="radioButton2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;label13.Name" xml:space="preserve">
     <value>label13</value>
@@ -1122,9 +1131,6 @@
   <data name="&gt;&gt;labelBB.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;webBrowser1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="textBoxRange4.ToolTip" xml:space="preserve">
     <value />
   </data>
@@ -1152,8 +1158,8 @@
   <data name="&gt;&gt;buttonOpen.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="textBoxRange5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>MS UI Gothic, 9pt</value>
+  <data name="&gt;&gt;radioButton6.Name" xml:space="preserve">
+    <value>radioButton6</value>
   </data>
   <data name="&gt;&gt;checkBox6.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1338,9 +1344,6 @@
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;checkBoxRebuy.ZOrder" xml:space="preserve">
-    <value>24</value>
-  </data>
   <data name="radioButton8.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
@@ -1398,11 +1401,8 @@
   <data name="&gt;&gt;label2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 231</value>
-  </data>
-  <data name="&gt;&gt;radioButton6.Name" xml:space="preserve">
-    <value>radioButton6</value>
+  <data name="&gt;&gt;button4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="buttonCalc.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -1431,8 +1431,8 @@
   <data name="button10.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="checkBox3.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;webBrowser1.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="textBoxStructure.Location" type="System.Drawing.Point, System.Drawing">
     <value>71, 39</value>
@@ -1463,6 +1463,9 @@
   </data>
   <data name="textBoxAnte.Location" type="System.Drawing.Point, System.Drawing">
     <value>212, 10</value>
+  </data>
+  <data name="radioButton9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 280</value>
   </data>
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 12</value>
@@ -1632,9 +1635,6 @@
   <data name="&gt;&gt;button2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="textBox7.Location" type="System.Drawing.Point, System.Drawing">
     <value>115, 299</value>
   </data>
@@ -1643,6 +1643,9 @@
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 12</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 129</value>
   </data>
   <data name="&gt;&gt;textBox4.ZOrder" xml:space="preserve">
     <value>64</value>
@@ -1788,8 +1791,8 @@
   <data name="radioButton4.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="textBoxRange4.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Vertical</value>
+  <data name="checkBox3.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="button10.Location" type="System.Drawing.Point, System.Drawing">
     <value>196, 367</value>
@@ -1877,9 +1880,6 @@
   </data>
   <data name="&gt;&gt;button5.Parent" xml:space="preserve">
     <value>$this</value>
-  </data>
-  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>40</value>
@@ -2265,8 +2265,8 @@
   <data name="&gt;&gt;checkBox5.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="label12.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBoxPosition.ZOrder" xml:space="preserve">
     <value>48</value>
@@ -2376,8 +2376,8 @@
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>11, 12</value>
   </data>
-  <data name="labelStructure.Text" xml:space="preserve">
-    <value>Structure</value>
+  <data name="&gt;&gt;checkBoxRebuy.ZOrder" xml:space="preserve">
+    <value>24</value>
   </data>
   <data name="label14.TabIndex" type="System.Int32, mscorlib">
     <value>86</value>
@@ -2529,8 +2529,8 @@
   <data name="&gt;&gt;radioButton3.Parent" xml:space="preserve">
     <value>groupBoxPosition</value>
   </data>
-  <data name="&gt;&gt;checkBoxRebuy.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="textBoxRange5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>MS UI Gothic, 9pt</value>
   </data>
   <data name="button8.TabIndex" type="System.Int32, mscorlib">
     <value>63</value>
@@ -2586,8 +2586,8 @@
   <data name="&gt;&gt;buttonReread.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <data name="radioButton2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="textBoxRange4.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
   </data>
   <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 12</value>
@@ -2619,17 +2619,17 @@
   <metadata name="chipContextMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>335, 19</value>
   </metadata>
-  <metadata name="findTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>519, 19</value>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
   <metadata name="webBrowserTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>628, 19</value>
   </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
+  <metadata name="openHandHistoryDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>55</value>
+  <metadata name="findTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>519, 19</value>
   </metadata>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>789, 19</value>
@@ -2637,7 +2637,7 @@
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>ja-JP</value>
   </metadata>
-  <metadata name="openHandHistoryDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>55</value>
   </metadata>
 </root>

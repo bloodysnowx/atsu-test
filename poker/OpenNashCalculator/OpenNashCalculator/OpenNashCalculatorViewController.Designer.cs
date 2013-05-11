@@ -504,6 +504,7 @@
             resources.ApplyResources(this.textBoxStructure, "textBoxStructure");
             this.textBoxStructure.Name = "textBoxStructure";
             this.toolTip.SetToolTip(this.textBoxStructure, resources.GetString("textBoxStructure.ToolTip"));
+            this.textBoxStructure.TextChanged += new System.EventHandler(this.textBoxStructure_TextChanged);
             // 
             // buttonReset
             // 
