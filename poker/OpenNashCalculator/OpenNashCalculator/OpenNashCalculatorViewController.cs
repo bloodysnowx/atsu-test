@@ -570,7 +570,9 @@ namespace OpenNashCalculator
 
             if (count == 2 && Position.ToList().IndexOf(hero_pos) < Position.ToList().IndexOf(oc_pos))
             {
-                string tmp = recent_web_page.Substring(recent_web_page.IndexOf("</TR>\r\n<TR>\r\n<TD>" + push_pos + "</TD>\r\n<TD>\r\n<TD>\r\n<TD>"));
+                int index = recent_web_page.IndexOf("</TR>\r\n<TR>\r\n<TD>" + push_pos + "</TD>\r\n<TD>\r\n<TD>\r\n<TD>");
+                if (index < 0) return;
+                string tmp = recent_web_page.Substring(index);
                 tmp = tmp.Substring(tmp.IndexOf("</TR>\r\n<TR>\r\n<TD>\r\n<TD>" + oc_pos + "</TD>\r\n<TD>\r\n<TD>"));
                 Regex regex = new Regex("</TR>\r\n<TR>\r\n<TD>\r\n<TD>\r\n<TD>" + Regex.Escape(hero_pos) + "</TD>\r\n<TD>(.*?)</TD></TR>");
                 MatchCollection matchCol = regex.Matches(tmp);
