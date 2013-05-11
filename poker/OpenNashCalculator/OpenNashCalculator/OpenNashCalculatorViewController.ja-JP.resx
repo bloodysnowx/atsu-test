@@ -120,9 +120,6 @@
   <data name="labelBB.ToolTip" xml:space="preserve">
     <value>クリックでブラインドアップ</value>
   </data>
-  <data name="textBoxBB.ToolTip" xml:space="preserve">
-    <value>BBを指定します。マウスホイールでブラインドを変更できます</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="labelStructure.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 12</value>
@@ -130,17 +127,11 @@
   <data name="labelStructure.Text" xml:space="preserve">
     <value>ストラクチャ</value>
   </data>
-  <data name="textBox1.ToolTip" xml:space="preserve">
-    <value>チップ量を指定します</value>
-  </data>
   <data name="labelSeat.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 12</value>
   </data>
   <data name="labelSeat.Text" xml:space="preserve">
     <value>シート</value>
-  </data>
-  <data name="labelSeat.ToolTip" xml:space="preserve">
-    <value>シート番号</value>
   </data>
   <data name="labelChips.Size" type="System.Drawing.Size, System.Drawing">
     <value>42, 12</value>
@@ -148,89 +139,8 @@
   <data name="labelChips.Text" xml:space="preserve">
     <value>チップ量</value>
   </data>
-  <data name="textBox2.ToolTip" xml:space="preserve">
-    <value>チップ量を指定します</value>
-  </data>
-  <data name="textBox3.ToolTip" xml:space="preserve">
-    <value>チップ量を指定します</value>
-  </data>
-  <data name="textBox4.ToolTip" xml:space="preserve">
-    <value>チップ量を指定します</value>
-  </data>
-  <data name="textBox5.ToolTip" xml:space="preserve">
-    <value>チップ量を指定します</value>
-  </data>
-  <data name="textBox6.ToolTip" xml:space="preserve">
-    <value>チップ量を指定します</value>
-  </data>
-  <data name="textBox7.ToolTip" xml:space="preserve">
-    <value>チップ量を指定します</value>
-  </data>
-  <data name="textBox8.ToolTip" xml:space="preserve">
-    <value>チップ量を指定します</value>
-  </data>
-  <data name="textBox9.ToolTip" xml:space="preserve">
-    <value>チップ量を指定します</value>
-  </data>
   <data name="buttonCalc.Text" xml:space="preserve">
     <value>計算</value>
-  </data>
-  <data name="buttonCalc.ToolTip" xml:space="preserve">
-    <value>現在のテーブル状況からナッシュレンジを計算する</value>
-  </data>
-  <data name="radioButton9.ToolTip" xml:space="preserve">
-    <value>BBの位置を指定します</value>
-  </data>
-  <data name="radioButton8.ToolTip" xml:space="preserve">
-    <value>BBの位置を指定します</value>
-  </data>
-  <data name="radioButton7.ToolTip" xml:space="preserve">
-    <value>BBの位置を指定します</value>
-  </data>
-  <data name="radioButton6.ToolTip" xml:space="preserve">
-    <value>BBの位置を指定します</value>
-  </data>
-  <data name="radioButton5.ToolTip" xml:space="preserve">
-    <value>BBの位置を指定します</value>
-  </data>
-  <data name="radioButton4.ToolTip" xml:space="preserve">
-    <value>BBの位置を指定します</value>
-  </data>
-  <data name="radioButton3.ToolTip" xml:space="preserve">
-    <value>BBの位置を指定します</value>
-  </data>
-  <data name="radioButton2.ToolTip" xml:space="preserve">
-    <value>BBの位置を指定します</value>
-  </data>
-  <data name="radioButton1.ToolTip" xml:space="preserve">
-    <value>BBの位置を指定します</value>
-  </data>
-  <data name="button2.ToolTip" xml:space="preserve">
-    <value>シートを空にする</value>
-  </data>
-  <data name="button3.ToolTip" xml:space="preserve">
-    <value>シートを空にする</value>
-  </data>
-  <data name="button4.ToolTip" xml:space="preserve">
-    <value>シートを空にする</value>
-  </data>
-  <data name="button5.ToolTip" xml:space="preserve">
-    <value>シートを空にする</value>
-  </data>
-  <data name="button6.ToolTip" xml:space="preserve">
-    <value>シートを空にする</value>
-  </data>
-  <data name="button7.ToolTip" xml:space="preserve">
-    <value>シートを空にする</value>
-  </data>
-  <data name="button8.ToolTip" xml:space="preserve">
-    <value>シートを空にする</value>
-  </data>
-  <data name="button9.ToolTip" xml:space="preserve">
-    <value>シートを空にする</value>
-  </data>
-  <data name="button10.ToolTip" xml:space="preserve">
-    <value>シートを空にする</value>
   </data>
   <data name="checkBoxWeb.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 16</value>
@@ -238,14 +148,8 @@
   <data name="checkBoxWeb.Text" xml:space="preserve">
     <value>ウェブページを開かない</value>
   </data>
-  <data name="checkBoxWeb.ToolTip" xml:space="preserve">
-    <value>標準ブラウザでHoldem Resourcesを開くかどうかを指定する</value>
-  </data>
   <data name="buttonOpen.Text" xml:space="preserve">
     <value>ヒストリファイルを開く</value>
-  </data>
-  <data name="buttonOpen.ToolTip" xml:space="preserve">
-    <value>監視するハンドヒストリを指定します</value>
   </data>
   <data name="checkBoxRefresh.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 16</value>
@@ -253,17 +157,8 @@
   <data name="checkBoxRefresh.Text" xml:space="preserve">
     <value>自動更新</value>
   </data>
-  <data name="checkBoxRefresh.ToolTip" xml:space="preserve">
-    <value>ハンドヒストリファイルが更新された時に自動的に再読み込みします</value>
-  </data>
-  <data name="textBoxStructure.ToolTip" xml:space="preserve">
-    <value>賞金ストラクチャを指定します</value>
-  </data>
   <data name="buttonReset.Text" xml:space="preserve">
     <value>リセット</value>
-  </data>
-  <data name="buttonReset.ToolTip" xml:space="preserve">
-    <value>チップを初期状態にセットし直します</value>
   </data>
   <data name="checkBoxCalc.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 16</value>
@@ -271,20 +166,8 @@
   <data name="checkBoxCalc.Text" xml:space="preserve">
     <value>自動計算</value>
   </data>
-  <data name="checkBoxCalc.ToolTip" xml:space="preserve">
-    <value>ハンドヒストリが更新された時に自動的に再計算します</value>
-  </data>
-  <data name="checkBoxRebuy.ToolTip" xml:space="preserve">
-    <value>チップが0になった人が自動的にリバイするかどうかを指定します</value>
-  </data>
-  <data name="textBoxAnte.ToolTip" xml:space="preserve">
-    <value>Anteを指定します</value>
-  </data>
   <data name="buttonReread.Text" xml:space="preserve">
     <value>再読み込み</value>
-  </data>
-  <data name="buttonReread.ToolTip" xml:space="preserve">
-    <value>ハンドヒストリを再度読み込み直します</value>
   </data>
   <data name="checkBoxClose.Location" type="System.Drawing.Point, System.Drawing">
     <value>269, 404</value>
@@ -295,20 +178,11 @@
   <data name="checkBoxClose.Text" xml:space="preserve">
     <value>自動終了</value>
   </data>
-  <data name="checkBoxClose.ToolTip" xml:space="preserve">
-    <value>不要になった場合に自動的に終了するかを指定する</value>
-  </data>
   <data name="button_back.Text" xml:space="preserve">
     <value>前のハンドへ</value>
   </data>
-  <data name="button_back.ToolTip" xml:space="preserve">
-    <value>1つ前のハンド状況に移動する</value>
-  </data>
   <data name="button_fore.Text" xml:space="preserve">
     <value>次のハンドへ</value>
-  </data>
-  <data name="button_fore.ToolTip" xml:space="preserve">
-    <value>1つ次のハンド状況に移動する</value>
   </data>
   <data name="webBrowser1.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>20, 20</value>

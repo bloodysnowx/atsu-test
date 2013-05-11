@@ -23,6 +23,7 @@ namespace OpenNashCalculator
         public int[] posted { get; set; }
         public int StartingChip { get; set; }
         private int heroIndex = -1;
+        public double[] ICMs { get; set; }
 
         public TableData()
         {
@@ -32,6 +33,7 @@ namespace OpenNashCalculator
             playerNames = new string[MaxSeatNum];
             chips = new int[MaxSeatNum];
             posted = new int[MaxSeatNum];
+            ICMs = new double[MaxSeatNum];
         }
 
         public int getHeroIndex()
@@ -84,6 +86,15 @@ namespace OpenNashCalculator
         public int getHeroChip()
         {
             return chips[getHeroIndex()];
+        }
+
+        public void calcICMs(double[] structures)
+        {
+            ICM icm = new ICM();
+            double[] tmpChips = new double[chips.Length];
+            for (int i = 0; i < chips.Length; ++i)
+                tmpChips[i] = chips[i];
+            icm.calcICM(tmpChips, ICMs, MaxSeatNum, structures, structures.Length);
         }
     }
 }

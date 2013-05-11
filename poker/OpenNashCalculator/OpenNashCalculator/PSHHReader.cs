@@ -348,11 +348,11 @@ namespace OpenNashCalculator
             setBBSB(ref result, now_hh[line++]);
             result.buttonPos = getButtonPos(now_hh[line]);
             getStartSituation(ref result, now_hh, ref line);
-            calcAntePayment(ref result, now_hh, ref line);
-            calcBlindsPayment(ref result, now_hh, ref line);
 
             if (backNum == 0)
             {
+                calcAntePayment(ref result, now_hh, ref line);
+                calcBlindsPayment(ref result, now_hh, ref line);
                 // bets, calls, raises, UNCALLED bet, collected
                 for (; line < now_hh.Length; ++line)
                 {

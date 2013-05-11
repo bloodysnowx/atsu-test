@@ -52,6 +52,7 @@ namespace OpenNashCalculator
         DateTime updateDate;
         TextBox[] rangeTextBoxes;
         Label[] PlayerNameLabels;
+        Label[] ICMLabels;
         string tourney_ID = "xxxxxxxxxxxxxxxxxxxxx";
         CheckBox[] AllinCheckBoxes;
         // bool close_flg = false;
@@ -192,13 +193,15 @@ namespace OpenNashCalculator
                 textBox5, textBox6, textBox7, textBox8, textBox9 };
             positionRadioButtons = new RadioButton[] { radioButton1, radioButton2, radioButton3,
                 radioButton4, radioButton5, radioButton6, radioButton7, radioButton8, radioButton9 };
-            SeatLabels = new Label[] { label1, label2, label3, label4, label5,
-              label6, label7, label8, label9 };
+            SeatLabels = new Label[] { labelSeat1, labelSeat2, labelSeat3, labelSeat4, labelSeat5,
+              labelSeat6, labelSeat7, labelSeat8, labelSeat9 };
             ClearButtons = new Button[] { button2, button3, button4, button5, button6, button7, button8, button9, button10 };
             rangeTextBoxes = new TextBox[] { textBoxRange1, textBoxRange2, textBoxRange3, textBoxRange4, textBoxRange5,
                 textBoxRange6, textBoxRange7, textBoxRange8, textBoxRange9 };
             AllinCheckBoxes = new CheckBox[] { checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6, 
                 checkBox7, checkBox8, checkBox9 };
+            ICMLabels = new Label[] { labelICM1, labelICM2, labelICM3, labelICM4, labelICM5, labelICM6,
+                labelICM7, labelICM8, labelICM9 };
         }
 
         private void setupViews()
@@ -208,6 +211,7 @@ namespace OpenNashCalculator
                 chipTextBox.ContextMenuStrip = chipContextMenuStrip;
             chipTextBoxes[4].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
             rangeTextBoxes[4].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
+            this.Size = new Size(this.Size.Width - 38, this.Size.Height);
         }
 
         private void Form_Load(object sender, EventArgs e)
@@ -632,6 +636,11 @@ namespace OpenNashCalculator
             if (textBoxStructure.Text.Trim() == "1,1")
                 this.BackColor = Color.FromArgb(255, 255, 240);
             else this.BackColor = Color.Gainsboro;
+        }
+
+        private void checkBoxICM_CheckedChanged(object sender, EventArgs e)
+        {
+            this.Size = new Size(this.Size.Width + (((CheckBox)sender).Checked ? 38 : -38), this.Size.Height);
         }
 
 

@@ -70,6 +70,7 @@
       <DependentUpon>OpenNashCalculatorViewController.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="icm.cs" />
     <Compile Include="OpenNashCalculatorViewController.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -51,10 +51,10 @@ namespace OpenNashCalculator
             int line = 0;
             setBBSB(ref result, now_hh[line]);
             getStartSituation(ref result, now_hh, ref line);
-            calcAntePayment(ref result, now_hh, ref line);
-            calcBlindsPayment(ref result, now_hh, ref line);
+            calcAntePayment(ref result, now_hh, ref line, backNum != 0);
+            calcBlindsPayment(ref result, now_hh, ref line, backNum != 0);
             result.buttonPos = getButtonPos(now_hh[++line]);
-
+            
             if (backNum == 0)
             {
                 // bets, calls, raises, UNCALLED bet, collected
@@ -176,7 +176,7 @@ namespace OpenNashCalculator
             }
         }
 
-        private void calcAntePayment(ref TableData result, string[] hh, ref int line)
+        private void calcAntePayment(ref TableData result, string[] hh, ref int line, bool isSkip)
         {
             Regex regex = new Regex("(.+)" + Regex.Escape(" antes ") + "([0-9,]+)");
             for (int i = 0; i < maxSeatNum; ++i)
@@ -190,8 +190,11 @@ namespace OpenNashCalculator
                         {
                             int value = System.Convert.ToInt32(matchCol[0].Groups[2].Value.Replace(",", string.Empty));
                             result.Ante = Math.Max(value, result.Ante);
-                            result.chips[j] -= value;
-                            result.pot += value;
+                            if (isSkip == false)
+                            {
+                                result.chips[j] -= value;
+                                result.pot += value;
+                            }
                         }
                     }
                 }
@@ -203,21 +206,24 @@ namespace OpenNashCalculator
             }
         }
 
-        private void calcBlindPayment(Blind blind, ref TableData result, string[] hh, ref int line)
+        private void calcBlindPayment(Blind blind, ref TableData result, string[] hh, ref int line, bool isSkip)
         {
             Regex regex = new Regex("(.+)" + Regex.Escape(" posts the ") + blind + Regex.Escape(" blind of ") 
                 + "([0-9,]+)");
             MatchCollection matchCol = regex.Matches(hh[++line]);
             if (matchCol.Count > 0)
             {
-                for (int j = 0; j < maxSeatNum; ++j)
+                if (isSkip == false)
                 {
-                    if (matchCol[0].Groups[1].Value.Equals(result.playerNames[j]))
+                    for (int j = 0; j < maxSeatNum; ++j)
                     {
-                        int value = System.Convert.ToInt32(matchCol[0].Groups[2].Value.Replace(",", string.Empty));
-                        result.posted[j] = value;
-                        result.chips[j] -= value;
-                        result.pot += value;
+                        if (matchCol[0].Groups[1].Value.Equals(result.playerNames[j]))
+                        {
+                            int value = System.Convert.ToInt32(matchCol[0].Groups[2].Value.Replace(",", string.Empty));
+                            result.posted[j] = value;
+                            result.chips[j] -= value;
+                            result.pot += value;
+                        }
                     }
                 }
             }
@@ -227,10 +233,10 @@ namespace OpenNashCalculator
             }
         }
 
-        private void calcBlindsPayment(ref TableData result, string[] hh, ref int line)
+        private void calcBlindsPayment(ref TableData result, string[] hh, ref int line, bool isSkip)
         {
-            calcBlindPayment(Blind.small, ref result, hh, ref line);
-            calcBlindPayment(Blind.big, ref result, hh, ref line);
+            calcBlindPayment(Blind.small, ref result, hh, ref line, isSkip);
+            calcBlindPayment(Blind.big, ref result, hh, ref line, isSkip);
         }
 
         private int getButtonPos(string line)

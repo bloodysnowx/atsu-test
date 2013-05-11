@@ -81,6 +81,11 @@ namespace OpenNashCalculator
             textBoxAnte.Text = result.Ante.ToString();
             SetHeroSeat(SeatLabels[result.getHeroSeat() - 1]);
             if (isHyper()) setHyperStructure();
+            textBoxStructure.Text = textBoxStructure.Text.Trim().Replace('+', ',').Replace(' ', ',');
+            string[] structureStrs = textBoxStructure.Text.Split(',');
+            double[] structures = new double[structureStrs.Length];
+            for (int i = 0; i < structureStrs.Length; ++i)
+                structures[i] = System.Convert.ToDouble(structureStrs[i]);
 
             // チップと名前入力
             foreach (TextBox chipTextBox in chipTextBoxes)
@@ -95,6 +100,15 @@ namespace OpenNashCalculator
                     chipTextBoxes[result.seats[i] - 1].Text = result.chips[i].ToString();
                     PlayerNameLabels[result.seats[i] - 1].Text = result.playerNames[i];
                 }
+            }
+            result.calcICMs(structures);
+            for (int i = 0, count = 0; i < result.MaxSeatNum; ++i)
+            {
+                if (result.chips[i] > 0)
+                {
+                    ICMLabels[i].Text = result.ICMs[count++].ToString();
+                }
+                else ICMLabels[i].Text = string.Empty;
             }
 
             // ボタンの位置を決定
@@ -130,7 +144,6 @@ namespace OpenNashCalculator
                         }
                     }
                 }
-
             }
 
             if (Properties.Settings.Default.SetBBLast)
@@ -174,6 +187,7 @@ namespace OpenNashCalculator
             string tmp_chip = chipTextBoxes[8].Text;
             bool tmp_checked = positionRadioButtons[8].Checked;
             string tmp_name = PlayerNameLabels[8].Text;
+            string tmp_icm = ICMLabels[8].Text;
 
             for (int i = 7; i >= 0; --i)
             {
@@ -181,12 +195,14 @@ namespace OpenNashCalculator
                 chipTextBoxes[i + 1].Text = chipTextBoxes[i].Text;
                 positionRadioButtons[i + 1].Checked = positionRadioButtons[i].Checked;
                 PlayerNameLabels[i + 1].Text = PlayerNameLabels[i].Text;
+                ICMLabels[i + 1].Text = ICMLabels[i].Text;
             }
 
             SeatLabels[0].Text = tmp_seat;
             chipTextBoxes[0].Text = tmp_chip;
             positionRadioButtons[0].Checked = tmp_checked;
             PlayerNameLabels[0].Text = tmp_name;
+            ICMLabels[0].Text = tmp_icm;
 
             for (int i = 0; i < chipTextBoxes.Length; ++i)
             {
