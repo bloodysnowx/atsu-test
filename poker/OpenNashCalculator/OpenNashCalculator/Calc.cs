@@ -18,6 +18,9 @@ namespace OpenNashCalculator
     {
         private void Calc()
         {
+            if (chipTextBoxes.Count(x => x.Text != string.Empty && System.Convert.ToInt32(x.Text) > 0) <= 1) return;
+
+            this.buttonCalc.Enabled = false;
             webBrowserTimer.Enabled = false;
 
             if (textBoxAnte.Text.Trim() == "")
@@ -96,6 +99,7 @@ namespace OpenNashCalculator
 
             rangeTextBoxes[hero_num].Text = pushRange;
             webBrowserTimer.Enabled = false;
+            this.buttonCalc.Enabled = true;
         }
 
     }
