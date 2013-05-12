@@ -141,7 +141,7 @@
             resources.ApplyResources(this.labelBB, "labelBB");
             this.labelBB.Name = "labelBB";
             this.toolTip.SetToolTip(this.labelBB, resources.GetString("labelBB.ToolTip"));
-            this.labelBB.Click += new System.EventHandler(this.labelBB_Click);
+            this.labelBB.DoubleClick += new System.EventHandler(this.labelBB_Click);
             this.labelBB.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.labelBB.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             // 

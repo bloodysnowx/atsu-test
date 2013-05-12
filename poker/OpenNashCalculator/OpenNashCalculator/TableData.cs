@@ -59,14 +59,14 @@ namespace OpenNashCalculator
 
         public void nextButton()
         {
-            if (isSBAlive() == false) return;
+            // if (isSBAlive() == false) return;
             // 現在のボタンの次に存在するシートにボタンを移動する
             int nowIndex;
             for (nowIndex = 0; nowIndex < MaxSeatNum; ++nowIndex)
                 if (seats[nowIndex] == this.buttonPos) break;
             for (int i = 1; i < MaxSeatNum; ++i)
             {
-                if (seats[(i + nowIndex) % MaxSeatNum] > 0)
+                if (chips[(i + nowIndex) % MaxSeatNum] > 0)
                 {
                     this.buttonPos = seats[(i + nowIndex) % MaxSeatNum];
                     break;

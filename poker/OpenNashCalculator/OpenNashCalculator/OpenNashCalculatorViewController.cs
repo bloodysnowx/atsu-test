@@ -635,7 +635,7 @@ namespace OpenNashCalculator
         {
             if (textBoxStructure.Text.Trim() == "1,1")
                 this.BackColor = Color.FromArgb(255, 255, 240);
-            else this.BackColor = Color.Gainsboro;
+            else this.BackColor = Color.WhiteSmoke;
         }
 
         private void checkBoxICM_CheckedChanged(object sender, EventArgs e)

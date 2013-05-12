@@ -88,7 +88,7 @@ namespace OpenNashCalculator.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Gainsboro")]
+        [global::System.Configuration.DefaultSettingValueAttribute("WhiteSmoke")]
         public global::System.Drawing.Color BackColorOfMainForm {
             get {
                 return ((global::System.Drawing.Color)(this["BackColorOfMainForm"]));
