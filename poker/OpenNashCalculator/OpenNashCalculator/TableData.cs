@@ -59,6 +59,7 @@ namespace OpenNashCalculator
 
         public void nextButton()
         {
+            if (isSBAlive() == false) return;
             // 現在のボタンの次に存在するシートにボタンを移動する
             int nowIndex;
             for (nowIndex = 0; nowIndex < MaxSeatNum; ++nowIndex)
@@ -95,6 +96,31 @@ namespace OpenNashCalculator
             for (int i = 0; i < chips.Length; ++i)
                 tmpChips[i] = chips[i];
             icm.calcICM(tmpChips, ICMs, MaxSeatNum, structures, structures.Length);
+        }
+
+        private int getButtonIndex()
+        {
+            int buttonIndex = -1;
+            for (int i = 0; i < MaxSeatNum; ++i)
+            {
+                if (seats[i] == buttonPos) buttonIndex = i;
+            }
+            return buttonIndex;
+        }
+
+        private int getSBIndex()
+        {
+            int SBIndex = -1;
+            for (int i = 1; i <= MaxSeatNum; ++i)
+            {
+                if (playerNames[(i + getButtonIndex()) % MaxSeatNum] != null && playerNames[(i + getButtonIndex()) % MaxSeatNum].Length > 0) SBIndex = i % MaxSeatNum;
+            }
+            return SBIndex;
+        }
+
+        public bool isSBAlive()
+        {
+            return chips[getSBIndex()] > 0;
         }
     }
 }
