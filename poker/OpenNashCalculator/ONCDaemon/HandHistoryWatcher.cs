@@ -82,12 +82,14 @@ namespace ONCDaemon
         }
 
         Regex regexPS = new Regex("HH[0-9]+" + Regex.Escape(" ") + "T[0-9]+" + Regex.Escape(" ") + "No" + Regex.Escape(" ")
-                + "Limit" + Regex.Escape(" ") + "Hold");
+            + "Limit" + Regex.Escape(" ") + "Hold");
+        Regex regexPSJP = new Regex("HH[0-9]+" + Regex.Escape(" ") + "T[0-9]+" + Regex.Escape(" ") + "ノーリミット" + Regex.Escape(" ")
+                + "ホールデム");
         Regex regexFT = new Regex("FT[0-9]+" + Regex.Escape(" ") + ".+" + Regex.Escape("(")
             + "[0-9]+" + Regex.Escape("), No Limit Hold'em"));
         private bool isHandHistory(string fileName)
         {
-            return regexPS.IsMatch(fileName) || regexFT.IsMatch(fileName);
+            return regexPS.IsMatch(fileName) || regexFT.IsMatch(fileName) || regexPSJP.IsMatch(fileName);
         }
     }
 }
