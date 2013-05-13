@@ -159,7 +159,6 @@ namespace OpenNashCalculator
             {
                 chipTextBox.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.ChipMouseWheel);
                 chipTextBox.Click += new System.EventHandler(textBox_Click);
-                chipTextBox.DoubleClick += new System.EventHandler(chipTextBoxes_DoubleClick);
             }
             foreach (RadioButton positionRadioButton in positionRadioButtons)
                 positionRadioButton.CheckedChanged += new System.EventHandler(this.postionRadioButton_CheckedChanged);
@@ -388,40 +387,6 @@ namespace OpenNashCalculator
             ((TextBox)sender).SelectAll();
         }
 
-        private void chipTextBoxes_DoubleClick(object sender, EventArgs e)
-        {
-            int chips = 0;
-            Int32.TryParse(((TextBox)sender).Text, out chips);
-            chips += Properties.Settings.Default.AddonChip;
-            ((TextBox)sender).Text = chips.ToString();
-
-            textBoxBB.Text = Properties.Settings.Default.AddonBB.ToString();
-            textBoxAnte.Text = Properties.Settings.Default.AddonAnte.ToString();
-        }
-
-        private void labelChips_DoubleClick(object sender, EventArgs e)
-        {
-            /*
-            int hero_num = getHeroNum();
-            string hero_chips = chipTextBoxes[hero_num].Text;
-            for (int i = 0; i < 9; ++i)
-                if(positionRadioButtons[i].Enabled) chipTextBoxes[i].Text = hero_chips;
-            */
-            int chips = 0;
-
-            foreach (TextBox chipTextBox in chipTextBoxes)
-            {
-                if (Int32.TryParse(chipTextBox.Text, out chips))
-                {
-                    chips += Properties.Settings.Default.AddonChip;
-                    chipTextBox.Text = chips.ToString();
-                }
-            }
-
-            textBoxBB.Text = Properties.Settings.Default.AddonBB.ToString();
-            textBoxAnte.Text = Properties.Settings.Default.AddonAnte.ToString();
-        }
-
         private void buttonReset_Click(object sender, EventArgs e)
         {
             Reset();
@@ -513,33 +478,17 @@ namespace OpenNashCalculator
 
         private void chipContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            Control source = (sender as ContextMenuStrip).SourceControl;
-            TextBox[] textBoxes = chipTextBoxes;
-            if (source.GetType() == typeof(TextBox))
+            switch (e.ClickedItem.Name)
             {
-                textBoxes = new TextBox[] { source as TextBox };
+                case "Addon30kToolStripMenuItem":
+                    addonAll(30000);
+                    break;
+                case "Addon50kToolStripMenuItem":
+                    addonAll(50000);
+                    break;
+                default:
+                    break;
             }
-            foreach (TextBox textBox in textBoxes)
-            {
-                int chips = 0;
-                if (Int32.TryParse(textBox.Text, out chips) == false)
-                    continue;
-
-                switch (e.ClickedItem.Name)
-                {
-                    case "Addon30kToolStripMenuItem":
-                        chips += 30000;
-                        break;
-                    case "Addon50kToolStripMenuItem":
-                        chips += 50000;
-                        break;
-                    default:
-                        break;
-                }
-                textBox.Text = chips.ToString();
-            }
-            textBoxBB.Text = Properties.Settings.Default.AddonBB.ToString();
-            textBoxAnte.Text = Properties.Settings.Default.AddonAnte.ToString();
         }
 
         private void buttonReread_Click(object sender, EventArgs e)

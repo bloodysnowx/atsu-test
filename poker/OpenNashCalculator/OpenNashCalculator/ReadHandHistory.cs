@@ -43,9 +43,14 @@ namespace OpenNashCalculator
             return !(hh_back_num == 0 && updateDate >= lastWriteTime);
         }
 
+        bool isMTT()
+        {
+            return textBoxStructure.Text.Trim() == "1";
+        }
+
         bool shouldCloseSituation(TableData result)
         {
-            return (result.getLivePlayerCount() <= 1)
+            return (result.getLivePlayerCount() <= 1 && isMTT() == false)
                 || (result.getLivePlayerCount() == 2 && isHyper())
                 || (result.getHeroChip() <= 0 && isHyper());
         }
@@ -66,15 +71,26 @@ namespace OpenNashCalculator
             TableData result = reader.read(openHandHistoryDialog.FileName, hh_back_num);
             if(!validator.validate(result.heroName, encryptedUserName)) {
                 System.Windows.Forms.MessageBox.Show("You cannot use this application");
-#if !DEBUG
                 Application.Exit();
-#endif
             }
             if (checkBoxClose.Checked)
             {
                 if (shouldCloseSituation(result)) Application.Exit();
             }
 
+            setUpResult(result);
+        }
+
+        void addonAll(int addonChip)
+        {
+            if (openHandHistoryDialog.FileName == String.Empty) return;
+            TableData result = reader.read(openHandHistoryDialog.FileName, hh_back_num);
+            result.addonAll(result.StartingChip, addonChip);
+            setUpResult(result);
+        }
+
+        void setUpResult(TableData result)
+        {
             // 設定
             textBoxBB.Text = result.BB.ToString();
             currentSB = result.SB.ToString();

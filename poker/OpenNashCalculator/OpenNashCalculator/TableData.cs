@@ -122,5 +122,17 @@ namespace OpenNashCalculator
         {
             return chips[getSBIndex()] > 0;
         }
+
+        public void addonAll(int rebuyChip, int addonChip)
+        {
+            for (int i = 0; i < MaxSeatNum; ++i)
+            {
+                if (playerNames[i] != null)
+                {
+                    if (chips[i] <= 0) chips[i] = rebuyChip;
+                    chips[i] += addonChip;
+                }
+            }
+        }
     }
 }

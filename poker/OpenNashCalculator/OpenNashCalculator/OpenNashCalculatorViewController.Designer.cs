@@ -185,7 +185,6 @@
             // 
             resources.ApplyResources(this.labelChips, "labelChips");
             this.labelChips.Name = "labelChips";
-            this.labelChips.DoubleClick += new System.EventHandler(this.labelChips_DoubleClick);
             // 
             // textBox2
             // 
