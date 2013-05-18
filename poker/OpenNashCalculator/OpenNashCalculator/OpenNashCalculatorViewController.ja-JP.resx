@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="labelBB.ToolTip" xml:space="preserve">
-    <value>クリックでブラインドアップ</value>
+    <value>ダブルクリックでブラインドアップ</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="labelStructure.Size" type="System.Drawing.Size, System.Drawing">
@@ -126,6 +126,9 @@
   </data>
   <data name="labelStructure.Text" xml:space="preserve">
     <value>ストラクチャ</value>
+  </data>
+  <data name="labelStructure.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="labelSeat.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 12</value>
@@ -139,8 +142,41 @@
   <data name="labelChips.Text" xml:space="preserve">
     <value>チップ量</value>
   </data>
+  <data name="labelChips.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="buttonCalc.Text" xml:space="preserve">
     <value>計算</value>
+  </data>
+  <data name="labelSeat1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelSeat2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelSeat3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelSeat4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelSeat5.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelSeat6.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelSeat7.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelSeat8.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelSeat9.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxPosition.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="checkBoxWeb.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 16</value>
@@ -151,6 +187,9 @@
   <data name="buttonOpen.Text" xml:space="preserve">
     <value>履歴ファイルを指定</value>
   </data>
+  <data name="buttonOpen.ToolTip" xml:space="preserve">
+    <value>監視する履歴ファイルを指定します</value>
+  </data>
   <data name="checkBoxRefresh.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 16</value>
   </data>
@@ -160,14 +199,74 @@
   <data name="buttonReset.Text" xml:space="preserve">
     <value>リセット</value>
   </data>
+  <data name="textBoxRange1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxRange2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxRange3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxRange4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxRange5.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxRange6.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxRange7.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxRange8.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxRange9.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="checkBoxCalc.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 16</value>
   </data>
   <data name="checkBoxCalc.Text" xml:space="preserve">
     <value>自動計算</value>
   </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label18.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="chipContextMenuStrip.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="buttonReread.Text" xml:space="preserve">
     <value>再読み込み</value>
+  </data>
+  <data name="buttonReread.ToolTip" xml:space="preserve">
+    <value>履歴ファイルを再度読み込み直します</value>
   </data>
   <data name="checkBoxClose.Location" type="System.Drawing.Point, System.Drawing">
     <value>269, 404</value>
@@ -178,6 +277,33 @@
   <data name="checkBoxClose.Text" xml:space="preserve">
     <value>自動終了</value>
   </data>
+  <data name="checkBox1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBox2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBox3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBox4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBox5.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBox6.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBox7.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBox8.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBox9.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="button_back.Text" xml:space="preserve">
     <value>前のハンドへ</value>
   </data>
@@ -187,7 +313,43 @@
   <data name="webBrowser1.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>20, 20</value>
   </data>
+  <data name="webBrowser1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelICM1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelICM2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelICM3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelICM4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelICM5.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelICM6.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelICM7.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelICM8.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelICM9.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxICM.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>ナッシュさん</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>
