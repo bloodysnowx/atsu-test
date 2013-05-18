@@ -86,6 +86,9 @@ namespace OpenNashCalculator
             if (openHandHistoryDialog.FileName == String.Empty) return;
             TableData result = reader.read(openHandHistoryDialog.FileName, hh_back_num);
             result.addonAll(result.StartingChip, addonChip);
+            result.BB = 12000;
+            result.SB = 6000;
+            result.Ante = 600;
             setUpResult(result);
         }
 

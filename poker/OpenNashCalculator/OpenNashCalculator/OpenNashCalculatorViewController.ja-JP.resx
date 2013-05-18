@@ -149,7 +149,7 @@
     <value>ウェブページを開かない</value>
   </data>
   <data name="buttonOpen.Text" xml:space="preserve">
-    <value>ヒストリファイルを開く</value>
+    <value>履歴ファイルを指定</value>
   </data>
   <data name="checkBoxRefresh.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 16</value>

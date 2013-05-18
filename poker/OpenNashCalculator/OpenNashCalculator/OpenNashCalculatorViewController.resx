@@ -511,10 +511,10 @@
     <value>69</value>
   </data>
   <data name="buttonCalc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>178, 397</value>
+    <value>398, 13</value>
   </data>
   <data name="buttonCalc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+    <value>112, 46</value>
   </data>
   <data name="buttonCalc.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -1348,7 +1348,7 @@
     <value>48</value>
   </data>
   <data name="buttonOpen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>398, 8</value>
+    <value>398, 65</value>
   </data>
   <data name="buttonOpen.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 23</value>
@@ -1384,7 +1384,7 @@
     <value>False</value>
   </data>
   <data name="checkBoxRefresh.Location" type="System.Drawing.Point, System.Drawing">
-    <value>398, 42</value>
+    <value>148, 404</value>
   </data>
   <data name="checkBoxRefresh.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 16</value>
@@ -1740,8 +1740,11 @@
   <data name="checkBoxCalc.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="checkBoxCalc.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="checkBoxCalc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>398, 65</value>
+    <value>539, 13</value>
   </data>
   <data name="checkBoxCalc.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 16</value>
@@ -2095,7 +2098,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>263, 401</value>
+    <value>263, 404</value>
   </data>
   <data name="checkBoxClose.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 16</value>
@@ -2691,8 +2694,11 @@
   <data name="checkBoxICM.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="checkBoxICM.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="checkBoxICM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>479, 65</value>
+    <value>539, -2</value>
   </data>
   <data name="checkBoxICM.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 16</value>

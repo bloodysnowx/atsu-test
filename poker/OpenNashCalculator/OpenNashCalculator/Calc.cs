@@ -100,6 +100,8 @@ namespace OpenNashCalculator
             rangeTextBoxes[hero_num].Text = pushRange;
             webBrowserTimer.Enabled = false;
             this.buttonCalc.Enabled = true;
+
+             AllinCheckBox_CheckedChanged(null, null);
         }
 
     }
