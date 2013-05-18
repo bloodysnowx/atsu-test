@@ -21,6 +21,12 @@ namespace OpenNashCalculator
             Regex regex = new Regex("HH[0-9]+" + Regex.Escape(" ") + "T([0-9]+)" + Regex.Escape(" ") + "No" + Regex.Escape(" ")
                 + "Limit" + Regex.Escape(" ") + "Hold");
             MatchCollection matchCol = regex.Matches(fileName);
+            if (matchCol.Count == 0)
+            {
+                Regex regexPSJP = new Regex("HH[0-9]+" + Regex.Escape(" ") + "T([0-9]+)" + Regex.Escape(" ") + "ノーリミット" + Regex.Escape(" ")
+                + "ホールデム");
+                matchCol = regexPSJP.Matches(fileName);
+            }
             return matchCol[0].Groups[1].Value;
         }
 

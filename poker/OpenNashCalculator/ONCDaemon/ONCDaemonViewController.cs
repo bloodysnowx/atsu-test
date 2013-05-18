@@ -82,8 +82,9 @@ namespace ONCDaemon
 
         private string makeHandHistoryArgs(string hhPath)
         {
-            return "\"" + hhPath + "\"" + " \"" + this.textBoxDefaultStructure.Text.Trim() + "\""
+            string result = "\"" + hhPath + "\"" + " \"" + this.textBoxDefaultStructure.Text.Trim() + "\""
                 + " \"" + count % 10 * 40 + "," + count % 10 * 20 + "\"";
+            return result;
         }
 
         private void syncHyperSatBuyinList()
