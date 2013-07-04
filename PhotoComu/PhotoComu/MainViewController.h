@@ -11,4 +11,7 @@
 
 @interface MainViewController : UIViewController<GKPeerPickerControllerDelegate, GKSessionDelegate>
 
+-(IBAction)connectPushed:(id)sender;
+-(IBAction)sendPushed:(id)sender;
+
 @end

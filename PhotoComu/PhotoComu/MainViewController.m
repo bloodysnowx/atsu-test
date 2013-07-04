@@ -43,10 +43,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    GKPeerPickerController* gkPicker = [GKPeerPickerController new];
-    gkPicker.connectionTypesMask = GKPeerPickerConnectionTypeNearby;
-    gkPicker.delegate = self;
-    [gkPicker show];
 }
 
 #pragma mark - GKPeerPickerControllerDelegate
@@ -66,6 +62,30 @@
 }
 
 - (void)peerPickerController:(GKPeerPickerController *)picker didSelectConnectionType:(GKPeerPickerConnectionType)type
+{
+    
+}
+
+#pragma mark - DataReceiverHandler
+
+-(void)receiveData:(NSData*)data fromPeer:(NSString*)peer inSession:(GKSession*)session context:(void*)context
+{
+    
+}
+
+#pragma mark - GKSessionDelegate
+
+#pragma mark - IBAction
+
+-(IBAction)connectPushed:(id)sender
+{
+    GKPeerPickerController* gkPicker = [GKPeerPickerController new];
+    gkPicker.connectionTypesMask = GKPeerPickerConnectionTypeNearby;
+    gkPicker.delegate = self;
+    [gkPicker show];
+}
+
+-(IBAction)sendPushed:(id)sender
 {
     
 }
