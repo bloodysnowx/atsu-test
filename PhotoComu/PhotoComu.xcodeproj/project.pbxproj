@@ -19,6 +19,7 @@
 		0D8AC5E517859AEB0083BBCC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8AC5E317859AEB0083BBCC /* MainViewController.m */; };
 		0D8AC5E617859AEB0083BBCC /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8AC5E417859AEB0083BBCC /* MainViewController.xib */; };
 		0D8AC5E817859B3E0083BBCC /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8AC5E717859B3E0083BBCC /* GameKit.framework */; };
+		0DE9D039178ADF3E0066ADB2 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DE9D038178ADF3E0066ADB2 /* AssetsLibrary.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		0D8AC5E317859AEB0083BBCC /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		0D8AC5E417859AEB0083BBCC /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		0D8AC5E717859B3E0083BBCC /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		0DE9D038178ADF3E0066ADB2 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DE9D039178ADF3E0066ADB2 /* AssetsLibrary.framework in Frameworks */,
 				0D8AC5E817859B3E0083BBCC /* GameKit.framework in Frameworks */,
 				0D8AC5BA17859A120083BBCC /* UIKit.framework in Frameworks */,
 				0D8AC5BC17859A120083BBCC /* Foundation.framework in Frameworks */,
@@ -59,7 +62,6 @@
 		0D8AC5AD17859A120083BBCC = {
 			isa = PBXGroup;
 			children = (
-				0D8AC5E717859B3E0083BBCC /* GameKit.framework */,
 				0D8AC5BF17859A120083BBCC /* PhotoComu */,
 				0D8AC5B817859A120083BBCC /* Frameworks */,
 				0D8AC5B717859A120083BBCC /* Products */,
@@ -77,6 +79,8 @@
 		0D8AC5B817859A120083BBCC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0DE9D038178ADF3E0066ADB2 /* AssetsLibrary.framework */,
+				0D8AC5E717859B3E0083BBCC /* GameKit.framework */,
 				0D8AC5B917859A120083BBCC /* UIKit.framework */,
 				0D8AC5BB17859A120083BBCC /* Foundation.framework */,
 				0D8AC5BD17859A120083BBCC /* CoreGraphics.framework */,
@@ -300,6 +304,7 @@
 				0D8AC5E117859A130083BBCC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

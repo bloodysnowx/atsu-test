@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <GameKit/GameKit.h>
 
-@interface MainViewController : UIViewController<GKPeerPickerControllerDelegate, GKSessionDelegate>
+@interface MainViewController : UIViewController<GKPeerPickerControllerDelegate, GKSessionDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
+@property (nonatomic, retain) IBOutlet UIImageView* localImageView;
+@property (nonatomic, retain) IBOutlet UIImageView* remoteImageView;
 -(IBAction)connectPushed:(id)sender;
 -(IBAction)sendPushed:(id)sender;
 
