@@ -523,14 +523,50 @@ namespace OpenNashCalculator
 
             if (count == 2 && Position.ToList().IndexOf(hero_pos) < Position.ToList().IndexOf(oc_pos))
             {
-                int index = recent_web_page.IndexOf("</TR>\r\n<TR>\r\n<TD>" + push_pos + "</TD>\r\n<TD>\r\n<TD>\r\n<TD>");
-                if (index < 0) return;
-                string tmp = recent_web_page.Substring(index);
-                tmp = tmp.Substring(tmp.IndexOf("</TR>\r\n<TR>\r\n<TD>\r\n<TD>" + oc_pos + "</TD>\r\n<TD>\r\n<TD>"));
-                Regex regex = new Regex("</TR>\r\n<TR>\r\n<TD>\r\n<TD>\r\n<TD>" + Regex.Escape(hero_pos) + "</TD>\r\n<TD>(.*?)</TD></TR>");
-                MatchCollection matchCol = regex.Matches(tmp);
-                Help.ShowPopup(this, matchCol[0].Groups[1].Value, Control.MousePosition);
+                if (CanCalcByCLI())
+                {
+                    int pushCount = 0;
+                    int ocCount = 1;
+                    int heroCount = 2;
+                    var spotPct = resultXML.SelectSingleNode(@"//spot[@pu=" + pushCount.ToString() + "][@ca=" + ocCount.ToString() +
+                        "][@oc=" + heroCount.ToString() + "]/rangepct");
+                    var spotRange = resultXML.SelectSingleNode(@"//spot[@pu=" + pushCount.ToString() + "][@ca=" + ocCount.ToString() + 
+                        "][@oc=" + heroCount.ToString() + "]/range");
+                    Help.ShowPopup(this, spotPct.InnerText + " " + spotRange.InnerText, Control.MousePosition);
+                }
+                else
+                {
+                    int index = recent_web_page.IndexOf("</TR>\r\n<TR>\r\n<TD>" + push_pos + "</TD>\r\n<TD>\r\n<TD>\r\n<TD>");
+                    if (index < 0) return;
+                    string tmp = recent_web_page.Substring(index);
+                    tmp = tmp.Substring(tmp.IndexOf("</TR>\r\n<TR>\r\n<TD>\r\n<TD>" + oc_pos + "</TD>\r\n<TD>\r\n<TD>"));
+                    Regex regex = new Regex("</TR>\r\n<TR>\r\n<TD>\r\n<TD>\r\n<TD>" + Regex.Escape(hero_pos) + "</TD>\r\n<TD>(.*?)</TD></TR>");
+                    MatchCollection matchCol = regex.Matches(tmp);
+                    Help.ShowPopup(this, matchCol[0].Groups[1].Value, Control.MousePosition);
+                }
             }
+        }
+
+        private int calcCountByPos(string position)
+        {
+            if(position == "UTG") return 0;
+            if(position == "UTG+1") return 1;
+            if(position == "UTG+2") return 2;
+            if(position == "UTG+3") return 3;
+            if(position == "UTG+4") return 4;
+            if(position == "CO") {
+                return currentTableData.getLivePlayerCount() - 4;
+            }
+            if(position == "BU") {
+                return currentTableData.getLivePlayerCount() - 3;
+            }
+            if(position == "SB") {
+                return currentTableData.getLivePlayerCount() - 2;
+            }
+            if(position == "BB") {
+                return currentTableData.getLivePlayerCount() - 1;
+            }
+            return -1;
         }
 
         private void findTimer_Tick(object sender, EventArgs e)

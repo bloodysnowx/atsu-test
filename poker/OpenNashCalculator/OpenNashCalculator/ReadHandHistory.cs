@@ -190,7 +190,7 @@ namespace OpenNashCalculator
             foreach (CheckBox checkBox in AllinCheckBoxes)
                 checkBox.Checked = false;
 
-            if (result.chips[result.getHeroIndex()] > 0 && player_num > 1 && checkBoxCalc.Checked)
+            if (result.chips[result.getHeroIndex()] > 0 && player_num > 1 && (checkBoxCalc.Checked || CanCalcByCLI()))
             {
                 Calc();
             }

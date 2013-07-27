@@ -196,6 +196,25 @@ namespace OpenNashCalculator
             }
         }
 
+        private void countAnte(ref TableData result, string[] hh, ref int line)
+        {
+            Regex regex = new Regex("(.+):" + Regex.Escape(" ") + "posts" + Regex.Escape(" ") + "the" + Regex.Escape(" ") +
+                "ante" + Regex.Escape(" ") + "([0-9]+)");
+            for (int i = 0; i < maxSeatNum; ++i)
+            {
+                MatchCollection matchCol = regex.Matches(hh[++line]);
+                if (matchCol.Count > 0)
+                {
+                    result.Ante = Math.Max(result.Ante, System.Convert.ToInt32(matchCol[0].Groups[2].Value));
+                }
+                else
+                {
+                    line -= 1;
+                    break;
+                }
+            }
+        }
+
         /// <summary>指定されたBlindの支払い処理を計算する</summary>
         /// <param name="blind"></param>
         /// <param name="result"></param>
@@ -364,18 +383,6 @@ namespace OpenNashCalculator
 
             if (backNum == 0)
             {
-                if(IsHyper(fileName))
-                {
-                    TimeSpan elapsedSpan = System.DateTime.Now - result.startTime;
-                    int blindLevel = elapsedSpan.Minutes / 3;
-                    if (result.BB < bbList[blindLevel])
-                    {
-                        result.BB = bbList[blindLevel];
-                        result.SB = sbList[blindLevel];
-                        result.Ante = anteList[blindLevel];
-                    }
-                }
-
                 calcAntePayment(ref result, now_hh, ref line);
                 calcBlindsPayment(ref result, now_hh, ref line);
                 // bets, calls, raises, UNCALLED bet, collected
@@ -397,7 +404,21 @@ namespace OpenNashCalculator
                     }
                 }
                 result.nextButton();
+
+                if (IsHyper(fileName))
+                {
+                    TimeSpan elapsedSpan = System.DateTime.Now - result.startTime;
+                    int blindLevel = elapsedSpan.Minutes / 3;
+                    blindLevel = this.bbList.Length <= blindLevel ? bbList.Length - 1 : blindLevel;
+                    if (result.BB < bbList[blindLevel])
+                    {
+                        result.BB = bbList[blindLevel];
+                        result.SB = sbList[blindLevel];
+                        result.Ante = anteList[blindLevel];
+                    }
+                }
             }
+            else countAnte(ref result, now_hh, ref line);
 
             return result;
         }

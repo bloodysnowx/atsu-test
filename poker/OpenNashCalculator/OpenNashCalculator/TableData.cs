@@ -26,6 +26,7 @@ namespace OpenNashCalculator
         public double[] ICMs { get; set; }
         public DateTime startTime { get; set; }
         public DateTime handTime { get; set; }
+        public string stacks { get; set; }
 
         public TableData()
         {
