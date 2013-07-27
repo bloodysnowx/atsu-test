@@ -27,6 +27,7 @@ namespace OpenNashCalculator
         public DateTime startTime { get; set; }
         public DateTime handTime { get; set; }
         public string stacks { get; set; }
+        public int allHandCount { get; set; }
 
         public TableData()
         {

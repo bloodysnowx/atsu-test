@@ -232,10 +232,14 @@ namespace OpenNashCalculator
 
         private IEnumerable<string> readHyperSatBuyinList(string path)
         {
-            if(!System.IO.File.Exists(path)) yield break;
+            if(!System.IO.File.Exists(path)) return new string[0];
             string[] lines = System.IO.File.ReadAllLines(path);
+            return lines;
+
+            /*
             foreach (string line in lines)
                 yield return line.Trim();
+            */
         }
 
         private bool isRunFromDaemon(string[] args)

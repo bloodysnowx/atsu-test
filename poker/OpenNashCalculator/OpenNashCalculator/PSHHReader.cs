@@ -374,6 +374,7 @@ namespace OpenNashCalculator
             result.StartingChip = getStartingChip(result.heroName, hh, System.Convert.ToInt32(Properties.Settings.Default.StartingChip));
             List<int> hhLineList = getHHLineList(hh);
             string[] now_hh = getNowHH(hh, hhLineList, backNum);
+            result.allHandCount = hhLineList.Count - 1;
 
             int line = 0;
             result.handTime = getStartTime(now_hh[0]);
@@ -408,13 +409,18 @@ namespace OpenNashCalculator
                 if (IsHyper(fileName))
                 {
                     TimeSpan elapsedSpan = System.DateTime.Now - result.startTime;
-                    int blindLevel = elapsedSpan.Minutes / 3;
-                    blindLevel = this.bbList.Length <= blindLevel ? bbList.Length - 1 : blindLevel;
-                    if (result.BB < bbList[blindLevel])
+                    if (elapsedSpan.Hours < 1)
                     {
-                        result.BB = bbList[blindLevel];
-                        result.SB = sbList[blindLevel];
-                        result.Ante = anteList[blindLevel];
+                        elapsedSpan.Add(new TimeSpan(0, 0, 10));
+
+                        int blindLevel = elapsedSpan.Minutes / 3;
+                        blindLevel = this.bbList.Length <= blindLevel ? bbList.Length - 1 : blindLevel;
+                        if (result.BB < bbList[blindLevel])
+                        {
+                            result.BB = bbList[blindLevel];
+                            result.SB = sbList[blindLevel];
+                            result.Ante = anteList[blindLevel];
+                        }
                     }
                 }
             }

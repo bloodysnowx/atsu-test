@@ -35,7 +35,7 @@ namespace OpenNashCalculator
             var config = document.CreateElement("config");
             input.AppendChild(config);
 
-            addElement(document, config, "threads", "2");
+            addElement(document, config, "threads", "4");
             addElement(document, config, "iterations.linear", "300");
             addElement(document, config, "iterations.unrestricted", "300");
             addElement(document, config, "output.handev", "false");

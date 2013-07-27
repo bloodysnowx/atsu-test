@@ -62,13 +62,15 @@ namespace OpenNashCalculator
             currentTableData.SB = currentTableData.BB / 2;
             currentTableData.Ante = System.Convert.ToInt32(textBoxAnte.Text.Trim());
             currentTableData.stacks = string.Empty;
+
+            int unit = currentTableData.Ante < 10 ? 10 : currentTableData.Ante;
             for (int i = 1; i < 10; ++i)
             {
                 if (chipTextBoxes[(bb_pos + i) % 9].Text.Trim() != string.Empty)
                 {
                     if (currentTableData.stacks.Length > 0) currentTableData.stacks += ",";
                     int chip = System.Convert.ToInt32(chipTextBoxes[(bb_pos + i) % 9].Text.Trim());
-                    chip = (int)(Math.Round((double)chip / 10.0) * 10);
+                    chip = (int)(Math.Round((double)chip / (double)unit) * unit);
                     currentTableData.stacks += chip.ToString();
                 }
             }
@@ -112,7 +114,11 @@ namespace OpenNashCalculator
                             var inputXML = creator.create(currentTableData);
                             inputXML.Save(getInputXMLname());
 
-                            if (currentProcess != null && currentProcess.HasExited == false) currentProcess.Kill();
+                            if (currentProcess != null && currentProcess.HasExited == false)
+                            {
+                                currentProcess.EnableRaisingEvents = false;
+                                currentProcess.Kill();
+                            }
                             currentProcess = new System.Diagnostics.Process();
                             currentProcess.StartInfo = new ProcessStartInfo("java.exe", "-Xmx600m -jar net.holdemresources.cli.jar " + getInputXMLname() + " " + getOutputXMLname()) { CreateNoWindow = true, UseShellExecute = false };
                             currentProcess.SynchronizingObject = this;
@@ -164,6 +170,10 @@ namespace OpenNashCalculator
                 }
             }
             this.buttonCalc.Enabled = true;
+            if (currentTableData.allHandCount > hh_back_num && hh_back_num > 0 && checkBoxAutoBack.Checked)
+            {
+                this.button_back_Click(null, null);
+            }
         }
 
         private void CalcByCLI_Exited(object sender, EventArgs e)
