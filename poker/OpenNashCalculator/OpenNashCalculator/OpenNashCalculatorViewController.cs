@@ -67,7 +67,6 @@ namespace OpenNashCalculator
         string encryptedUserName = "";
         string defaultStructure = "";
         Point formOrigin = new Point(0, 0);
-        IEnumerable<string> hyperSatBuyinList;
         IEnumerable<int> indexes = Enumerable.Range(0, MAX_SEAT_NUM);
 
         private void EnabledPositionRadioButton()
@@ -181,7 +180,6 @@ namespace OpenNashCalculator
             SB = Properties.Settings.Default.SB.Split(',');
             Ante = Properties.Settings.Default.Ante.Split(',');
             defaultStructure = Properties.Settings.Default.DefaultStructure;
-            hyperSatBuyinList = readHyperSatBuyinList(System.IO.Directory.GetCurrentDirectory() + "\\" + Properties.Settings.Default.HyperSatBuyinListName);
         }
 
         private void setViewsToArray()
@@ -251,6 +249,7 @@ namespace OpenNashCalculator
             {
                 openHandHistoryDialog.FileName = args[1];
                 this.reader = HandHistoryReaderFactory.create(openHandHistoryDialog.FileName);
+                this.reader.setHyperSatBuyinList(readHyperSatBuyinList(System.IO.Directory.GetCurrentDirectory() + "\\" + Properties.Settings.Default.HyperSatBuyinListName));
                 tourney_ID = reader.getTourneyID(openHandHistoryDialog.FileName);
 #if !DEBUG
                 checkBoxClose.Checked = true;
@@ -444,6 +443,7 @@ namespace OpenNashCalculator
                 return;
             }
             this.reader = HandHistoryReaderFactory.create(openHandHistoryDialog.FileName);
+            this.reader.setHyperSatBuyinList(readHyperSatBuyinList(System.IO.Directory.GetCurrentDirectory() + "\\" + Properties.Settings.Default.HyperSatBuyinListName));
             this.Text = tourney_ID.Substring(tourney_ID.Length - 4);
 
             // FindTournamentWindow();

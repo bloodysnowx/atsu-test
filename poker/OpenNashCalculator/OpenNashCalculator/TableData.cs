@@ -24,6 +24,8 @@ namespace OpenNashCalculator
         public int StartingChip { get; set; }
         private int heroIndex = -1;
         public double[] ICMs { get; set; }
+        public DateTime startTime { get; set; }
+        public DateTime handTime { get; set; }
 
         public TableData()
         {

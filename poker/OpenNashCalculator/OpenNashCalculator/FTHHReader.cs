@@ -385,5 +385,14 @@ namespace OpenNashCalculator
             }
             return lastWriteTime;
         }
+
+        public bool IsHyper(string fileName)
+        {
+            return false;
+        }
+
+        public void setHyperSatBuyinList(IEnumerable<string> hyperSatBuyinList)
+        {
+        }
     }
 }

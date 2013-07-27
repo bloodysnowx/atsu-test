@@ -15,6 +15,8 @@ namespace OpenNashCalculator
 
         string getTourneyID(string fileName);
         DateTime GetLastWriteTime(string fileName);
+        bool IsHyper(string fileName);
+        void setHyperSatBuyinList(IEnumerable<string> hyperSatBuyinList);
     }
 
     enum Blind

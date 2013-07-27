@@ -10,6 +10,7 @@ namespace OpenNashCalculator
     class PSHHReader : HandHistoryReader
     {
         private int maxSeatNum = 10;
+        IEnumerable<string> hyperSatBuyinList;
 
         public PSHHReader()
         {
@@ -340,23 +341,41 @@ namespace OpenNashCalculator
             return false;
         }
 
+        int[] bbList = { 50, 100, 200, 400, 600, 800, 1200, 1600 };
+        int[] sbList = { 25, 50, 100, 200, 300, 400, 600, 800 };
+        int[] anteList = { 10, 20, 40, 80, 120, 160, 240, 320 };
+
         TableData HandHistoryReader.read(string fileName, int backNum)
         {
             TableData result = new TableData();
             string[] hh = System.IO.File.ReadAllLines(fileName);
 
+            result.startTime = getStartTime(hh[0]);
             result.heroName = getHeroName(hh);
             result.StartingChip = getStartingChip(result.heroName, hh, System.Convert.ToInt32(Properties.Settings.Default.StartingChip));
             List<int> hhLineList = getHHLineList(hh);
             string[] now_hh = getNowHH(hh, hhLineList, backNum);
 
             int line = 0;
+            result.handTime = getStartTime(now_hh[0]);
             setBBSB(ref result, now_hh[line++]);
             result.buttonPos = getButtonPos(now_hh[line]);
             getStartSituation(ref result, now_hh, ref line);
 
             if (backNum == 0)
             {
+                if(IsHyper(fileName))
+                {
+                    TimeSpan elapsedSpan = System.DateTime.Now - result.startTime;
+                    int blindLevel = elapsedSpan.Minutes / 3;
+                    if (result.BB < bbList[blindLevel])
+                    {
+                        result.BB = bbList[blindLevel];
+                        result.SB = sbList[blindLevel];
+                        result.Ante = anteList[blindLevel];
+                    }
+                }
+
                 calcAntePayment(ref result, now_hh, ref line);
                 calcBlindsPayment(ref result, now_hh, ref line);
                 // bets, calls, raises, UNCALLED bet, collected
@@ -383,9 +402,26 @@ namespace OpenNashCalculator
             return result;
         }
 
+        private DateTime getStartTime(string line)
+        {
+            Regex date_regex = new Regex("-" + Regex.Escape(" ") + "(201[0-9].+)" + Regex.Escape(" ") + "JST");
+            MatchCollection matchCol = date_regex.Matches(line);
+            return matchCol.Count > 0 ? DateTime.Parse(matchCol[0].Groups[1].Value) : DateTime.Now;
+        }
+
         public DateTime GetLastWriteTime(string fileName)
         {
             return System.IO.File.GetLastWriteTime(fileName);
+        }
+
+        public bool IsHyper(string fileName)
+        {
+            return hyperSatBuyinList.Any(buyin => fileName.Contains(buyin));
+        }
+
+        public void setHyperSatBuyinList(IEnumerable<string> hyperSatBuyinList)
+        {
+            this.hyperSatBuyinList = hyperSatBuyinList;
         }
     }
 }

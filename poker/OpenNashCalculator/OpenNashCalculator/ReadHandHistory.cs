@@ -17,11 +17,8 @@ namespace OpenNashCalculator
     {
         HandHistoryReader reader = new PSHHReader();
         UserValidator validator = new UserValidator();
+        TableData currentTableData;
 
-        bool isHyper()
-        {
-            return hyperSatBuyinList.Any(buyin => openHandHistoryDialog.FileName.Contains(buyin));
-        }
         void setHyperStructure()
         {
             textBoxStructure.Text = "1,1";
@@ -29,7 +26,6 @@ namespace OpenNashCalculator
 
         bool shouldCloseTime(DateTime lastWriteTime)
         {
-            
             if (DateTime.Now.Minute <= 5 || DateTime.Now.Minute >= 55)
             {
                 if (lastWriteTime.AddMinutes(5 + Properties.Settings.Default.AutoCloseMin) < DateTime.Now) return true;
@@ -46,6 +42,11 @@ namespace OpenNashCalculator
         bool isMTT()
         {
             return textBoxStructure.Text.Trim() == "1";
+        }
+
+        bool isHyper()
+        {
+            return this.reader.IsHyper(openHandHistoryDialog.FileName);
         }
 
         bool shouldCloseSituation(TableData result)
@@ -94,6 +95,7 @@ namespace OpenNashCalculator
 
         void setUpResult(TableData result)
         {
+            currentTableData = result;
             // 設定
             textBoxBB.Text = result.BB.ToString();
             currentSB = result.SB.ToString();
