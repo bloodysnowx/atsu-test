@@ -408,25 +408,38 @@ namespace OpenNashCalculator
 
                 if (IsHyper(fileName))
                 {
-                    TimeSpan elapsedSpan = System.DateTime.Now - result.startTime;
-                    if (elapsedSpan.Hours < 1)
+                    if(isBlindUp(result))
                     {
-                        elapsedSpan.Add(new TimeSpan(0, 0, 10));
-
-                        int blindLevel = elapsedSpan.Minutes / 3;
-                        blindLevel = this.bbList.Length <= blindLevel ? bbList.Length - 1 : blindLevel;
-                        if (result.BB < bbList[blindLevel])
-                        {
-                            result.BB = bbList[blindLevel];
-                            result.SB = sbList[blindLevel];
-                            result.Ante = anteList[blindLevel];
-                        }
+                        blindUp(ref result);
                     }
                 }
             }
             else countAnte(ref result, now_hh, ref line);
 
             return result;
+        }
+
+        private void blindUp(ref TableData tableData)
+        {
+            int blindLevel = Array.IndexOf(bbList, tableData.BB) + 1;
+            blindLevel = blindLevel >= bbList.Length ? bbList.Length - 1 : blindLevel;
+            tableData.BB = bbList[blindLevel];
+            tableData.SB = sbList[blindLevel];
+            tableData.Ante = anteList[blindLevel];
+        }
+
+        private bool isBlindUp(TableData tableData)
+        {
+            TimeSpan beforeHandElapsed = tableData.handTime - tableData.startTime;
+            TimeSpan currentHandElapsed = System.DateTime.Now - tableData.startTime;
+            if (currentHandElapsed.Hours < 1)
+            {
+                int beforeBlindLevel = beforeHandElapsed.Minutes / 3;
+                int currentBlindLevel = currentHandElapsed.Minutes / 3;
+
+                return beforeBlindLevel < currentBlindLevel;
+            }
+            return false;
         }
 
         private DateTime getStartTime(string line)
