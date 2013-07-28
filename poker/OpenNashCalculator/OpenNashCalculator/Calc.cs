@@ -33,7 +33,7 @@ namespace OpenNashCalculator
 
         private bool CanCalcByCLI()
         {
-            return System.IO.File.Exists("net.holdemresources.cli.jar");
+            return System.IO.File.Exists("net.holdemresources.cli.jar") && hh_back_num > 0;
         }
 
         private string getSQLKey()
@@ -53,28 +53,8 @@ namespace OpenNashCalculator
             return "output_" + tourneyID + ".xml";
         }
 
-        private void CalcByCLI()
+        private bool searchCache()
         {
-            foreach (TextBox rangeTextBox in rangeTextBoxes) rangeTextBox.Clear();
-            if (currentTableData == null) currentTableData = new TableData();
-            currentTableData.Structure = textBoxStructure.Text.Trim();
-            currentTableData.BB = System.Convert.ToInt32(textBoxBB.Text.Trim());
-            currentTableData.SB = currentTableData.BB / 2;
-            currentTableData.Ante = System.Convert.ToInt32(textBoxAnte.Text.Trim());
-            currentTableData.stacks = string.Empty;
-
-            int unit = currentTableData.Ante < 10 ? 10 : currentTableData.Ante;
-            for (int i = 1; i < 10; ++i)
-            {
-                if (chipTextBoxes[(bb_pos + i) % 9].Text.Trim() != string.Empty)
-                {
-                    if (currentTableData.stacks.Length > 0) currentTableData.stacks += ",";
-                    int chip = System.Convert.ToInt32(chipTextBoxes[(bb_pos + i) % 9].Text.Trim());
-                    chip = (int)(Math.Round((double)chip / (double)unit) * unit);
-                    currentTableData.stacks += chip.ToString();
-                }
-            }
-
             using (var conn = new SQLiteConnection("Data Source=calc.db"))
             {
                 conn.Open();
@@ -99,38 +79,71 @@ namespace OpenNashCalculator
                                     deleteCommand.Prepare();
                                     deleteCommand.Parameters["id"].Value = getSQLKey();
                                     deleteCommand.ExecuteNonQuery();
-                                    CalcByCLI();
                                 }
                             }
                             else
                             {
                                 resultXML = new XmlDocument();
                                 resultXML.LoadXml(resultData);
-                                readFromXML();
+                                return true;
                             }
-                        }
-                        else
-                        {
-                            var inputXML = creator.create(currentTableData);
-                            inputXML.Save(getInputXMLname());
-
-                            if (currentProcess != null && currentProcess.HasExited == false)
-                            {
-                                currentProcess.EnableRaisingEvents = false;
-                                currentProcess.Kill();
-                            }
-                            currentProcess = new System.Diagnostics.Process();
-                            currentProcess.StartInfo = new ProcessStartInfo("java.exe", "-Xmx600m -jar net.holdemresources.cli.jar " + getInputXMLname() + " " + getOutputXMLname()) { CreateNoWindow = true, UseShellExecute = false };
-                            currentProcess.SynchronizingObject = this;
-                            currentProcess.Exited += new EventHandler(CalcByCLI_Exited);
-                            currentProcess.EnableRaisingEvents = true;
-                            currentProcess.Start();
                         }
                     }
 
                 }
                 conn.Close();
             }
+            return false;
+        }
+
+        private void CalcByCLICommandExecute()
+        {
+            var inputXML = creator.create(currentTableData);
+            inputXML.Save(getInputXMLname());
+
+            if (currentProcess != null && currentProcess.HasExited == false)
+            {
+                currentProcess.EnableRaisingEvents = false;
+                currentProcess.Kill();
+            }
+            currentProcess = new System.Diagnostics.Process();
+            currentProcess.StartInfo = new ProcessStartInfo("java.exe", "-Xmx600m -jar net.holdemresources.cli.jar " + getInputXMLname() + " " + getOutputXMLname()) { CreateNoWindow = true, UseShellExecute = false };
+            currentProcess.SynchronizingObject = this;
+            currentProcess.Exited += new EventHandler(CalcByCLI_Exited);
+            currentProcess.EnableRaisingEvents = true;
+            currentProcess.Start();
+        }
+
+        private void setupCurrentTableData()
+        {
+            if (currentTableData == null) currentTableData = new TableData();
+            currentTableData.Structure = textBoxStructure.Text.Trim();
+            currentTableData.BB = System.Convert.ToInt32(textBoxBB.Text.Trim());
+            currentTableData.SB = currentTableData.BB / 2;
+            currentTableData.Ante = System.Convert.ToInt32(textBoxAnte.Text.Trim());
+            currentTableData.stacks = string.Empty;
+
+            int unit = currentTableData.Ante < 10 ? 10 : currentTableData.Ante;
+            for (int i = 1; i < 10; ++i)
+            {
+                if (chipTextBoxes[(bb_pos + i) % 9].Text.Trim() != string.Empty)
+                {
+                    if (currentTableData.stacks.Length > 0) currentTableData.stacks += ",";
+                    int chip = System.Convert.ToInt32(chipTextBoxes[(bb_pos + i) % 9].Text.Trim());
+                    chip = (int)(Math.Round((double)chip / (double)unit) * unit);
+                    currentTableData.stacks += chip.ToString();
+                }
+            }
+        }
+
+        private void CalcByCLI()
+        {
+            foreach (TextBox rangeTextBox in rangeTextBoxes) rangeTextBox.Clear();
+            setupCurrentTableData();
+
+            resultXML = null;
+            if (searchCache()) readFromXML();
+            else CalcByCLICommandExecute();
         }
 
         private void readFromXML()
@@ -156,7 +169,8 @@ namespace OpenNashCalculator
                     {
                         var spotPct = resultXML.SelectSingleNode(@"//spot[@pu=" + j.ToString() + "][@ca=" + heroCount.ToString() + "]/rangepct");
                         var spotRange = resultXML.SelectSingleNode(@"//spot[@pu=" + j.ToString() + "][@ca=" + heroCount.ToString() + "]/range");
-                        rangeTextBoxes[(bb_pos + i) % 9].Text = spotPct.InnerText + " " + spotRange.InnerText;
+                        if (spotPct != null)
+                            rangeTextBoxes[(bb_pos + i) % 9].Text = spotPct.InnerText + " " + spotRange.InnerText;
                         ++j;
                     }
                     else
@@ -208,6 +222,9 @@ namespace OpenNashCalculator
         private void CalcByWeb()
         {
             webBrowserTimer.Enabled = false;
+
+            setupCurrentTableData();
+            if (searchCache()) { readFromXML(); return; }
 
             if (textBoxAnte.Text.Trim() == "")
                 textBoxAnte.Text = "0";

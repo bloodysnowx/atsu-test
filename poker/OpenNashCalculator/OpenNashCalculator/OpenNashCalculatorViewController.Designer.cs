@@ -814,6 +814,7 @@
             // 
             // OpenNashCalculatorViewController
             // 
+            this.AllowDrop = true;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = global::OpenNashCalculator.Properties.Settings.Default.BackColorOfMainForm;
@@ -906,6 +907,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "OpenNashCalculatorViewController";
             this.Load += new System.EventHandler(this.Form_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.OpenNashCalculatorViewController_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.OpenNashCalculatorViewController_DragEnter);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             this.groupBoxPosition.ResumeLayout(false);

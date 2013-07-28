@@ -111,6 +111,7 @@ namespace OpenNashCalculator
             // チップと名前入力
             foreach (TextBox chipTextBox in chipTextBoxes)
                 chipTextBox.Text = "";
+            foreach (TextBox rangeTextBox in rangeTextBoxes) rangeTextBox.Clear();
             for (int i = 0; i < result.MaxSeatNum; ++i)
             {
                 if (result.chips[i] <= 0 && result.playerNames[i] != string.Empty && result.seats[i] > 0 && checkBoxRebuy.Checked)
@@ -196,9 +197,10 @@ namespace OpenNashCalculator
             }
             else
             {
+                resultXML = null;
                 recent_web_page = String.Empty;
-                foreach (TextBox x in rangeTextBoxes)
-                    x.Clear();
+                setupCurrentTableData();
+                if (searchCache()) readFromXML();
             }
         }
 

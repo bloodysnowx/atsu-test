@@ -401,7 +401,6 @@ namespace OpenNashCalculator
             {
                 try
                 {
-                    hh_back_num = 0;
                     ReadHandHistory();
                     retry_num = 0;
                     break;
@@ -439,6 +438,13 @@ namespace OpenNashCalculator
             ReadHandHistoryWithRetry();
         }
 
+        private void setReaderFromFileName()
+        {
+            this.reader = HandHistoryReaderFactory.create(openHandHistoryDialog.FileName);
+            this.reader.setHyperSatBuyinList(readHyperSatBuyinList(System.IO.Directory.GetCurrentDirectory() + "\\" + Properties.Settings.Default.HyperSatBuyinListName));
+            this.Text = tourney_ID.Substring(tourney_ID.Length - 4);
+        }
+
         private void buttonOpen_Click(object sender, EventArgs e)
         {
             if (openHandHistoryDialog.ShowDialog() != DialogResult.OK)
@@ -446,9 +452,8 @@ namespace OpenNashCalculator
                 checkBoxRefresh.Enabled = checkBoxRefresh.Checked = false;
                 return;
             }
-            this.reader = HandHistoryReaderFactory.create(openHandHistoryDialog.FileName);
-            this.reader.setHyperSatBuyinList(readHyperSatBuyinList(System.IO.Directory.GetCurrentDirectory() + "\\" + Properties.Settings.Default.HyperSatBuyinListName));
-            this.Text = tourney_ID.Substring(tourney_ID.Length - 4);
+            setReaderFromFileName();
+            hh_back_num = 0;
 
             // FindTournamentWindow();
             // GoBack();
@@ -527,7 +532,7 @@ namespace OpenNashCalculator
 
             if (count == 2 && Position.ToList().IndexOf(hero_pos) < Position.ToList().IndexOf(oc_pos))
             {
-                if (CanCalcByCLI())
+                if (resultXML != null)
                 {
                     int pushCount = 0;
                     int ocCount = 1;
@@ -538,7 +543,7 @@ namespace OpenNashCalculator
                         "][@oc=" + heroCount.ToString() + "]/range");
                     Help.ShowPopup(this, spotPct.InnerText + " " + spotRange.InnerText, Control.MousePosition);
                 }
-                else
+                else if(recent_web_page != null)
                 {
                     int index = recent_web_page.IndexOf("</TR>\r\n<TR>\r\n<TD>" + push_pos + "</TD>\r\n<TD>\r\n<TD>\r\n<TD>");
                     if (index < 0) return;
@@ -632,7 +637,29 @@ namespace OpenNashCalculator
             this.Size = new Size(this.Size.Width + (((CheckBox)sender).Checked ? 38 : -38), this.Size.Height);
         }
 
+        private void OpenNashCalculatorViewController_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] drags = (string[])e.Data.GetData(DataFormats.FileDrop);
 
+                foreach (string d in drags)
+                {
+                    if (!System.IO.File.Exists(d))
+                        return;
+                }
+                e.Effect = DragDropEffects.Copy;
+            }
+        }
+
+        private void OpenNashCalculatorViewController_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            openHandHistoryDialog.FileName = files[0];
+            hh_back_num = 1;
+            setReaderFromFileName();
+            openHandHistory();
+        }
 
 #if false
         private void CalcICM()
