@@ -11,65 +11,6 @@ namespace OpenNashCalculator
         const int BM_CLICK = 0x00F5;
         const int WM_COMMAND = 0x0111;
         const int WM_ACTIVATE = 0x0006;
-        const int WM_KEYDOWN = 0x100;
-        const int WM_KEYUP = 0x101;
-        const int WM_SYSCHAR = 0x0106;
-        const int WM_CHAR = 0x0102;
-        const int VK_P = 0x50;
-        const int VK_W = 0x57;
-        const int VK_CONTROL = 0x11;                        // ctrl
-        private const int INPUT_KEYBOARD = 1;               // キーボードイベント
-        private const int KEYEVENTF_KEYDOWN = 0x0;          // キーを押す
-        private const int KEYEVENTF_KEYUP = 0x2;            // キーを離す
-        private const int KEYEVENTF_EXTENDEDKEY = 0x1;      // 拡張コード
-
-        [StructLayout(LayoutKind.Sequential)]
-        private struct MOUSEINPUT
-        {
-            public int dx;
-            public int dy;
-            public int mouseData;
-            public int dwFlags;
-            public int time;
-            public int dwExtraInfo;
-        };
-
-        [StructLayout(LayoutKind.Sequential)]
-        private struct KEYBDINPUT
-        {
-            public short wVk;
-            public short wScan;
-            public int dwFlags;
-            public int time;
-            public int dwExtraInfo;
-        };
-
-        [StructLayout(LayoutKind.Sequential)]
-        private struct HARDWAREINPUT
-        {
-            public int uMsg;
-            public short wParamL;
-            public short wParamH;
-        };
-
-        [StructLayout(LayoutKind.Explicit)]
-        private struct INPUT
-        {
-            [FieldOffset(0)]
-            public int type;
-            [FieldOffset(4)]
-            public MOUSEINPUT mi;
-            [FieldOffset(4)]
-            public KEYBDINPUT ki;
-            [FieldOffset(4)]
-            public HARDWAREINPUT hi;
-        };
-
-        [DllImport("user32.dll")]
-        private extern static void SendInput(int nInputs, ref INPUT pInputs, int cbsize);
-        [DllImport("user32.dll", EntryPoint = "MapVirtualKeyA")]
-        private extern static int MapVirtualKey(int wCode, int wMapType);
-
 
         delegate bool WNDENUMPROC(IntPtr hwnd, int lParam);
         [DllImport("user32")]
@@ -107,8 +48,6 @@ namespace OpenNashCalculator
         public static void Calc(TableData tableData, string chips)
         {
             IntPtr hrc = FindWindow(null, "HoldemResources Calculator");
-            // IntPtr toolBar = FindWindowEx(hrc, IntPtr.Zero, "ReBarWindow32", null);
-            // PostMessage(hrc, WM_COMMAND, 139, 0);
             openBasicHand(hrc);
             newDialog = FindDialog("New");
             nextButton = FindWindowEx(newDialog, IntPtr.Zero, "Button", null);
@@ -124,9 +63,6 @@ namespace OpenNashCalculator
             System.Threading.Thread.Sleep(1000);
             EnumChildWindows(setupDialog, FindFinishButton, 0);
             PostMessage(finishButton, BM_CLICK, 0, 0);
-
-            // IntPtr menu = FindWindowEx(hrc, IntPtr.Zero, "ToolbarWindow32", null);
-            // IntPtr basicHand = FindWindowEx(hrc, IntPtr.Zero, null, "Basic Hand");
         }
 
         static void openBasicHand(IntPtr hrc)
@@ -135,9 +71,6 @@ namespace OpenNashCalculator
             IntPtr fileMenu = GetSubMenu(menu, 0);
             uint newMenuItemID = GetMenuItemID(fileMenu, 0);
             PostMessage(hrc, WM_COMMAND, (int)newMenuItemID, 0);
-
-            // PostMessage(hrc, WM_SYSCHAR, VK_CONTROL, VK_W);
-            // PostMessage(hrc, WM_CHAR, VK_P, 0);
         }
 
         static IntPtr FindDialog(string name)
