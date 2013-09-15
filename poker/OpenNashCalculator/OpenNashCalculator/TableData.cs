@@ -102,7 +102,7 @@ namespace OpenNashCalculator
             icm.calcICM(tmpChips, ICMs, MaxSeatNum, structures, structures.Length);
         }
 
-        private int getButtonIndex()
+        public int getButtonIndex()
         {
             int buttonIndex = -1;
             for (int i = 0; i < MaxSeatNum; ++i)
@@ -120,6 +120,17 @@ namespace OpenNashCalculator
                 if (playerNames[(i + getButtonIndex()) % MaxSeatNum] != null && playerNames[(i + getButtonIndex()) % MaxSeatNum].Length > 0) SBIndex = i % MaxSeatNum;
             }
             return SBIndex;
+        }
+
+        public int getBBIndex()
+        {
+            int SBIndex = getSBIndex();
+            int BBIndex = -1;
+            for (int i = 1; i <= MaxSeatNum; ++i)
+            {
+                if (playerNames[(i + SBIndex) % MaxSeatNum] != null && playerNames[(i + SBIndex) % MaxSeatNum].Length > 0) BBIndex = i % MaxSeatNum;
+            }
+            return BBIndex;
         }
 
         public bool isSBAlive()

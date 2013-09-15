@@ -661,6 +661,21 @@ namespace OpenNashCalculator
             openHandHistory();
         }
 
+        private void buttonHRC_Click(object sender, EventArgs e)
+        {
+            setupCurrentTableData();
+            StringBuilder chips = new StringBuilder();
+            for (int i = 1, j = 1; i < 10; ++i)
+            {
+                if (chipTextBoxes[(bb_pos + i) % 9].Text.Trim() != string.Empty)
+                {
+                    chips.AppendLine("Seat " + j + ": " + "Player" + j + " (" +  chipTextBoxes[(bb_pos + i) % 9].Text.Trim() + " in chips)");
+                    j++;
+                }
+            }
+            CalcByHRC.Calc(currentTableData, chips.ToString());
+        }
+
 #if false
         private void CalcICM()
         {

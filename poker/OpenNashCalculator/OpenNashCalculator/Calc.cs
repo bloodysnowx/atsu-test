@@ -130,6 +130,8 @@ namespace OpenNashCalculator
                 {
                     if (currentTableData.stacks.Length > 0) currentTableData.stacks += ",";
                     int chip = System.Convert.ToInt32(chipTextBoxes[(bb_pos + i) % 9].Text.Trim());
+                    currentTableData.chips[(bb_pos + i) % 9] = chip;
+                    if (currentTableData.playerNames[(bb_pos + i) % 9] == null || currentTableData.playerNames[(bb_pos + i) % 9] == string.Empty) currentTableData.playerNames[(bb_pos + i) % 9] = "Player" + (bb_pos + i) % 9;
                     chip = (int)(Math.Round((double)chip / (double)unit) * unit);
                     currentTableData.stacks += chip.ToString();
                 }
@@ -184,9 +186,11 @@ namespace OpenNashCalculator
                 }
             }
             this.buttonCalc.Enabled = true;
-            if (currentTableData.allHandCount > hh_back_num && hh_back_num > 0 && checkBoxAutoBack.Checked)
+            if (hh_back_num > 0 && checkBoxAutoBack.Checked)
             {
-                this.button_back_Click(null, null);
+                if (currentTableData.allHandCount > hh_back_num)
+                    this.button_back_Click(null, null);
+                else Application.Exit();
             }
         }
 

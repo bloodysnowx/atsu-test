@@ -133,6 +133,7 @@
             this.labelICM9 = new System.Windows.Forms.Label();
             this.checkBoxICM = new System.Windows.Forms.CheckBox();
             this.checkBoxAutoBack = new System.Windows.Forms.CheckBox();
+            this.buttonHRC = new System.Windows.Forms.Button();
             this.groupBoxPosition.SuspendLayout();
             this.chipContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -809,8 +810,17 @@
             // checkBoxAutoBack
             // 
             resources.ApplyResources(this.checkBoxAutoBack, "checkBoxAutoBack");
+            this.checkBoxAutoBack.Checked = true;
+            this.checkBoxAutoBack.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxAutoBack.Name = "checkBoxAutoBack";
             this.checkBoxAutoBack.UseVisualStyleBackColor = true;
+            // 
+            // buttonHRC
+            // 
+            resources.ApplyResources(this.buttonHRC, "buttonHRC");
+            this.buttonHRC.Name = "buttonHRC";
+            this.buttonHRC.UseVisualStyleBackColor = true;
+            this.buttonHRC.Click += new System.EventHandler(this.buttonHRC_Click);
             // 
             // OpenNashCalculatorViewController
             // 
@@ -818,6 +828,7 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = global::OpenNashCalculator.Properties.Settings.Default.BackColorOfMainForm;
+            this.Controls.Add(this.buttonHRC);
             this.Controls.Add(this.checkBoxAutoBack);
             this.Controls.Add(this.checkBoxICM);
             this.Controls.Add(this.labelICM9);
@@ -1024,6 +1035,7 @@
         private System.Windows.Forms.Label labelICM9;
         private System.Windows.Forms.CheckBox checkBoxICM;
         private System.Windows.Forms.CheckBox checkBoxAutoBack;
+        private System.Windows.Forms.Button buttonHRC;
     }
 }
 
