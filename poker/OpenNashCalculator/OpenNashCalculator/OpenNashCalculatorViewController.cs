@@ -48,11 +48,9 @@ namespace OpenNashCalculator
         RadioButton[] positionRadioButtons;
         TextBox[] chipTextBoxes;
         Label[] SeatLabels;
-        Button[] ClearButtons;
         DateTime updateDate;
         TextBox[] rangeTextBoxes;
         Label[] PlayerNameLabels;
-        Label[] ICMLabels;
         string tourney_ID = "xxxxxxxxxxxxxxxxxxxxx";
         CheckBox[] AllinCheckBoxes;
         // bool close_flg = false;
@@ -64,7 +62,6 @@ namespace OpenNashCalculator
         int hh_back_num = 0;
         int retry_num = 0;
         string currentSB;
-        string encryptedUserName = "";
         string defaultStructure = "";
         Point formOrigin = new Point(0, 0);
         IEnumerable<int> indexes = Enumerable.Range(0, MAX_SEAT_NUM);
@@ -192,18 +189,14 @@ namespace OpenNashCalculator
                 radioButton4, radioButton5, radioButton6, radioButton7, radioButton8, radioButton9 };
             SeatLabels = new Label[] { labelSeat1, labelSeat2, labelSeat3, labelSeat4, labelSeat5,
               labelSeat6, labelSeat7, labelSeat8, labelSeat9 };
-            ClearButtons = new Button[] { button2, button3, button4, button5, button6, button7, button8, button9, button10 };
             rangeTextBoxes = new TextBox[] { textBoxRange1, textBoxRange2, textBoxRange3, textBoxRange4, textBoxRange5,
                 textBoxRange6, textBoxRange7, textBoxRange8, textBoxRange9 };
             AllinCheckBoxes = new CheckBox[] { checkBox1, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6, 
                 checkBox7, checkBox8, checkBox9 };
-            ICMLabels = new Label[] { labelICM1, labelICM2, labelICM3, labelICM4, labelICM5, labelICM6,
-                labelICM7, labelICM8, labelICM9 };
         }
 
         private void setupViews()
         {
-            labelChips.ContextMenuStrip = chipContextMenuStrip;
             foreach (TextBox chipTextBox in chipTextBoxes)
                 chipTextBox.ContextMenuStrip = chipContextMenuStrip;
             chipTextBoxes[4].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
@@ -225,8 +218,7 @@ namespace OpenNashCalculator
             string[] args = System.Environment.GetCommandLineArgs();
             readArgs(args);
             Reset();
-            this.SetDesktopLocation(formOrigin.X, formOrigin.Y);
-            encryptedUserName = System.IO.File.ReadAllText(System.IO.Directory.GetCurrentDirectory() + "\\" + Properties.Settings.Default.WhiteListNme);
+
             if (isRunFromDaemon(args)) openHandHistory();
         }
 
@@ -235,11 +227,6 @@ namespace OpenNashCalculator
             if(!System.IO.File.Exists(path)) return new string[0];
             string[] lines = System.IO.File.ReadAllLines(path);
             return lines;
-
-            /*
-            foreach (string line in lines)
-                yield return line.Trim();
-            */
         }
 
         private bool isRunFromDaemon(string[] args)
@@ -357,7 +344,6 @@ namespace OpenNashCalculator
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
-            chipTextBoxes[indexes.First(i => sender == ClearButtons[i])].Clear();
             SetPosition();
         }
 
@@ -418,13 +404,13 @@ namespace OpenNashCalculator
             }
             else
             {
-                checkBoxRefresh.Enabled = checkBoxRefresh.Checked = true;
+                AutoRefreshToolStripMenuItem.Enabled = AutoRefreshToolStripMenuItem.Checked = true;
             }
         }
 
         private void reportHandHistoryReadError()
         {
-            checkBoxRefresh.Enabled = checkBoxRefresh.Checked = false;
+            AutoRefreshToolStripMenuItem.Enabled = AutoRefreshToolStripMenuItem.Checked = false;
             MessageBox.Show(System.IO.Path.GetFileName(openHandHistoryDialog.FileName) + " may be broken."
                 + System.Environment.NewLine + "This program cannot read this hand history."
                 + System.Environment.NewLine + "Please choose another file.");
@@ -449,7 +435,7 @@ namespace OpenNashCalculator
         {
             if (openHandHistoryDialog.ShowDialog() != DialogResult.OK)
             {
-                checkBoxRefresh.Enabled = checkBoxRefresh.Checked = false;
+                AutoRefreshToolStripMenuItem.Enabled = AutoRefreshToolStripMenuItem.Checked = false;
                 return;
             }
             setReaderFromFileName();
@@ -457,7 +443,12 @@ namespace OpenNashCalculator
 
             // FindTournamentWindow();
             // GoBack();
-            openHandHistory();
+            if (reader.isSmallStakes(openHandHistoryDialog.FileName) == false)
+            {
+                openHandHistoryDialog.FileName = null;
+                MessageBox.Show("This file is not small stakes or is broken.");
+            }
+            else openHandHistory();
         }
 
         private void checkBoxRefresh_CheckedChanged(object sender, EventArgs e)
@@ -583,15 +574,10 @@ namespace OpenNashCalculator
             // FindTournamentWindow();
         }
 
-        private void checkBoxClose_CheckedChanged(object sender, EventArgs e)
-        {
-            findTimer.Enabled = (sender as CheckBox).Checked;
-        }
-
         private void button_back_Click(object sender, EventArgs e)
         {
             ++hh_back_num;
-            checkBoxRefresh.Checked = false;
+            AutoRefreshToolStripMenuItem.Checked = false;
             ReadHandHistory();
         }
 
@@ -677,6 +663,33 @@ namespace OpenNashCalculator
             CalcByHRC.Calc(currentTableData, chips.ToString());
         }
 
+        private void AutoRefreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AutoRefreshToolStripMenuItem.Checked = !AutoRefreshToolStripMenuItem.Checked;
+        }
+
+        private void AutoCloseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AutoCloseToolStripMenuItem.Checked = !AutoCloseToolStripMenuItem.Checked;
+        }
+
+        private void AutoCloseToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            findTimer.Enabled = (sender as ToolStripMenuItem).Checked;
+        }
+
+        private void AutoRefreshToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            refreshTimer.Enabled = AutoRefreshToolStripMenuItem.Checked;
+        }
+
+        private void buttonStructure_Click(object sender, EventArgs e)
+        {
+            string[] structures = { "1", "1,1", "65,35", "5,3,2", "6,1,1,1,1" };
+            Button[] buttons = { buttonMTT, buttonHyperSat, buttonSNG6, buttonSNG9, buttonFifty50 };
+
+            this.textBoxStructure.Text = structures[Array.IndexOf(buttons, sender)];
+        }
 #if false
         private void CalcICM()
         {

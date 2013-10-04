@@ -89,14 +89,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy $(SolutionDir)OpenNashCalculator\readme.txt $(TargetDir)files\
-copy $(SolutionDir)ONCDaemon\bin\$(ConfigurationName)\自動発動.ex* $(TargetDir)files\
-copy $(SolutionDir)ONCDaemon\bin\$(ConfigurationName)\ja-JP\自動発動.resources.dll $(TargetDir)files\ja-JP\
-copy $(SolutionDir)OpenNashCalculator\bin\$(ConfigurationName)\ナッシュさん.ex* $(TargetDir)files\
-copy $(SolutionDir)OpenNashCalculator\bin\$(ConfigurationName)\ja-JP\ナッシュさん.resources.dll $(TargetDir)files\ja-jp\
-del $(TargetDir)files\*.bak
-copy $(SolutionDir)UserValidatorLib\bin\$(ConfigurationName)\UserValidatorLib.dll $(TargetDir)files\
-</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

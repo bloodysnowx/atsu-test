@@ -150,8 +150,6 @@ namespace OpenNashCalculator
             setupCurrentTableData();
 
             resultXML = null;
-            if (searchCache()) readFromXML();
-            else CalcByCLICommandExecute();
         }
 
         private void readFromXML()
@@ -192,12 +190,6 @@ namespace OpenNashCalculator
                 }
             }
             this.buttonCalc.Enabled = true;
-            if (hh_back_num > 0 && checkBoxAutoBack.Checked)
-            {
-                if (currentTableData.allHandCount > hh_back_num)
-                    this.button_back_Click(null, null);
-                else Application.Exit();
-            }
         }
 
         private void CalcByCLI_Exited(object sender, EventArgs e)
@@ -234,7 +226,6 @@ namespace OpenNashCalculator
             webBrowserTimer.Enabled = false;
 
             setupCurrentTableData();
-            if (searchCache()) { readFromXML(); return; }
 
             if (textBoxAnte.Text.Trim() == "")
                 textBoxAnte.Text = "0";
@@ -251,23 +242,15 @@ namespace OpenNashCalculator
                     URL += "&s" + (j++).ToString() + "=" + chipTextBoxes[(bb_pos + i) % 9].Text.Trim();
                 }
             }
-            // http://www.holdemresources.net/hr/sngs/icmcalculator.html?action=calculate&
-            // bb=200&sb=100&ante=0&structure=0.5%2C0.3%2C0.2&s1=100&s2=100&s3=100&s4=100&s5=100&s6=100&s7=100&s8=100&s9=100
 
             foreach (TextBox rangeTextBox in rangeTextBoxes)
                 rangeTextBox.Text = "";
-
-            // System.Net.WebClient client = new System.Net.WebClient();
-            // System.Windows.Forms.WebBrowser client = new WebBrowser();
 
             hero_num = getHeroNum();
             hero_pos = "";
             hero_pos = positionRadioButtons[hero_num].Text;
 
             webBrowser1.Navigate(URL);
-
-            if (checkBoxWeb.Checked == false)
-                System.Diagnostics.Process.Start(URL);
         }
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)

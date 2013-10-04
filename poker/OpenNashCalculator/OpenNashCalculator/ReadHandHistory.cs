@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Web;
-using UserValidatorLib;
 
 using System.Text.RegularExpressions;
 
@@ -16,7 +15,6 @@ namespace OpenNashCalculator
     public partial class OpenNashCalculatorViewController : Form
     {
         HandHistoryReader reader = new PSHHReader();
-        UserValidator validator = new UserValidator();
         TableData currentTableData;
 
         void setHyperStructure()
@@ -61,7 +59,8 @@ namespace OpenNashCalculator
             if (openHandHistoryDialog.FileName == String.Empty) return;
             DateTime lastWriteTime = reader.GetLastWriteTime(openHandHistoryDialog.FileName);
 
-            if(checkBoxClose.Checked)
+
+            if (AutoCloseToolStripMenuItem.Checked)
             {
                 if (shouldCloseTime(lastWriteTime)) Application.Exit();
             }
@@ -70,11 +69,8 @@ namespace OpenNashCalculator
 
             updateDate = hh_back_num == 0 ? lastWriteTime : new DateTime();
             TableData result = reader.read(openHandHistoryDialog.FileName, hh_back_num);
-            if(!validator.validate(result.heroName, encryptedUserName)) {
-                System.Windows.Forms.MessageBox.Show("You cannot use this application");
-                Application.Exit();
-            }
-            if (checkBoxClose.Checked)
+
+            if (AutoCloseToolStripMenuItem.Checked)
             {
                 if (shouldCloseSituation(result)) Application.Exit();
             }
@@ -114,23 +110,11 @@ namespace OpenNashCalculator
             foreach (TextBox rangeTextBox in rangeTextBoxes) rangeTextBox.Clear();
             for (int i = 0; i < result.MaxSeatNum; ++i)
             {
-                if (result.chips[i] <= 0 && result.playerNames[i] != string.Empty && result.seats[i] > 0 && checkBoxRebuy.Checked)
-                    result.chips[i] = result.StartingChip;
-
                 if (result.chips[i] > 0)
                 {
                     chipTextBoxes[result.seats[i] - 1].Text = result.chips[i].ToString();
                     PlayerNameLabels[result.seats[i] - 1].Text = result.playerNames[i];
                 }
-            }
-            result.calcICMs(structures);
-            for (int i = 0, count = 0; i < result.MaxSeatNum; ++i)
-            {
-                if (result.chips[i] > 0)
-                {
-                    ICMLabels[i].Text = result.ICMs[count++].ToString();
-                }
-                else ICMLabels[i].Text = string.Empty;
             }
 
             // ボタンの位置を決定
@@ -191,17 +175,10 @@ namespace OpenNashCalculator
             foreach (CheckBox checkBox in AllinCheckBoxes)
                 checkBox.Checked = false;
 
-            if (result.chips[result.getHeroIndex()] > 0 && player_num > 1 && (checkBoxCalc.Checked || CanCalcByCLI()))
-            {
-                Calc();
-            }
-            else
-            {
-                resultXML = null;
-                recent_web_page = String.Empty;
-                setupCurrentTableData();
-                if (searchCache()) readFromXML();
-            }
+            resultXML = null;
+            recent_web_page = String.Empty;
+            setupCurrentTableData();
+
         }
 
         void SeatRotateF()
@@ -210,7 +187,6 @@ namespace OpenNashCalculator
             string tmp_chip = chipTextBoxes[8].Text;
             bool tmp_checked = positionRadioButtons[8].Checked;
             string tmp_name = PlayerNameLabels[8].Text;
-            string tmp_icm = ICMLabels[8].Text;
 
             for (int i = 7; i >= 0; --i)
             {
@@ -218,14 +194,12 @@ namespace OpenNashCalculator
                 chipTextBoxes[i + 1].Text = chipTextBoxes[i].Text;
                 positionRadioButtons[i + 1].Checked = positionRadioButtons[i].Checked;
                 PlayerNameLabels[i + 1].Text = PlayerNameLabels[i].Text;
-                ICMLabels[i + 1].Text = ICMLabels[i].Text;
             }
 
             SeatLabels[0].Text = tmp_seat;
             chipTextBoxes[0].Text = tmp_chip;
             positionRadioButtons[0].Checked = tmp_checked;
             PlayerNameLabels[0].Text = tmp_name;
-            ICMLabels[0].Text = tmp_icm;
 
             for (int i = 0; i < chipTextBoxes.Length; ++i)
             {

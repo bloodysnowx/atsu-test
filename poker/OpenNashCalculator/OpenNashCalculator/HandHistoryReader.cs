@@ -17,6 +17,8 @@ namespace OpenNashCalculator
         DateTime GetLastWriteTime(string fileName);
         bool IsHyper(string fileName);
         void setHyperSatBuyinList(IEnumerable<string> hyperSatBuyinList);
+
+        bool isSmallStakes(string fileName);
     }
 
     enum Blind
