@@ -394,5 +394,10 @@ namespace OpenNashCalculator
         public void setHyperSatBuyinList(IEnumerable<string> hyperSatBuyinList)
         {
         }
+
+        public bool isSmallStakes(string fileName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

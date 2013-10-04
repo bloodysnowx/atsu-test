@@ -47,9 +47,6 @@
     <Setting Name="MaxSeatNum" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">9</Value>
     </Setting>
-    <Setting Name="WhiteListNme" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">whiteList</Value>
-    </Setting>
     <Setting Name="HyperSatBuyinListName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">HyperSatBuyinList.txt</Value>
     </Setting>

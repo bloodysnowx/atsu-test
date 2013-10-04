@@ -35,8 +35,6 @@
             this.labelAnte = new System.Windows.Forms.Label();
             this.labelStructure = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.labelSeat = new System.Windows.Forms.Label();
-            this.labelChips = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -45,7 +43,6 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
-            this.buttonCalc = new System.Windows.Forms.Button();
             this.labelSeat1 = new System.Windows.Forms.Label();
             this.labelSeat2 = new System.Windows.Forms.Label();
             this.labelSeat3 = new System.Windows.Forms.Label();
@@ -65,21 +62,8 @@
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.checkBoxWeb = new System.Windows.Forms.CheckBox();
-            this.buttonOpen = new System.Windows.Forms.Button();
             this.openHandHistoryDialog = new System.Windows.Forms.OpenFileDialog();
-            this.checkBoxRefresh = new System.Windows.Forms.CheckBox();
             this.textBoxStructure = new System.Windows.Forms.TextBox();
-            this.buttonReset = new System.Windows.Forms.Button();
             this.refreshTimer = new System.Windows.Forms.Timer(this.components);
             this.textBoxRange1 = new System.Windows.Forms.TextBox();
             this.textBoxRange2 = new System.Windows.Forms.TextBox();
@@ -90,8 +74,6 @@
             this.textBoxRange7 = new System.Windows.Forms.TextBox();
             this.textBoxRange8 = new System.Windows.Forms.TextBox();
             this.textBoxRange9 = new System.Windows.Forms.TextBox();
-            this.checkBoxCalc = new System.Windows.Forms.CheckBox();
-            this.checkBoxRebuy = new System.Windows.Forms.CheckBox();
             this.textBoxAnte = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -105,8 +87,6 @@
             this.chipContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.Addon30kToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Addon50kToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonReread = new System.Windows.Forms.Button();
-            this.checkBoxClose = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
@@ -134,13 +114,34 @@
             this.checkBoxAutoBack = new System.Windows.Forms.CheckBox();
             this.buttonHRC = new System.Windows.Forms.Button();
             this.webKitBrowser = new WebKit.WebKitBrowser();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.webBrowserTimer = new System.Windows.Forms.Timer(this.components);
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonCalc = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ReReadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.handToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prevToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AutoRefreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AutoCloseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonMTT = new System.Windows.Forms.Button();
+            this.buttonHyperSat = new System.Windows.Forms.Button();
+            this.buttonSNG6 = new System.Windows.Forms.Button();
+            this.buttonSNG9 = new System.Windows.Forms.Button();
+            this.buttonFifty50 = new System.Windows.Forms.Button();
             this.groupBoxPosition.SuspendLayout();
             this.chipContextMenuStrip.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelBB
             // 
             resources.ApplyResources(this.labelBB, "labelBB");
+            this.labelBB.BackColor = System.Drawing.Color.Transparent;
             this.labelBB.Name = "labelBB";
             this.toolTip.SetToolTip(this.labelBB, resources.GetString("labelBB.ToolTip"));
             this.labelBB.DoubleClick += new System.EventHandler(this.labelBB_Click);
@@ -157,12 +158,14 @@
             // labelAnte
             // 
             resources.ApplyResources(this.labelAnte, "labelAnte");
+            this.labelAnte.BackColor = System.Drawing.Color.Transparent;
             this.labelAnte.Name = "labelAnte";
             this.toolTip.SetToolTip(this.labelAnte, resources.GetString("labelAnte.ToolTip"));
             // 
             // labelStructure
             // 
             resources.ApplyResources(this.labelStructure, "labelStructure");
+            this.labelStructure.BackColor = System.Drawing.Color.Transparent;
             this.labelStructure.Name = "labelStructure";
             this.labelStructure.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.labelStructure.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
@@ -174,19 +177,6 @@
             this.toolTip.SetToolTip(this.textBox1, resources.GetString("textBox1.ToolTip"));
             this.textBox1.Enter += new System.EventHandler(this.textBox_Enter);
             this.textBox1.Leave += new System.EventHandler(this.textBox_Leave);
-            // 
-            // labelSeat
-            // 
-            resources.ApplyResources(this.labelSeat, "labelSeat");
-            this.labelSeat.Name = "labelSeat";
-            this.toolTip.SetToolTip(this.labelSeat, resources.GetString("labelSeat.ToolTip"));
-            this.labelSeat.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
-            this.labelSeat.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
-            // 
-            // labelChips
-            // 
-            resources.ApplyResources(this.labelChips, "labelChips");
-            this.labelChips.Name = "labelChips";
             // 
             // textBox2
             // 
@@ -252,61 +242,63 @@
             this.textBox9.Enter += new System.EventHandler(this.textBox_Enter);
             this.textBox9.Leave += new System.EventHandler(this.textBox_Leave);
             // 
-            // buttonCalc
-            // 
-            resources.ApplyResources(this.buttonCalc, "buttonCalc");
-            this.buttonCalc.Name = "buttonCalc";
-            this.toolTip.SetToolTip(this.buttonCalc, resources.GetString("buttonCalc.ToolTip"));
-            this.buttonCalc.UseVisualStyleBackColor = true;
-            this.buttonCalc.Click += new System.EventHandler(this.buttonCalc_Click);
-            // 
             // labelSeat1
             // 
             resources.ApplyResources(this.labelSeat1, "labelSeat1");
+            this.labelSeat1.BackColor = System.Drawing.Color.Transparent;
             this.labelSeat1.Name = "labelSeat1";
             // 
             // labelSeat2
             // 
             resources.ApplyResources(this.labelSeat2, "labelSeat2");
+            this.labelSeat2.BackColor = System.Drawing.Color.Transparent;
             this.labelSeat2.Name = "labelSeat2";
             // 
             // labelSeat3
             // 
             resources.ApplyResources(this.labelSeat3, "labelSeat3");
+            this.labelSeat3.BackColor = System.Drawing.Color.Transparent;
             this.labelSeat3.Name = "labelSeat3";
             // 
             // labelSeat4
             // 
             resources.ApplyResources(this.labelSeat4, "labelSeat4");
+            this.labelSeat4.BackColor = System.Drawing.Color.Transparent;
             this.labelSeat4.Name = "labelSeat4";
             // 
             // labelSeat5
             // 
             resources.ApplyResources(this.labelSeat5, "labelSeat5");
+            this.labelSeat5.BackColor = System.Drawing.Color.Transparent;
             this.labelSeat5.Name = "labelSeat5";
             // 
             // labelSeat6
             // 
             resources.ApplyResources(this.labelSeat6, "labelSeat6");
+            this.labelSeat6.BackColor = System.Drawing.Color.Transparent;
             this.labelSeat6.Name = "labelSeat6";
             // 
             // labelSeat7
             // 
             resources.ApplyResources(this.labelSeat7, "labelSeat7");
+            this.labelSeat7.BackColor = System.Drawing.Color.Transparent;
             this.labelSeat7.Name = "labelSeat7";
             // 
             // labelSeat8
             // 
             resources.ApplyResources(this.labelSeat8, "labelSeat8");
+            this.labelSeat8.BackColor = System.Drawing.Color.Transparent;
             this.labelSeat8.Name = "labelSeat8";
             // 
             // labelSeat9
             // 
             resources.ApplyResources(this.labelSeat9, "labelSeat9");
+            this.labelSeat9.BackColor = System.Drawing.Color.Transparent;
             this.labelSeat9.Name = "labelSeat9";
             // 
             // groupBoxPosition
             // 
+            this.groupBoxPosition.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxPosition.Controls.Add(this.radioButton9);
             this.groupBoxPosition.Controls.Add(this.radioButton8);
             this.groupBoxPosition.Controls.Add(this.radioButton7);
@@ -385,130 +377,12 @@
             this.toolTip.SetToolTip(this.radioButton1, resources.GetString("radioButton1.ToolTip"));
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // button2
-            // 
-            resources.ApplyResources(this.button2, "button2");
-            this.button2.Name = "button2";
-            this.button2.TabStop = false;
-            this.toolTip.SetToolTip(this.button2, resources.GetString("button2.ToolTip"));
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.buttonClear_Click);
-            // 
-            // button3
-            // 
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.button3.TabStop = false;
-            this.toolTip.SetToolTip(this.button3, resources.GetString("button3.ToolTip"));
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.buttonClear_Click);
-            // 
-            // button4
-            // 
-            resources.ApplyResources(this.button4, "button4");
-            this.button4.Name = "button4";
-            this.button4.TabStop = false;
-            this.toolTip.SetToolTip(this.button4, resources.GetString("button4.ToolTip"));
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.buttonClear_Click);
-            // 
-            // button5
-            // 
-            resources.ApplyResources(this.button5, "button5");
-            this.button5.Name = "button5";
-            this.button5.TabStop = false;
-            this.toolTip.SetToolTip(this.button5, resources.GetString("button5.ToolTip"));
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.buttonClear_Click);
-            // 
-            // button6
-            // 
-            resources.ApplyResources(this.button6, "button6");
-            this.button6.Name = "button6";
-            this.button6.TabStop = false;
-            this.toolTip.SetToolTip(this.button6, resources.GetString("button6.ToolTip"));
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.buttonClear_Click);
-            // 
-            // button7
-            // 
-            resources.ApplyResources(this.button7, "button7");
-            this.button7.Name = "button7";
-            this.button7.TabStop = false;
-            this.toolTip.SetToolTip(this.button7, resources.GetString("button7.ToolTip"));
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.buttonClear_Click);
-            // 
-            // button8
-            // 
-            resources.ApplyResources(this.button8, "button8");
-            this.button8.Name = "button8";
-            this.button8.TabStop = false;
-            this.toolTip.SetToolTip(this.button8, resources.GetString("button8.ToolTip"));
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.buttonClear_Click);
-            // 
-            // button9
-            // 
-            resources.ApplyResources(this.button9, "button9");
-            this.button9.Name = "button9";
-            this.button9.TabStop = false;
-            this.toolTip.SetToolTip(this.button9, resources.GetString("button9.ToolTip"));
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.buttonClear_Click);
-            // 
-            // button10
-            // 
-            resources.ApplyResources(this.button10, "button10");
-            this.button10.Name = "button10";
-            this.button10.TabStop = false;
-            this.toolTip.SetToolTip(this.button10, resources.GetString("button10.ToolTip"));
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.buttonClear_Click);
-            // 
-            // checkBoxWeb
-            // 
-            resources.ApplyResources(this.checkBoxWeb, "checkBoxWeb");
-            this.checkBoxWeb.Checked = true;
-            this.checkBoxWeb.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxWeb.Name = "checkBoxWeb";
-            this.checkBoxWeb.TabStop = false;
-            this.toolTip.SetToolTip(this.checkBoxWeb, resources.GetString("checkBoxWeb.ToolTip"));
-            this.checkBoxWeb.UseVisualStyleBackColor = true;
-            // 
-            // buttonOpen
-            // 
-            resources.ApplyResources(this.buttonOpen, "buttonOpen");
-            this.buttonOpen.Name = "buttonOpen";
-            this.buttonOpen.TabStop = false;
-            this.toolTip.SetToolTip(this.buttonOpen, resources.GetString("buttonOpen.ToolTip"));
-            this.buttonOpen.UseVisualStyleBackColor = true;
-            this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
-            // 
-            // checkBoxRefresh
-            // 
-            resources.ApplyResources(this.checkBoxRefresh, "checkBoxRefresh");
-            this.checkBoxRefresh.Name = "checkBoxRefresh";
-            this.checkBoxRefresh.TabStop = false;
-            this.toolTip.SetToolTip(this.checkBoxRefresh, resources.GetString("checkBoxRefresh.ToolTip"));
-            this.checkBoxRefresh.UseVisualStyleBackColor = true;
-            this.checkBoxRefresh.CheckedChanged += new System.EventHandler(this.checkBoxRefresh_CheckedChanged);
-            // 
             // textBoxStructure
             // 
             resources.ApplyResources(this.textBoxStructure, "textBoxStructure");
             this.textBoxStructure.Name = "textBoxStructure";
             this.toolTip.SetToolTip(this.textBoxStructure, resources.GetString("textBoxStructure.ToolTip"));
             this.textBoxStructure.TextChanged += new System.EventHandler(this.textBoxStructure_TextChanged);
-            // 
-            // buttonReset
-            // 
-            resources.ApplyResources(this.buttonReset, "buttonReset");
-            this.buttonReset.Name = "buttonReset";
-            this.buttonReset.TabStop = false;
-            this.toolTip.SetToolTip(this.buttonReset, resources.GetString("buttonReset.ToolTip"));
-            this.buttonReset.UseVisualStyleBackColor = true;
-            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
             // refreshTimer
             // 
@@ -568,20 +442,6 @@
             resources.ApplyResources(this.textBoxRange9, "textBoxRange9");
             this.textBoxRange9.Name = "textBoxRange9";
             this.textBoxRange9.TabStop = false;
-            // 
-            // checkBoxCalc
-            // 
-            resources.ApplyResources(this.checkBoxCalc, "checkBoxCalc");
-            this.checkBoxCalc.Name = "checkBoxCalc";
-            this.toolTip.SetToolTip(this.checkBoxCalc, resources.GetString("checkBoxCalc.ToolTip"));
-            this.checkBoxCalc.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxRebuy
-            // 
-            resources.ApplyResources(this.checkBoxRebuy, "checkBoxRebuy");
-            this.checkBoxRebuy.Name = "checkBoxRebuy";
-            this.toolTip.SetToolTip(this.checkBoxRebuy, resources.GetString("checkBoxRebuy.ToolTip"));
-            this.checkBoxRebuy.UseVisualStyleBackColor = true;
             // 
             // textBoxAnte
             // 
@@ -652,22 +512,6 @@
             // 
             this.Addon50kToolStripMenuItem.Name = "Addon50kToolStripMenuItem";
             resources.ApplyResources(this.Addon50kToolStripMenuItem, "Addon50kToolStripMenuItem");
-            // 
-            // buttonReread
-            // 
-            resources.ApplyResources(this.buttonReread, "buttonReread");
-            this.buttonReread.Name = "buttonReread";
-            this.toolTip.SetToolTip(this.buttonReread, resources.GetString("buttonReread.ToolTip"));
-            this.buttonReread.UseVisualStyleBackColor = true;
-            this.buttonReread.Click += new System.EventHandler(this.buttonReread_Click);
-            // 
-            // checkBoxClose
-            // 
-            resources.ApplyResources(this.checkBoxClose, "checkBoxClose");
-            this.checkBoxClose.Name = "checkBoxClose";
-            this.toolTip.SetToolTip(this.checkBoxClose, resources.GetString("checkBoxClose.ToolTip"));
-            this.checkBoxClose.UseVisualStyleBackColor = true;
-            this.checkBoxClose.CheckedChanged += new System.EventHandler(this.checkBoxClose_CheckedChanged);
             // 
             // checkBox1
             // 
@@ -749,70 +593,124 @@
             this.webBrowserTimer.Interval = 500;
             this.webBrowserTimer.Tick += new System.EventHandler(this.webBrowserTimer_Tick);
             // 
-            // labelICM1
+            // buttonCalc
             // 
-            resources.ApplyResources(this.labelICM1, "labelICM1");
-            this.labelICM1.Name = "labelICM1";
+            this.buttonCalc.BackColor = System.Drawing.Color.Transparent;
+            this.buttonCalc.BackgroundImage = global::OpenNashCalculator.Properties.Resources.btn051_05;
+            resources.ApplyResources(this.buttonCalc, "buttonCalc");
+            this.buttonCalc.Name = "buttonCalc";
+            this.toolTip.SetToolTip(this.buttonCalc, resources.GetString("buttonCalc.ToolTip"));
+            this.buttonCalc.UseVisualStyleBackColor = false;
+            this.buttonCalc.Click += new System.EventHandler(this.buttonCalc_Click);
             // 
-            // labelICM2
+            // menuStrip1
             // 
-            resources.ApplyResources(this.labelICM2, "labelICM2");
-            this.labelICM2.Name = "labelICM2";
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.handToolStripMenuItem,
+            this.optionToolStripMenuItem});
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
+            this.menuStrip1.Name = "menuStrip1";
             // 
-            // labelICM3
+            // fileToolStripMenuItem
             // 
-            resources.ApplyResources(this.labelICM3, "labelICM3");
-            this.labelICM3.Name = "labelICM3";
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.ReReadToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             // 
-            // labelICM4
+            // openToolStripMenuItem
             // 
-            resources.ApplyResources(this.labelICM4, "labelICM4");
-            this.labelICM4.Name = "labelICM4";
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            resources.ApplyResources(this.openToolStripMenuItem, "openToolStripMenuItem");
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.buttonOpen_Click);
             // 
-            // labelICM5
+            // ReReadToolStripMenuItem
             // 
-            resources.ApplyResources(this.labelICM5, "labelICM5");
-            this.labelICM5.Name = "labelICM5";
+            this.ReReadToolStripMenuItem.Name = "ReReadToolStripMenuItem";
+            resources.ApplyResources(this.ReReadToolStripMenuItem, "ReReadToolStripMenuItem");
+            this.ReReadToolStripMenuItem.Click += new System.EventHandler(this.buttonReread_Click);
             // 
-            // labelICM6
+            // handToolStripMenuItem
             // 
-            resources.ApplyResources(this.labelICM6, "labelICM6");
-            this.labelICM6.Name = "labelICM6";
+            this.handToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nextToolStripMenuItem,
+            this.prevToolStripMenuItem});
+            this.handToolStripMenuItem.Name = "handToolStripMenuItem";
+            resources.ApplyResources(this.handToolStripMenuItem, "handToolStripMenuItem");
             // 
-            // labelICM7
+            // nextToolStripMenuItem
             // 
-            resources.ApplyResources(this.labelICM7, "labelICM7");
-            this.labelICM7.Name = "labelICM7";
+            this.nextToolStripMenuItem.Name = "nextToolStripMenuItem";
+            resources.ApplyResources(this.nextToolStripMenuItem, "nextToolStripMenuItem");
+            this.nextToolStripMenuItem.Click += new System.EventHandler(this.button_fore_Click);
             // 
-            // labelICM8
+            // prevToolStripMenuItem
             // 
-            resources.ApplyResources(this.labelICM8, "labelICM8");
-            this.labelICM8.Name = "labelICM8";
+            this.prevToolStripMenuItem.Name = "prevToolStripMenuItem";
+            resources.ApplyResources(this.prevToolStripMenuItem, "prevToolStripMenuItem");
+            this.prevToolStripMenuItem.Click += new System.EventHandler(this.button_back_Click);
             // 
-            // labelICM9
+            // optionToolStripMenuItem
             // 
-            resources.ApplyResources(this.labelICM9, "labelICM9");
-            this.labelICM9.Name = "labelICM9";
+            this.optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AutoRefreshToolStripMenuItem,
+            this.AutoCloseToolStripMenuItem});
+            this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
+            resources.ApplyResources(this.optionToolStripMenuItem, "optionToolStripMenuItem");
             // 
-            // checkBoxICM
+            // AutoRefreshToolStripMenuItem
             // 
-            resources.ApplyResources(this.checkBoxICM, "checkBoxICM");
-            this.checkBoxICM.Name = "checkBoxICM";
-            this.checkBoxICM.UseVisualStyleBackColor = true;
-            this.checkBoxICM.CheckedChanged += new System.EventHandler(this.checkBoxICM_CheckedChanged);
+            resources.ApplyResources(this.AutoRefreshToolStripMenuItem, "AutoRefreshToolStripMenuItem");
+            this.AutoRefreshToolStripMenuItem.Name = "AutoRefreshToolStripMenuItem";
+            this.AutoRefreshToolStripMenuItem.CheckedChanged += new System.EventHandler(this.AutoRefreshToolStripMenuItem_CheckedChanged);
+            this.AutoRefreshToolStripMenuItem.Click += new System.EventHandler(this.AutoRefreshToolStripMenuItem_Click);
             // 
-            // checkBoxAutoBack
+            // AutoCloseToolStripMenuItem
+            // 
+            this.AutoCloseToolStripMenuItem.Name = "AutoCloseToolStripMenuItem";
+            resources.ApplyResources(this.AutoCloseToolStripMenuItem, "AutoCloseToolStripMenuItem");
+            this.AutoCloseToolStripMenuItem.CheckedChanged += new System.EventHandler(this.AutoCloseToolStripMenuItem_CheckedChanged);
+            this.AutoCloseToolStripMenuItem.Click += new System.EventHandler(this.AutoCloseToolStripMenuItem_Click);
+            // 
+            // buttonMTT
+            // 
+            resources.ApplyResources(this.buttonMTT, "buttonMTT");
+            this.buttonMTT.Name = "buttonMTT";
+            this.buttonMTT.UseVisualStyleBackColor = true;
+            this.buttonMTT.Click += new System.EventHandler(this.buttonStructure_Click);
+            // 
+            // buttonHyperSat
+            // 
+            resources.ApplyResources(this.buttonHyperSat, "buttonHyperSat");
+            this.buttonHyperSat.Name = "buttonHyperSat";
+            this.buttonHyperSat.UseVisualStyleBackColor = true;
+            this.buttonHyperSat.Click += new System.EventHandler(this.buttonStructure_Click);
+            // 
+            // buttonSNG6
+            // 
+            resources.ApplyResources(this.buttonSNG6, "buttonSNG6");
+            this.buttonSNG6.Name = "buttonSNG6";
+            this.buttonSNG6.UseVisualStyleBackColor = true;
+            this.buttonSNG6.Click += new System.EventHandler(this.buttonStructure_Click);
+            // 
+            // buttonSNG9
             // 
             resources.ApplyResources(this.checkBoxAutoBack, "checkBoxAutoBack");
             this.checkBoxAutoBack.Name = "checkBoxAutoBack";
             this.checkBoxAutoBack.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.buttonSNG9, "buttonSNG9");
+            this.buttonSNG9.Name = "buttonSNG9";
+            this.buttonSNG9.UseVisualStyleBackColor = true;
+            this.buttonSNG9.Click += new System.EventHandler(this.buttonStructure_Click);
             // 
-            // buttonHRC
+            // buttonFifty50
             // 
-            resources.ApplyResources(this.buttonHRC, "buttonHRC");
-            this.buttonHRC.Name = "buttonHRC";
-            this.buttonHRC.UseVisualStyleBackColor = true;
-            this.buttonHRC.Click += new System.EventHandler(this.buttonHRC_Click);
+            resources.ApplyResources(this.buttonFifty50, "buttonFifty50");
+            this.buttonFifty50.Name = "buttonFifty50";
+            this.buttonFifty50.UseVisualStyleBackColor = true;
+            this.buttonFifty50.Click += new System.EventHandler(this.buttonStructure_Click);
             // 
             // webKitBrowser
             // 
@@ -843,6 +741,13 @@
             this.Controls.Add(this.labelICM1);
             this.Controls.Add(this.button_fore);
             this.Controls.Add(this.button_back);
+            this.BackgroundImage = global::OpenNashCalculator.Properties.Resources._128_81;
+            this.Controls.Add(this.buttonFifty50);
+            this.Controls.Add(this.buttonSNG9);
+            this.Controls.Add(this.buttonSNG6);
+            this.Controls.Add(this.buttonHyperSat);
+            this.Controls.Add(this.buttonMTT);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.checkBox9);
             this.Controls.Add(this.checkBox8);
             this.Controls.Add(this.checkBox7);
@@ -852,9 +757,7 @@
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.buttonReread);
             this.Controls.Add(this.label18);
-            this.Controls.Add(this.checkBoxClose);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
@@ -863,8 +766,6 @@
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.checkBoxRebuy);
-            this.Controls.Add(this.checkBoxCalc);
             this.Controls.Add(this.textBoxRange9);
             this.Controls.Add(this.textBoxRange8);
             this.Controls.Add(this.textBoxRange7);
@@ -874,19 +775,6 @@
             this.Controls.Add(this.textBoxRange3);
             this.Controls.Add(this.textBoxRange2);
             this.Controls.Add(this.textBoxRange1);
-            this.Controls.Add(this.buttonReset);
-            this.Controls.Add(this.checkBoxRefresh);
-            this.Controls.Add(this.buttonOpen);
-            this.Controls.Add(this.checkBoxWeb);
-            this.Controls.Add(this.button10);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBoxPosition);
             this.Controls.Add(this.labelSeat9);
             this.Controls.Add(this.labelSeat8);
@@ -906,8 +794,6 @@
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.labelChips);
-            this.Controls.Add(this.labelSeat);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.labelStructure);
             this.Controls.Add(this.labelAnte);
@@ -916,6 +802,7 @@
             this.Controls.Add(this.textBoxBB);
             this.Controls.Add(this.labelBB);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "OpenNashCalculatorViewController";
             this.Load += new System.EventHandler(this.Form_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.OpenNashCalculatorViewController_DragDrop);
@@ -925,6 +812,8 @@
             this.groupBoxPosition.ResumeLayout(false);
             this.groupBoxPosition.PerformLayout();
             this.chipContextMenuStrip.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -938,8 +827,6 @@
         private System.Windows.Forms.Label labelAnte;
         private System.Windows.Forms.Label labelStructure;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label labelSeat;
-        private System.Windows.Forms.Label labelChips;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
@@ -968,20 +855,7 @@
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.CheckBox checkBoxWeb;
-        private System.Windows.Forms.Button buttonOpen;
         private System.Windows.Forms.OpenFileDialog openHandHistoryDialog;
-        private System.Windows.Forms.CheckBox checkBoxRefresh;
-        private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.Timer refreshTimer;
         private System.Windows.Forms.TextBox textBoxRange1;
         private System.Windows.Forms.TextBox textBoxRange2;
@@ -992,8 +866,6 @@
         private System.Windows.Forms.TextBox textBoxRange7;
         private System.Windows.Forms.TextBox textBoxRange8;
         private System.Windows.Forms.TextBox textBoxRange9;
-        private System.Windows.Forms.CheckBox checkBoxCalc;
-        private System.Windows.Forms.CheckBox checkBoxRebuy;
         private System.Windows.Forms.TextBox textBoxAnte;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
@@ -1007,8 +879,6 @@
         private System.Windows.Forms.ContextMenuStrip chipContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem Addon30kToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem Addon50kToolStripMenuItem;
-        private System.Windows.Forms.Button buttonReread;
-        private System.Windows.Forms.CheckBox checkBoxClose;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox3;
@@ -1036,6 +906,23 @@
         private System.Windows.Forms.CheckBox checkBoxAutoBack;
         private System.Windows.Forms.Button buttonHRC;
         private WebKit.WebKitBrowser webKitBrowser;
+        private System.Windows.Forms.Timer webBrowserTimer;
+        private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ReReadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem handToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nextToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem prevToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem optionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AutoRefreshToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AutoCloseToolStripMenuItem;
+        private System.Windows.Forms.Button buttonMTT;
+        private System.Windows.Forms.Button buttonHyperSat;
+        private System.Windows.Forms.Button buttonSNG6;
+        private System.Windows.Forms.Button buttonSNG9;
+        private System.Windows.Forms.Button buttonFifty50;
     }
 }
 

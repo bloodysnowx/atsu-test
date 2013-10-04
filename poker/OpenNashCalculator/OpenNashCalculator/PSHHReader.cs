@@ -463,5 +463,14 @@ namespace OpenNashCalculator
         {
             this.hyperSatBuyinList = hyperSatBuyinList;
         }
+
+        public bool isSmallStakes(string fileName)
+        {
+            Regex buyin_regex = new Regex(Regex.Escape("$") + "([0-9.]+)" + Regex.Escape(" + $") + "([0-9.]+)");
+            MatchCollection matchCol = buyin_regex.Matches(fileName);
+            if (matchCol.Count < 1) return false;
+            double rate = System.Double.Parse(matchCol[0].Groups[1].Value);
+            return rate < 25.0;
+        }
     }
 }
