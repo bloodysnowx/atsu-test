@@ -669,7 +669,8 @@ namespace OpenNashCalculator
             {
                 if (chipTextBoxes[(bb_pos + i) % 9].Text.Trim() != string.Empty)
                 {
-                    chips.AppendLine("Seat " + j + ": " + "Player" + j + " (" +  chipTextBoxes[(bb_pos + i) % 9].Text.Trim() + " in chips)");
+                    string playerName = PlayerNameLabels[(bb_pos + i) % 9].Text.Equals(string.Empty) ? "Player" + j : PlayerNameLabels[(bb_pos + i) % 9].Text;
+                    chips.AppendLine("Seat " + j + ": " + playerName + " (" +  chipTextBoxes[(bb_pos + i) % 9].Text.Trim() + " in chips)");
                     j++;
                 }
             }

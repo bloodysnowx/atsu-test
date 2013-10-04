@@ -49,25 +49,45 @@ namespace OpenNashCalculator
         {
             IntPtr hrc = FindWindow(null, "HoldemResources Calculator");
             openBasicHand(hrc);
-            newDialog = FindDialog("New");
-            nextButton = FindWindowEx(newDialog, IntPtr.Zero, "Button", null);
-            EnumChildWindows(newDialog, FindNextButton, 0);
-            PostMessage(newDialog, WM_ACTIVATE, 0, 0);
-            PostMessage(nextButton, BM_CLICK, 0, 0);
+            try
+            {
+                newDialog = FindDialog("New");
 
-            setupDialog = FindDialog("Basic Hand Setup");
+                while (newDialog != IntPtr.Zero)
+                {
+                    nextButton = FindWindowEx(newDialog, IntPtr.Zero, "Button", null);
+                    EnumChildWindows(newDialog, FindNextButton, 0);
+                    PostMessage(newDialog, WM_ACTIVATE, 0, 0);
+                    PostMessage(nextButton, BM_CLICK, 0, 0);
+                    newDialog = FindWindow(null, "New");
+                    System.Threading.Thread.Sleep(100);
+                }
 
-            createClipBoard(tableData, chips);
-            EnumChildWindows(setupDialog, FindPasteButton, 0);
-            PostMessage(pasteButton, BM_CLICK, 0, 0);
-            System.Threading.Thread.Sleep(1000);
-            EnumChildWindows(setupDialog, FindFinishButton, 0);
-            PostMessage(finishButton, BM_CLICK, 0, 0);
+                setupDialog = FindDialog("Basic Hand Setup");
+
+                createClipBoard(tableData, chips);
+                EnumChildWindows(setupDialog, FindPasteButton, 0);
+                if (pasteButton == null) throw new ApplicationException();
+                for (int i = 0; i < 5; ++i)
+                {
+                    PostMessage(pasteButton, BM_CLICK, 0, 0);
+                    System.Threading.Thread.Sleep(100);
+                }
+                EnumChildWindows(setupDialog, FindFinishButton, 0);
+                if (finishButton == null) throw new ApplicationException();
+                PostMessage(finishButton, BM_CLICK, 0, 0);
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Cannot Find HRC" + System.Environment.NewLine + ex);
+            }
         }
 
         static void openBasicHand(IntPtr hrc)
         {
             IntPtr menu = GetMenu(hrc);
+            uint fileMenuItemID = GetMenuItemID(menu, 0);
+            PostMessage(hrc, WM_COMMAND, (int)fileMenuItemID, 0);
             IntPtr fileMenu = GetSubMenu(menu, 0);
             uint newMenuItemID = GetMenuItemID(fileMenu, 0);
             PostMessage(hrc, WM_COMMAND, (int)newMenuItemID, 0);
@@ -80,12 +100,13 @@ namespace OpenNashCalculator
             while (dialog == IntPtr.Zero)
             {
                 dialog = FindWindow(null, name);
-                if (count++ > 3)
+                if (count++ > 30)
                 {
-                    System.Windows.Forms.MessageBox.Show("Cannot Find HRC");
-                    return dialog;
+                    ApplicationException ex = new ApplicationException();
+                    throw ex;
+                    
                 }
-                System.Threading.Thread.Sleep(1000);
+                System.Threading.Thread.Sleep(100);
             }
             return dialog;
         }

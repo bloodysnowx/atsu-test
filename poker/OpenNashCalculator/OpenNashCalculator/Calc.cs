@@ -116,7 +116,13 @@ namespace OpenNashCalculator
 
         private void setupCurrentTableData()
         {
-            if (currentTableData == null) currentTableData = new TableData();
+            int allHandCount = 1;
+            if (currentTableData != null)
+            {
+                allHandCount = currentTableData.allHandCount;
+            }
+            currentTableData = new TableData();
+            currentTableData.allHandCount = allHandCount;
             currentTableData.Structure = textBoxStructure.Text.Trim();
             currentTableData.BB = System.Convert.ToInt32(textBoxBB.Text.Trim());
             currentTableData.SB = currentTableData.BB / 2;
