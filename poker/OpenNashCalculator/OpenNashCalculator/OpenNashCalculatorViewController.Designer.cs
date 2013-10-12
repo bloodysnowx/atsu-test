@@ -142,6 +142,7 @@
             // 
             resources.ApplyResources(this.labelBB, "labelBB");
             this.labelBB.BackColor = System.Drawing.Color.Transparent;
+            this.labelBB.ForeColor = System.Drawing.Color.Gainsboro;
             this.labelBB.Name = "labelBB";
             this.toolTip.SetToolTip(this.labelBB, resources.GetString("labelBB.ToolTip"));
             this.labelBB.DoubleClick += new System.EventHandler(this.labelBB_Click);
@@ -159,6 +160,7 @@
             // 
             resources.ApplyResources(this.labelAnte, "labelAnte");
             this.labelAnte.BackColor = System.Drawing.Color.Transparent;
+            this.labelAnte.ForeColor = System.Drawing.Color.Gainsboro;
             this.labelAnte.Name = "labelAnte";
             this.toolTip.SetToolTip(this.labelAnte, resources.GetString("labelAnte.ToolTip"));
             // 
@@ -166,6 +168,7 @@
             // 
             resources.ApplyResources(this.labelStructure, "labelStructure");
             this.labelStructure.BackColor = System.Drawing.Color.Transparent;
+            this.labelStructure.ForeColor = System.Drawing.Color.Gainsboro;
             this.labelStructure.Name = "labelStructure";
             this.labelStructure.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.labelStructure.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
@@ -246,54 +249,63 @@
             // 
             resources.ApplyResources(this.labelSeat1, "labelSeat1");
             this.labelSeat1.BackColor = System.Drawing.Color.Transparent;
+            this.labelSeat1.ForeColor = System.Drawing.Color.White;
             this.labelSeat1.Name = "labelSeat1";
             // 
             // labelSeat2
             // 
             resources.ApplyResources(this.labelSeat2, "labelSeat2");
             this.labelSeat2.BackColor = System.Drawing.Color.Transparent;
+            this.labelSeat2.ForeColor = System.Drawing.Color.White;
             this.labelSeat2.Name = "labelSeat2";
             // 
             // labelSeat3
             // 
             resources.ApplyResources(this.labelSeat3, "labelSeat3");
             this.labelSeat3.BackColor = System.Drawing.Color.Transparent;
+            this.labelSeat3.ForeColor = System.Drawing.Color.White;
             this.labelSeat3.Name = "labelSeat3";
             // 
             // labelSeat4
             // 
             resources.ApplyResources(this.labelSeat4, "labelSeat4");
             this.labelSeat4.BackColor = System.Drawing.Color.Transparent;
+            this.labelSeat4.ForeColor = System.Drawing.Color.White;
             this.labelSeat4.Name = "labelSeat4";
             // 
             // labelSeat5
             // 
             resources.ApplyResources(this.labelSeat5, "labelSeat5");
             this.labelSeat5.BackColor = System.Drawing.Color.Transparent;
+            this.labelSeat5.ForeColor = System.Drawing.Color.White;
             this.labelSeat5.Name = "labelSeat5";
             // 
             // labelSeat6
             // 
             resources.ApplyResources(this.labelSeat6, "labelSeat6");
             this.labelSeat6.BackColor = System.Drawing.Color.Transparent;
+            this.labelSeat6.ForeColor = System.Drawing.Color.White;
             this.labelSeat6.Name = "labelSeat6";
             // 
             // labelSeat7
             // 
             resources.ApplyResources(this.labelSeat7, "labelSeat7");
             this.labelSeat7.BackColor = System.Drawing.Color.Transparent;
+            this.labelSeat7.ForeColor = System.Drawing.Color.White;
             this.labelSeat7.Name = "labelSeat7";
             // 
             // labelSeat8
             // 
             resources.ApplyResources(this.labelSeat8, "labelSeat8");
             this.labelSeat8.BackColor = System.Drawing.Color.Transparent;
+            this.labelSeat8.ForeColor = System.Drawing.Color.White;
             this.labelSeat8.Name = "labelSeat8";
             // 
             // labelSeat9
             // 
             resources.ApplyResources(this.labelSeat9, "labelSeat9");
             this.labelSeat9.BackColor = System.Drawing.Color.Transparent;
+            this.labelSeat9.ForeColor = System.Drawing.Color.White;
             this.labelSeat9.Name = "labelSeat9";
             // 
             // groupBoxPosition
@@ -316,6 +328,7 @@
             // 
             resources.ApplyResources(this.radioButton9, "radioButton9");
             this.radioButton9.Checked = true;
+            this.radioButton9.ForeColor = System.Drawing.Color.Gainsboro;
             this.radioButton9.Name = "radioButton9";
             this.radioButton9.TabStop = true;
             this.toolTip.SetToolTip(this.radioButton9, resources.GetString("radioButton9.ToolTip"));
@@ -324,6 +337,7 @@
             // radioButton8
             // 
             resources.ApplyResources(this.radioButton8, "radioButton8");
+            this.radioButton8.ForeColor = System.Drawing.Color.Gainsboro;
             this.radioButton8.Name = "radioButton8";
             this.toolTip.SetToolTip(this.radioButton8, resources.GetString("radioButton8.ToolTip"));
             this.radioButton8.UseVisualStyleBackColor = true;
@@ -331,6 +345,7 @@
             // radioButton7
             // 
             resources.ApplyResources(this.radioButton7, "radioButton7");
+            this.radioButton7.ForeColor = System.Drawing.Color.Gainsboro;
             this.radioButton7.Name = "radioButton7";
             this.toolTip.SetToolTip(this.radioButton7, resources.GetString("radioButton7.ToolTip"));
             this.radioButton7.UseVisualStyleBackColor = true;
@@ -338,6 +353,7 @@
             // radioButton6
             // 
             resources.ApplyResources(this.radioButton6, "radioButton6");
+            this.radioButton6.ForeColor = System.Drawing.Color.Gainsboro;
             this.radioButton6.Name = "radioButton6";
             this.toolTip.SetToolTip(this.radioButton6, resources.GetString("radioButton6.ToolTip"));
             this.radioButton6.UseVisualStyleBackColor = true;
@@ -345,6 +361,7 @@
             // radioButton5
             // 
             resources.ApplyResources(this.radioButton5, "radioButton5");
+            this.radioButton5.ForeColor = System.Drawing.Color.Gainsboro;
             this.radioButton5.Name = "radioButton5";
             this.toolTip.SetToolTip(this.radioButton5, resources.GetString("radioButton5.ToolTip"));
             this.radioButton5.UseVisualStyleBackColor = true;
@@ -352,6 +369,7 @@
             // radioButton4
             // 
             resources.ApplyResources(this.radioButton4, "radioButton4");
+            this.radioButton4.ForeColor = System.Drawing.Color.Gainsboro;
             this.radioButton4.Name = "radioButton4";
             this.toolTip.SetToolTip(this.radioButton4, resources.GetString("radioButton4.ToolTip"));
             this.radioButton4.UseVisualStyleBackColor = true;
@@ -359,6 +377,7 @@
             // radioButton3
             // 
             resources.ApplyResources(this.radioButton3, "radioButton3");
+            this.radioButton3.ForeColor = System.Drawing.Color.Gainsboro;
             this.radioButton3.Name = "radioButton3";
             this.toolTip.SetToolTip(this.radioButton3, resources.GetString("radioButton3.ToolTip"));
             this.radioButton3.UseVisualStyleBackColor = true;
@@ -366,6 +385,7 @@
             // radioButton2
             // 
             resources.ApplyResources(this.radioButton2, "radioButton2");
+            this.radioButton2.ForeColor = System.Drawing.Color.Gainsboro;
             this.radioButton2.Name = "radioButton2";
             this.toolTip.SetToolTip(this.radioButton2, resources.GetString("radioButton2.ToolTip"));
             this.radioButton2.UseVisualStyleBackColor = true;
@@ -373,16 +393,17 @@
             // radioButton1
             // 
             resources.ApplyResources(this.radioButton1, "radioButton1");
+            this.radioButton1.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton1.ForeColor = System.Drawing.Color.Gainsboro;
             this.radioButton1.Name = "radioButton1";
             this.toolTip.SetToolTip(this.radioButton1, resources.GetString("radioButton1.ToolTip"));
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.UseVisualStyleBackColor = false;
             // 
             // textBoxStructure
             // 
             resources.ApplyResources(this.textBoxStructure, "textBoxStructure");
             this.textBoxStructure.Name = "textBoxStructure";
             this.toolTip.SetToolTip(this.textBoxStructure, resources.GetString("textBoxStructure.ToolTip"));
-            this.textBoxStructure.TextChanged += new System.EventHandler(this.textBoxStructure_TextChanged);
             // 
             // refreshTimer
             // 
@@ -452,46 +473,64 @@
             // label10
             // 
             resources.ApplyResources(this.label10, "label10");
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Name = "label10";
             // 
             // label11
             // 
             resources.ApplyResources(this.label11, "label11");
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Name = "label11";
             // 
             // label12
             // 
             resources.ApplyResources(this.label12, "label12");
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.ForeColor = System.Drawing.Color.White;
             this.label12.Name = "label12";
             // 
             // label13
             // 
             resources.ApplyResources(this.label13, "label13");
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.ForeColor = System.Drawing.Color.White;
             this.label13.Name = "label13";
             // 
             // label14
             // 
             resources.ApplyResources(this.label14, "label14");
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.ForeColor = System.Drawing.Color.White;
             this.label14.Name = "label14";
             // 
             // label15
             // 
             resources.ApplyResources(this.label15, "label15");
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.ForeColor = System.Drawing.Color.White;
             this.label15.Name = "label15";
             // 
             // label16
             // 
             resources.ApplyResources(this.label16, "label16");
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.ForeColor = System.Drawing.Color.White;
             this.label16.Name = "label16";
             // 
             // label17
             // 
             resources.ApplyResources(this.label17, "label17");
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.ForeColor = System.Drawing.Color.White;
             this.label17.Name = "label17";
             // 
             // label18
             // 
             resources.ApplyResources(this.label18, "label18");
+            this.label18.BackColor = System.Drawing.Color.Transparent;
+            this.label18.ForeColor = System.Drawing.Color.White;
             this.label18.Name = "label18";
             // 
             // chipContextMenuStrip
@@ -596,8 +635,9 @@
             // buttonCalc
             // 
             this.buttonCalc.BackColor = System.Drawing.Color.Transparent;
-            this.buttonCalc.BackgroundImage = global::OpenNashCalculator.Properties.Resources.btn051_05;
+            this.buttonCalc.BackgroundImage = global::OpenNashCalculator.Properties.Resources.button10063;
             resources.ApplyResources(this.buttonCalc, "buttonCalc");
+            this.buttonCalc.ForeColor = System.Drawing.Color.White;
             this.buttonCalc.Name = "buttonCalc";
             this.toolTip.SetToolTip(this.buttonCalc, resources.GetString("buttonCalc.ToolTip"));
             this.buttonCalc.UseVisualStyleBackColor = false;
@@ -676,7 +716,9 @@
             // 
             // buttonMTT
             // 
+            this.buttonMTT.BackgroundImage = global::OpenNashCalculator.Properties.Resources._110_233_161_121;
             resources.ApplyResources(this.buttonMTT, "buttonMTT");
+            this.buttonMTT.ForeColor = System.Drawing.Color.Gainsboro;
             this.buttonMTT.Name = "buttonMTT";
             this.buttonMTT.UseVisualStyleBackColor = true;
             this.buttonMTT.Click += new System.EventHandler(this.buttonStructure_Click);
@@ -684,6 +726,7 @@
             // buttonHyperSat
             // 
             resources.ApplyResources(this.buttonHyperSat, "buttonHyperSat");
+            this.buttonHyperSat.ForeColor = System.Drawing.Color.Gainsboro;
             this.buttonHyperSat.Name = "buttonHyperSat";
             this.buttonHyperSat.UseVisualStyleBackColor = true;
             this.buttonHyperSat.Click += new System.EventHandler(this.buttonStructure_Click);
@@ -691,6 +734,7 @@
             // buttonSNG6
             // 
             resources.ApplyResources(this.buttonSNG6, "buttonSNG6");
+            this.buttonSNG6.ForeColor = System.Drawing.Color.Gainsboro;
             this.buttonSNG6.Name = "buttonSNG6";
             this.buttonSNG6.UseVisualStyleBackColor = true;
             this.buttonSNG6.Click += new System.EventHandler(this.buttonStructure_Click);
@@ -701,6 +745,7 @@
             this.checkBoxAutoBack.Name = "checkBoxAutoBack";
             this.checkBoxAutoBack.UseVisualStyleBackColor = true;
             resources.ApplyResources(this.buttonSNG9, "buttonSNG9");
+            this.buttonSNG9.ForeColor = System.Drawing.Color.Gainsboro;
             this.buttonSNG9.Name = "buttonSNG9";
             this.buttonSNG9.UseVisualStyleBackColor = true;
             this.buttonSNG9.Click += new System.EventHandler(this.buttonStructure_Click);
@@ -708,6 +753,7 @@
             // buttonFifty50
             // 
             resources.ApplyResources(this.buttonFifty50, "buttonFifty50");
+            this.buttonFifty50.ForeColor = System.Drawing.Color.Gainsboro;
             this.buttonFifty50.Name = "buttonFifty50";
             this.buttonFifty50.UseVisualStyleBackColor = true;
             this.buttonFifty50.Click += new System.EventHandler(this.buttonStructure_Click);
@@ -742,6 +788,7 @@
             this.Controls.Add(this.button_fore);
             this.Controls.Add(this.button_back);
             this.BackgroundImage = global::OpenNashCalculator.Properties.Resources._128_81;
+            this.BackgroundImage = global::OpenNashCalculator.Properties.Resources._4;
             this.Controls.Add(this.buttonFifty50);
             this.Controls.Add(this.buttonSNG9);
             this.Controls.Add(this.buttonSNG6);

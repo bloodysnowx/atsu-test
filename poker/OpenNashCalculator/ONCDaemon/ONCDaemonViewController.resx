@@ -133,7 +133,7 @@
     <value>0</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Folder Under Surveillance</value>
+    <value>ポーカースターズのハンドヒストリフォルダ</value>
   </data>
   <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -148,7 +148,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>3</value>
   </data>
   <data name="labelFolderPS.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -178,7 +178,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelFolderPS.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>2</value>
   </data>
   <data name="labelFolderFT.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -201,6 +201,9 @@
   <data name="labelFolderFT.Text" xml:space="preserve">
     <value>folder name</value>
   </data>
+  <data name="labelFolderFT.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;labelFolderFT.Name" xml:space="preserve">
     <value>labelFolderFT</value>
   </data>
@@ -211,7 +214,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelFolderFT.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>1</value>
   </data>
   <metadata name="PSFolderBrowserDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -222,138 +225,124 @@
   <metadata name="FTFolderBrowserDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>208, 17</value>
   </metadata>
-  <data name="label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 58</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>356, 13</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Default Structure</value>
-  </data>
-  <data name="label2.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopCenter</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="textBoxDefaultStructure.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="textBoxDefaultStructure.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 75</value>
-  </data>
-  <data name="textBoxDefaultStructure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>355, 19</value>
-  </data>
-  <data name="textBoxDefaultStructure.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;textBoxDefaultStructure.Name" xml:space="preserve">
-    <value>textBoxDefaultStructure</value>
-  </data>
-  <data name="&gt;&gt;textBoxDefaultStructure.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxDefaultStructure.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBoxDefaultStructure.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 97</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>356, 13</value>
-  </data>
-  <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Hyper Sat Buy-in List</value>
-  </data>
-  <data name="label4.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopCenter</value>
-  </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="textBoxHyperSatBuyinList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="textBoxHyperSatBuyinList.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Off</value>
-  </data>
-  <data name="textBoxHyperSatBuyinList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 114</value>
-  </data>
-  <data name="textBoxHyperSatBuyinList.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="textBoxHyperSatBuyinList.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Both</value>
-  </data>
-  <data name="textBoxHyperSatBuyinList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>354, 216</value>
-  </data>
-  <data name="textBoxHyperSatBuyinList.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="textBoxHyperSatBuyinList.WordWrap" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;textBoxHyperSatBuyinList.Name" xml:space="preserve">
-    <value>textBoxHyperSatBuyinList</value>
-  </data>
-  <data name="&gt;&gt;textBoxHyperSatBuyinList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxHyperSatBuyinList.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBoxHyperSatBuyinList.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>399, 17</value>
   </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>ja-JP</value>
+  <metadata name="notifyIcon.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>492, 17</value>
   </metadata>
+  <data name="notifyIcon.BalloonTipText" xml:space="preserve">
+    <value>新しいトーナメントを開きます</value>
+  </data>
+  <data name="notifyIcon.BalloonTipTitle" xml:space="preserve">
+    <value>ポーカーコーチ</value>
+  </data>
+  <metadata name="contextMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>604, 17</value>
+  </metadata>
+  <data name="contextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 48</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStrip.Name" xml:space="preserve">
+    <value>contextMenuStrip</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="notifyIcon.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAABILAAASCwAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAgAAAAIAAAADAAAABAAAAAoRABEPDQANEwAA
+        ABYAAAAZAAAAGwAAABoAAAAYAAAAFAAAAA4AAAAMAAAACAAAAAQAAAADAAAAAgAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAMAAAAFICAgCBISEg4NDQ0UAAAAGwAA
+        ACQAAAArAAAALwAAADIAAAA0AAAAMwAAADAAAAArAAAAJgAAAB4AAAAWAAAAEAAAAAsAAAAGAAAABAAA
+        AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAABQAAAAoPDw8RCQkJGwcH
+        ByUFBQUxBAQEPQAAAEcAAABNAAAAUgAAAFMAAABSAAAATgAABEgAAAQ/AAAAMwAAACgAAAAdAAAAFAAA
+        AA0AAAAHAAAAAwAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAMAAAAIAAAAEAoA
+        ChoNBg0oCQ4JOAcHB0gGBgZbAgIFagAAAHIAAAB1AAAAdAAAAHMAAAJwAAAFaAMDBlsDAwNMBAAAPAAA
+        AC0AAAAeAAAAFAAAAAwAAAAFAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAABAAA
+        AAoMDAwVCAgIIgoKCjMDBwdKBQUFYgoIAn5oVgC1mX8A16SGAN+5lwDssZEA5qiHANuWewDJW0oAmAAD
+        AGQDAwBNAAQAOgAAACgAAAAaAAAAEAAAAAcAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAIAAAAGAAAADBYWFhcNDQ0nBQUFN0Y4AF+0lADP17EA/9+2AP/ftAD/37UA/9+1AP/ftQD/3rYA/961
+        AP/ftgD/1K0A+aqLAK0jIwBBAAYGKgAAABwAAAARAAAACQAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAgAAAAYAAAALDAwMFhoaCR3AngCe3LcA/962AP/ftgD/4bYA/+K3AP/itwD/4rcA/+K3
+        AP/itwD/4rcA/+G2AP/ftgD/3rYA/9mzAPSykwBtDQ0NFAAAABAAAAAIAAAAAwAAAAEAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAABAAAAAwAAAAd2YgAN2LQAxd62AP/gtgD/4rgA/+S4AP/luQD/5roA/+e6
+        AP/nugD/57oA/+e6AP/muQD/5bkA/+O4AP/itwD/37YA/922AP/XsgCRAAAAAAAAAAQAAAACAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAN23ANfetwD/4rgA/+S6AP/nuwD/57wA/+i8
+        AP/pvAD/6rwA/+q8AP/qvAD/6bwA/+m8AP/ovAD/57wA/+a7AP/jugD/4bgA/922AP/gugCbAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgugC137gA/+K6AP/mvAD/57wA/+m9
+        AP/rvgD/674A/+y/AP/svwD/7L8A/+y/AP/svwD/7L4A/+u+AP/qvgD/6b0A/+e8AP/lvAD/4boA/964
+        AP/euQBtAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA37oAZ965AP/iuwD/5r4A/+m+
+        AP/rvwD/68AA/+zBAP/twQD/7cEA/+3BAP/twQD/7sIA/+7CAP/twQD/7cEA/+zAAP/rwAD/678A/+i+
+        AP/mvQD/4bsA/924AP/VsQAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHduQDv4bwA/+a+
+        AP/pwAD/68EA/+zCAP/twwD/7sMA/+7DAP/uwwD/7sMA//HFAP/btAD/3bYA/+/EAP/uwwD/7sMA/+3D
+        AP/swgD/68EA/+i/AP/lvgD/4bsA/9u4ALoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA3bkAeOG8
+        AP/mvgD/6cEA/+zDAP/uxAD/78QA//DEAP/wxAD/8MQA//DFAP/swgD/ZVor/zk6O/9RTDb/37cA//DF
+        AP/wxAD/8MQA/+/EAP/uxAD/68IA/+jAAP/lvQD/4LsA/9y5ACwAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AADdugDa5L4A/+jBAP/rxAD/7sQA//DFAP/wxgD/8MYA//PIAP/wxwD/17MA//TKAP/fuQD/RkdL/8eo
+        AP/0yQD/7sQA//TJAP/yxwD/8MYA//DFAP/txQD/68MA/+fAAP/ivgD/3rsAmQAAAAAAAAAAAAAAAAAA
+        AAAAAAAA3LkAFuC+AP/lwQD/6sUA/+3GAP/vyAD/8ckA//HJAP/1ywD/mIIH/zo7PP9FRkn/ZmFJ/9u4
+        AP96ckv/27gA/4J3Sf9RVFb/UVBO/6ePH//0ywD/8MkA/+/HAP/txgD/6cQA/+XAAP/evQDqAAAAAAAA
+        AAAAAAAAAAAAAAAAAADduwBL48AA/+jEAP/sxgD/78gA//LKAP/zygD/9MsA/6qPAP8zNjb/REVF/1BQ
+        UP9ZWVn/aGdb/5WHTv9tbGH/YmRk/15gYP9YWVn/S05R/7ygEP/0ywD/8coA/+/IAP/rxQD/58MA/+G/
+        AP/GqgAJAAAAAAAAAAAAAAAAAAAAAN+/CW/kwgD/6sYA/+7JAP/wzAD/88wA//PNAP/30AD/U0oo/zk5
+        Of9ISEj/VVZW/15eXv9lZmb/aWpq/2pra/9pamr/ZWZm/11fXv9UVVX/Z2FD//fQAP/yzAD/8MsA/+3I
+        AP/oxgD/48EA/9u+BisAAAAAAAAAAAAAAAAAAAAA378eeOTEE//qxwL/7ssA//LNAP/zzgD/9M8A//jS
+        AP8tLSn/Nzk5/0dISP9VVlb/XmBg/2ZnZ/9rbGz/bG1t/2pra/9mZ2f/Xl5e/1RVVf9ISkj/+NEA//PO
+        AP/xzAD/7soA/+nGBf/kwxX/378bOAAAAAAAAAAAAAAAAAAAAADgwiV15cYi/+vKF//wzQ//888B//XR
+        AP/20QD/+dUA/zk0JP8yNDT/QkRE/1BQUP9bW1v/Y2Rk/2hpaf9pamr/aGlp/2NkZP9aW1v/UFBQ/1JP
+        Q//51AD/9dEA//PPAf/uzBL/6skZ/+TEJP/evCEuAAAAAAAAAAAAAAAAAAAAAOHDMFXlxi7/68sp//DO
+        Jf/z0SL/9dIf//fTHv/41R//i3km/yssLP86Ojr/R0hI/1JSUv9bW1v/YWFh/2JjY/9hYWH/Wltb/1JS
+        Uv9FRUf/nYo1//jVH//10SH/8tAj/+7NJv/qyir/5MUw/9m/JhQAAAAAAAAAAAAAAAAAAAAA4sUzI+XG
+        OP/rzDP/8NAy//TSMP/21DH/99Yv//jWL//51y7/al4p/y4uLv87Ozv/RkZG/05PT/9VVlb/V1dX/1VW
+        Vv9OT0//RENG/4V3PP/71y3/99Uw//bUMf/z0TH/788z/+rLNP/ixTb3AAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAA5MY/9OrMP//v0D7/89M+//bWPP/41z3/+dc9//nXPf/92zz/r5k1/zk2Lv83OTn/QEFB/0ZH
+        R/9ISEj/RUdH/0pIQf+1nz///ds8//jXPf/41z3/9tU8//LSPv/uzz3/6Mo+/+LFPqgAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAADhxUSS6MtE/+7PRf/y00b/9tZH//jXRf/52Ef/+tlG//rZRv/720f/58lB/15V
+        Mv8xMTH/NjY2/zc5Of9fVzv/7c5E//vbR//62Ub/+dhH//jXRf/21kf/8dJF/+3ORv/nyUX/4cNCTQAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAN+/QBDmykr/7M9L//HTTP/1107/99lO//nbTf/63E7/+txO//rc
+        Tv/73U7//NxO/2tgMv8lJSX/Z140//jZTv/73U7/+txO//rbT//52k3/99hP//TWTP/w0k3/685L/+TI
+        SNgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOXJTYjpzVH/79FT//PWVf/32VX/+dtY//rc
+        V//73Fn//N1Y//zdWP/83Vj/+9tX/1xSK//12VX//d5Y//vdWP/73Fn/+txX//naV//22Fb/8tVU/+3R
+        U//nzFH/4chORQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv79ABObKUt3s0FX/8NRY//XX
+        Wv/32lz/+dxc//rdXf/73l3//N5e//zfXv/8317//OBd//3gXf/83l3/+95d//rdXf/53Fz/9tlc//PX
+        Wv/v0lf/6s5U/+TKU6MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA28JVFebL
+        WPfs0Vv/8NVe//XYYP/322L/+dxi//rdZP/73mP/+95l//vfZP/732T/+95l//veY//53WP/+dxj//ba
+        YP/z117/8NRd/+vQWv/lylfQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAA4sxXI+bLW+3s0V7/8NRi//PXY//12WX/99tm//jcZ//53Gf/+dxn//ncZ//53Gf/+Nxn//fb
+        Zv/12WT/8tdj/+/TYP/r0F3/5staydWqVQYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA1b9VDObLXMXr0GD/7tNi//DWZP/z12b/9Nln//XaaP/12mj/9dpo//Xa
+        aP/02Wf/8tdl//DVZP/t0mL/6c9f/+bLXY8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOXLX1nmzWDi6tFj/+zSZP/u1Gb/8NVn//DW
+        Z//w1mf/79Vm/+7UZf/r0mT/6tBi/+fMX77izF8jAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADiy2Ms5cxjgebN
+        Ys3nz2TU6dBj/+nQY/3ozmPR5s1iwObLYXHnwmEVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA/AAAP/gAAA/4AAAH8AAAB/AAAAfwAAAH8AAAA/AAACf6AAAf/AAAD/gA
+        AAfwAAAH8AAAA/AAAAPgAAAD4AAAAeAAAAHgAAAB4AAAAeAAAAHgAAAD8AAAA/AAAAPwAAAH+AAAB/gA
+        AA/8AAAf/gAAH/8AAH//wAD///AD//////8=
+</value>
+  </data>
+  <data name="notifyIcon.Text" xml:space="preserve">
+    <value>ポーカーコーチ</value>
+  </data>
+  <data name="notifyIcon.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="settingStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 22</value>
+  </data>
+  <data name="settingStripMenuItem.Text" xml:space="preserve">
+    <value>監視するフォルダを指定</value>
+  </data>
+  <data name="exitStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 22</value>
+  </data>
+  <data name="exitStripMenuItem.Text" xml:space="preserve">
+    <value>終了</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -361,10 +350,10 @@
     <value>6, 12</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>380, 373</value>
+    <value>380, 55</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>ONCDaemon</value>
+    <value>ポーカーコーチの自動起動</value>
   </data>
   <data name="&gt;&gt;PSFolderBrowserDialog.Name" xml:space="preserve">
     <value>PSFolderBrowserDialog</value>
@@ -383,6 +372,24 @@
   </data>
   <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;notifyIcon.Name" xml:space="preserve">
+    <value>notifyIcon</value>
+  </data>
+  <data name="&gt;&gt;notifyIcon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NotifyIcon, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;settingStripMenuItem.Name" xml:space="preserve">
+    <value>settingStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;settingStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;exitStripMenuItem.Name" xml:space="preserve">
+    <value>exitStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;exitStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>ONCDaemonViewController</value>
