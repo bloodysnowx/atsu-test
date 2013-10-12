@@ -35,7 +35,6 @@ namespace ONCDaemon
         {
             this.labelFolderPS.Text = Properties.Settings.Default.PSHandHistoryFolder;
             this.labelFolderFT.Text = Properties.Settings.Default.FTHandHistoryFolder;
-            this.textBoxDefaultStructure.Text = Properties.Settings.Default.DefaultStructure;
         }
 
         private void Form_Load(object sender, EventArgs e)
@@ -43,7 +42,6 @@ namespace ONCDaemon
             readFromConfig();
             setLabels();
             setupEventHandler();
-            textBoxHyperSatBuyinList.Lines = System.IO.File.ReadAllLines(pathManager.getHyperSatBuyinListPath());
             if (Properties.Settings.Default.PSHandHistoryFolder == String.Empty) showPSFolderBrowser();
         }
 
@@ -72,7 +70,7 @@ namespace ONCDaemon
             switch (e.ChangeType)
             {
                 case System.IO.WatcherChangeTypes.Created:
-                    syncHyperSatBuyinList();
+                    this.notifyIcon.ShowBalloonTip(1000);
                     System.Diagnostics.Process.Start(pathManager.getONCPath(), makeHandHistoryArgs(e.FullPath));
                     break;
                 default:
@@ -82,26 +80,15 @@ namespace ONCDaemon
 
         private string makeHandHistoryArgs(string hhPath)
         {
-            string result = "\"" + hhPath + "\"" + " \"" + this.textBoxDefaultStructure.Text.Trim() + "\""
+            string result = "\"" + hhPath + "\"" + " \"" + "1" + "\""
                 + " \"" + count % 10 * 40 + "," + count % 10 * 20 + "\"";
+            count++;
             return result;
-        }
-
-        private void syncHyperSatBuyinList()
-        {
-            if (isChanged)
-            {
-                Monitor.Enter(syncObject);
-                isChanged = false;
-                System.IO.File.WriteAllText(pathManager.getHyperSatBuyinListPath(), textBoxHyperSatBuyinList.Text);
-                Monitor.Exit(syncObject);
-            }
         }
 
         private void ONCDaemonViewController_FormClosing(object sender, FormClosingEventArgs e)
         {
             Properties.Settings.Default.Save();
-            syncHyperSatBuyinList();
         }
 
         private void labelFolderPS_Click(object sender, EventArgs e)
@@ -139,6 +126,16 @@ namespace ONCDaemon
             Monitor.Enter(syncObject);
             isChanged = true;
             Monitor.Exit(syncObject);
+        }
+
+        private void settingStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPSFolderBrowser();
+        }
+
+        private void exitStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

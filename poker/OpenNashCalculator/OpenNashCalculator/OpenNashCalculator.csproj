@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OpenNashCalculator</RootNamespace>
-    <AssemblyName>正宗</AssemblyName>
+    <AssemblyName>ポーカーコーチ</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -124,13 +124,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="readme.txt" />
+    <Content Include="resouce\110.233.161.121.gif" />
+    <Content Include="resouce\128-129.jpg" />
     <Content Include="resouce\128-183.jpg" />
     <Content Include="resouce\128-30.jpg" />
     <Content Include="resouce\128-33.jpg" />
     <Content Include="resouce\128-81.jpg" />
+    <Content Include="resouce\4.jpg" />
+    <Content Include="resouce\btn041_01.png" />
+    <Content Include="resouce\btn041_04.png" />
     <Content Include="resouce\btn051_05.gif" />
     <Content Include="resouce\btn052_05.png" />
     <Content Include="resouce\btn055_05.gif" />
+    <Content Include="resouce\button10063.gif" />
+    <Content Include="resouce\green.gif" />
     <Content Include="todo.txt" />
   </ItemGroup>
   <ItemGroup>

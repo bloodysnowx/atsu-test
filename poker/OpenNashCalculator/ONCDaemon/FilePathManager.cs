@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Reflection;
+using System.IO;
 
 namespace ONCDaemon
 {
@@ -15,7 +17,17 @@ namespace ONCDaemon
 
         public string getONCPath()
         {
-            return System.IO.Directory.GetCurrentDirectory() + "/ナッシュさん.exe";
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            string path = assembly.Location;
+            string[] files = Directory.GetFiles(Directory.GetCurrentDirectory());
+            foreach (string file in files)
+            {
+                if (file.Contains(".exe") && !file.Contains("vshost") && !file.Contains("config") && !file.Equals(path))
+                {
+                    return file;
+                }
+            }
+            return System.IO.Directory.GetCurrentDirectory() + "/正宗.exe";
         }
     }
 }

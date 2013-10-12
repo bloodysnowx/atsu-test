@@ -199,8 +199,9 @@ namespace OpenNashCalculator
         {
             foreach (TextBox chipTextBox in chipTextBoxes)
                 chipTextBox.ContextMenuStrip = chipContextMenuStrip;
-            chipTextBoxes[4].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
-            rangeTextBoxes[4].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
+            chipTextBoxes[4].BackColor = rangeTextBoxes[4].BackColor = // Color.FromArgb(0xc3, 0xff, 0x4c);
+                Color.SlateGray;
+            chipTextBoxes[4].ForeColor = rangeTextBoxes[4].ForeColor = Color.White;
             this.Size = new Size(this.Size.Width - 38, this.Size.Height);
         }
 
@@ -219,7 +220,7 @@ namespace OpenNashCalculator
             readArgs(args);
             Reset();
 
-            if (isRunFromDaemon(args)) openHandHistory();
+            if (isRunFromDaemon(args)) {openHandHistory();}
         }
 
         private IEnumerable<string> readHyperSatBuyinList(string path)
@@ -242,14 +243,11 @@ namespace OpenNashCalculator
                 this.reader = HandHistoryReaderFactory.create(openHandHistoryDialog.FileName);
                 this.reader.setHyperSatBuyinList(readHyperSatBuyinList(System.IO.Directory.GetCurrentDirectory() + "\\" + Properties.Settings.Default.HyperSatBuyinListName));
                 tourney_ID = reader.getTourneyID(openHandHistoryDialog.FileName);
-#if !DEBUG
-                checkBoxClose.Checked = true;
-#endif
-                // FindTournamentWindow();
-                // GoBack();
+
                 defaultStructure = args[2];
                 string[] formOriginStr = args[3].Split(',');
                 formOrigin = new Point(System.Int32.Parse(formOriginStr[0]), System.Int32.Parse(formOriginStr[1]));
+                this.AutoCloseToolStripMenuItem.Checked = true;
             }
         }
 
@@ -354,6 +352,7 @@ namespace OpenNashCalculator
                 SeatLabels[i].Text = Seat[i];
                 SeatLabels[i].Font = new Font("MS UI Gothic", 9);
                 chipTextBoxes[i].BackColor = rangeTextBoxes[i].BackColor = Color.White;
+                chipTextBoxes[i].ForeColor = rangeTextBoxes[i].ForeColor = Color.Black;
             }
         }
 
@@ -361,7 +360,9 @@ namespace OpenNashCalculator
         {
             resetSeats();
             int index = indexes.First(i => sender == SeatLabels[i]);
-            chipTextBoxes[index].BackColor = rangeTextBoxes[index].BackColor = Color.FromArgb(0xc3, 0xff, 0x4c);
+            chipTextBoxes[index].BackColor = rangeTextBoxes[index].BackColor = /* Color.FromArgb(0xc3, 0xff, 0x4c); */
+                Color.SlateGray;
+            chipTextBoxes[index].ForeColor = rangeTextBoxes[index].ForeColor = Color.White;
             sender.Text = "H";
             sender.Font = new Font("MS UI Gothic", 9, FontStyle.Bold);
         }
@@ -609,13 +610,6 @@ namespace OpenNashCalculator
         {
             setBBLevel();
             buttonBBUP_Click(sender, e);
-        }
-
-        private void textBoxStructure_TextChanged(object sender, EventArgs e)
-        {
-            if (textBoxStructure.Text.Trim() == "1,1")
-                this.BackColor = Color.FromArgb(255, 255, 240);
-            else this.BackColor = Color.WhiteSmoke;
         }
 
         private void checkBoxICM_CheckedChanged(object sender, EventArgs e)

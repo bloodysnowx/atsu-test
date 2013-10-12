@@ -27,8 +27,7 @@ namespace OpenNashCalculator
             if (chipTextBoxes.Count(x => x.Text != string.Empty && System.Convert.ToInt32(x.Text) > 0) <= 1) return;
             textBoxStructure.Text = textBoxStructure.Text.Replace('+', ',').Replace(' ', ',');
             this.buttonCalc.Enabled = false;
-            if (CanCalcByCLI()) CalcByCLI();
-            else CalcByWeb();
+            CalcByWeb();
         }
 
         private bool CanCalcByCLI()

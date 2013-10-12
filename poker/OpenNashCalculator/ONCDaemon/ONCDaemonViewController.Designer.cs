@@ -35,16 +35,19 @@
             this.labelFolderFT = new System.Windows.Forms.Label();
             this.PSFolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.FTFolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBoxDefaultStructure = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBoxHyperSatBuyinList = new System.Windows.Forms.TextBox();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.settingStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.ForeColor = System.Drawing.Color.Gainsboro;
             this.label1.Name = "label1";
             // 
             // labelFolderPS
@@ -69,43 +72,47 @@
             resources.ApplyResources(this.PSFolderBrowserDialog, "PSFolderBrowserDialog");
             this.PSFolderBrowserDialog.ShowNewFolderButton = false;
             // 
-            // label2
+            // notifyIcon
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
+            this.notifyIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            resources.ApplyResources(this.notifyIcon, "notifyIcon");
+            this.notifyIcon.ContextMenuStrip = this.contextMenuStrip;
             // 
-            // textBoxDefaultStructure
+            // contextMenuStrip
             // 
-            resources.ApplyResources(this.textBoxDefaultStructure, "textBoxDefaultStructure");
-            this.textBoxDefaultStructure.Name = "textBoxDefaultStructure";
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.settingStripMenuItem,
+            this.exitStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            resources.ApplyResources(this.contextMenuStrip, "contextMenuStrip");
             // 
-            // label4
+            // settingStripMenuItem
             // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
+            this.settingStripMenuItem.Name = "settingStripMenuItem";
+            resources.ApplyResources(this.settingStripMenuItem, "settingStripMenuItem");
+            this.settingStripMenuItem.Click += new System.EventHandler(this.settingStripMenuItem_Click);
             // 
-            // textBoxHyperSatBuyinList
+            // exitStripMenuItem
             // 
-            resources.ApplyResources(this.textBoxHyperSatBuyinList, "textBoxHyperSatBuyinList");
-            this.textBoxHyperSatBuyinList.Name = "textBoxHyperSatBuyinList";
-            this.textBoxHyperSatBuyinList.TextChanged += new System.EventHandler(this.textBoxHyperSatBuyinList_TextChanged);
+            this.exitStripMenuItem.Name = "exitStripMenuItem";
+            resources.ApplyResources(this.exitStripMenuItem, "exitStripMenuItem");
+            this.exitStripMenuItem.Click += new System.EventHandler(this.exitStripMenuItem_Click);
             // 
             // ONCDaemonViewController
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.textBoxHyperSatBuyinList);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBoxDefaultStructure);
-            this.Controls.Add(this.label2);
+            this.BackgroundImage = global::ONCDaemon.Properties.Resources._4;
             this.Controls.Add(this.labelFolderFT);
             this.Controls.Add(this.labelFolderPS);
             this.Controls.Add(this.label1);
             this.Name = "ONCDaemonViewController";
+            this.Opacity = 0D;
+            this.ShowInTaskbar = false;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ONCDaemonViewController_FormClosing);
             this.Load += new System.EventHandler(this.Form_Load);
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -116,11 +123,11 @@
         private System.Windows.Forms.Label labelFolderFT;
         private System.Windows.Forms.FolderBrowserDialog PSFolderBrowserDialog;
         private System.Windows.Forms.FolderBrowserDialog FTFolderBrowserDialog;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBoxDefaultStructure;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBoxHyperSatBuyinList;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem settingStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitStripMenuItem;
 
 
     }
