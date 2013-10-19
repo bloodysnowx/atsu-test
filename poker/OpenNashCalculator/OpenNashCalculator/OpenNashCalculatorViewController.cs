@@ -641,22 +641,6 @@ namespace OpenNashCalculator
             openHandHistory();
         }
 
-        private void buttonHRC_Click(object sender, EventArgs e)
-        {
-            setupCurrentTableData();
-            StringBuilder chips = new StringBuilder();
-            for (int i = 1, j = 1; i < 10; ++i)
-            {
-                if (chipTextBoxes[(bb_pos + i) % 9].Text.Trim() != string.Empty)
-                {
-                    string playerName = PlayerNameLabels[(bb_pos + i) % 9].Text.Equals(string.Empty) ? "Player" + j : PlayerNameLabels[(bb_pos + i) % 9].Text;
-                    chips.AppendLine("Seat " + j + ": " + playerName + " (" +  chipTextBoxes[(bb_pos + i) % 9].Text.Trim() + " in chips)");
-                    j++;
-                }
-            }
-            CalcByHRC.Calc(currentTableData, chips.ToString());
-        }
-
         private void AutoRefreshToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AutoRefreshToolStripMenuItem.Checked = !AutoRefreshToolStripMenuItem.Checked;
