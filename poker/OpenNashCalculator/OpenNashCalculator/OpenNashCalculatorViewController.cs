@@ -660,6 +660,7 @@ namespace OpenNashCalculator
             setReaderFromFileName();
             openHandHistory();
         }
+
         private void buttonHRC_Click(object sender, EventArgs e)
         {
             clearCalc();
