@@ -1,0 +1,179 @@
+/******** 全体 ********/
+* {
+/* 横幅算出方法 */
+	-webkit-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+/* 標準フォント */
+	font-size: 9pt;
+	font-family: "Arial";
+}
+
+BODY {
+/* スクロールバー表示 */
+	overflow-y: scroll;
+}
+
+/* 赤文字 */
+#Red {
+	color: #FF0000;
+}
+
+/* 入力フォーム */
+INPUT {
+	margin: 0;
+	height: 22px;
+}
+
+/* ボタン */
+.S2, .S4, .S5, .S10, .S13 {
+	height: 24px;
+}
+
+INPUT.S2 {
+	width: 50px;
+}
+
+INPUT.S4 {
+	width: 80px;
+}
+
+INPUT.S5 {
+	width: 100px;
+}
+
+INPUT.S10 {
+	width: 160px;
+}
+
+INPUT.S13 {
+	width: 220px;
+}
+
+/***** リンク *****/
+/* 下線なし */
+A {
+	text-decoration: none;
+	color: #4169E1;
+}
+
+/* マウスオーバー時 */
+A:hover {
+	color: #9ACD32;
+	background-color: #F4FFFF;
+}
+
+/* ダウンロードリンク */
+.FileList A {
+	width: 100%;
+	line-height: 20px;
+	padding: 2px 40px 2px 10px;
+	display: block;
+	text-align: left;
+}
+
+/******** テーブル ********/
+TD {
+	white-space: nowrap;
+}
+
+/* テーブル枠 */
+.TABLE_FRAME {
+	background-color: #EDEAFF;
+}
+
+/* TBODY */
+.TABLE_TBODY {
+	background-color: #FFFFFF;
+	height: 18px;
+	text-align: left;
+}
+
+/* 紫18 太字中央 */
+.Purple18_Bold_Center {
+	background-color: #F2F0FF;
+	height: 18px;
+	font-weight: bold;
+	text-align: center;
+}
+
+/* 紫18 太字左 */
+.Purple18_Bold_Left {
+	background-color: #F2F0FF;
+	height: 18px;
+	font-weight: bold;
+}
+
+/* 白20 中央 */
+.White20_Center {
+	background-color: #FFFFFF;
+	height: 20px;
+	text-align: center;
+}
+
+/* 白24 中央 */
+.White24_Center {
+	background-color: #FFFFFF;
+	height: 24px;
+	text-align: center;
+}
+
+/* 薄桃24 中央 */
+.U_Pink24_Center {
+	background-color: #FFF0F5;
+	height: 24px;
+	text-align: center;
+}
+
+/* 薄灰18 太字中央 */
+.U_Gray18_Bold_Center {
+	background-color: #F9F9F9;
+	height: 18px;
+	font-weight: bold;
+	text-align: center;
+}
+
+/* 右多め余白 */
+#Cell_Margin_Right {
+	padding: 0px 40px 0px 10px;
+	text-align: left;
+}
+
+/* 右少なめ余白 */
+#Cell_Margin_Right_Small {
+	padding: 0px 10px 0px 0px;
+	text-align: right;
+}
+
+/* 左多め余白 */
+#Cell_Margin_Left {
+	padding: 0px 10px 0px 30px;
+	text-align: right;
+}
+
+/* 左右余白 */
+#Cell_Margin {
+	padding: 0px 15px 0px 15px;
+}
+
+/* 英字入力 */
+#IME-Mode {
+	ime-mode: disabled;
+}
+
+/******** ページリスト ********/
+/* 選択中ページ */
+#PageSees {
+	height: 30px;
+	text-align: center;
+	background-color: #F0F0F0;
+}
+
+/* リンク */
+.PageLink A {
+	height: 30px;
+	padding: 7px 0px 0px 0px;
+	text-align: center;
+	display: block;
+}
