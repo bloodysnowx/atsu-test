@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace OpenNashCalculator
 {
@@ -11,6 +12,10 @@ namespace OpenNashCalculator
         const int BM_CLICK = 0x00F5;
         const int WM_COMMAND = 0x0111;
         const int WM_ACTIVATE = 0x0006;
+        const int CB_SETCURSEL = 0x014E;
+        const int EM_SETSEL = 0x00B1;
+        const int WM_COPY = 0x0301;
+        const int CBN_SELCHANGE = 0x0001;
 
         delegate bool WNDENUMPROC(IntPtr hwnd, int lParam);
         [DllImport("user32")]
@@ -29,6 +34,8 @@ namespace OpenNashCalculator
 
         [DllImport("user32.dll")]
         public static extern Int32 PostMessage(IntPtr hWnd, int msg, int wParam, int lParam);
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, IntPtr wParam, IntPtr lParam);
         [DllImport("user32.dll")]
         static extern IntPtr SetFocus(IntPtr hWnd);
 
@@ -44,6 +51,16 @@ namespace OpenNashCalculator
         static IntPtr nextButton;
         static IntPtr finishButton;
         static IntPtr pasteButton;
+        static IntPtr calculatingDialog;
+        static IntPtr exportStrategiesDialog;
+        static IntPtr selectedSpotComboBox;
+        static IntPtr rangeTextBox;
+        static IntPtr exportStrategiesDialogOKButton;
+
+        static int MakeWParam(int loWord, int hiWord)
+        {
+            return (loWord & 0xFFFF) + ((hiWord & 0xFFFF) << 16);
+        }
 
         public static void Calc(TableData tableData, string chips)
         {
@@ -57,10 +74,10 @@ namespace OpenNashCalculator
                 {
                     nextButton = FindWindowEx(newDialog, IntPtr.Zero, "Button", null);
                     EnumChildWindows(newDialog, FindNextButton, 0);
-                    PostMessage(newDialog, WM_ACTIVATE, 0, 0);
-                    PostMessage(nextButton, BM_CLICK, 0, 0);
+                    SendMessage(newDialog, (uint)WM_ACTIVATE, IntPtr.Zero, IntPtr.Zero);
+                    SendMessage(nextButton, (uint)BM_CLICK, IntPtr.Zero, IntPtr.Zero);
                     newDialog = FindWindow(null, "New");
-                    System.Threading.Thread.Sleep(100);
+                    System.Threading.Thread.Sleep(10);
                 }
 
                 setupDialog = FindDialog("Basic Hand Setup");
@@ -70,17 +87,55 @@ namespace OpenNashCalculator
                 if (pasteButton == null) throw new ApplicationException();
                 for (int i = 0; i < 5; ++i)
                 {
-                    PostMessage(pasteButton, BM_CLICK, 0, 0);
-                    System.Threading.Thread.Sleep(100);
+                    SendMessage(pasteButton, (uint)BM_CLICK, IntPtr.Zero, IntPtr.Zero);
+                    System.Threading.Thread.Sleep(10);
                 }
                 EnumChildWindows(setupDialog, FindFinishButton, 0);
                 if (finishButton == null) throw new ApplicationException();
-                PostMessage(finishButton, BM_CLICK, 0, 0);
+                SendMessage(finishButton, (uint)BM_CLICK, IntPtr.Zero, IntPtr.Zero);
+
+                calculatingDialog = FindDialog("Basic Hand Setup");
+                while (calculatingDialog != IntPtr.Zero)
+                {
+                    System.Threading.Thread.Sleep(100);
+                    calculatingDialog =  FindWindow(null, "Basic Hand Setup");
+                }
+
+                openExportStrategies(hrc);
+                exportStrategiesDialog = FindDialog("Export Strategies");
+
+                IntPtr swtWindowTop = FindWindowEx(exportStrategiesDialog, IntPtr.Zero, "SWT_Window0", null);
+                IntPtr swtWindowNext = FindWindowEx(swtWindowTop, IntPtr.Zero, "SWT_Window0", null);
+                selectedSpotComboBox = FindWindowEx(swtWindowNext, IntPtr.Zero, "ComboBox", null);
+                selectedSpotComboBox = FindWindowEx(swtWindowNext, selectedSpotComboBox, "ComboBox", null);
+                PostMessage(selectedSpotComboBox, CB_SETCURSEL, 0, 0);
+                SendMessage(selectedSpotComboBox, (uint)CB_SETCURSEL, IntPtr.Zero, IntPtr.Zero);
+                PostMessage(exportStrategiesDialog, WM_COMMAND, MakeWParam(0, CBN_SELCHANGE), selectedSpotComboBox.ToInt32());
+
+                rangeTextBox = FindWindowEx(swtWindowNext, IntPtr.Zero, "Edit", null);
+                PostMessage(rangeTextBox, EM_SETSEL, 0, -1);
+                System.Threading.Thread.Sleep(100);
+                SendMessage(rangeTextBox, WM_COPY, IntPtr.Zero, IntPtr.Zero);
+                string rangText = Clipboard.GetText();
+
+                swtWindowNext = FindWindowEx(swtWindowTop, swtWindowNext, "SWT_Window0", null);
+                exportStrategiesDialogOKButton = FindWindowEx(swtWindowNext, IntPtr.Zero, "Button", "OK");
+                SendMessage(exportStrategiesDialogOKButton, (uint)BM_CLICK, IntPtr.Zero, IntPtr.Zero);
             }
             catch (Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show("Cannot Find HRC" + System.Environment.NewLine + ex);
             }
+        }
+
+        static void openExportStrategies(IntPtr hrc)
+        {
+            IntPtr menu = GetMenu(hrc);
+            uint handMenuItemID = GetMenuItemID(menu, 1);
+            PostMessage(hrc, WM_COMMAND, (int)handMenuItemID, 0);
+            IntPtr handMenu = GetSubMenu(menu, 1);
+            uint exportStrategiesMenuItemID = GetMenuItemID(handMenu, 1);
+            PostMessage(hrc, WM_COMMAND, (int)exportStrategiesMenuItemID, 0);
         }
 
         static void openBasicHand(IntPtr hrc)
