@@ -10,7 +10,7 @@
         <meta name="robots" content="follow, all">
         <link rel="shortcut icon" type="image/x-icon" href="icon/favicon.ico">
 
-        <title>ポーカーコーチ　有料版</title>
+        <title>ポーカーコーチ</title>
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -7941,10 +7941,10 @@ fieldset[disabled] #blog .button_blog.active {
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                
-                <li><a href="http://www.pokercoach.biz/FAQ.html">FAQ</a></li>
+                <li><a href="http://www.pokercoach.biz/index.html">TOP</a></li>
                 <li><a href="http://www.pokercoach.biz/product.html">有料版</a></li>
-		<li><a href="http://www.pokercoach.biz/main.html">ナッシュ計算機</a></li>                            </ul>
+		<li><a href="http://www.pokercoach.biz/main.html">WEB版</a></li>
+	    </ul>
                 <div class="navbar-right">
                            <div id="loginBox">
                         <b class="notch"></b>
@@ -8006,10 +8006,6 @@ fieldset[disabled] #blog .button_blog.active {
     <button class="btn btn-primary pull-right closeBtn">Close</button>
 </div>
 
-
-    
-
-
         <!-- The Laptop -->
       <br><br><br><br>  <div id="actionCall" class="col-lg-12"></div>
     </div>
@@ -8018,59 +8014,61 @@ fieldset[disabled] #blog .button_blog.active {
 
     <div class="row featurette"></div>
     <div class="row featurette">
-        <div class="col-md-6"><img class="thumbnail" src="images/coach.png" style="max-width:100%" alt="">
-      </div>
       <div class="col-md-6">
-        <h2 class="featurette-heading">製作中</h2>
-          <p class="lead">みなさまからの質問にお答えしていきます。<br>
-        </p>
-        </div>
-    </div>
+	<script type="text/javascript" src="TableData.js"></script>
+	<script type="text/javascript" src="PSHandReader.js"></script>
+	<script type="text/javascript" src="main.js"></script>
 
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-          <div class="col-md-7">
-            
-              <h2 class="featurette-heading1"><br>
-            </h2>
-          
-          </div>
-            <p class="lead">&nbsp;</p>
+	<!-- begin content -->
+	<div id="site_content">
+	  <form name="HandHistory">
+            <div class="form_settings">
+              <p><span>賞金ストラクチャ</span><input type="text" name="Structure" value="1" style="margin-left: 122px; width: 90%"/></p>
+	      <p><input class="submit button" type="button" value="MTT" onClick="document.HandHistory.Structure.value='1'" style="margin-left: 122px; width: 100px;"/>
+		<input class="submit button" type="button" value="ハイパーサテ6人卓" onClick="document.HandHistory.Structure.value='1,1'" style="margin-left: 10px;"/>
+		<input class="submit button" type="button" value="SNG6人卓" onClick="document.HandHistory.Structure.value='65,35'" style="margin-left: 10px; width: 120px;"/></p>
+		<p><input class="submit button" type="button" value="SNG9人卓" onClick="document.HandHistory.Structure.value='5,3,2'" style="margin-left: 122px; width: 120px;"/>
+		<input class="submit button" type="button" value="Fifty50" onClick="document.HandHistory.Structure.value='6,1,1,1,1'" style="margin-left: 10px; width: 120px;"/></p>
+              <p><span>ハンド履歴</span><textarea type="text" name="Content" cols="100" rows="10" placeholder="ここにハンド履歴をコピー＆ペースト" style="margin-left: 122px; width: 90%;"></textarea></p>
+              <p><input class="submit button" type="button" value="現在の状況で計算！" onClick="main(false)" style="margin-left: 122px; width: 90%;font-size: 18px;"/></p>
+              <p><input class="submit button" type="button" value="次の状況で計算！" onClick="main(true)" style="margin-left: 122px; width: 90%;font-size: 18px;"/></p>
+            </div>
+	  </form>
+	</div>
+	<!-- end content -->
       </div>
+      <!-- javascript at the bottom for fast page loading -->
+      <script type="text/javascript" src="js/jquery.min.js"></script>
+      <script type="text/javascript" src="js/jquery.easing-sooper.js"></script>
+      <script type="text/javascript" src="js/jquery.sooperfish.js"></script>
+      <script type="text/javascript" src="js/image_fade.js"></script>
+      <!-- initialise sooperfish menu -->
+      <script type="text/javascript">
+	$(document).ready(function() {
+	$('ul.sf-menu').sooperfish();
+	});
+      </script>
     </div>
+    <hr class="featurette-divider">
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading1"><br>
+        </h2>
+      </div>
+      <p class="lead">&nbsp;</p>
     </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <!-- /END of container -->
-
+    <div>
+      <center>
+	<h1>先着150名様に無料でクライアント版をプレゼント</h1>
+        <p>定価3000円の『ポーカーコーチ』を無料でプレゼントします。<br>
+          ※予定配布数を超えた時点で終了となります。</p>
+	<img src="images/pokercoach.jpg">
+	<p><a class="btn btn-large btn-primary signUP" href="./uploader/">ダウンロードする</a></p>
+      </center>
+    </div>
+  </div>
+</div>
+<!-- /END of container -->
 
     <div class="footer">
     <div class="container">
@@ -8080,11 +8078,7 @@ fieldset[disabled] #blog .button_blog.active {
         © POKER COACH 2013. All Rights Reserved.</p>
     </div>
 </div>
-    
-
     <script src="./js/recaptcha_ajax.js" type="text/javascript"></script>
-
-    
     
     <script type="text/javascript">
             var static_root_dir = '/static/';
@@ -8100,9 +8094,6 @@ fieldset[disabled] #blog .button_blog.active {
     <script src="./js/bootstrap.js"></script>
     <script src="./js/pokerdata.js"></script>
     
-        
-
-    
             <!-- Google Analytics -->
     <script type="text/javascript">
                 var _gaq = _gaq || [];
@@ -8116,9 +8107,4 @@ fieldset[disabled] #blog .button_blog.active {
                 })();
             </script>
             <!-- / Google Analytics -->
-        
-
-
-    
-
 </body></html>
