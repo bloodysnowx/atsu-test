@@ -43,6 +43,7 @@ namespace ONCDaemon
             setLabels();
             setupEventHandler();
             if (Properties.Settings.Default.PSHandHistoryFolder == String.Empty) showPSFolderBrowser();
+            System.Windows.Forms.MessageBox.Show("トーナメント開始後に自動でポーカーコーチを立ち上げます");
         }
 
         private void setupEventHandler()
