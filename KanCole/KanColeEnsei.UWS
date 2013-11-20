@@ -1,3 +1,5 @@
+CALL util.uws
+
 SetUp()
 // Main2()
 // EndlessTwoThree()
@@ -58,20 +60,6 @@ Fend
 
 Procedure ActivateKanCole()
 	 ACW(GETID("äÕë‡Ç±ÇÍÇ≠ÇµÇÂÇÒÅ`äÕÇ±ÇÍÅ` - ÉIÉìÉâÉCÉìÉQÅ[ÉÄ - DMM.com - Mozilla Firefox","MozillaWindowClass"),2871,0,969,1030,0)
-Fend
-
-// time * 3 ms
-Procedure ClickArroundPoint(x, x_range, y, y_range, time, time_range)
-    BTN(LEFT, DOWN, x + RANDOM(x_range), y + RANDOM(y_range), time + RANDOM(time_range))
-    end_x = x + RANDOM(x_range)
-    end_y = y + RANDOM(y_range)
-    MMV(end_x, end_y, time + RANDOM(time_range))
-    BTN(LEFT, UP, end_x, end_y, time + RANDOM(time_range))   
-Fend
-
-Procedure ClickArroundPointAndSleep(x, x_range, y, y_range, time, time_range, sleep_time, sleep_range)
-    ClickArroundPoint(x, x_range, y, y_range, time, time_range)
-    SLEEP(sleep_time + RANDOM(sleep_range))
 Fend
 
 // 12s
@@ -282,38 +270,23 @@ Procedure EndlessTwoThree
     Wend
 Fend
 
-Procedure WaitClickSleep(x, x_range, y, y_range, time, time_range, sleep_time, sleep_range, wait_x, wait_y, wait_color, wait_max)
-    color = PEEKCOLOR(wait_x, wait_y)
-    For i = 0 to wait_max
-        If color = wait_color
-	    break
-        Endif
-        Print GetTimeString() + "Expected = " + format(wait_color, 6, -1) + " but Actual = " + format(color, 6, -1) + " @x=" + wait_x + ",y=" + wait_y 
-        Sleep(3 + RANDOM(3))
-        color = PEEKCOLOR(wait_x, wait_y)
-    Next
-    ClickArroundPointAndSleep(x, x_range, y, y_range, time, time_range, sleep_time, sleep_range)
-Fend
-
 Procedure GoThreeTwoOne
     Print GetTimeString() + "GoThreeTwoOne"
     ClickArroundPointAndSleep(3114, 80, 415, 80, 300, 200, 1, 1)
-    WaitClickSleep(3146, 80, 379, 80, 300, 200, 1, 1, 3089, 332, $B9AF8F, 5)
-    WaitClickSleep(3242, 40, 629, 20, 300, 200, 1, 1, 3073, 365, $DFEBF4, 5)
+    WaitClickSleep(3146, 80, 379, 80, 300, 200, 1, 1, 3089, 332, $B9AF8F, -1, -1, 2, 5)
+    WaitClickSleep(3242, 40, 629, 20, 300, 200, 1, 1, 3073, 365, $DFEBF4, -1, -1, 2, 5)
     MMV(3516, 396, 10)
-    WaitClickSleep(3538, 80, 362, 80, 300, 200, 1, 1, 3516, 396, $D4C39E, 5)
-    WaitClickSleep(3611, 40, 634, 10, 300, 200, 3, 1, 3567, 312, $C9D4DC, 5)
-    WaitClickSleep(3555, 80, 635, 10, 300, 200, 4, 1, 3354, 646, $DDE9F2, 5)
-    WaitClickSleep(3328, 40, 430, 10, 300, 200, 4, 1, 3350, 433, $ADAEAB, 5)
-    // color = PEEKCOLOR(3642, 237)
-    //    While color color <> $4B5355 AND color <>
-    WaitClickSleep(3363, 80, 375, 10, 300, 200, 20, 5, 3642, 237, $4B5355, 5)
+    WaitClickSleep(3538, 80, 362, 80, 300, 200, 1, 1, 3516, 396, $D4C39E, -1, -1, 2, 5)
+    WaitClickSleep(3611, 40, 634, 10, 300, 200, 3, 1, 3567, 312, $C9D4DC, -1, -1, 2, 5)
+    WaitClickSleep(3555, 80, 635, 10, 300, 200, 4, 1, 3354, 646, $DDE9F2, -1, -1, 2, 5)
+    WaitClickSleep(3328, 40, 430, 10, 300, 200, 4, 1, 3350, 433, $ADAEAB, $ACADAA, $ADAFAC, 3, 5)
+    WaitClickSleep(3363, 80, 375, 10, 300, 200, 20, 5, 3642, 237, $4B5355, -1, -1, 2, 5)
     Print GetTimeString() + "Battle Started"
 
-    WaitClickSleep(3663, 80, 583, 80, 300, 200, 3, 3, 3705, 637, $9B991C, 25)
+    WaitClickSleep(3663, 80, 583, 80, 300, 200, 3, 3, 3705, 637, $9B991C, -1, -1, 5, 25)
     Print GetTimeString() + "Battle Ended"
 
-    WaitClickSleep(3663, 80, 583, 80, 300, 200, 3, 3, 3006, 283, $F2F6FF, 5)
+    WaitClickSleep(3663, 80, 583, 80, 300, 200, 3, 3, 3006, 283, $F2F6FF, -1, -1, 2, 5)
     Print GetTimeString() + "Result Ended"
 
     For i = 0 to 20
