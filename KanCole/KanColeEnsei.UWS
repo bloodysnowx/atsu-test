@@ -98,27 +98,6 @@ Procedure ChargeAndEnseiAtFast(x)
     GoEnseiAt(x)
 Fend
 
-Procedure GoChokyori
-    Print GetTimeString() + "GoChokyori"
-    ChargeAndEnseiAt(2)
-Fend
-
-Procedure GoKaijo
-    Print GetTimeString() + "GoKaijo"
-    ChargeAndEnseiAt(3)
-Fend
-
-Procedure GoKantaiKessen
-    Print GetTimeString() + "GoKantaiKessen"
-    ChargeAndEnseiAt(4)
-Fend
-
-Function GetStatusAt(x)
-    ActivateLogbook()
-    id = GETID("çqäCì˙éè 0.4.4", "SWT_Window0", -1)
-    RESULT = GETSTR(id, x)
-Fend
-
 Function GetChokyoriStatus
     RESULT = GetStatusAt(1)
 Fend
