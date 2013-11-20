@@ -1,9 +1,12 @@
 Procedure ClickArroundPoint(x, x_range, y, y_range, time, time_range)
+    origin_x = G_MOUSE_X
+    origin_y = G_MOUSE_Y
     BTN(LEFT, DOWN, x + RANDOM(x_range), y + RANDOM(y_range), time + RANDOM(time_range))
     end_x = x + RANDOM(x_range)
     end_y = y + RANDOM(y_range)
     MMV(end_x, end_y, time + RANDOM(time_range))
     BTN(LEFT, UP, end_x, end_y, time + RANDOM(time_range))   
+    MMV(origin_x, origin_y, 10)
 Fend
 
 Procedure ClickArroundPointAndSleep(x, x_range, y, y_range, time, time_range, sleep_time, sleep_range)
@@ -23,4 +26,14 @@ Procedure WaitClickSleep(x, x_range, y, y_range, time, time_range, sleep_time, s
     Next
     ClickArroundPointAndSleep(x, x_range, y, y_range, time, time_range, sleep_time, sleep_range)
 
+Fend
+
+Function GetTimeString
+    GETTIME()
+    RESULT = G_TIME_HH2 + ":" + G_TIME_NN2 + ":" + G_TIME_SS2 + " "
+Fend
+
+Procedure SleepAndPrint(time)
+    Print GetTimeString() + "Start Sleep(" + time + ")"
+    Sleep(time)
 Fend

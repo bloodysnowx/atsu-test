@@ -55,7 +55,7 @@ Fend
 // 33s 
 Procedure GoEnseiAt(x)
     Print GetTimeString() + "GoEnseiAt " + x
-    ClickArroundPointAndSleep(3140, 40, 429, 40, 300, 200, 4, 4)
+    ClickèoåÇ()
     ClickArroundPointAndSleep(3611, 40, 398, 40, 300, 200, 6, 4)
 
     IF x = 2
@@ -113,21 +113,6 @@ Procedure GoKantaiKessen
     ChargeAndEnseiAt(4)
 Fend
 
-Function GetTimeString
-    GETTIME()
-    RESULT = G_TIME_HH2 + ":" + G_TIME_NN2 + ":" + G_TIME_SS2 + " "
-Fend
-
-Procedure SleepAndPrint(time)
-    Print GetTimeString() + "Start Sleep(" + time + ")"
-    Sleep(time)
-Fend
-
-Procedure ActivateLogbook
-    ACW(GETID("çqäCì˙éè 0.4.4","SWT_Window0"),3560,773,280,420,0)
-    BTN(LEFT,CLICK,3582,831,188)
-Fend
-
 Function GetStatusAt(x)
     ActivateLogbook()
     id = GETID("çqäCì˙éè 0.4.4", "SWT_Window0", -1)
@@ -165,25 +150,6 @@ Procedure GoEnseiIfNeed
     Next
 Fend
 
-Procedure ReloadBath
-    ACW(GETID("Ç®ïóòCÇ…ì¸ÇËÇΩÇ¢äÕñ∫","#32770"),2873,794,600,350,0)
-    BTN(LEFT,CLICK,2962,831,234)
-    Sleep(1)
-    BTN(LEFT,CLICK,2989,851,203)
-Fend
-
-Function GetDamagedShip
-    ReloadBath()
-    ACW(GETID("Ç®ïóòCÇ…ì¸ÇËÇΩÇ¢äÕñ∫","#32770"),2873,794,600,350,0)
-    BTN(RIGHT,CLICK,3133,877,300)
-    Sleep(1)
-    id = GETID("", "#32768", -1)
-    CLKITEM(id, "ÉNÉäÉbÉvÉ{Å[ÉhÇ…ÉRÉsÅ[(C)", CLK_ACC or CLK_BACK or CLK_MUSMOVE)
-    RESULT = GETSTR(0)
-    RESULT = LENGTH(RESULT) > 35
-    Print GetTimeString() + "GetDamagedShip " + RESULT
-Fend
-
 Procedure TakeABath
     ClickArroundPointAndSleep(3060, 40, 533, 40, 300, 200, 7, 4)
     ClickArroundPointAndSleep(3168, 80, 334, 40, 300, 200, 4, 4)
@@ -193,33 +159,9 @@ Procedure TakeABath
     ClickArroundPointAndSleep(2984, 40, 218, 40, 300, 200, 4, 4)
 Fend
 
-Function IsTakingABath
-    ActivateLogbook()
-    id = GETID("çqäCì˙éè 0.4.4", "SWT_Window0", -1)
-    RESULT = LENGTH(GETSTR(id, 4)) > 0
-    Print GetTimeString() + "IsTakingABath " + RESULT
-Fend
-
-Procedure GoTwoThree
-    Print GetTimeString() + "GoTwoThree"
-    ChargeAt(1)
-Fend
-
-Procedure EndlessTwoThree
-    While True
-        If GetDamagedShip()
-            TakeABath()
-        Endif
-	If IsTakingABath() = False
-            GoTwoThree()
-        Endif
-	Sleep(5 * 60 + RANDOM(30))
-    Wend
-Fend
-
 Procedure GoThreeTwoOne
     Print GetTimeString() + "GoThreeTwoOne"
-    ClickArroundPointAndSleep(3114, 80, 415, 80, 300, 200, 1, 1)
+    ClickèoåÇ()
     WaitClickSleep(3146, 80, 379, 80, 300, 200, 1, 1, 3089, 332, $B9AF8F, -1, -1, 2, 5)
     WaitClickSleep(3242, 40, 629, 20, 300, 200, 1, 1, 3073, 365, $DFEBF4, -1, -1, 2, 5)
     MMV(3516, 396, 10)

@@ -41,11 +41,11 @@ Fend
 
 Procedure Select補給艦隊(x)
     IF x = 2
-        WaitClickSleep(3132, 6, 307, 6, 300, 200, 3, 1, 3599, 379, $B8D2C6, -1, -1, 2, 5)
+        WaitClickSleep(3132, 6, 307, 6, 300, 200, 3, 1, 3599, 379, $B8D2C6, $B9D2C6, -1, 2, 5)
     ELSEIF x = 3
-        WaitClickSleep(3163, 6, 307, 6, 300, 200, 3, 1, 3599, 379, $B8D2C6, -1, -1, 2, 5)
+        WaitClickSleep(3163, 6, 307, 6, 300, 200, 3, 1, 3599, 379, $B8D2C6, $B9D2C6, -1, 2, 5)
     ELSEIF x = 4
-        WaitClickSleep(3193, 6, 307, 6, 300, 200, 3, 1, 3599, 379, $B8D2C6, -1, -1, 2, 5)
+        WaitClickSleep(3193, 6, 307, 6, 300, 200, 3, 1, 3599, 379, $B8D2C6, $B9D2C6, -1, 2, 5)
     ENDIF
 Fend
 
@@ -60,3 +60,48 @@ Fend
 Procedure GoBackHome
     ClickArroundPointAndSleep(2981, 40, 216, 40, 300, 200, 5, 3)
 Fend
+
+Procedure Click出撃
+    ClickArroundPointAndSleep(3140, 40, 429, 40, 300, 200, 4, 2)
+Fend
+
+Procedure ActivateLogbook
+    origin_x = G_MOUSE_X
+    origin_y = G_MOUSE_Y
+    ACW(GETID("航海日誌 0.4.4","SWT_Window0"),3560,773,280,420,0)
+    BTN(LEFT,CLICK,3582,831,188)
+    MMV(origin_x, origin_y, 10)
+Fend
+
+Procedure ReloadBath
+    origin_x = G_MOUSE_X
+    origin_y = G_MOUSE_Y
+    ACW(GETID("お風呂に入りたい艦娘","#32770"),2873,794,600,350,0)
+    BTN(LEFT,CLICK,2962,831,234)
+    Sleep(1)
+    BTN(LEFT,CLICK,2989,851,203)
+    MMV(origin_x, origin_y, 10)
+Fend
+
+Function IsTakingABath
+    ActivateLogbook()
+    id = GETID("航海日誌 0.4.4", "SWT_Window0", -1)
+    RESULT = LENGTH(GETSTR(id, 4)) > 0
+    Print GetTimeString() + "IsTakingABath " + RESULT
+Fend
+
+Function GetDamagedShip
+    ReloadBath()
+    ACW(GETID("お風呂に入りたい艦娘","#32770"),2873,794,600,350,0)
+    origin_x = G_MOUSE_X
+    origin_y = G_MOUSE_Y
+    BTN(RIGHT,CLICK,3133,877,300)
+    Sleep(1)
+    id = GETID("", "#32768", -1)
+    CLKITEM(id, "クリップボードにコピー(C)", CLK_ACC or CLK_BACK or CLK_MUSMOVE)
+    MMV(origin_x, origin_y, 10)
+    RESULT = GETSTR(0)
+    RESULT = LENGTH(RESULT) > 35
+    Print GetTimeString() + "GetDamagedShip " + RESULT
+Fend
+
