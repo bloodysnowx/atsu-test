@@ -1,7 +1,8 @@
 CALL util.uws
+CALL KanColeUtil.UWS
 
 SetUp()
-// Main2()
+Main2()
 // EndlessTwoThree()
 // GoThreeTwoOneMain()
 // GoThreeTwoOne()
@@ -10,24 +11,9 @@ SetUp()
 GoThreeTwoOne()
 ChargeAt(1)
 
-
-Procedure Main()
-    ActivateKanCole()
-    WHILE True
-        GoChokyori()
-    	GoKaijo()
-	GoKantaiKessen()
-	SleepAndPrint(29 * 60 - 167 * 3 + RANDOM(30))
-	GoChokyori()
-        SleepAndPrint(29 * 60 - 167 + RANDOM(30))
-        GoChokyori()
-        SleepAndPrint(29 * 60 - 167 + RANDOM(30))
-    WEND
-Fend
-
 Procedure Main2()
     WHILE True
-        // GoThreeTwoOneMain()
+        GoThreeTwoOneMain()
         For i = 0 to 3
 	    ResetConfig()
 	    ResetToHome()
@@ -38,52 +24,13 @@ Procedure Main2()
     WEND
 Fend
 
-Procedure ResetToHome()
-    ResetIfNotColor(2995, 332, $D5D3D0)
-    ResetIfNotColor(2992, 358, $D4D2CF)
-    ResetIfNotColor(2991, 372, $CCCAC7)
-Fend
-
-Procedure ResetIfNotColor(x, y, peek_color)
-    color = PEEKCOLOR(x, y)
-    If color <> peek_color
-        RefreshByTask()
-    Endif
-Fend
-
-Procedure ResetConfig()
-    color = PEEKCOLOR(3524, 417)
-    If color = $18261C
-        ClickArroundPointAndSleep(3723, 20, 633, 20, 300, 200, 4, 2)
-    Endif
-Fend
-
-Procedure ActivateKanCole()
-	 ACW(GETID("äÕë‡Ç±ÇÍÇ≠ÇµÇÂÇÒÅ`äÕÇ±ÇÍÅ` - ÉIÉìÉâÉCÉìÉQÅ[ÉÄ - DMM.com - Mozilla Firefox","MozillaWindowClass"),2871,0,969,1030,0)
-Fend
-
-// 12s
-Procedure RefreshByTask
-    Print GetTimeString() + "RefreshByTask"
-    ClickArroundPointAndSleep(3502, 10, 241, 4, 300, 200, 3, 4)
-    ClickArroundPointAndSleep(3001, 20, 242, 20, 400, 200, 3, 4)
-    ClickArroundPointAndSleep(3001, 20, 242, 20, 200, 200, 3, 4)
-Fend
-
-// 19s
 Procedure ChargeAt(x)
     Print GetTimeString() + "ChargeAt " + x
-    ClickArroundPointAndSleep(3023, 10, 403, 10, 300, 200, 3, 4)
-    IF x = 2
-        ClickArroundPointAndSleep(3132, 6, 307, 6, 300, 200, 2, 4)
-    ELSEIF x = 3
-        ClickArroundPointAndSleep(3163, 6, 307, 6, 300, 200, 2, 4)
-    ELSEIF x = 4
-        ClickArroundPointAndSleep(3193, 6, 307, 6, 300, 200, 2, 4)
-    ENDIF
-    ClickArroundPointAndSleep(3076, 3, 311, 3, 200, 200, 2, 2)
-    ClickArroundPointAndSleep(3642, 20, 629, 10, 400, 200, 3, 3)
-    ClickArroundPointAndSleep(2981, 40, 216, 40, 300, 200, 5, 3)
+    Goï‚ãã()
+    Selectï‚ããäÕë‡(x)
+    Selectï‚ããAll()
+    ClickÇ‹Ç∆ÇﬂÇƒï‚ãã()
+    GoBackHome()
     EnseiKakuninIfNeed()
 Fend
 
@@ -314,14 +261,8 @@ Procedure GoThreeTwoOneMain
     Endif
 Fend
 
-Procedure SetUp
-    ACW(GETID("äÕë‡Ç±ÇÍÇ≠ÇµÇÂÇÒÅ`äÕÇ±ÇÍÅ` - ÉIÉìÉâÉCÉìÉQÅ[ÉÄ - DMM.com - Mozilla Firefox","MozillaWindowClass"),2871,0,969,1030,0)
-    ACW(GETID("çqäCì˙éè 0.4.4","SWT_Window0"),3560,773,280,420,0)
-    ACW(GETID("Ç®ïóòCÇ…ì¸ÇËÇΩÇ¢äÕñ∫","#32770"),2873,794,600,350,0)
-Fend
-
 Procedure CreateAirPlane
-    ACW(GETID("äÕë‡Ç±ÇÍÇ≠ÇµÇÂÇÒÅ`äÕÇ±ÇÍÅ` - ÉIÉìÉâÉCÉìÉQÅ[ÉÄ - DMM.com - Mozilla Firefox","MozillaWindowClass"),2871,0,969,1030,0)
+    ActivateKanCole()
 
     ClickArroundPointAndSleep(3172, 40, 526, 20, 200, 100, 3, 1)
 
