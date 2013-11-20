@@ -1,0 +1,41 @@
+// CTRLボタンでPRINT表示するスレッド
+color = PEEKCOLOR(3642, 237)
+Print format(color, 6, -1)
+
+THREAD PRINTSTATE()
+
+WHILE True
+  s = GETSTATE()
+  Fukidasi(s, 10, 10, 0) 
+  Sleep(0.1) 
+WEND
+
+// 情報取得
+FUNCTION GETSTATE
+  // カーソル下のウィンドウが対象
+  ID = GETID(GET_FROMPOINT_WIN)
+  // 絶対座標
+  x1 = G_MOUSE_X
+  y1 = G_MOUSE_Y
+  // 相対座標
+  x2 = x1 - STATUS(ID, ST_X)
+  y2 = y1 - STATUS(ID, ST_Y)
+  s = "絶対座標 x:" + x1 + " y:" + y1 + "<#cr>"
+  s = s + "相対座標 x:" + x2 + " y:" + y2 + "<#cr>"
+  cd = PEEKCOLOR( x1,y1 )
+  s = s + "色:#" + format(cd, 6, -1)
+  RESULT = s
+FEND
+
+// PRINT表示
+PROCEDURE PRINTSTATE
+  WHILE TRUE
+    // CTRLが押されたら
+    IFB GETKEYSTATE(VK_CTRL)
+      PRINT GETSTATE()
+      SLEEP(1.5)
+    ELSE
+      SLEEP(0.1)
+    ENDIF
+  WEND
+FEND

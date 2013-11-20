@@ -1,0 +1,367 @@
+SetUp()
+// Main2()
+// EndlessTwoThree()
+// GoThreeTwoOneMain()
+// GoThreeTwoOne()
+// CreateAirPlane()
+
+GoThreeTwoOne()
+ChargeAt(1)
+
+
+Procedure Main()
+    ActivateKanCole()
+    WHILE True
+        GoChokyori()
+    	GoKaijo()
+	GoKantaiKessen()
+	SleepAndPrint(29 * 60 - 167 * 3 + RANDOM(30))
+	GoChokyori()
+        SleepAndPrint(29 * 60 - 167 + RANDOM(30))
+        GoChokyori()
+        SleepAndPrint(29 * 60 - 167 + RANDOM(30))
+    WEND
+Fend
+
+Procedure Main2()
+    WHILE True
+        // GoThreeTwoOneMain()
+        For i = 0 to 3
+	    ResetConfig()
+	    ResetToHome()
+	    RefreshIfNeed()
+	    GoEnseiIfNeed()
+	    SleepAndPrint(3 * 60 + RANDOM(30))
+	Next
+    WEND
+Fend
+
+Procedure ResetToHome()
+    ResetIfNotColor(2995, 332, $D5D3D0)
+    ResetIfNotColor(2992, 358, $D4D2CF)
+    ResetIfNotColor(2991, 372, $CCCAC7)
+Fend
+
+Procedure ResetIfNotColor(x, y, peek_color)
+    color = PEEKCOLOR(x, y)
+    If color <> peek_color
+        RefreshByTask()
+    Endif
+Fend
+
+Procedure ResetConfig()
+    color = PEEKCOLOR(3524, 417)
+    If color = $18261C
+        ClickArroundPointAndSleep(3723, 20, 633, 20, 300, 200, 4, 2)
+    Endif
+Fend
+
+Procedure ActivateKanCole()
+	 ACW(GETID("äÕë‡Ç±ÇÍÇ≠ÇµÇÂÇÒÅ`äÕÇ±ÇÍÅ` - ÉIÉìÉâÉCÉìÉQÅ[ÉÄ - DMM.com - Mozilla Firefox","MozillaWindowClass"),2871,0,969,1030,0)
+Fend
+
+// time * 3 ms
+Procedure ClickArroundPoint(x, x_range, y, y_range, time, time_range)
+    BTN(LEFT, DOWN, x + RANDOM(x_range), y + RANDOM(y_range), time + RANDOM(time_range))
+    end_x = x + RANDOM(x_range)
+    end_y = y + RANDOM(y_range)
+    MMV(end_x, end_y, time + RANDOM(time_range))
+    BTN(LEFT, UP, end_x, end_y, time + RANDOM(time_range))   
+Fend
+
+Procedure ClickArroundPointAndSleep(x, x_range, y, y_range, time, time_range, sleep_time, sleep_range)
+    ClickArroundPoint(x, x_range, y, y_range, time, time_range)
+    SLEEP(sleep_time + RANDOM(sleep_range))
+Fend
+
+// 12s
+Procedure RefreshByTask
+    Print GetTimeString() + "RefreshByTask"
+    ClickArroundPointAndSleep(3502, 10, 241, 4, 300, 200, 3, 4)
+    ClickArroundPointAndSleep(3001, 20, 242, 20, 400, 200, 3, 4)
+    ClickArroundPointAndSleep(3001, 20, 242, 20, 200, 200, 3, 4)
+Fend
+
+// 19s
+Procedure ChargeAt(x)
+    Print GetTimeString() + "ChargeAt " + x
+    ClickArroundPointAndSleep(3023, 10, 403, 10, 300, 200, 3, 4)
+    IF x = 2
+        ClickArroundPointAndSleep(3132, 6, 307, 6, 300, 200, 2, 4)
+    ELSEIF x = 3
+        ClickArroundPointAndSleep(3163, 6, 307, 6, 300, 200, 2, 4)
+    ELSEIF x = 4
+        ClickArroundPointAndSleep(3193, 6, 307, 6, 300, 200, 2, 4)
+    ENDIF
+    ClickArroundPointAndSleep(3076, 3, 311, 3, 200, 200, 2, 2)
+    ClickArroundPointAndSleep(3642, 20, 629, 10, 400, 200, 3, 3)
+    ClickArroundPointAndSleep(2981, 40, 216, 40, 300, 200, 5, 3)
+    EnseiKakuninIfNeed()
+Fend
+
+Procedure EnseiKakuninIfNeed
+    color = PEEKCOLOR(3475, 221)
+    While color = $ACAC2D
+        EnseiKakunin()
+        color = PEEKCOLOR(3475, 221)
+    Wend
+Fend
+
+// 26s
+Procedure EnseiKakunin
+
+    Print GetTimeString() + "EnseiKakunin"
+    ClickArroundPointAndSleep(3386, 20, 513, 20, 300, 200, 7, 4)
+    ClickArroundPointAndSleep(3388, 20, 599, 20, 300, 200, 7, 4)
+    ClickArroundPointAndSleep(3682, 20, 623, 20, 300, 200, 4, 4)
+    ClickArroundPointAndSleep(3682, 20, 623, 20, 300, 200, 4, 4)
+Fend
+
+// 33s 
+Procedure GoEnseiAt(x)
+    Print GetTimeString() + "GoEnseiAt " + x
+    ClickArroundPointAndSleep(3140, 40, 429, 40, 300, 200, 4, 4)
+    ClickArroundPointAndSleep(3611, 40, 398, 40, 300, 200, 6, 4)
+
+    IF x = 2
+        ClickArroundPointAndSleep(3309, 40, 392, 4, 300, 200, 3, 2)
+    ELSEIF x = 3
+        ClickArroundPointAndSleep(3315, 40, 482, 4, 300, 200, 3, 2)
+    ELSEIF x = 4
+        ClickArroundPointAndSleep(3156, 20, 625, 20, 300, 200, 2, 2)
+        ClickArroundPointAndSleep(3152, 40, 572, 4, 300, 200, 3, 2)
+    ENDIF
+
+    ClickArroundPointAndSleep(3614, 40, 627, 20, 300, 200, 4, 4)
+
+    IF x = 2
+        ClickArroundPointAndSleep(3351, 4, 322, 4, 300, 200, 3, 2)
+    ELSEIF x = 3
+        ClickArroundPointAndSleep(3376, 4, 321, 4, 300, 200, 3, 2)
+    ELSEIF x = 4
+        ClickArroundPointAndSleep(3412, 4, 321, 4, 300, 200, 3, 2)
+    ENDIF
+
+    ClickArroundPointAndSleep(3574, 40, 614, 40, 300, 200, 5, 4)
+    ClickArroundPointAndSleep(2978, 40, 216, 40, 300, 200, 4, 4)
+Fend
+
+// 167s
+Procedure ChargeAndEnseiAt(x)
+    Print GetTimeString() + "ChargeAndEnseiAt " + x
+    ActivateKanCole()
+    RefreshByTask()
+    EnseiKakuninIfNeed()
+    ChargeAt(x)
+    EnseiKakuninIfNeed()
+    GoEnseiAt(x)
+Fend
+
+Procedure ChargeAndEnseiAtFast(x)
+    Print GetTimeString() + "ChargeAndEnseiAtFast " + x
+    ChargeAt(x)
+    GoEnseiAt(x)
+Fend
+
+Procedure GoChokyori
+    Print GetTimeString() + "GoChokyori"
+    ChargeAndEnseiAt(2)
+Fend
+
+Procedure GoKaijo
+    Print GetTimeString() + "GoKaijo"
+    ChargeAndEnseiAt(3)
+Fend
+
+Procedure GoKantaiKessen
+    Print GetTimeString() + "GoKantaiKessen"
+    ChargeAndEnseiAt(4)
+Fend
+
+Function GetTimeString
+    GETTIME()
+    RESULT = G_TIME_HH2 + ":" + G_TIME_NN2 + ":" + G_TIME_SS2 + " "
+Fend
+
+Procedure SleepAndPrint(time)
+    Print GetTimeString() + "Start Sleep(" + time + ")"
+    Sleep(time)
+Fend
+
+Procedure ActivateLogbook
+    ACW(GETID("çqäCì˙éè 0.4.4","SWT_Window0"),3560,773,280,420,0)
+    BTN(LEFT,CLICK,3582,831,188)
+Fend
+
+Function GetStatusAt(x)
+    ActivateLogbook()
+    id = GETID("çqäCì˙éè 0.4.4", "SWT_Window0", -1)
+    RESULT = GETSTR(id, x)
+Fend
+
+Function GetChokyoriStatus
+    RESULT = GetStatusAt(1)
+Fend
+
+Function GetKaijoStatus
+    RESULT = GetStatusAt(2)
+Fend
+
+Function GetKantaiKessenStatus
+    RESULT = GetStatusAt(3)
+Fend
+
+Procedure RefreshIfNeed
+    For i = 1 to 3
+        If GetStatusAt(i) = "Ç‹Ç‡Ç»Ç≠ãAìäÇµÇ‹Ç∑" OR (LENGTH(GetStatusAt(i)) < 4 AND LENGTH(GetStatusAt(i)) > 0)
+	    ActivateKanCole()
+            RefreshByTask()
+	    EnseiKakuninIfNeed()
+        Endif
+    Next
+Fend
+
+Procedure GoEnseiIfNeed
+    For i = 1 to 3
+        If GetStatusAt(i) = ""
+	    ActivateKanCole()
+	    ChargeAndEnseiAtFast(i + 1)
+        Endif
+    Next
+Fend
+
+Procedure ReloadBath
+    ACW(GETID("Ç®ïóòCÇ…ì¸ÇËÇΩÇ¢äÕñ∫","#32770"),2873,794,600,350,0)
+    BTN(LEFT,CLICK,2962,831,234)
+    Sleep(1)
+    BTN(LEFT,CLICK,2989,851,203)
+Fend
+
+Function GetDamagedShip
+    ReloadBath()
+    ACW(GETID("Ç®ïóòCÇ…ì¸ÇËÇΩÇ¢äÕñ∫","#32770"),2873,794,600,350,0)
+    BTN(RIGHT,CLICK,3133,877,300)
+    Sleep(1)
+    id = GETID("", "#32768", -1)
+    CLKITEM(id, "ÉNÉäÉbÉvÉ{Å[ÉhÇ…ÉRÉsÅ[(C)", CLK_ACC or CLK_BACK or CLK_MUSMOVE)
+    RESULT = GETSTR(0)
+    RESULT = LENGTH(RESULT) > 35
+    Print GetTimeString() + "GetDamagedShip " + RESULT
+Fend
+
+Procedure TakeABath
+    ClickArroundPointAndSleep(3060, 40, 533, 40, 300, 200, 7, 4)
+    ClickArroundPointAndSleep(3168, 80, 334, 40, 300, 200, 4, 4)
+    ClickArroundPointAndSleep(3409, 80, 328, 4, 300, 200, 3, 2)
+    ClickArroundPointAndSleep(3608, 80, 613, 40, 300, 200, 3, 2)
+    ClickArroundPointAndSleep(3447, 40, 591, 4, 300, 200, 4, 4)
+    ClickArroundPointAndSleep(2984, 40, 218, 40, 300, 200, 4, 4)
+Fend
+
+Function IsTakingABath
+    ActivateLogbook()
+    id = GETID("çqäCì˙éè 0.4.4", "SWT_Window0", -1)
+    RESULT = LENGTH(GETSTR(id, 4)) > 0
+    Print GetTimeString() + "IsTakingABath " + RESULT
+Fend
+
+Procedure GoTwoThree
+    Print GetTimeString() + "GoTwoThree"
+    ChargeAt(1)
+Fend
+
+Procedure EndlessTwoThree
+    While True
+        If GetDamagedShip()
+            TakeABath()
+        Endif
+	If IsTakingABath() = False
+            GoTwoThree()
+        Endif
+	Sleep(5 * 60 + RANDOM(30))
+    Wend
+Fend
+
+Procedure WaitClickSleep(x, x_range, y, y_range, time, time_range, sleep_time, sleep_range, wait_x, wait_y, wait_color, wait_max)
+    color = PEEKCOLOR(wait_x, wait_y)
+    For i = 0 to wait_max
+        If color = wait_color
+	    break
+        Endif
+        Print GetTimeString() + "Expected = " + format(wait_color, 6, -1) + " but Actual = " + format(color, 6, -1) + " @x=" + wait_x + ",y=" + wait_y 
+        Sleep(3 + RANDOM(3))
+        color = PEEKCOLOR(wait_x, wait_y)
+    Next
+    ClickArroundPointAndSleep(x, x_range, y, y_range, time, time_range, sleep_time, sleep_range)
+Fend
+
+Procedure GoThreeTwoOne
+    Print GetTimeString() + "GoThreeTwoOne"
+    ClickArroundPointAndSleep(3114, 80, 415, 80, 300, 200, 1, 1)
+    WaitClickSleep(3146, 80, 379, 80, 300, 200, 1, 1, 3089, 332, $B9AF8F, 5)
+    WaitClickSleep(3242, 40, 629, 20, 300, 200, 1, 1, 3073, 365, $DFEBF4, 5)
+    MMV(3516, 396, 10)
+    WaitClickSleep(3538, 80, 362, 80, 300, 200, 1, 1, 3516, 396, $D4C39E, 5)
+    WaitClickSleep(3611, 40, 634, 10, 300, 200, 3, 1, 3567, 312, $C9D4DC, 5)
+    WaitClickSleep(3555, 80, 635, 10, 300, 200, 4, 1, 3354, 646, $DDE9F2, 5)
+    WaitClickSleep(3328, 40, 430, 10, 300, 200, 4, 1, 3350, 433, $ADAEAB, 5)
+    // color = PEEKCOLOR(3642, 237)
+    //    While color color <> $4B5355 AND color <>
+    WaitClickSleep(3363, 80, 375, 10, 300, 200, 20, 5, 3642, 237, $4B5355, 5)
+    Print GetTimeString() + "Battle Started"
+
+    WaitClickSleep(3663, 80, 583, 80, 300, 200, 3, 3, 3705, 637, $9B991C, 25)
+    Print GetTimeString() + "Battle Ended"
+
+    WaitClickSleep(3663, 80, 583, 80, 300, 200, 3, 3, 3006, 283, $F2F6FF, 5)
+    Print GetTimeString() + "Result Ended"
+
+    For i = 0 to 20
+        color = PEEKCOLOR(3701, 636)
+	If color = $A4A21F OR color = $A5A320 OR i = 10
+	    Print GetTimeString() + "New Ship Ended"
+	    ClickArroundPointAndSleep(3663, 80, 583, 80, 300, 200, 4, 3)
+        Elseif color = $28220C OR i = 20
+	    Print GetTimeString() + "Go To Home"
+	    ClickArroundPointAndSleep(3428, 80, 406, 60, 300, 200, 4, 3)
+	    break
+	EndIf
+	Sleep(3 + RANDOM(3))
+    Next
+    EnseiKakuninIfNeed()
+Fend
+
+Procedure GoThreeTwoOneMain
+    If IsTakingABath() = False AND GetDamagedShip() = False
+        GoThreeTwoOne()
+        ChargeAt(1)
+    Endif
+    If GetDamagedShip()
+        TakeABath()
+    Endif
+Fend
+
+Procedure SetUp
+    ACW(GETID("äÕë‡Ç±ÇÍÇ≠ÇµÇÂÇÒÅ`äÕÇ±ÇÍÅ` - ÉIÉìÉâÉCÉìÉQÅ[ÉÄ - DMM.com - Mozilla Firefox","MozillaWindowClass"),2871,0,969,1030,0)
+    ACW(GETID("çqäCì˙éè 0.4.4","SWT_Window0"),3560,773,280,420,0)
+    ACW(GETID("Ç®ïóòCÇ…ì¸ÇËÇΩÇ¢äÕñ∫","#32770"),2873,794,600,350,0)
+Fend
+
+Procedure CreateAirPlane
+    ACW(GETID("äÕë‡Ç±ÇÍÇ≠ÇµÇÂÇÒÅ`äÕÇ±ÇÍÅ` - ÉIÉìÉâÉCÉìÉQÅ[ÉÄ - DMM.com - Mozilla Firefox","MozillaWindowClass"),2871,0,969,1030,0)
+
+    ClickArroundPointAndSleep(3172, 40, 526, 20, 200, 100, 3, 1)
+
+    ClickArroundPointAndSleep(3445, 4, 327, 4, 200, 100, 1, 1)
+
+    ClickArroundPointAndSleep(3440, 4, 455, 4, 200, 100, 1, 0)
+    ClickArroundPointAndSleep(3440, 4, 455, 4, 200, 100, 1, 0)
+    ClickArroundPointAndSleep(3440, 4, 455, 4, 200, 100, 1, 0)
+    ClickArroundPointAndSleep(3440, 4, 455, 4, 200, 100, 1, 0)
+    ClickArroundPointAndSleep(3440, 4, 455, 4, 200, 100, 1, 1)
+
+    ClickArroundPointAndSleep(3669, 4, 483, 4, 200, 100, 1, 1)
+    ClickArroundPointAndSleep(3621, 4, 455, 4, 200, 100, 1, 1)
+
+    ClickArroundPointAndSleep(3646, 40, 626, 20, 200, 100, 1, 1)
+Fend
