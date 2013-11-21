@@ -19,7 +19,9 @@ Procedure RefreshByTask
     Print GetTimeString() + "RefreshByTask"
     ClickArroundPointAndSleep(3502, 10, 241, 4, 300, 200, 3, 1)
     WaitClickSleep(3001, 20, 242, 20, 400, 200, 4, 1, 3632, 272, $4C4F47, -1, -1, 2, 5)
-    WaitClickSleep(3001, 20, 242, 20, 200, 200, 5, 1, 3537, 277, $847B20, -1, -1, 2, 5)
+    If WaitClickSleep(3001, 20, 242, 20, 200, 200, 5, 1, 3537, 277, $847B20, -1, -1, 2, 5) = False
+        ClickArroundPointAndSleep(3428, 80, 406, 60, 300, 200, 4, 3)
+    Endif
 Fend
 
 Procedure ResetIfNotColor(x, y, peek_color)
@@ -65,22 +67,20 @@ Procedure Click出撃
     ClickArroundPointAndSleep(3140, 40, 429, 40, 300, 200, 4, 2)
 Fend
 
+Procedure Click出撃Next
+    WaitClickSleep(3146, 80, 379, 80, 300, 200, 1, 1, 3089, 332, $B9AF8F, $7589A1, -1, 2, 5)
+Fend
+
 Procedure ActivateLogbook
-    origin_x = G_MOUSE_X
-    origin_y = G_MOUSE_Y
     ACW(GETID("航海日誌 0.4.4","SWT_Window0"),3560,773,280,420,0)
     BTN(LEFT,CLICK,3582,831,188)
-    MMV(origin_x, origin_y, 10)
 Fend
 
 Procedure ReloadBath
-    origin_x = G_MOUSE_X
-    origin_y = G_MOUSE_Y
     ACW(GETID("お風呂に入りたい艦娘","#32770"),2873,794,600,350,0)
     BTN(LEFT,CLICK,2962,831,234)
     Sleep(1)
     BTN(LEFT,CLICK,2989,851,203)
-    MMV(origin_x, origin_y, 10)
 Fend
 
 Function IsTakingABath
@@ -99,13 +99,10 @@ Fend
 Function GetDamagedShip
     ReloadBath()
     ACW(GETID("お風呂に入りたい艦娘","#32770"),2873,794,600,350,0)
-    origin_x = G_MOUSE_X
-    origin_y = G_MOUSE_Y
     BTN(RIGHT,CLICK,3133,877,300)
     Sleep(1)
     id = GETID("", "#32768", -1)
     CLKITEM(id, "クリップボードにコピー(C)", CLK_ACC or CLK_BACK or CLK_MUSMOVE)
-    MMV(origin_x, origin_y, 10)
     RESULT = GETSTR(0)
     RESULT = LENGTH(RESULT) > 35
     Print GetTimeString() + "GetDamagedShip " + RESULT
