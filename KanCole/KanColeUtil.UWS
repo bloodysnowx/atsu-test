@@ -16,6 +16,7 @@ Procedure ResetConfig()
 Fend
 
 Procedure RefreshByTask
+    ActivateKanCole()
     Print GetTimeString() + "RefreshByTask"
     ClickArroundPointAndSleep(3502, 10, 241, 4, 300, 200, 3, 1)
     WaitClickSleep(3001, 20, 242, 20, 400, 200, 4, 1, 3632, 272, $4C4F47, -1, -1, 2, 5)
@@ -69,6 +70,18 @@ Fend
 
 Procedure Click出撃Next
     WaitClickSleep(3146, 80, 379, 80, 300, 200, 1, 1, 3089, 332, $B9AF8F, $7589A1, -1, 2, 5)
+Fend
+
+Procedure SelectOneOneStage
+    WaitClickSleep(3146, 80, 379, 80, 300, 200, 1, 1, 3089, 332, $B9AF8F, $7589A1, $1D66FF, 2, 5)
+    // WaitClickSleep(3197, 80, 363, 80, 300, 200, 2, 1, 3545, 361, $A0A120, -1, -1, 2, 5)
+Fend
+
+Procedure SelectThreeTwoStage
+    WaitClickSleep(3242, 40, 629, 20, 300, 200, 1, 1, 3073, 365, $DFEBF4, -1, -1, 2, 5)
+    MMV(3516, 396, 10)
+    WaitClickSleep(3538, 80, 362, 80, 300, 200, 1, 1, 3516, 396, $D4C39E, -1, -1, 2, 5)
+    WaitClickSleep(3611, 40, 634, 10, 300, 200, 3, 1, 3567, 312, $C9D4DC, -1, -1, 2, 5)
 Fend
 
 Procedure ActivateLogbook

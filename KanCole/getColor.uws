@@ -1,5 +1,5 @@
 // CTRLボタンでPRINT表示するスレッド
-color = PEEKCOLOR(3705, 637)
+color = PEEKCOLOR(3237, 403)
 Print format(color, 6, -1)
 
 THREAD PRINTSTATE()
