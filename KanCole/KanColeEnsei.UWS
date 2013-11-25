@@ -5,7 +5,7 @@ SetUp()
 // GoOneOne()
 Main2()
 // EndlessTwoThree()
-// GoThreeTwoOneMain()
+// GoThreeTwoOneMain(0)
 // GoThreeTwoOne()
 // CreateAirPlane()
 
@@ -19,26 +19,14 @@ Procedure Main2()
     KantaiKessenCount = 0
     WHILE True
         RefreshIfNeed()
-        //If GoThreeTwoOneMain()
-        //    ThreeTwoOneCount = ThreeTwoOneCount + 1
-	//    Print GetTimeString() + "ThreeTwoOneCount = " + ThreeTwoOneCount            
-	//Endif
+	// ThreeTwoOneCount = GotThreeTwoOneMain(ThreeTwoOneCount)
         For i = 0 to 3
 	    ResetConfig()
 	    ResetToHome()
 	    RefreshIfNeed()
-	    If GoEnseiIfNeedAt(1)
-	        ChokyoriCount = ChokyoriCount + 1
-                Print GetTimeString() + "ChokyoriCount = " + ChokyoriCount
-	    Endif
-	    If GoEnseiIfNeedAt(2)
-	        KaijoGoeiCount = KaijoGoeiCount + 1
-                Print GetTimeString() + "KaijoGoeiCount = " + KaijoGoeiCount
-	    Endif
-	    If GoEnseiIfNeedAt(3)
-	        KantaiKessenCount = KantaiKessenCount + 1
-                Print GetTimeString() + "KantaiKessenCount = " + KantaiKessenCount
-	    Endif
+	    ChokyoriCount = GoEnseiIfNeedAt(1, ChokyoriCount)
+	    KaijoGoeiCount = GoEnseiIfNeedAt(2, KaijoGoeiCount)
+	    KantaiKessenCount = GoEnseiIfNeedAt(3, KantaiKessenCount)
 	    SleepAndPrint(3 * 60 + RANDOM(30))
 	Next
     WEND
@@ -129,12 +117,13 @@ Procedure RefreshIfNeed
     Endif
 Fend
 
-Function GoEnseiIfNeedAt(x)
-    Result = False
+Function GoEnseiIfNeedAt(x, x_count)
+    Result = x_count
     If GetStatusAt(x) = ""
         ActivateKanCole()
 	ChargeAndEnseiAtFast(x + 1)
-	Result = True
+        Result = Result + 1
+        Print GetTimeString() + "GoEnseiAt(" + x + ") count = " + Result
     Endif
 Fend
 
@@ -234,12 +223,13 @@ Procedure GoOneOne
     Next
 Fend
 
-Function GoThreeTwoOneMain
-    Result = False	  
+Function GoThreeTwoOneMain(ThreeTwoOneCount)
+    Result = ThreeTwoOneCount
     If IsTakingABath() = False AND GetDamagedShip() = False
         GoThreeTwoOne()
         ChargeAt(1)
-	Result = True
+	Result = Result + 1
+	Print GetTimeString() + "ThreeTwoOneCount = " + ThreeTwoOneCount
     Endif
     If GetDamagedShip()
         TakeABath()

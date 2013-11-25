@@ -4,7 +4,7 @@ Fend
 
 Procedure SetUp
     ActivateKanCole()
-    ACW(GETID("航海日誌 0.4.4","SWT_Window0"),3560,773,280,420,0)
+    ActivateLogBook()
     ACW(GETID("お風呂に入りたい艦娘","#32770"),2873,794,600,350,0)
 Fend
 
@@ -85,7 +85,7 @@ Procedure SelectThreeTwoStage
 Fend
 
 Procedure ActivateLogbook
-    ACW(GETID("航海日誌 0.4.4","SWT_Window0"),3560,773,280,420,0)
+    ACW(GETID("航海日誌 0.4.5","SWT_Window0"),3560,773,280,420,0)
     BTN(LEFT,CLICK,3582,831,188)
 Fend
 
@@ -96,16 +96,20 @@ Procedure ReloadBath
     BTN(LEFT,CLICK,2989,851,203)
 Fend
 
+Function GetLogBookID
+    Result = GETID("航海日誌 0.4.5", "SWT_Window0", -1)
+Fend
+
 Function IsTakingABath
     ActivateLogbook()
-    id = GETID("航海日誌 0.4.4", "SWT_Window0", -1)
+    id = GetLogBookID()
     RESULT = LENGTH(GETSTR(id, 4)) > 0
     Print GetTimeString() + "IsTakingABath " + RESULT
 Fend
 
 Function GetStatusAt(x)
     ActivateLogbook()
-    id = GETID("航海日誌 0.4.4", "SWT_Window0", -1)
+    id = GetLogBookID()
     RESULT = GETSTR(id, x)
 Fend
 
