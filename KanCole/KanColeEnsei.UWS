@@ -8,9 +8,9 @@ Main2()
 // GoThreeTwoOneMain(0)
 // GoThreeTwoOne()
 // CreateAirPlane()
-
+// ChargeAndEnseiAtFast(1 + 1)
 // GoThreeTwoOne()
-// ChargeAt(1)
+ChargeAt(1)
 
 Procedure Main2()
     ThreeTwoOneCount = 0
@@ -19,7 +19,7 @@ Procedure Main2()
     KantaiKessenCount = 0
     WHILE True
         RefreshIfNeed()
-	// ThreeTwoOneCount = GotThreeTwoOneMain(ThreeTwoOneCount)
+	// ThreeTwoOneCount = GoThreeTwoOneMain(ThreeTwoOneCount)
         For i = 0 to 3
 	    ResetConfig()
 	    ResetToHome()
@@ -67,11 +67,16 @@ Procedure GoEnseiAt(x)
 
     IF x = 2
         ClickArroundPointAndSleep(3309, 40, 392, 4, 300, 200, 3, 2)
+
+	// ClickArroundPointAndSleep(3156, 20, 625, 20, 300, 200, 2, 2)
+	// ClickArroundPointAndSleep(3179, 40, 364, 4, 300, 200, 3, 2)
     ELSEIF x = 3
         ClickArroundPointAndSleep(3315, 40, 482, 4, 300, 200, 3, 2)
     ELSEIF x = 4
-        ClickArroundPointAndSleep(3156, 20, 625, 20, 300, 200, 2, 2)
-        ClickArroundPointAndSleep(3152, 40, 572, 4, 300, 200, 3, 2)
+        // ClickArroundPointAndSleep(3156, 20, 625, 20, 300, 200, 2, 2)           
+        // ClickArroundPointAndSleep(3152, 40, 572, 4, 300, 200, 3, 2)
+
+        ClickArroundPointAndSleep(3160, 40, 422, 4, 300, 200, 3, 2)
     ENDIF
 
     ClickArroundPointAndSleep(3614, 40, 627, 20, 300, 200, 4, 4)

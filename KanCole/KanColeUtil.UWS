@@ -1,5 +1,7 @@
+// x = 2956
+// y =  213
 Procedure ActivateKanCole()
-	 ACW(GETID("艦隊これくしょん～艦これ～ - オンラインゲーム - DMM.com - Mozilla Firefox","MozillaWindowClass"),2871,0,969,1030,0)
+	 ACW(GETID("艦隊これくしょん～艦これ～ - オンラインゲーム - DMM.com - Mozilla Firefox","MozillaWindowClass"),2871,0 - 20,969,1030,0)
 Fend
 
 Procedure SetUp
@@ -85,7 +87,7 @@ Procedure SelectThreeTwoStage
 Fend
 
 Procedure ActivateLogbook
-    ACW(GETID("航海日誌 0.4.5","SWT_Window0"),3560,773,280,420,0)
+    ACW(GETID("航海日誌 0.4.6","SWT_Window0"),3560,773,280,420,0)
     BTN(LEFT,CLICK,3582,831,188)
 Fend
 
@@ -97,7 +99,7 @@ Procedure ReloadBath
 Fend
 
 Function GetLogBookID
-    Result = GETID("航海日誌 0.4.5", "SWT_Window0", -1)
+    Result = GETID("航海日誌 0.4.6", "SWT_Window0", -1)
 Fend
 
 Function IsTakingABath
