@@ -569,7 +569,7 @@ namespace OpenNashCalculator
                 }
                 else
                 {
-                    Help.ShowPopup(this, CalcByHRC.getOverCallRange(first, second), Control.MousePosition);
+                    Help.ShowPopup(this, CalcByHRC.getOverCallRange(first, second, currentTableData.getHeroNumber()), Control.MousePosition);
                 }
             }
         }

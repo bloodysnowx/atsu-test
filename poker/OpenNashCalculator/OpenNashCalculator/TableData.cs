@@ -149,5 +149,18 @@ namespace OpenNashCalculator
                 }
             }
         }
+
+        public int getHeroNumber()
+        {
+            int heroNumber = 0;
+            int bbIndex = getBBIndex();
+            int heroIndex = getHeroIndex();
+            for (int i = 1; i < MaxSeatNum; ++i)
+            {
+                if ((i + bbIndex) % MaxSeatNum == heroIndex) break;
+                if (chips[(i + bbIndex) % MaxSeatNum] > 0) ++heroNumber;
+            }
+            return heroNumber;
+        }
     }
 }

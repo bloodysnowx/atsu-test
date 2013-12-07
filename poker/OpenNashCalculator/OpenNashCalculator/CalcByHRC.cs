@@ -58,13 +58,14 @@ namespace OpenNashCalculator
         static IntPtr exportStrategiesDialogOKButton;
 
         static string rangeText;
+        static HRCResult root;
 
         static int MakeWParam(int loWord, int hiWord)
         {
             return (loWord & 0xFFFF) + ((hiWord & 0xFFFF) << 16);
         }
 
-        public static void clearCalc() { rangeText = null; }
+        public static void clearCalc() { rangeText = null; root = null; }
 
         public static string[] Calc(TableData tableData, string chips)
         {   
@@ -126,7 +127,7 @@ namespace OpenNashCalculator
                 exportStrategiesDialogOKButton = FindWindowEx(swtWindowNext, IntPtr.Zero, "Button", "OK");
                 SendMessage(exportStrategiesDialogOKButton, (uint)BM_CLICK, IntPtr.Zero, IntPtr.Zero);
 
-                return parseRangeText(rangeText);
+                return parseRangeText(rangeText, tableData.getHeroNumber());
             }
             catch (Exception ex)
             {
@@ -135,39 +136,82 @@ namespace OpenNashCalculator
             }
         }
 
-        public static string getOverCallRange(int first, int second)
+        public static string getOverCallRange(int first, int second, int hero)
         {
-            return null;
+            if (root == null) return null;
+            return root.getChild(first).getChild(second - 1).getChild(hero).range;
         }
 
         class HRCResult
         {
-            HRCResult(string action, int amount, string name, string range)
+            public HRCResult(string action, string amount, string name, string range, HRCResult parent)
             {
                 this.action = action;
                 this.amount = amount;
                 this.name = name;
                 this.range = range;
-                this.childlen = new List<HRCResult>();
+                this.parent = parent;
+                if (parent != null) parent.addChild(this);
             }
             string action;
-            int amount;
+            string amount;
             string name;
-            string range { get; private set; }
-            List<HRCResult> childlen;
+            public string range { get; private set; }
+            public HRCResult parent { get; private set; }
+            List<HRCResult> childlen = new List<HRCResult>();
             void addChild(HRCResult child) { this.childlen.Add(child); }
+            public HRCResult getChild(int i) { return this.childlen[i]; }
         }
 
-        static string[] parseRangeText(string rangeText)
+        public static string[] parseRangeText(string rangeText, int hero_pos)
         {
-            // 行頭かつ" R"でマッチングする
-            // タブの数で？
-            string[] delimiter = { "\n R", "\nC" };
-            string[] ranges = rangeText.Split(delimiter, StringSplitOptions.None);
-            string[] delimiter2 = { "\t", "\r\n" };
-            string[] parts = rangeText.Split(delimiter2, StringSplitOptions.None);
+            root = new HRCResult(null, null, null, null, null);
+            HRCResult now = root;
+            int level = -1;
+
+            string[] delimiter = { "\r\n" };
+            string[] rangeTextParts = rangeText.Split(delimiter, StringSplitOptions.None);
+            foreach (string rangeTextPart in rangeTextParts)
+            {
+                string[] parts = rangeTextPart.Split(new string[] { "\t" }, StringSplitOptions.RemoveEmptyEntries);
+                if (getTabCount(rangeTextPart) > level)
+                {
+                    now = new HRCResult(parts[0], parts[1], parts[2], parts[3], now);
+                    level++;
+                }
+                else
+                {
+                    while (getTabCount(rangeTextPart) < level)
+                    {
+                        now = now.parent;
+                        level--;
+                    }
+                    if (getTabCount(rangeTextPart) == 0)
+                    {
+                        now = new HRCResult(parts[0], parts[1], parts[2], parts[3], now.parent);
+                    }
+                }
+            }
+
+            List<string> ranges = new List<string>();
+            for (int i = 0; i < hero_pos; ++i)
+            {
+                ranges.Add(root.getChild(i).getChild(hero_pos - 1).range);
+            }
+            ranges.Add(root.getChild(hero_pos).range);
             
-            return ranges;
+            return ranges.ToArray();
+        }
+
+        static int getTabCount(string str)
+        {
+            int count = 0;
+            for (int i = 0; i < str.Length; ++i)
+            {
+                if (str[i] == '\t') ++count;
+                else break;
+            }
+            return count;
         }
 
         static void openExportStrategies(IntPtr hrc)
