@@ -22,8 +22,17 @@ namespace OpenNashCalculator
         XmlDocument resultXML;
         System.Diagnostics.Process currentProcess;
 
+        private void clearCalc()
+        {
+            resultXML = null;
+            recent_web_page = null;
+            CalcByHRC.clearCalc();
+            foreach (TextBox rangeTextBox in rangeTextBoxes) rangeTextBox.Clear();
+        }
+
         private void Calc()
         {
+            clearCalc();
             if (chipTextBoxes.Count(x => x.Text != string.Empty && System.Convert.ToInt32(x.Text) > 0) <= 1) return;
             textBoxStructure.Text = textBoxStructure.Text.Replace('+', ',').Replace(' ', ',');
             this.buttonCalc.Enabled = false;
@@ -146,7 +155,7 @@ namespace OpenNashCalculator
 
         private void CalcByCLI()
         {
-            foreach (TextBox rangeTextBox in rangeTextBoxes) rangeTextBox.Clear();
+
             setupCurrentTableData();
 
             resultXML = null;
@@ -254,9 +263,6 @@ namespace OpenNashCalculator
             // http://www.holdemresources.net/hr/sngs/icmcalculator.html?action=calculate&
             // bb=200&sb=100&ante=0&structure=0.5%2C0.3%2C0.2&s1=100&s2=100&s3=100&s4=100&s5=100&s6=100&s7=100&s8=100&s9=100
 
-            foreach (TextBox rangeTextBox in rangeTextBoxes)
-                rangeTextBox.Text = "";
-
             // System.Net.WebClient client = new System.Net.WebClient();
             // System.Windows.Forms.WebBrowser client = new WebBrowser();
 
@@ -312,7 +318,7 @@ namespace OpenNashCalculator
             webBrowserTimer.Enabled = false;
             this.buttonCalc.Enabled = true;
 
-             AllinCheckBox_CheckedChanged(null, null);
+            AllinCheckBox_CheckedChanged(null, null);
         }
 
     }

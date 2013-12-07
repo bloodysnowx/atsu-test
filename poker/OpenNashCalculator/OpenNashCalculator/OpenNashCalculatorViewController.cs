@@ -530,6 +530,20 @@ namespace OpenNashCalculator
                 count++;
             }
 
+            int first = -1;
+            int second = -1;
+            for (int i = 1, j = 0; i < 10; ++i)
+            {
+                if (chipTextBoxes[(bb_pos + i) % 9].Text.Trim() != string.Empty)
+                {
+                    if (AllinCheckBoxes[(bb_pos + i) % 9].Checked && first < 0)
+                        first = j;
+                    else
+                        second = j;
+                    ++j;
+                }
+            }
+
             if (count == 2 && Position.ToList().IndexOf(hero_pos) < Position.ToList().IndexOf(oc_pos))
             {
                 if (resultXML != null)
@@ -543,7 +557,7 @@ namespace OpenNashCalculator
                         "][@oc=" + heroCount.ToString() + "]/range");
                     Help.ShowPopup(this, spotPct.InnerText + " " + spotRange.InnerText, Control.MousePosition);
                 }
-                else if(recent_web_page != null)
+                else if (recent_web_page != null)
                 {
                     int index = recent_web_page.IndexOf("</TR>\r\n<TR>\r\n<TD>" + push_pos + "</TD>\r\n<TD>\r\n<TD>\r\n<TD>");
                     if (index < 0) return;
@@ -552,6 +566,10 @@ namespace OpenNashCalculator
                     Regex regex = new Regex("</TR>\r\n<TR>\r\n<TD>\r\n<TD>\r\n<TD>" + Regex.Escape(hero_pos) + "</TD>\r\n<TD>(.*?)</TD></TR>");
                     MatchCollection matchCol = regex.Matches(tmp);
                     Help.ShowPopup(this, matchCol[0].Groups[1].Value, Control.MousePosition);
+                }
+                else
+                {
+                    Help.ShowPopup(this, CalcByHRC.getOverCallRange(first, second), Control.MousePosition);
                 }
             }
         }
@@ -660,9 +678,9 @@ namespace OpenNashCalculator
             setReaderFromFileName();
             openHandHistory();
         }
-
         private void buttonHRC_Click(object sender, EventArgs e)
         {
+            clearCalc();
             setupCurrentTableData();
             StringBuilder chips = new StringBuilder();
             for (int i = 1, j = 1; i < 10; ++i)
@@ -674,7 +692,14 @@ namespace OpenNashCalculator
                     j++;
                 }
             }
-            CalcByHRC.Calc(currentTableData, chips.ToString());
+            string[] ranges = CalcByHRC.Calc(currentTableData, chips.ToString());
+            for (int i = 1, j = 0; i < 10; ++i)
+            {
+                if (chipTextBoxes[(bb_pos + i) % 9].Text.Trim() != string.Empty)
+                {
+                    rangeTextBoxes[(bb_pos + i) % 9].Text = ranges[j++];
+                }
+            }
         }
 
 #if false

@@ -57,13 +57,17 @@ namespace OpenNashCalculator
         static IntPtr rangeTextBox;
         static IntPtr exportStrategiesDialogOKButton;
 
+        static string rangeText;
+
         static int MakeWParam(int loWord, int hiWord)
         {
             return (loWord & 0xFFFF) + ((hiWord & 0xFFFF) << 16);
         }
 
-        public static void Calc(TableData tableData, string chips)
-        {
+        public static void clearCalc() { rangeText = null; }
+
+        public static string[] Calc(TableData tableData, string chips)
+        {   
             IntPtr hrc = FindWindow(null, "HoldemResources Calculator");
             openBasicHand(hrc);
             try
@@ -116,16 +120,29 @@ namespace OpenNashCalculator
                 PostMessage(rangeTextBox, EM_SETSEL, 0, -1);
                 System.Threading.Thread.Sleep(100);
                 SendMessage(rangeTextBox, WM_COPY, IntPtr.Zero, IntPtr.Zero);
-                string rangText = Clipboard.GetText();
+                rangeText = Clipboard.GetText();
 
                 swtWindowNext = FindWindowEx(swtWindowTop, swtWindowNext, "SWT_Window0", null);
                 exportStrategiesDialogOKButton = FindWindowEx(swtWindowNext, IntPtr.Zero, "Button", "OK");
                 SendMessage(exportStrategiesDialogOKButton, (uint)BM_CLICK, IntPtr.Zero, IntPtr.Zero);
+
+                return parseRangeText(rangeText);
             }
             catch (Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show("Cannot Find HRC" + System.Environment.NewLine + ex);
+                return null;
             }
+        }
+
+        public static string getOverCallRange(int first, int second)
+        {
+            return null;
+        }
+
+        static string[] parseRangeText(string rangeText)
+        {
+            return null;
         }
 
         static void openExportStrategies(IntPtr hrc)
