@@ -693,6 +693,7 @@ namespace OpenNashCalculator
                 }
             }
             string[] ranges = CalcByHRC.Calc(currentTableData, chips.ToString());
+            if (ranges == null) return;
             for (int i = 1, j = 0; i < 10; ++i)
             {
                 if (chipTextBoxes[(bb_pos + i) % 9].Text.Trim() != string.Empty)

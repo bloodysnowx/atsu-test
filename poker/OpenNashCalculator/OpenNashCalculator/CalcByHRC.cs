@@ -142,7 +142,7 @@ namespace OpenNashCalculator
 
         static string[] parseRangeText(string rangeText)
         {
-            return null;
+            return new string[10];
         }
 
         static void openExportStrategies(IntPtr hrc)

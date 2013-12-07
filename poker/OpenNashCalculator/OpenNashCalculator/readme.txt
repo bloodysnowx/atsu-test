@@ -3,6 +3,91 @@
 タイマーで自動ブラインドUP
 時計でアンテアップを知らせる
 
+ R 	490 	Player1	25.8%, 22+ A2s+ A8o+ K6s+ KTo+ Q8s+ QTo+ J8s+ JTo T8s+ 98s 87s 
+	C	490 	Player2	7.5%, 77+ ATs+ AJo+ 
+		C	490 	Player3	1.8%, JJ+ 
+		C	490 	Player4	1.8%, JJ+ 
+		C	465 	Player5	1.8%, JJ+ 
+		C	440 	Player6	2.6%, TT+ AKs 
+	C	490 	Player3	8.4%, 77+ ATs+ ATo+ 
+		C	490 	Player4	1.8%, JJ+ 
+		C	465 	Player5	1.8%, JJ+ 
+		C	440 	Player6	3.5%, TT+ AKs AKo 
+	C	490 	Player4	9.2%, 66+ A9s+ ATo+ 
+		C	465 	Player5	2.3%, TT+ 
+		C	440 	Player6	3.5%, TT+ AKs AKo 
+	C	465 	Player5	10.0%, 55+ A8s+ ATo+ 
+		C	440 	Player6	3.5%, TT+ AKs AKo 
+	C	440 	Player6	15.1%, 33+ A5s+ A8o+ KJs+ KQo 
+ R 	490 	Player2	26.7%, 22+ A2s+ A7o+ K6s+ KTo+ Q8s+ QTo+ J8s+ JTo T8s+ 98s 87s 
+	C	490 	Player3	8.7%, 77+ A9s+ ATo+ 
+		C	490 	Player4	1.8%, JJ+ 
+		C	465 	Player5	1.8%, JJ+ 
+		C	440 	Player6	3.5%, TT+ AKs AKo 
+	C	490 	Player4	9.2%, 66+ A9s+ ATo+ 
+		C	465 	Player5	2.6%, TT+ AKs 
+		C	440 	Player6	3.5%, TT+ AKs AKo 
+	C	465 	Player5	11.2%, 55+ A8s+ A9o+ KQs 
+		C	440 	Player6	3.9%, 99+ AKs AKo 
+	C	440 	Player6	15.1%, 33+ A5s+ A8o+ KJs+ KQo 
+ R 	490 	Player3	33.9%, 22+ Ax+ K4s+ KTo+ Q6s+ QTo+ J7s+ JTo T7s+ 97s+ 86s+ 76s 
+	C	490 	Player4	10.4%, 66+ A8s+ A9o+ 
+		C	465 	Player5	2.6%, TT+ AKs 
+		C	440 	Player6	3.5%, TT+ AKs AKo 
+	C	465 	Player5	12.7%, 55+ A7s+ A8o+ KJs+ 
+		C	440 	Player6	4.2%, 99+ AQs+ AKo 
+	C	440 	Player6	20.2%, 33+ A2s+ A5o+ KTs+ KJo+ QJs 
+ R 	490 	Player4	41.2%, 22+ Ax+ K2s+ K9o+ Q5s+ Q9o+ J6s+ J9o+ T6s+ T9o 96s+ 98o 86s+ 75s+ 65s 54s 
+	C	465 	Player5	16.6%, 55+ A4s+ A7o+ KTs+ KJo+ 
+		C	440 	Player6	5.4%, 99+ AJs+ AQo+ 
+	C	440 	Player6	26.1%, 22+ Ax+ K8s+ KTo+ QTs+ QJo 
+ R 	490 	Player5	74.7%, 22+ Qx+ J2s+ J4o+ T2s+ T6o+ 92s+ 96o+ 84s+ 86o+ 73s+ 75o+ 63s+ 65o 52s+ 43s 
+	C	440 	Player6	41.8%, 22+ Ax+ K2s+ K3o+ Q5s+ Q8o+ J8s+ J9o+ T8s+ 
+
+-------------------------------------
+
+ R 	500 	poker_in_pb	39.8%, 33+ Ax+ K2s+ K5o+ Q5s+ Q8o+ J7s+ J9o+ T8s+ 
+	 3B 	655 	xrabreneca	8.7%, 77+ A9s+ ATo+ 
+		C	605 	LuCasino777	0.9%, KK+ 
+		C	195 	chiyuki	49.0%, 22+ A2s+ ATo+ K2s+ K8o+ Q2s+ Q8o+ J2s+ J8o+ T4s+ T8o+ 94s+ 98o 84s+ 86o+ 73s+ 76o 62s+ 65o 52s+ 54o 42s+ 32s 
+	C	450 	LuCasino777	12.2%, 66+ A7s+ A9o+ KJs+ KQo 
+		C	195 	chiyuki	7.8%, 77+ ATs+ AJo+ KQs 
+	C	195 	chiyuki	95.5%, 22+ Tx+ 92s+ 93o+ 82s+ 84o+ 72s+ 73o+ 4x+ 32s 
+ R 	655 	xrabreneca	26.1%, 44+ A2s+ A4o+ K7s+ K9o+ Q9s+ QTo+ JTs 
+	C	605 	LuCasino777	7.1%, 88+ ATs+ AJo+ 
+		C	195 	chiyuki	4.2%, 99+ AQs+ AKo 
+	C	195 	chiyuki	91.0%, 22+ Jx+ T2s+ T3o+ 92s+ 94o+ 82s+ 84o+ 72s+ 74o+ 62s+ 63o+ 5x+ 42s+ 43o 32s 
+ R 	1.5k 	LuCasino777	86.7%, 22+ Tx+ 92s+ 93o+ 82s+ 84o+ 73s+ 74o+ 63s+ 65o 53s+ 54o 43s 
+	C	195 	chiyuki	86.4%, 22+ Tx+ 92s+ 93o+ 82s+ 84o+ 72s+ 75o+ 63s+ 65o 52s+ 54o 43s 
+
+-------------------------------------
+
+ R 	450 	chiyuki	35.1%, 22+ Ax+ K3s+ K7o+ Q7s+ Q9o+ J8s+ JTo T9s 
+	 3B 	1.0k 	V_Andreich	8.7%, 77+ A9s+ ATo+ 
+		C	650 	ShandeC	0.9%, KK+ 
+		C	115 	xrabreneca	12.7%, 33+ ATs+ AJo+ K9s+ KQo QTs+ JTs T9s 
+		C	485 	MAPA3MATuK	3.5%, TT+ AKs AKo 
+	 3B 	650 	ShandeC	13.9%, 55+ A7s+ A8o+ KTs+ KQo 
+		C	115 	xrabreneca	52.0%, 22+ A2s+ A8o+ K2s+ K9o+ Q2s+ Q9o+ J2s+ J8o+ T2s+ T7o+ 94s+ 97o+ 84s+ 86o+ 73s+ 75o+ 62s+ 65o 52s+ 54o 42s+ 
+		C	485 	MAPA3MATuK	5.9%, 88+ AJs+ AQo+ 
+	C	115 	xrabreneca	80.1%, 22+ Kx+ Q2s+ Q3o+ J2s+ J5o+ T2s+ T6o+ 92s+ 95o+ 82s+ 85o+ 72s+ 74o+ 62s+ 64o+ 52s+ 53o+ 42s+ 32s 
+		C	350 	MAPA3MATuK	41.8%, 22+ Ax+ K2s+ K6o+ Q5s+ Q9o+ J7s+ J9o+ T7s+ T9o 97s+ 86s+ 76s 65s 54s 
+	C	350 	MAPA3MATuK	60.5%, 22+ Kx+ Q2s+ Q6o+ J3s+ J8o+ T4s+ T8o+ 95s+ 97o+ 84s+ 87o 74s+ 76o 63s+ 65o 53s+ 43s 
+ R 	1.0k 	V_Andreich	32.0%, 33+ Ax+ K4s+ K8o+ Q8s+ QTo+ J9s+ JTo T9s 
+	C	650 	ShandeC	5.4%, 99+ AJs+ AQo+ 
+		C	115 	xrabreneca	5.9%, 66+ AQs+ AKo KJs 
+		C	485 	MAPA3MATuK	1.4%, QQ+ 
+	C	115 	xrabreneca	88.2%, 22+ Jx+ T2s+ T4o+ 92s+ 95o+ 82s+ 84o+ 72s+ 74o+ 62s+ 63o+ 52s+ 53o+ 42s+ 43o 32s 
+		C	485 	MAPA3MATuK	13.9%, 55+ A6s+ A8o+ KJs+ KQo 
+	C	485 	MAPA3MATuK	18.1%, 33+ A2s+ A7o+ KTs+ KJo+ 
+ R 	650 	ShandeC	39.7%, 22+ Ax+ K2s+ K5o+ Q5s+ Q9o+ J7s+ J9o+ T8s+ 98s 
+	C	115 	xrabreneca	88.2%, 22+ Jx+ T2s+ T4o+ 92s+ 95o+ 82s+ 84o+ 72s+ 74o+ 62s+ 63o+ 52s+ 53o+ 42s+ 43o 32s 
+		C	485 	MAPA3MATuK	29.4%, 22+ Ax+ K6s+ K9o+ Q9s+ QTo+ J9s+ 
+	C	485 	MAPA3MATuK	31.8%, 22+ Ax+ K4s+ K8o+ Q9s+ QTo+ J9s+ JTo 
+ R 	165 	xrabreneca	99.1%, 22+ 4x+ 32s 
+	C	65 	MAPA3MATuK	100.0%, Any two
+
+-------------------------------------
 
 
 設定方法
@@ -43,13 +128,12 @@ ONCDaemon.exeを起動しておく
 
 HRCでの計算方法
 
-01. HRCを起動しておく(余計なWindowが開かれている命令を受け付けないため、メインウィンドウのみの状態にしておいてください)
-02. メニューのFileを1度開いておく(起動直後はメニューが初期化されていないため、プログラムから認識できない状態になっています)
+01. HRCを起動しておく(余計なWindowが開かれていると命令を受け付けないため、メインウィンドウのみの状態にしておいてください)
+02. メニューのFileとHandを1度開いておく(起動直後はメニューが初期化されていないため、プログラムから認識できない状態になっています)
 以降は設定の確認です
 初回起動時、または、設定を変更した際には、下記手順で設定を戻しておいてください
 03. File -> New で開いたNewの画面で、Basic Handを選んでNextを押す(Basic Handがデフォルトで選ばれるように)
 04. Basic Hand Setupの画面で、計算方法をFuture Game Simulation 'FGS'を選択して、Finishを押す(FGSがデフォルトで選ばれるように)
-
 
 ハンドヒストリ読み込み
 
