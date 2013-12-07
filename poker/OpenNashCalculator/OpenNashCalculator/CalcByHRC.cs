@@ -139,7 +139,7 @@ namespace OpenNashCalculator
         public static string getOverCallRange(int first, int second, int hero)
         {
             if (root == null) return null;
-            return root.getChild(first).getChild(second - 1).getChild(hero).range;
+            return root.getChild(first).getChild(second - 1 - first).getChild(hero - 1 - second).range;
         }
 
         class HRCResult
@@ -161,6 +161,7 @@ namespace OpenNashCalculator
             List<HRCResult> childlen = new List<HRCResult>();
             void addChild(HRCResult child) { this.childlen.Add(child); }
             public HRCResult getChild(int i) { return this.childlen[i]; }
+            public int getChildCount() { return this.childlen.Count; }
         }
 
         public static string[] parseRangeText(string rangeText, int hero_pos)
@@ -174,6 +175,7 @@ namespace OpenNashCalculator
             foreach (string rangeTextPart in rangeTextParts)
             {
                 string[] parts = rangeTextPart.Split(new string[] { "\t" }, StringSplitOptions.RemoveEmptyEntries);
+                if (parts.Length < 2) continue;
                 if (getTabCount(rangeTextPart) > level)
                 {
                     now = new HRCResult(parts[0], parts[1], parts[2], parts[3], now);
@@ -186,7 +188,7 @@ namespace OpenNashCalculator
                         now = now.parent;
                         level--;
                     }
-                    if (getTabCount(rangeTextPart) == 0)
+                    if (getTabCount(rangeTextPart) == level)
                     {
                         now = new HRCResult(parts[0], parts[1], parts[2], parts[3], now.parent);
                     }
@@ -196,9 +198,11 @@ namespace OpenNashCalculator
             List<string> ranges = new List<string>();
             for (int i = 0; i < hero_pos; ++i)
             {
-                ranges.Add(root.getChild(i).getChild(hero_pos - 1).range);
+                ranges.Add(root.getChild(i).getChild(hero_pos - i - 1).range);
             }
-            ranges.Add(root.getChild(hero_pos).range);
+            
+            if(hero_pos < root.getChildCount())
+                ranges.Add(root.getChild(hero_pos).range);
             
             return ranges.ToArray();
         }

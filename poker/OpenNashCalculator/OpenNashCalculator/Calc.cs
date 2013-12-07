@@ -149,6 +149,8 @@ namespace OpenNashCalculator
                     if (currentTableData.playerNames[(bb_pos + i) % 9] == null || currentTableData.playerNames[(bb_pos + i) % 9] == string.Empty) currentTableData.playerNames[(bb_pos + i) % 9] = "Player" + (bb_pos + i) % 9;
                     chip = (int)(Math.Round((double)chip / (double)unit) * unit);
                     currentTableData.stacks += chip.ToString();
+                    if (SeatLabels[(bb_pos + i) % 9].Text == "H")
+                        currentTableData.heroName = currentTableData.playerNames[(bb_pos + i) % 9];
                 }
             }
         }

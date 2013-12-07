@@ -810,8 +810,6 @@
             // checkBoxAutoBack
             // 
             resources.ApplyResources(this.checkBoxAutoBack, "checkBoxAutoBack");
-            this.checkBoxAutoBack.Checked = true;
-            this.checkBoxAutoBack.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxAutoBack.Name = "checkBoxAutoBack";
             this.checkBoxAutoBack.UseVisualStyleBackColor = true;
             // 

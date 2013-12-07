@@ -530,20 +530,6 @@ namespace OpenNashCalculator
                 count++;
             }
 
-            int first = -1;
-            int second = -1;
-            for (int i = 1, j = 0; i < 10; ++i)
-            {
-                if (chipTextBoxes[(bb_pos + i) % 9].Text.Trim() != string.Empty)
-                {
-                    if (AllinCheckBoxes[(bb_pos + i) % 9].Checked && first < 0)
-                        first = j;
-                    else
-                        second = j;
-                    ++j;
-                }
-            }
-
             if (count == 2 && Position.ToList().IndexOf(hero_pos) < Position.ToList().IndexOf(oc_pos))
             {
                 if (resultXML != null)
@@ -569,6 +555,22 @@ namespace OpenNashCalculator
                 }
                 else
                 {
+                    int first = -1;
+                    int second = -1;
+                    for (int i = 1, j = 0; i < 10; ++i)
+                    {
+                        if (chipTextBoxes[(bb_pos + i) % 9].Text.Trim() != string.Empty)
+                        {
+                            if (AllinCheckBoxes[(bb_pos + i) % 9].Checked)
+                            {
+                                if (first < 0)
+                                    first = j;
+                                else
+                                    second = j;
+                            }
+                            ++j;
+                        }
+                    }
                     Help.ShowPopup(this, CalcByHRC.getOverCallRange(first, second, currentTableData.getHeroNumber()), Control.MousePosition);
                 }
             }
@@ -694,7 +696,7 @@ namespace OpenNashCalculator
             }
             string[] ranges = CalcByHRC.Calc(currentTableData, chips.ToString());
             if (ranges == null) return;
-            for (int i = 1, j = 0; i < 10; ++i)
+            for (int i = 1, j = 0; i < 10 && j < ranges.Length; ++i)
             {
                 if (chipTextBoxes[(bb_pos + i) % 9].Text.Trim() != string.Empty)
                 {

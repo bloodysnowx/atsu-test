@@ -50,7 +50,7 @@ namespace OpenNashCalculator
         {
             for (int i = 0; i < playerNames.Length; ++i)
             {
-                if (playerNames[i].Equals(heroName))
+                if (playerNames[i] != null && playerNames[i].Equals(heroName))
                     return i;
             }
             return 0;
