@@ -34,10 +34,10 @@ Fend
 
 Procedure ChargeAt(x)
     Print GetTimeString() + "ChargeAt " + x
-    Go�⋋()
-    Select�⋋�͑�(x)
-    Select�⋋All()
-    Click�܂Ƃ߂ĕ⋋()
+    Go補給()
+    Select補給艦隊(x)
+    Select補給All()
+    Clickまとめて補給()
     GoBackHome()
     EnseiKakuninIfNeed()
 Fend
@@ -62,20 +62,25 @@ Fend
 // 33s 
 Procedure GoEnseiAt(x)
     Print GetTimeString() + "GoEnseiAt " + x
-    Click�o��()
+    Click出撃()
     ClickArroundPointAndSleep(3611, 40, 398, 40, 300, 200, 6, 4)
 
     IF x = 2
-        ClickArroundPointAndSleep(3309, 40, 392, 4, 300, 200, 3, 2)
-
+        // 長距離練習航海
+        // ClickArroundPointAndSleep(3309, 40, 392, 4, 300, 200, 3, 2)
+	// タンカー護衛任務
 	// ClickArroundPointAndSleep(3156, 20, 625, 20, 300, 200, 2, 2)
 	// ClickArroundPointAndSleep(3179, 40, 364, 4, 300, 200, 3, 2)
+	// 防空射撃演習
+	ClickArroundPointAndSleep(3309, 40, 512, 4, 300, 200, 3, 2)
     ELSEIF x = 3
+        // 海上護衛任務
         ClickArroundPointAndSleep(3315, 40, 482, 4, 300, 200, 3, 2)
     ELSEIF x = 4
+        // 艦隊決戦援護
         // ClickArroundPointAndSleep(3156, 20, 625, 20, 300, 200, 2, 2)           
         // ClickArroundPointAndSleep(3152, 40, 572, 4, 300, 200, 3, 2)
-
+	// 警備任務
         ClickArroundPointAndSleep(3160, 40, 422, 4, 300, 200, 3, 2)
     ENDIF
 
@@ -91,6 +96,7 @@ Procedure GoEnseiAt(x)
 
     ClickArroundPointAndSleep(3574, 40, 614, 40, 300, 200, 5, 4)
     ClickArroundPointAndSleep(2978, 40, 216, 40, 300, 200, 4, 4)
+    EnseiKakuninIfNeed()
 Fend
 
 Procedure ChargeAndEnseiAtFast(x)
@@ -112,12 +118,12 @@ Fend
 
 Procedure RefreshIfNeed
     For i = 1 to 3
-        If GetStatusAt(i) = "�܂��Ȃ��A�����܂�" OR (LENGTH(GetStatusAt(i)) < 4 AND LENGTH(GetStatusAt(i)) > 0)
+        If GetStatusAt(i) = "まもなく帰投します" OR (LENGTH(GetStatusAt(i)) < 4 AND LENGTH(GetStatusAt(i)) > 0)
             RefreshByTask()
 	    EnseiKakuninIfNeed()
         Endif
     Next
-    If GetStatusAt(4) = "�܂��Ȃ������C���炠����܂�" OR LENGTH(GetStatusAt(4)) > 10
+    If GetStatusAt(4) = "まもなくお風呂からあがります" OR LENGTH(GetStatusAt(4)) > 10
         RefreshByTask()
     Endif
 Fend
@@ -151,8 +157,8 @@ Procedure TakeABath
 Fend
 
 Procedure GoThreeTwoOne
-    Click�o��()
-    Click�o��Next()
+    Click出撃()
+    Click出撃Next()
     SelectThreeTwoStage()
 
     WaitClickSleep(3555, 80, 635, 10, 300, 200, 4, 1, 3354, 646, $DDE9F2, -1, -1, 2, 5)
@@ -183,8 +189,8 @@ Fend
 
 Procedure GoOneOne
     Print GetTimeString() + "GoOneOne"
-    Click�o��()
-    Click�o��Next()
+    Click出撃()
+    Click出撃Next()
     SelectOneOneStage()
 
     WaitClickSleep(3611, 40, 634, 10, 300, 200, 3, 1, 3544, 360, $A79B27, -1, -1, 2, 5)
