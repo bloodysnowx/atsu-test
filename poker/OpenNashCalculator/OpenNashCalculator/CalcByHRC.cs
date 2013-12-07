@@ -140,9 +140,34 @@ namespace OpenNashCalculator
             return null;
         }
 
+        class HRCResult
+        {
+            HRCResult(string action, int amount, string name, string range)
+            {
+                this.action = action;
+                this.amount = amount;
+                this.name = name;
+                this.range = range;
+                this.childlen = new List<HRCResult>();
+            }
+            string action;
+            int amount;
+            string name;
+            string range { get; private set; }
+            List<HRCResult> childlen;
+            void addChild(HRCResult child) { this.childlen.Add(child); }
+        }
+
         static string[] parseRangeText(string rangeText)
         {
-            return new string[10];
+            // 行頭かつ" R"でマッチングする
+            // タブの数で？
+            string[] delimiter = { "\n R", "\nC" };
+            string[] ranges = rangeText.Split(delimiter, StringSplitOptions.None);
+            string[] delimiter2 = { "\t", "\r\n" };
+            string[] parts = rangeText.Split(delimiter2, StringSplitOptions.None);
+            
+            return ranges;
         }
 
         static void openExportStrategies(IntPtr hrc)
