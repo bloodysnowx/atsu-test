@@ -88,7 +88,10 @@ Fend
 
 Procedure ActivateLogbook
     ACW(GETID("航海日誌 0.4.6","SWT_Window0"),3560,773,280,420,0)
-    BTN(LEFT,CLICK,3582,831,188)
+    id = GetLogBookID()
+    if LENGTH(GETSTR(id, 1)) < 1
+        BTN(LEFT,CLICK,3582,831,188)
+    endif
 Fend
 
 Procedure ReloadBath

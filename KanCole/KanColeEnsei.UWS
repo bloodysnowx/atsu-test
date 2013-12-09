@@ -27,7 +27,7 @@ Procedure Main2()
 	    ChokyoriCount = GoEnseiIfNeedAt(1, ChokyoriCount)
 	    KaijoGoeiCount = GoEnseiIfNeedAt(2, KaijoGoeiCount)
 	    KantaiKessenCount = GoEnseiIfNeedAt(3, KantaiKessenCount)
-	    SleepAndPrint(3 * 60 + RANDOM(30))
+	    SleepAndPrint(1 * 60 + RANDOM(30))
 	Next
     WEND
 Fend
@@ -81,7 +81,9 @@ Procedure GoEnseiAt(x)
         // ClickArroundPointAndSleep(3156, 20, 625, 20, 300, 200, 2, 2)           
         // ClickArroundPointAndSleep(3152, 40, 572, 4, 300, 200, 3, 2)
 	// 警備任務
-        ClickArroundPointAndSleep(3160, 40, 422, 4, 300, 200, 3, 2)
+        // ClickArroundPointAndSleep(3160, 40, 422, 4, 300, 200, 3, 2)
+        // 長距離練習航海
+        ClickArroundPointAndSleep(3309, 40, 392, 4, 300, 200, 3, 2)
     ENDIF
 
     ClickArroundPointAndSleep(3614, 40, 627, 20, 300, 200, 4, 4)
@@ -245,23 +247,4 @@ Function GoThreeTwoOneMain(ThreeTwoOneCount)
     If GetDamagedShip()
         TakeABath()
     Endif
-Fend
-
-Procedure CreateAirPlane
-    ActivateKanCole()
-
-    ClickArroundPointAndSleep(3172, 40, 526, 20, 200, 100, 3, 1)
-
-    ClickArroundPointAndSleep(3445, 4, 327, 4, 200, 100, 1, 1)
-
-    ClickArroundPointAndSleep(3440, 4, 455, 4, 200, 100, 1, 0)
-    ClickArroundPointAndSleep(3440, 4, 455, 4, 200, 100, 1, 0)
-    ClickArroundPointAndSleep(3440, 4, 455, 4, 200, 100, 1, 0)
-    ClickArroundPointAndSleep(3440, 4, 455, 4, 200, 100, 1, 0)
-    ClickArroundPointAndSleep(3440, 4, 455, 4, 200, 100, 1, 1)
-
-    ClickArroundPointAndSleep(3669, 4, 483, 4, 200, 100, 1, 1)
-    ClickArroundPointAndSleep(3621, 4, 455, 4, 200, 100, 1, 1)
-
-    ClickArroundPointAndSleep(3646, 40, 626, 20, 200, 100, 1, 1)
 Fend
