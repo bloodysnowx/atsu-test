@@ -67,7 +67,7 @@ namespace OpenNashCalculator
 
         public static void clearCalc() { rangeText = null; root = null; }
 
-        public static string[] Calc(TableData tableData, string chips)
+        public static string[] Calc(TableData tableData, string chips, List<bool> isForceAllInList)
         {   
             IntPtr hrc = FindWindow(null, "HoldemResources Calculator");
             openBasicHand(hrc);
@@ -126,8 +126,8 @@ namespace OpenNashCalculator
                 swtWindowNext = FindWindowEx(swtWindowTop, swtWindowNext, "SWT_Window0", null);
                 exportStrategiesDialogOKButton = FindWindowEx(swtWindowNext, IntPtr.Zero, "Button", "OK");
                 SendMessage(exportStrategiesDialogOKButton, (uint)BM_CLICK, IntPtr.Zero, IntPtr.Zero);
-
-                return parseRangeText(rangeText, tableData.getHeroNumber());
+                
+                return parseRangeText(rangeText, tableData.getHeroNumber(), isForceAllInList);
             }
             catch (Exception ex)
             {
@@ -164,8 +164,13 @@ namespace OpenNashCalculator
             public int getChildCount() { return this.childlen.Count; }
         }
 
-        public static string[] parseRangeText(string rangeText, int hero_pos)
+        public static string[] parseRangeText(string rangeText, int hero_pos, List<bool> isForceAllInList)
         {
+            int reduceCount = 0;
+            for (int i = 0; i < hero_pos; ++i)
+                if (isForceAllInList[i]) ++reduceCount;
+            hero_pos -= reduceCount;
+
             root = new HRCResult(null, null, null, null, null);
             HRCResult now = root;
             int level = -1;

@@ -123,6 +123,8 @@ namespace OpenNashCalculator
             currentProcess.Start();
         }
 
+        List<bool> isForceAllInList;
+
         private void setupCurrentTableData()
         {
             int allHandCount = 1;
@@ -138,19 +140,28 @@ namespace OpenNashCalculator
             currentTableData.Ante = System.Convert.ToInt32(textBoxAnte.Text.Trim());
             currentTableData.stacks = string.Empty;
 
+            isForceAllInList = new List<bool>();
+
             int unit = currentTableData.Ante < 10 ? 10 : currentTableData.Ante;
             for (int i = 1; i < 10; ++i)
             {
                 if (chipTextBoxes[(bb_pos + i) % 9].Text.Trim() != string.Empty)
                 {
+                    currentTableData.seats[(bb_pos + i) % 9] = i;
                     if (currentTableData.stacks.Length > 0) currentTableData.stacks += ",";
                     int chip = System.Convert.ToInt32(chipTextBoxes[(bb_pos + i) % 9].Text.Trim());
                     currentTableData.chips[(bb_pos + i) % 9] = chip;
+                    bool isForceAllIn = false;
+                    isForceAllIn = chip <= currentTableData.Ante;
+                    if (this.positionRadioButtons[(bb_pos + i) % 9].Text == "SB") isForceAllIn = chip <= currentTableData.Ante + currentTableData.SB;
+                    isForceAllInList.Add(isForceAllIn);
                     if (currentTableData.playerNames[(bb_pos + i) % 9] == null || currentTableData.playerNames[(bb_pos + i) % 9] == string.Empty) currentTableData.playerNames[(bb_pos + i) % 9] = "Player" + (bb_pos + i) % 9;
                     chip = (int)(Math.Round((double)chip / (double)unit) * unit);
                     currentTableData.stacks += chip.ToString();
                     if (SeatLabels[(bb_pos + i) % 9].Text == "H")
                         currentTableData.heroName = currentTableData.playerNames[(bb_pos + i) % 9];
+                    if (this.positionRadioButtons[(bb_pos + i) % 9].Text == "BU")
+                        currentTableData.buttonPos = i;
                 }
             }
         }

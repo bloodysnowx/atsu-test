@@ -694,13 +694,14 @@ namespace OpenNashCalculator
                     j++;
                 }
             }
-            string[] ranges = CalcByHRC.Calc(currentTableData, chips.ToString());
+            string[] ranges = CalcByHRC.Calc(currentTableData, chips.ToString(), isForceAllInList);
             if (ranges == null) return;
-            for (int i = 1, j = 0; i < 10 && j < ranges.Length; ++i)
+            for (int i = 1, j = 0, k = 0; i < 10 && j < isForceAllInList.Count && k < ranges.Length; ++i)
             {
                 if (chipTextBoxes[(bb_pos + i) % 9].Text.Trim() != string.Empty)
                 {
-                    rangeTextBoxes[(bb_pos + i) % 9].Text = ranges[j++];
+                    if(isForceAllInList[j++] != true)
+                        rangeTextBoxes[(bb_pos + i) % 9].Text = ranges[k++];
                 }
             }
         }

@@ -117,7 +117,11 @@ namespace OpenNashCalculator
             int SBIndex = -1;
             for (int i = 1; i <= MaxSeatNum; ++i)
             {
-                if (playerNames[(i + getButtonIndex()) % MaxSeatNum] != null && playerNames[(i + getButtonIndex()) % MaxSeatNum].Length > 0) SBIndex = i % MaxSeatNum;
+                if (playerNames[(i + getButtonIndex()) % MaxSeatNum] != null && playerNames[(i + getButtonIndex()) % MaxSeatNum].Length > 0)
+                {
+                    SBIndex = (i + getButtonIndex()) % MaxSeatNum;
+                    break;
+                }
             }
             return SBIndex;
         }
@@ -128,7 +132,11 @@ namespace OpenNashCalculator
             int BBIndex = -1;
             for (int i = 1; i <= MaxSeatNum; ++i)
             {
-                if (playerNames[(i + SBIndex) % MaxSeatNum] != null && playerNames[(i + SBIndex) % MaxSeatNum].Length > 0) BBIndex = i % MaxSeatNum;
+                if (playerNames[(i + SBIndex) % MaxSeatNum] != null && playerNames[(i + SBIndex) % MaxSeatNum].Length > 0)
+                {
+                    BBIndex = (i + SBIndex) % MaxSeatNum;
+                    break;
+                }
             }
             return BBIndex;
         }
