@@ -83,9 +83,9 @@ Procedure GoEnseiAt(x)
 	// 警備任務
         // ClickArroundPointAndSleep(3160 - 2871, 40, 422 + 20, 4, 300, 200, 3, 2)
         // 長距離練習航海
-        ClickArroundPointAndSleep(3309 - 2871, 40, 392 + 20, 4, 300, 200, 3, 2)
+        // ClickArroundPointAndSleep(3309 - 2871, 40, 392 + 20, 4, 300, 200, 3, 2)
 	// 防空射撃演習
-	// ClickArroundPointAndSleep(3309 - 2871, 40, 512 + 20, 4, 300, 200, 3, 2)
+	ClickArroundPointAndSleep(3309 - 2871, 40, 512 + 20, 4, 300, 200, 3, 2)
     ENDIF
 
     ClickArroundPointAndSleep(3614 - 2871, 40, 627 + 20, 20, 300, 200, 4, 4)
