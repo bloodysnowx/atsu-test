@@ -18,7 +18,7 @@
         <script src="../../assets/js/bootstrap/respond.min.js"></script>
         <![endif]-->
     
-        <link rel="stylesheet/less" type="text/css" href="./js/bootstrap.less"><style type="text/css" id="less:static-pd_strapped-less-bootstrap">
+            <link rel="stylesheet/less" type="text/css" href="./js/bootstrap.less"><style type="text/css" id="less:static-pd_strapped-less-bootstrap">
             /* Ubuntu Light*/
 @font-face {
   font-family: 'ubuntu_lightregular';
@@ -5259,21 +5259,21 @@ body.modal-open,
   left: 100%;
 }
 .carousel-control {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 15%;
-  opacity: 0.5;
-  filter: alpha(opacity=50);
-  font-size: 20px;
-  color: #ffffff;
-  text-align: center;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+	position: absolute;
+	top: 42px;
+	left: 0;
+	bottom: 0;
+	width: 15%;
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 .carousel-control.right {
-  left: auto;
-  right: 0;
+	left: auto;
+	right: -1px;
 }
 .carousel-control:hover,
 .carousel-control:focus {
@@ -6173,19 +6173,19 @@ body,
   margin-right: 15px;
 }
 .homep_img1 {
-  background: url(http://www.pokerdata.com/static/pd_strapped/less/../../images/home/homep-g1.png) no-repeat;
+  background: url(../images/home/homep-g1.png) no-repeat;
   height: 41px;
   width: 41px;
   margin: 50px auto 20px;
 }
 .homep_img2 {
-  background: url(http://www.pokerdata.com/static/pd_strapped/less/../../images/home/homep-g2.png) no-repeat;
+  background: url(../images/home/homep-g2.png) no-repeat;
   height: 41px;
   width: 41px;
   margin: 50px auto 20px;
 }
 .homep_img3 {
-  background: url(http://www.pokerdata.com/static/pd_strapped/less/../../images/home/homep-g3.png) no-repeat;
+  background: url(../images/home/homep-g3.png) no-repeat;
   height: 41px;
   width: 50px;
   margin: 50px auto 20px;
@@ -6461,7 +6461,7 @@ table#activity {
   clear: right;
 }
 .select_play #stakes-played:after {
-  background: url(http://www.pokerdata.com/static/pd_strapped/less/../images/graph_before.png);
+  background: url(images/graph_before.png);
   display: block;
   content: "";
   width: 20px;
@@ -6698,7 +6698,7 @@ table#activity {
 .hand .loading {
   padding: 50px;
   text-align: center;
-  background: url(http://www.pokerdata.com/static/pd_strapped/less/../images/icons/loading-2-16x11.gif) no-repeat 50% 65%;
+  background: url(images/loading-2-16x11.gif) no-repeat 50% 65%;
 }
 .hand .hh .loading_error {
   padding: 50px 0 50px 0;
@@ -7920,8 +7920,14 @@ fieldset[disabled] #blog .button_blog.active {
   margin-bottom: 25px;
   width: 85%;
 }
+    .col-lg-121 {  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.col-lg-121 {    width: 100%;
+}
     </style></head>
-    
 
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
@@ -7931,7 +7937,7 @@ fieldset[disabled] #blog .button_blog.active {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="http://www.pokercoach.biz"><img src="images/pokercoachlogo.gif"></a>
+            <a class="navbar-brand" href="http://www.pokercoach.biz/"><img src="images/pokercoachlogo.gif"></a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -8000,150 +8006,70 @@ fieldset[disabled] #blog .button_blog.active {
     <button class="btn btn-primary pull-right closeBtn">Close</button>
 </div>
 
-
-    
-
-    
-    <!-- Carousel
-    ================================================== -->
-    <div id="myCarousel" class="carousel slide">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="item active">
-                <div class="container">
-                    <div class="carousel-caption">
-                        <h1>無敵のポーカーツール</h1>
-                        <p>「ポーカーコーチ」を使えば今日からプロ級のプレイが出来ます。<br>
-                        あなたがオールインすべき手をリアルタイムで教えてくれます。
-
-</p>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="container">
-                    <div class="carousel-caption">
-                        <h1>先着150名様に無料でプレゼント</h1>
-                        <p>定価3000円の『ポーカーコーチ』を無料でプレゼントします。<br>
-                        ※予定配布数を超えた時点で終了となります。</p>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="container">
-                    <div class="carousel-caption">
-                        <h1>カンタン設定</h1>
-                        <p>わずか3ステップ。2分ですぐに使えます。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- The Laptop -->
-      <br><br><br><br>  <div id="actionCall" class="col-lg-12">
-            <img src="images/pokercoach.jpg">
-            <p><a class="btn btn-large btn-primary signUP" href="./uploader/">ダウンロードする</a></p>
-        </div>
-        <a class="left carousel-control" href="http://www.pokerdata.com/#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-        <a class="right carousel-control" href="http://www.pokerdata.com/#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-    </div><!-- /.carousel -->
+      <br><br><br><br>  <div id="actionCall" class="col-lg-12"></div>
+    </div>
+    <!-- /.carousel -->
     <!-- Spacer to allow for the laptop overlap-->
-    <div class="laptopSpacer"></div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="homep_img1"></div>
-              <h2>『ポーカーコーチ』とは？<br>
-                </h2>
-                <p>「ナッシュ均衡プレイ」をその場で教えてくれるソフトです。
-                  つまりクリックひとつであなたの取るべき最適プレイを教えてくれます。
-                ただし、使えるのは15BB(持ちチップ量がBBの15倍分）以下の場合のみ。
-                キャッシュゲームでは使えませんが、トーナメント（特にハイパーターボ）で絶大な威力を発揮します。<br>
-                </p>
-            </div>
-            <div class="col-lg-4">
-                <div class="homep_img2"></div>
-                <h2>どうして無料なの？</h2>
-                <p>私たちは市場に参入したばかり。まだ皆様からの十分な信用を得られていません。
-                  最初から3000円で販売しても、おそらく買ってくれる人は少数派。
-                  しかし使っていただければ皆様の資金は増えていくでしょうし、そうなれば高機能で
-                  レート無制限の有料版『ポーカーコーチPro』が欲しくなることでしょう。<br>
-                  <br>
-                </p>
-            </div>
-            <div class="col-lg-4">
-                <div class="homep_img3"></div>
-                <h2>どうして数量限定なの？</h2>
-                <p>無制限に配布するとテーブル全員が完璧にプレイできてしまいます。そうなるとポーカールームの手数料があるので誰も勝てません。
-                  ですので一定数を配布した後は一旦配布を停止。
-                  使用ユーザーが減ってきたら再度少しずつ配布いたします。
-                  ※どうしても欲しい方は有料版をご購入ください<img style="-webkit-user-select: none"  src="http://library.blackboard.com/ref/3c5e63f9-3950-444f-85f3-1b0d759f084d/content/graphics/ui_icons/icon_smileyface_small.png" align="top"><br>
-<br>
-                </p>
-            </div>
-        </div>
+    <div class="row featurette"></div>
+    <div class="row featurette">
+      <div class="col-md-6">
+	<script type="text/javascript" src="TableData.js"></script>
+	<script type="text/javascript" src="PSHandReader.js"></script>
+	<script type="text/javascript" src="main.js"></script>
 
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-            <div class="col-md-6">
-                <h2 class="featurette-heading">ポーカーコーチを使ってみよう<br>
-                </h2>
-                <p class="lead">たとえばこの場面。<br>
-                  どんなハンドなら参加（＝オールイン）できるでしょうか。<br>
-                  賞金は1位、2位、3位＝5:3:2です。<br>
-                </p>
+	<!-- begin content -->
+	<div id="site_content">
+	  <form name="HandHistory">
+            <div class="form_settings">
+              <p><span>賞金ストラクチャ</span><input type="text" name="Structure" value="1" style="margin-left: 122px; width: 90%"/></p>
+	      <p><input class="submit button" type="button" value="MTT" onClick="document.HandHistory.Structure.value='1'" style="margin-left: 122px; width: 100px;"/>
+		<input class="submit button" type="button" value="ハイパーサテ6人卓" onClick="document.HandHistory.Structure.value='1,1'" style="margin-left: 10px;"/>
+		<input class="submit button" type="button" value="SNG6人卓" onClick="document.HandHistory.Structure.value='65,35'" style="margin-left: 10px; width: 120px;"/></p>
+		<p><input class="submit button" type="button" value="SNG9人卓" onClick="document.HandHistory.Structure.value='5,3,2'" style="margin-left: 122px; width: 120px;"/>
+		<input class="submit button" type="button" value="Fifty50" onClick="document.HandHistory.Structure.value='6,1,1,1,1'" style="margin-left: 10px; width: 120px;"/></p>
+              <p><span>ハンド履歴</span><textarea type="text" name="Content" cols="100" rows="10" placeholder="ここにハンド履歴をコピー＆ペースト" style="margin-left: 122px; width: 90%;"></textarea></p>
+              <p><input class="submit button" type="button" value="現在の状況で計算！" onClick="main(false)" style="margin-left: 122px; width: 90%;font-size: 18px;"/></p>
+              <p><input class="submit button" type="button" value="次の状況で計算！" onClick="main(true)" style="margin-left: 122px; width: 90%;font-size: 18px;"/></p>
             </div>
-            <div class="col-md-6"><img src="images/3.jpg" alt="" class="thumbnail" style="max-width:100%">
-            </div>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-            <div class="col-md-6"><img class="thumbnail" src="images/coach.png" style="max-width:100%" alt="">
-            </div>
-            <div class="col-md-6">
-                <h2 class="featurette-heading">ボタンひとつでわかります</h2>
-                <p class="lead">自分（CO)がオールインできるのは<br>
-              上位57.5%（ 22+ Kx+ Q2s+ Q6o+ J2s+ J8o+ T2s+ T8o+ 95s+ 98o 85s+ 74s+ 63s+ 53s+ 43s ）             <br><br> 
-              UTGのオールインにコールできるのは上位10%（ 55+ A8s+ ATo+ ）<br>
-              というのが瞬時にわかります。<br>
-              <br>
-              ※「+」というのは「以上」という意味です。たとえば55+ならば55以上の全てのペア、
-              56ｓ+ならば56ｓ、67ｓ、78ｓ、89ｓ・・・で参加できます。<br>
-              </p>
-            </div>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-          <div class="col-md-7">
-            
-              <h2 class="featurette-heading1">常に正しい判断ができます</h2>
-              <p class="lead"> ポーカーには運の要素があるので浮き沈みもあります。<br>
-                しかしポーカーコーチを使ってプレイを続ければ、長期的にあなたの資金が増えていくのはほぼ確実です。<br>
-                なぜならば常に「正しいプレイ」ができるからです。<br>
-                是非この素晴らしいツールを体験してみてください。<br>
-                <br>
-            <a class="btn btn-large btn-primary signUP" href="./uploader/"><s>定価3000円</s>⇒0円！　限定150名様　無料版をダウンロードする</a></p>
-              <p class="lead"><br>
-                無料版は参加費$25以下のトーナメントにのみ対応しています。<br>
-                それ以上のステークスをお望みであれば、有料版をお求めください。<br>
-            </p>
-              <p><a class="btn btn-large btn-primary signUP" href="http://www.pokercoach.biz/product">有料版をチェックする</a></p>
-          </div>
-            <p class="lead">&nbsp;</p>
-          </div>
+	  </form>
+	</div>
+	<!-- end content -->
+      </div>
+      <!-- javascript at the bottom for fast page loading -->
+      <script type="text/javascript" src="js/jquery.min.js"></script>
+      <script type="text/javascript" src="js/jquery.easing-sooper.js"></script>
+      <script type="text/javascript" src="js/jquery.sooperfish.js"></script>
+      <script type="text/javascript" src="js/image_fade.js"></script>
+      <!-- initialise sooperfish menu -->
+      <script type="text/javascript">
+	$(document).ready(function() {
+	$('ul.sf-menu').sooperfish();
+	});
+      </script>
     </div>
+    <hr class="featurette-divider">
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading1"><br>
+        </h2>
+      </div>
+      <p class="lead">&nbsp;</p>
     </div>
-    <!-- /END of container -->
+    <div>
+      <center>
+	<h1>先着150名様に無料でクライアント版をプレゼント</h1>
+        <p>定価3000円の『ポーカーコーチ』を無料でプレゼントします。<br>
+          ※予定配布数を超えた時点で終了となります。</p>
+	<img src="images/pokercoach.jpg">
+	<p><a class="btn btn-large btn-primary signUP" href="./uploader/">ダウンロードする</a></p>
+      </center>
+    </div>
+  </div>
+</div>
+<!-- /END of container -->
+
     <div class="footer">
     <div class="container">
         <p><br>
@@ -8153,7 +8079,8 @@ fieldset[disabled] #blog .button_blog.active {
     </div>
 </div>
     <script src="./js/recaptcha_ajax.js" type="text/javascript"></script>
-        <script type="text/javascript">
+    
+    <script type="text/javascript">
             var static_root_dir = '/static/';
             var base_url = window.location.protocol + "//" + window.location.host;
             // Url paths used for player switching
@@ -8162,16 +8089,13 @@ fieldset[disabled] #blog .button_blog.active {
             var sessions_path  = "/reports/sessions/";
 
         </script>
-        <script src="./js/jquery.js"></script>
-        <script src="./js/jquery-ui.min.js"></script>
-        <script src="./js/bootstrap.js"></script>
-        <script src="./js/pokerdata.js"></script>
-    
-        
-
+    <script src="./js/jquery.js"></script>
+    <script src="./js/jquery-ui.min.js"></script>
+    <script src="./js/bootstrap.js"></script>
+    <script src="./js/pokerdata.js"></script>
     
             <!-- Google Analytics -->
-            <script type="text/javascript">
+    <script type="text/javascript">
                 var _gaq = _gaq || [];
                 _gaq.push(['_setAccount', 'UA-36621786-1']);
                 _gaq.push(['_trackPageview']);
@@ -8183,9 +8107,4 @@ fieldset[disabled] #blog .button_blog.active {
                 })();
             </script>
             <!-- / Google Analytics -->
-        
-
-
-    
-
 </body></html>
