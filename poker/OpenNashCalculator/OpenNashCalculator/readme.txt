@@ -3,6 +3,10 @@
 タイマーで自動ブラインドUP
 時計でアンテアップを知らせる
 
+強制オール対応
+SB以外はAnte以下かどうか？SBはSB+Ante以下かどうか？
+hero_posよりも前に存在すれば、そこを除外して・・・
+
 設定方法
 
 OpenNashCalculator.exe.configを編集する

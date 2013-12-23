@@ -20,7 +20,7 @@ Procedure Main2()
     WHILE True
         RefreshIfNeed()
 	// ThreeTwoOneCount = GoThreeTwoOneMain(ThreeTwoOneCount)
-        For i = 0 to 3
+        For i = 0 to 13
 	    ResetConfig()
 	    ResetToHome()
 	    RefreshIfNeed()
@@ -29,6 +29,7 @@ Procedure Main2()
 	    KantaiKessenCount = GoEnseiIfNeedAt(3, KantaiKessenCount)
 	    SleepAndPrint(1 * 60 + RANDOM(30))
 	Next
+	// ThreeTwoOneCount = GoThreeTwoOneMain(ThreeTwoOneCount)
     WEND
 Fend
 
@@ -69,22 +70,22 @@ Procedure GoEnseiAt(x)
         // 長距離練習航海
         // ClickArroundPointAndSleep(3309 - 2871, 40, 392 + 20, 4, 300, 200, 3, 2)
 	// タンカー護衛任務
-	// ClickArroundPointAndSleep(3156 - 2871, 20, 625 + 20, 20, 300, 200, 2, 2)
-	// ClickArroundPointAndSleep(3179 - 2871, 40, 364 + 20, 4, 300, 200, 3, 2)
+	ClickArroundPointAndSleep(3156 - 2871, 20, 625 + 20, 20, 300, 200, 2, 2)
+	ClickArroundPointAndSleep(3179 - 2871, 40, 364 + 20, 4, 300, 200, 3, 2)
 	// 防空射撃演習
-	ClickArroundPointAndSleep(3309 - 2871, 40, 512 + 20, 4, 300, 200, 3, 2)
+	// ClickArroundPointAndSleep(3309 - 2871, 40, 512 + 20, 4, 300, 200, 3, 2)
     ELSEIF x = 3
         // 海上護衛任務
         ClickArroundPointAndSleep(3315 - 2871, 40, 482 + 20, 4, 300, 200, 3, 2)
     ELSEIF x = 4
         // 艦隊決戦援護
-        // ClickArroundPointAndSleep(3156 - 2871, 20, 625 + 20, 20, 300, 200, 2, 2)           
-        // ClickArroundPointAndSleep(3152 - 2871, 40, 572 + 20, 4, 300, 200, 3, 2)
+        // ClickArroundPointAndSleep(3156 - 2871, 20, 625 + 20, 20, 300, 200, 2, 2)            // ClickArroundPointAndSleep(3152 - 2871, 40, 572 + 20, 4, 300, 200, 3, 2)
 	// 警備任務
         // ClickArroundPointAndSleep(3160 - 2871, 40, 422 + 20, 4, 300, 200, 3, 2)
         // 長距離練習航海
         ClickArroundPointAndSleep(3309 - 2871, 40, 392 + 20, 4, 300, 200, 3, 2)
-
+	// 防空射撃演習
+	// ClickArroundPointAndSleep(3309 - 2871, 40, 512 + 20, 4, 300, 200, 3, 2)
     ENDIF
 
     ClickArroundPointAndSleep(3614 - 2871, 40, 627 + 20, 20, 300, 200, 4, 4)
@@ -120,6 +121,7 @@ Function GetKantaiKessenStatus
 Fend
 
 Procedure RefreshIfNeed
+    EnseiKakuninIfNeed()
     For i = 1 to 3
         If GetStatusAt(i) = "まもなく帰投します" OR (LENGTH(GetStatusAt(i)) < 4 AND LENGTH(GetStatusAt(i)) > 0)
             RefreshByTask()
@@ -243,7 +245,7 @@ Function GoThreeTwoOneMain(ThreeTwoOneCount)
         GoThreeTwoOne()
         ChargeAt(1)
 	Result = Result + 1
-	Print GetTimeString() + "ThreeTwoOneCount = " + ThreeTwoOneCount
+	Print GetTimeString() + "ThreeTwoOneCount = " + Result
     Endif
     If GetDamagedShip()
         TakeABath()

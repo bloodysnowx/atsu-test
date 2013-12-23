@@ -1,6 +1,12 @@
 // CTRLボタンでPRINT表示するスレッド
-color = PEEKCOLOR(3237, 403)
-Print format(color, 6, -1)
+for i = 0 to 20
+    for j = 10 to 30
+        color = PEEKCOLOR(3632 - 10 + i, 272 + j)
+	if color = $4C4F47
+	    Print format(color, 6, -1) + " @(" + i + "," + j + ")"
+	endif
+    next
+next
 
 THREAD PRINTSTATE()
 

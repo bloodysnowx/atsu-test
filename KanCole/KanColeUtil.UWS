@@ -90,11 +90,12 @@ Fend
 
 Procedure ActivateLogbook
     id = GetLogBookID()
-    ACW(id,3560,773,280,420,0)
 
     if LENGTH(GETSTR(id, 1)) < 1
+        ACW(id,3560,773,280,420,0)
         MOUSEORG(id, 0)
-        BTN(LEFT,CLICK,3582 - 3560,831 - 773,188)
+	BTN(LEFT,CLICK,28,98,281)
+        // BTN(LEFT,CLICK,3582 - 3560,831 - 773,188)
     endif
 Fend
 
@@ -108,7 +109,7 @@ Procedure ReloadBath
 Fend
 
 Function GetLogBookID
-    Result = GETID("航海日誌 0.4.6", "SWT_Window0", -1)
+    Result = GETID("航海日誌 0.4.9", "SWT_Window0", -1)
 Fend
 
 Function IsTakingABath
