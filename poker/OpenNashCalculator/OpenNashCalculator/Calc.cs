@@ -315,8 +315,8 @@ namespace OpenNashCalculator
             }
             else
             {
-                regex = new Regex("BB[0-9]+" + Regex.Escape(".") + "[0-9]+%, .*?\n" +
-                    Regex.Escape(position) + "([0-9]+" + Regex.Escape(".") + "[0-9]+%, .*?)\n");
+                regex = new Regex("BB[0-9]+" + Regex.Escape(".") + "[0-9]+%, .*?\n(" +
+                    Regex.Escape(position) + "[0-9]+" + Regex.Escape(".") + "[0-9]+%, .*?)\n");
                 matchCol = regex.Matches(pushRanges);
                 if (matchCol.Count > 0)
                     callRange = matchCol[0].Groups[1].Value;
