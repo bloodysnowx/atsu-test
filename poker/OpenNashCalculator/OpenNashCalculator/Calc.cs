@@ -64,6 +64,8 @@ namespace OpenNashCalculator
 
         private bool searchCache()
         {
+            return false;
+
             using (var conn = new SQLiteConnection("Data Source=calc.db"))
             {
                 conn.Open();
