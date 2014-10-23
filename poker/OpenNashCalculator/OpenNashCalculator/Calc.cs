@@ -64,6 +64,8 @@ namespace OpenNashCalculator
 
         private bool searchCache()
         {
+            return false;
+
             using (var conn = new SQLiteConnection("Data Source=calc.db"))
             {
                 conn.Open();
@@ -283,7 +285,7 @@ namespace OpenNashCalculator
             hero_pos = "";
             hero_pos = positionRadioButtons[hero_num].Text;
 
-            webBrowser1.Navigate(URL);
+            webKitBrowser.Navigate(URL);
 
             if (checkBoxWeb.Checked == false)
                 System.Diagnostics.Process.Start(URL);
@@ -294,24 +296,51 @@ namespace OpenNashCalculator
             webBrowserTimer.Enabled = true;
         }
 
+        private static string getPushRange(string webPage, string position)
+        {
+            Regex regex = new Regex(Regex.Escape(position) + "([0-9]+" + Regex.Escape(".") + "[0-9]+%, .*?)\n");
+            MatchCollection matchCol = regex.Matches(webPage);
+            String pushRange = webPage.Substring(webPage.LastIndexOf(matchCol[matchCol.Count - 1].Value));
+            return position == "BB" ? "" : pushRange;
+        }
+
+        private static string getCallRange(string pushRanges, string position)
+        {
+            Regex regex = new Regex(Regex.Escape(position) + "([0-9]+" + Regex.Escape(".") + "[0-9]+%, .*?)\n");
+            MatchCollection matchCol = regex.Matches(pushRanges);
+            String callRange = "";
+            if (matchCol.Count == 2 || matchCol.Count == 1)
+            {
+                callRange = matchCol[0].Groups[1].Value;
+            }
+            else
+            {
+                regex = new Regex("BB[0-9]+" + Regex.Escape(".") + "[0-9]+%, .*?\n(" +
+                    Regex.Escape(position) + "[0-9]+" + Regex.Escape(".") + "[0-9]+%, .*?)\n");
+                matchCol = regex.Matches(pushRanges);
+                if (matchCol.Count > 0)
+                    callRange = matchCol[0].Groups[1].Value;
+            }
+            return callRange;
+        }
+
         private void webBrowserTimer_Tick(object sender, EventArgs e)
         {
-            recent_web_page = webBrowser1.Document.Body.OuterHtml;
+            if (webKitBrowser.Document.ChildNodes.Count() < 2) return;
+            recent_web_page = webKitBrowser.Document.ChildNodes[1].TextContent;
             if (last_web_page == recent_web_page) return;
             last_web_page = recent_web_page;
-            int range_num = recent_web_page.IndexOf("<TH>Range</TH></TR>");
+            int range_num = recent_web_page.IndexOf("PUCAOCRange");
             if (range_num < 1) return;
-            recent_web_page = recent_web_page.Substring(range_num);
-            // recent_web_page = client.DownloadString(URL);
-            Regex regex = new Regex("<TR>\r\n<TD>\r\n<TD>" + Regex.Escape(hero_pos) + "</TD>\r\n<TD>\r\n<TD>(.*?)</TD>");
-            MatchCollection matchCol = regex.Matches(recent_web_page);
-            int callRangeCount = matchCol.Count - 1;
+            recent_web_page = recent_web_page.Substring(range_num + 11);
 
-            for (int i = 1; i < 9 && callRangeCount >= 0; ++i)
+            for (int i = 1; i < 9; ++i)
             {
-                if (positionRadioButtons[(hero_num - i + 9) % 9].Enabled)
+                RadioButton currentRadioButton = positionRadioButtons[(hero_num - i + 9) % 9];
+                if (currentRadioButton.Enabled)
                 {
-                    rangeTextBoxes[(hero_num - i + 9) % 9].Text = matchCol[callRangeCount--].Groups[1].Value;
+                    String opponentPushRange = recent_web_page.Substring(recent_web_page.LastIndexOf(getPushRange(recent_web_page, currentRadioButton.Text)));
+                    rangeTextBoxes[(hero_num - i + 9) % 9].Text = getCallRange(opponentPushRange, hero_pos);
                 }
             }
 
@@ -322,11 +351,7 @@ namespace OpenNashCalculator
             }
 #endif
 
-            regex = new Regex("<TD>" + Regex.Escape(hero_pos) + "</TD>\r\n<TD>\r\n<TD>\r\n<TD>(.*?)</TD>");
-            matchCol = regex.Matches(recent_web_page);
-            string pushRange = "";
-            if (matchCol.Count > 0) pushRange = matchCol[0].Groups[1].Value;
-
+            string pushRange = getPushRange(recent_web_page, hero_pos);
             rangeTextBoxes[hero_num].Text = pushRange;
             webBrowserTimer.Enabled = false;
             this.buttonCalc.Enabled = true;

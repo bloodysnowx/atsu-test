@@ -545,13 +545,12 @@ namespace OpenNashCalculator
                 }
                 else if (recent_web_page != null)
                 {
-                    int index = recent_web_page.IndexOf("</TR>\r\n<TR>\r\n<TD>" + push_pos + "</TD>\r\n<TD>\r\n<TD>\r\n<TD>");
-                    if (index < 0) return;
-                    string tmp = recent_web_page.Substring(index);
-                    tmp = tmp.Substring(tmp.IndexOf("</TR>\r\n<TR>\r\n<TD>\r\n<TD>" + oc_pos + "</TD>\r\n<TD>\r\n<TD>"));
-                    Regex regex = new Regex("</TR>\r\n<TR>\r\n<TD>\r\n<TD>\r\n<TD>" + Regex.Escape(hero_pos) + "</TD>\r\n<TD>(.*?)</TD></TR>");
-                    MatchCollection matchCol = regex.Matches(tmp);
-                    Help.ShowPopup(this, matchCol[0].Groups[1].Value, Control.MousePosition);
+                    string opponentPushRange = recent_web_page.Substring(recent_web_page.LastIndexOf(getPushRange(recent_web_page, push_pos)));
+                    string callRange = opponentPushRange.Substring(opponentPushRange.LastIndexOf(getCallRange(opponentPushRange, oc_pos)));
+                    Regex regex = new Regex(Regex.Escape(hero_pos) + "([0-9]+" + Regex.Escape(".") + "[0-9]+%, .*?)\n");
+                    MatchCollection matchCol = regex.Matches(callRange);
+                    String overCallRange = matchCol[0].Groups[1].Value;
+                    Help.ShowPopup(this, overCallRange, Control.MousePosition);
                 }
                 else
                 {
@@ -704,6 +703,11 @@ namespace OpenNashCalculator
                         rangeTextBoxes[(bb_pos + i) % 9].Text = ranges[k++];
                 }
             }
+        }
+
+        private void webKitBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            webBrowserTimer.Enabled = true;
         }
 
 #if false

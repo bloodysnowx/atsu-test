@@ -2047,19 +2047,19 @@
     <value>335, 19</value>
   </metadata>
   <data name="Addon30kToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 22</value>
+    <value>135, 22</value>
   </data>
   <data name="Addon30kToolStripMenuItem.Text" xml:space="preserve">
     <value>Addon 30k</value>
   </data>
   <data name="Addon50kToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 22</value>
+    <value>135, 22</value>
   </data>
   <data name="Addon50kToolStripMenuItem.Text" xml:space="preserve">
     <value>Addon 50k</value>
   </data>
   <data name="chipContextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 48</value>
+    <value>136, 48</value>
   </data>
   <data name="&gt;&gt;chipContextMenuStrip.Name" xml:space="preserve">
     <value>chipContextMenuStrip</value>
@@ -2397,30 +2397,6 @@
   <data name="&gt;&gt;button_fore.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
-  <data name="webBrowser1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 429</value>
-  </data>
-  <data name="webBrowser1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>519, 209</value>
-  </data>
-  <data name="webBrowser1.TabIndex" type="System.Int32, mscorlib">
-    <value>105</value>
-  </data>
-  <data name="webBrowser1.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;webBrowser1.Name" xml:space="preserve">
-    <value>webBrowser1</value>
-  </data>
-  <data name="&gt;&gt;webBrowser1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.WebBrowser, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;webBrowser1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;webBrowser1.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
   <metadata name="webBrowserTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>628, 19</value>
   </metadata>
@@ -2449,7 +2425,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelICM1.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="labelICM2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2479,7 +2455,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelICM2.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="labelICM3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2509,7 +2485,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelICM3.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="labelICM4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2539,7 +2515,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelICM4.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="labelICM5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2569,7 +2545,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelICM5.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="labelICM6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2599,7 +2575,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelICM6.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="labelICM7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2629,7 +2605,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelICM7.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="labelICM8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2659,7 +2635,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelICM8.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="labelICM9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2689,7 +2665,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelICM9.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="checkBoxICM.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2719,7 +2695,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBoxICM.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="checkBoxAutoBack.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2746,7 +2722,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBoxAutoBack.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="buttonHRC.Location" type="System.Drawing.Point, System.Drawing">
     <value>483, 13</value>
@@ -2770,13 +2746,34 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonHRC.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="webKitBrowser.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 432</value>
+  </data>
+  <data name="webKitBrowser.Size" type="System.Drawing.Size, System.Drawing">
+    <value>551, 187</value>
+  </data>
+  <data name="webKitBrowser.TabIndex" type="System.Int32, mscorlib">
+    <value>118</value>
+  </data>
+  <data name="&gt;&gt;webKitBrowser.Name" xml:space="preserve">
+    <value>webKitBrowser</value>
+  </data>
+  <data name="&gt;&gt;webKitBrowser.Type" xml:space="preserve">
+    <value>WebKit.WebKitBrowser, WebKitBrowser, Version=0.5.0.0, Culture=neutral, PublicKeyToken=b967213f6d29a3be</value>
+  </data>
+  <data name="&gt;&gt;webKitBrowser.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;webKitBrowser.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>86</value>
+    <value>25</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 12</value>

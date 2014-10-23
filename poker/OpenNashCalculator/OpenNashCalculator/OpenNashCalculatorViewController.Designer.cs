@@ -119,7 +119,6 @@
             this.findTimer = new System.Windows.Forms.Timer(this.components);
             this.button_back = new System.Windows.Forms.Button();
             this.button_fore = new System.Windows.Forms.Button();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.webBrowserTimer = new System.Windows.Forms.Timer(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.labelICM1 = new System.Windows.Forms.Label();
@@ -134,6 +133,7 @@
             this.checkBoxICM = new System.Windows.Forms.CheckBox();
             this.checkBoxAutoBack = new System.Windows.Forms.CheckBox();
             this.buttonHRC = new System.Windows.Forms.Button();
+            this.webKitBrowser = new WebKit.WebKitBrowser();
             this.groupBoxPosition.SuspendLayout();
             this.chipContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -744,12 +744,6 @@
             this.button_fore.UseVisualStyleBackColor = true;
             this.button_fore.Click += new System.EventHandler(this.button_fore_Click);
             // 
-            // webBrowser1
-            // 
-            resources.ApplyResources(this.webBrowser1, "webBrowser1");
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
-            // 
             // webBrowserTimer
             // 
             this.webBrowserTimer.Interval = 500;
@@ -820,12 +814,21 @@
             this.buttonHRC.UseVisualStyleBackColor = true;
             this.buttonHRC.Click += new System.EventHandler(this.buttonHRC_Click);
             // 
+            // webKitBrowser
+            // 
+            this.webKitBrowser.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.webKitBrowser, "webKitBrowser");
+            this.webKitBrowser.Name = "webKitBrowser";
+            this.webKitBrowser.Url = null;
+            this.webKitBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webKitBrowser_DocumentCompleted);
+            // 
             // OpenNashCalculatorViewController
             // 
             this.AllowDrop = true;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = global::OpenNashCalculator.Properties.Settings.Default.BackColorOfMainForm;
+            this.Controls.Add(this.webKitBrowser);
             this.Controls.Add(this.buttonHRC);
             this.Controls.Add(this.checkBoxAutoBack);
             this.Controls.Add(this.checkBoxICM);
@@ -838,7 +841,6 @@
             this.Controls.Add(this.labelICM3);
             this.Controls.Add(this.labelICM2);
             this.Controls.Add(this.labelICM1);
-            this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.button_fore);
             this.Controls.Add(this.button_back);
             this.Controls.Add(this.checkBox9);
@@ -1019,7 +1021,6 @@
         private System.Windows.Forms.Timer findTimer;
         private System.Windows.Forms.Button button_back;
         private System.Windows.Forms.Button button_fore;
-        private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.Timer webBrowserTimer;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Label labelICM1;
@@ -1034,6 +1035,7 @@
         private System.Windows.Forms.CheckBox checkBoxICM;
         private System.Windows.Forms.CheckBox checkBoxAutoBack;
         private System.Windows.Forms.Button buttonHRC;
+        private WebKit.WebKitBrowser webKitBrowser;
     }
 }
 
