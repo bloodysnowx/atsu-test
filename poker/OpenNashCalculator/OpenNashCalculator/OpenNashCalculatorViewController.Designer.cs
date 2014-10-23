@@ -741,9 +741,6 @@
             // 
             // buttonSNG9
             // 
-            resources.ApplyResources(this.checkBoxAutoBack, "checkBoxAutoBack");
-            this.checkBoxAutoBack.Name = "checkBoxAutoBack";
-            this.checkBoxAutoBack.UseVisualStyleBackColor = true;
             resources.ApplyResources(this.buttonSNG9, "buttonSNG9");
             this.buttonSNG9.ForeColor = System.Drawing.Color.Gainsboro;
             this.buttonSNG9.Name = "buttonSNG9";

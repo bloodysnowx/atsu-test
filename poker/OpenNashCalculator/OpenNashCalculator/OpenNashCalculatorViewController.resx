@@ -774,24 +774,6 @@
   <data name="radioButton9.ToolTip" xml:space="preserve">
     <value>BBの位置を指定します</value>
   </data>
-  <data name="radioButton9.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButton9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 280</value>
-  </data>
-  <data name="radioButton9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 16</value>
-  </data>
-  <data name="radioButton9.TabIndex" type="System.Int32, mscorlib">
-    <value>47</value>
-  </data>
-  <data name="radioButton9.Text" xml:space="preserve">
-    <value>BB</value>
-  </data>
-  <data name="radioButton9.ToolTip" xml:space="preserve">
-    <value>BBの位置を指定します</value>
-  </data>
   <data name="&gt;&gt;radioButton9.Name" xml:space="preserve">
     <value>radioButton9</value>
   </data>
@@ -1141,307 +1123,7 @@
     <value>8</value>
   </data>
   <data name="groupBoxPosition.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 86</value>
-  </data>
-  <data name="groupBoxPosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 304</value>
-  </data>
-  <data name="groupBoxPosition.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
-  </data>
-  <data name="&gt;&gt;groupBoxPosition.Name" xml:space="preserve">
-    <value>groupBoxPosition</value>
-  </data>
-  <data name="&gt;&gt;groupBoxPosition.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxPosition.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBoxPosition.ZOrder" xml:space="preserve">
-    <value>60</value>
-  </data>
-  <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 95</value>
-  </data>
-  <data name="button2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 23</value>
-  </data>
-  <data name="button2.TabIndex" type="System.Int32, mscorlib">
-    <value>57</value>
-  </data>
-  <data name="button2.Text" xml:space="preserve">
-    <value>×</value>
-  </data>
-  <data name="button2.ToolTip" xml:space="preserve">
-    <value>シートを空にする</value>
-  </data>
-  <data name="&gt;&gt;button2.Name" xml:space="preserve">
-    <value>button2</value>
-  </data>
-  <data name="&gt;&gt;button2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;button2.ZOrder" xml:space="preserve">
-    <value>59</value>
-  </data>
-  <data name="button3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 129</value>
-  </data>
-  <data name="button3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 23</value>
-  </data>
-  <data name="button3.TabIndex" type="System.Int32, mscorlib">
-    <value>58</value>
-  </data>
-  <data name="button3.Text" xml:space="preserve">
-    <value>×</value>
-  </data>
-  <data name="button3.ToolTip" xml:space="preserve">
-    <value>シートを空にする</value>
-  </data>
-  <data name="&gt;&gt;button3.Name" xml:space="preserve">
-    <value>button3</value>
-  </data>
-  <data name="&gt;&gt;button3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button3.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;button3.ZOrder" xml:space="preserve">
-    <value>58</value>
-  </data>
-  <data name="button4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 163</value>
-  </data>
-  <data name="button4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 23</value>
-  </data>
-  <data name="button4.TabIndex" type="System.Int32, mscorlib">
-    <value>59</value>
-  </data>
-  <data name="button4.Text" xml:space="preserve">
-    <value>×</value>
-  </data>
-  <data name="button4.ToolTip" xml:space="preserve">
-    <value>シートを空にする</value>
-  </data>
-  <data name="&gt;&gt;button4.Name" xml:space="preserve">
-    <value>button4</value>
-  </data>
-  <data name="&gt;&gt;button4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button4.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;button4.ZOrder" xml:space="preserve">
-    <value>57</value>
-  </data>
-  <data name="button5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 197</value>
-  </data>
-  <data name="button5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 23</value>
-  </data>
-  <data name="button5.TabIndex" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <data name="button5.Text" xml:space="preserve">
-    <value>×</value>
-  </data>
-  <data name="button5.ToolTip" xml:space="preserve">
-    <value>シートを空にする</value>
-  </data>
-  <data name="&gt;&gt;button5.Name" xml:space="preserve">
-    <value>button5</value>
-  </data>
-  <data name="&gt;&gt;button5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button5.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;button5.ZOrder" xml:space="preserve">
-    <value>56</value>
-  </data>
-  <data name="button6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 231</value>
-  </data>
-  <data name="button6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 23</value>
-  </data>
-  <data name="button6.TabIndex" type="System.Int32, mscorlib">
-    <value>61</value>
-  </data>
-  <data name="button6.Text" xml:space="preserve">
-    <value>×</value>
-  </data>
-  <data name="button6.ToolTip" xml:space="preserve">
-    <value>シートを空にする</value>
-  </data>
-  <data name="&gt;&gt;button6.Name" xml:space="preserve">
-    <value>button6</value>
-  </data>
-  <data name="&gt;&gt;button6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button6.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;button6.ZOrder" xml:space="preserve">
-    <value>55</value>
-  </data>
-  <data name="button7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 265</value>
-  </data>
-  <data name="button7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 23</value>
-  </data>
-  <data name="button7.TabIndex" type="System.Int32, mscorlib">
-    <value>62</value>
-  </data>
-  <data name="button7.Text" xml:space="preserve">
-    <value>×</value>
-  </data>
-  <data name="button7.ToolTip" xml:space="preserve">
-    <value>シートを空にする</value>
-  </data>
-  <data name="&gt;&gt;button7.Name" xml:space="preserve">
-    <value>button7</value>
-  </data>
-  <data name="&gt;&gt;button7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button7.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;button7.ZOrder" xml:space="preserve">
-    <value>54</value>
-  </data>
-  <data name="button8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 299</value>
-  </data>
-  <data name="button8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 23</value>
-  </data>
-  <data name="button8.TabIndex" type="System.Int32, mscorlib">
-    <value>63</value>
-  </data>
-  <data name="button8.Text" xml:space="preserve">
-    <value>×</value>
-  </data>
-  <data name="button8.ToolTip" xml:space="preserve">
-    <value>シートを空にする</value>
-  </data>
-  <data name="&gt;&gt;button8.Name" xml:space="preserve">
-    <value>button8</value>
-  </data>
-  <data name="&gt;&gt;button8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button8.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;button8.ZOrder" xml:space="preserve">
-    <value>53</value>
-  </data>
-  <data name="button9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 333</value>
-  </data>
-  <data name="button9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 23</value>
-  </data>
-  <data name="button9.TabIndex" type="System.Int32, mscorlib">
-    <value>64</value>
-  </data>
-  <data name="button9.Text" xml:space="preserve">
-    <value>×</value>
-  </data>
-  <data name="button9.ToolTip" xml:space="preserve">
-    <value>シートを空にする</value>
-  </data>
-  <data name="&gt;&gt;button9.Name" xml:space="preserve">
-    <value>button9</value>
-  </data>
-  <data name="&gt;&gt;button9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button9.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;button9.ZOrder" xml:space="preserve">
-    <value>52</value>
-  </data>
-  <data name="button10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 367</value>
-  </data>
-  <data name="button10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 23</value>
-  </data>
-  <data name="button10.TabIndex" type="System.Int32, mscorlib">
-    <value>65</value>
-  </data>
-  <data name="button10.Text" xml:space="preserve">
-    <value>×</value>
-  </data>
-  <data name="button10.ToolTip" xml:space="preserve">
-    <value>シートを空にする</value>
-  </data>
-  <data name="&gt;&gt;button10.Name" xml:space="preserve">
-    <value>button10</value>
-  </data>
-  <data name="&gt;&gt;button10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button10.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;button10.ZOrder" xml:space="preserve">
-    <value>51</value>
-  </data>
-  <data name="checkBoxWeb.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxWeb.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 404</value>
-  </data>
-  <data name="checkBoxWeb.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 16</value>
-  </data>
-  <data name="checkBoxWeb.TabIndex" type="System.Int32, mscorlib">
-    <value>67</value>
-  </data>
-  <data name="checkBoxWeb.Text" xml:space="preserve">
-    <value>Do not Open Web</value>
-  </data>
-  <data name="checkBoxWeb.ToolTip" xml:space="preserve">
-    <value>標準ブラウザでHoldem Resourcesを開くかどうかを指定します</value>
-  </data>
-  <data name="&gt;&gt;checkBoxWeb.Name" xml:space="preserve">
-    <value>checkBoxWeb</value>
-  </data>
-  <data name="&gt;&gt;checkBoxWeb.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxWeb.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;checkBoxWeb.ZOrder" xml:space="preserve">
-    <value>50</value>
-  </data>
-  <data name="buttonOpen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>398, 65</value>
-  </data>
-  <data name="buttonOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 23</value>
-  </data>
-  <data name="buttonOpen.TabIndex" type="System.Int32, mscorlib">
-    <value>68</value>
+    <value>29, 120</value>
   </data>
   <data name="groupBoxPosition.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 304</value>
@@ -2560,37 +2242,37 @@
     <value>17, 60</value>
   </metadata>
   <data name="openToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 22</value>
+    <value>186, 22</value>
   </data>
   <data name="openToolStripMenuItem.Text" xml:space="preserve">
     <value>ハンド履歴ファイルを開く</value>
   </data>
   <data name="ReReadToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 22</value>
+    <value>186, 22</value>
   </data>
   <data name="ReReadToolStripMenuItem.Text" xml:space="preserve">
     <value>再読み込み</value>
   </data>
   <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 22</value>
+    <value>53, 20</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>ファイル</value>
   </data>
   <data name="nextToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 22</value>
+    <value>147, 22</value>
   </data>
   <data name="nextToolStripMenuItem.Text" xml:space="preserve">
     <value>一手先のハンド</value>
   </data>
   <data name="prevToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 22</value>
+    <value>147, 22</value>
   </data>
   <data name="prevToolStripMenuItem.Text" xml:space="preserve">
     <value>一手前のハンド</value>
   </data>
   <data name="handToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 22</value>
+    <value>46, 20</value>
   </data>
   <data name="&gt;&gt;labelICM5.ZOrder" xml:space="preserve">
     <value>9</value>
@@ -2601,19 +2283,19 @@
     <value>False</value>
   </data>
   <data name="AutoRefreshToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>122, 22</value>
   </data>
   <data name="AutoRefreshToolStripMenuItem.Text" xml:space="preserve">
     <value>自動更新</value>
   </data>
   <data name="AutoCloseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>122, 22</value>
   </data>
   <data name="AutoCloseToolStripMenuItem.Text" xml:space="preserve">
     <value>自動終了</value>
   </data>
   <data name="optionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 22</value>
+    <value>62, 20</value>
   </data>
   <data name="optionToolStripMenuItem.Text" xml:space="preserve">
     <value>オプション</value>
@@ -2622,7 +2304,7 @@
     <value>0, 0</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>557, 26</value>
+    <value>557, 24</value>
   </data>
   <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>118</value>
