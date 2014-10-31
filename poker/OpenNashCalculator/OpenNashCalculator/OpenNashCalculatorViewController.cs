@@ -537,33 +537,13 @@ namespace OpenNashCalculator
                 }
                 else if (recent_web_page != null)
                 {
-                    int index = recent_web_page.IndexOf("</TR>\r\n<TR>\r\n<TD>" + push_pos + "</TD>\r\n<TD>\r\n<TD>\r\n<TD>");
-                    if (index < 0) return;
-                    string tmp = recent_web_page.Substring(index);
-                    tmp = tmp.Substring(tmp.IndexOf("</TR>\r\n<TR>\r\n<TD>\r\n<TD>" + oc_pos + "</TD>\r\n<TD>\r\n<TD>"));
-                    Regex regex = new Regex("</TR>\r\n<TR>\r\n<TD>\r\n<TD>\r\n<TD>" + Regex.Escape(hero_pos) + "</TD>\r\n<TD>(.*?)</TD></TR>");
-                    MatchCollection matchCol = regex.Matches(tmp);
+                    String opponentPushRange = recent_web_page.Substring(recent_web_page.LastIndexOf(getPushRange(recent_web_page, push_pos)));
+                    String overCallRange = getCallRange(opponentPushRange, oc_pos);
+                    String heroRange = opponentPushRange.Substring(opponentPushRange.IndexOf(overCallRange));
+                    Regex regex = new Regex(Regex.Escape(hero_pos) + "([0-9]+" + Regex.Escape(".") + "?[0-9]*%, .*?)\n");
+                    MatchCollection matchCol = regex.Matches(heroRange);
+                    
                     Help.ShowPopup(this, matchCol[0].Groups[1].Value, Control.MousePosition);
-                }
-                else
-                {
-                    int first = -1;
-                    int second = -1;
-                    for (int i = 1, j = 0; i < 10; ++i)
-                    {
-                        if (chipTextBoxes[(bb_pos + i) % 9].Text.Trim() != string.Empty)
-                        {
-                            if (AllinCheckBoxes[(bb_pos + i) % 9].Checked)
-                            {
-                                if (first < 0)
-                                    first = j;
-                                else
-                                    second = j;
-                            }
-                            ++j;
-                        }
-                    }
-                    Help.ShowPopup(this, CalcByHRC.getOverCallRange(first, second, currentTableData.getHeroNumber()), Control.MousePosition);
                 }
             }
         }
@@ -661,32 +641,6 @@ namespace OpenNashCalculator
             openHandHistory();
         }
 
-        private void buttonHRC_Click(object sender, EventArgs e)
-        {
-            clearCalc();
-            setupCurrentTableData();
-            StringBuilder chips = new StringBuilder();
-            for (int i = 1, j = 1; i < 10; ++i)
-            {
-                if (chipTextBoxes[(bb_pos + i) % 9].Text.Trim() != string.Empty)
-                {
-                    string playerName = PlayerNameLabels[(bb_pos + i) % 9].Text.Equals(string.Empty) ? "Player" + j : PlayerNameLabels[(bb_pos + i) % 9].Text;
-                    chips.AppendLine("Seat " + j + ": " + playerName + " (" +  chipTextBoxes[(bb_pos + i) % 9].Text.Trim() + " in chips)");
-                    j++;
-                }
-            }
-            string[] ranges = CalcByHRC.Calc(currentTableData, chips.ToString(), isForceAllInList);
-            if (ranges == null) return;
-            for (int i = 1, j = 0, k = 0; i < 10 && j < isForceAllInList.Count && k < ranges.Length; ++i)
-            {
-                if (chipTextBoxes[(bb_pos + i) % 9].Text.Trim() != string.Empty)
-                {
-                    if(isForceAllInList[j++] != true)
-                        rangeTextBoxes[(bb_pos + i) % 9].Text = ranges[k++];
-                }
-            }
-        }
-
         private void AutoRefreshToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AutoRefreshToolStripMenuItem.Checked = !AutoRefreshToolStripMenuItem.Checked;
@@ -714,6 +668,12 @@ namespace OpenNashCalculator
 
             this.textBoxStructure.Text = structures[Array.IndexOf(buttons, sender)];
         }
+
+        private void webKitBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            webBrowserTimer.Enabled = true;
+        }
+
 #if false
         private void CalcICM()
         {

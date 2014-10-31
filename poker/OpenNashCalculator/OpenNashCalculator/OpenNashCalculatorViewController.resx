@@ -1740,72 +1740,6 @@
   <data name="&gt;&gt;chipContextMenuStrip.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="buttonReread.Location" type="System.Drawing.Point, System.Drawing">
-    <value>269, 65</value>
-  </data>
-  <data name="buttonReread.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="buttonReread.TabIndex" type="System.Int32, mscorlib">
-    <value>91</value>
-  </data>
-  <data name="buttonReread.Text" xml:space="preserve">
-    <value>ReRead</value>
-  </data>
-  <data name="buttonReread.ToolTip" xml:space="preserve">
-    <value>ハンドヒストリを再度読み込み直します</value>
-  </data>
-  <data name="&gt;&gt;buttonReread.Name" xml:space="preserve">
-    <value>buttonReread</value>
-  </data>
-  <data name="&gt;&gt;buttonReread.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonReread.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;buttonReread.ZOrder" xml:space="preserve">
-    <value>25</value>
-  </data>
-  <data name="checkBoxClose.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>230, 404</value>
-  </data>
-  <data name="checkBoxClose.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 16</value>
-  </data>
-  <data name="checkBoxClose.TabIndex" type="System.Int32, mscorlib">
-    <value>92</value>
-  </data>
-  <data name="checkBoxClose.Text" xml:space="preserve">
-    <value>Auto Close</value>
-  </data>
-  <data name="checkBoxClose.ToolTip" xml:space="preserve">
-    <value>不要になった場合に自動的に終了するかを指定する</value>
-  </data>
-  <data name="&gt;&gt;checkBoxClose.Name" xml:space="preserve">
-    <value>checkBoxClose</value>
-  </data>
-  <data name="&gt;&gt;checkBoxClose.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxClose.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;checkBoxClose.ZOrder" xml:space="preserve">
-    <value>27</value>
-  </data>
-  <data name="chipContextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 48</value>
-  </data>
-  <data name="&gt;&gt;chipContextMenuStrip.Name" xml:space="preserve">
-    <value>chipContextMenuStrip</value>
-  </data>
-  <data name="&gt;&gt;chipContextMenuStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="checkBox1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2052,60 +1986,6 @@
   <metadata name="findTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>519, 19</value>
   </metadata>
-  <data name="button_back.Location" type="System.Drawing.Point, System.Drawing">
-    <value>351, 400</value>
-  </data>
-  <data name="button_back.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="button_back.TabIndex" type="System.Int32, mscorlib">
-    <value>103</value>
-  </data>
-  <data name="button_back.Text" xml:space="preserve">
-    <value>back</value>
-  </data>
-  <data name="button_back.ToolTip" xml:space="preserve">
-    <value>1つ前のハンド状況に移動する</value>
-  </data>
-  <data name="&gt;&gt;button_back.Name" xml:space="preserve">
-    <value>button_back</value>
-  </data>
-  <data name="&gt;&gt;button_back.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_back.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;button_back.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="button_fore.Location" type="System.Drawing.Point, System.Drawing">
-    <value>433, 400</value>
-  </data>
-  <data name="button_fore.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="button_fore.TabIndex" type="System.Int32, mscorlib">
-    <value>104</value>
-  </data>
-  <data name="button_fore.Text" xml:space="preserve">
-    <value>fore</value>
-  </data>
-  <data name="button_fore.ToolTip" xml:space="preserve">
-    <value>1つ次のハンド状況に移動する</value>
-  </data>
-  <data name="&gt;&gt;button_fore.Name" xml:space="preserve">
-    <value>button_fore</value>
-  </data>
-  <data name="&gt;&gt;button_fore.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_fore.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;button_fore.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
   <metadata name="webBrowserTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>628, 19</value>
   </metadata>
@@ -2115,82 +1995,12 @@
   <data name="buttonCalc.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Popup</value>
   </data>
-  <data name="&gt;&gt;labelICM1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelICM1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;labelICM1.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="labelICM2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelICM2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelICM2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>537, 132</value>
-  </data>
-  <data name="labelICM2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 12</value>
-  </data>
-  <data name="labelICM2.TabIndex" type="System.Int32, mscorlib">
-    <value>107</value>
-  </data>
-  <data name="labelICM2.Text" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;labelICM2.Name" xml:space="preserve">
-    <value>labelICM2</value>
-  </data>
-  <data name="&gt;&gt;labelICM2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelICM2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;labelICM2.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="labelICM3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   <data name="buttonCalc.Font" type="System.Drawing.Font, System.Drawing">
     <value>MS UI Gothic, 12pt, style=Bold</value>
   </data>
   <data name="buttonCalc.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="labelICM3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>537, 166</value>
-  </data>
-  <data name="labelICM3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 12</value>
-  </data>
-  <data name="labelICM3.TabIndex" type="System.Int32, mscorlib">
-    <value>108</value>
-  </data>
-  <data name="labelICM3.Text" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;labelICM3.Name" xml:space="preserve">
-    <value>labelICM3</value>
-  </data>
-  <data name="&gt;&gt;labelICM3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelICM3.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;labelICM3.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="labelICM4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelICM4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   <data name="buttonCalc.Location" type="System.Drawing.Point, System.Drawing">
     <value>392, 36</value>
   </data>
@@ -2215,40 +2025,41 @@
   <data name="&gt;&gt;buttonCalc.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;labelICM4.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="labelICM5.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelICM5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelICM5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>537, 234</value>
-  </data>
-  <data name="labelICM5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 12</value>
-  </data>
-  <data name="labelICM5.TabIndex" type="System.Int32, mscorlib">
-    <value>110</value>
-  </data>
-  <data name="labelICM5.Text" xml:space="preserve">
-    <value>label5</value>
   <data name="&gt;&gt;buttonCalc.ZOrder" xml:space="preserve">
     <value>45</value>
+  </data>
+  <data name="webKitBrowser.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 450</value>
+  </data>
+  <data name="webKitBrowser.Size" type="System.Drawing.Size, System.Drawing">
+    <value>551, 187</value>
+  </data>
+  <data name="webKitBrowser.TabIndex" type="System.Int32, mscorlib">
+    <value>118</value>
+  </data>
+  <data name="&gt;&gt;webKitBrowser.Name" xml:space="preserve">
+    <value>webKitBrowser</value>
+  </data>
+  <data name="&gt;&gt;webKitBrowser.Type" xml:space="preserve">
+    <value>WebKit.WebKitBrowser, WebKitBrowser, Version=0.5.0.0, Culture=neutral, PublicKeyToken=b967213f6d29a3be</value>
+  </data>
+  <data name="&gt;&gt;webKitBrowser.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;webKitBrowser.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 60</value>
   </metadata>
   <data name="openToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 22</value>
+    <value>132, 22</value>
   </data>
   <data name="openToolStripMenuItem.Text" xml:space="preserve">
-    <value>ハンド履歴ファイルを開く</value>
+    <value>Open</value>
   </data>
   <data name="ReReadToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 22</value>
+    <value>132, 22</value>
   </data>
   <data name="ReReadToolStripMenuItem.Text" xml:space="preserve">
     <value>再読み込み</value>
@@ -2260,22 +2071,20 @@
     <value>ファイル</value>
   </data>
   <data name="nextToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 22</value>
+    <value>102, 22</value>
   </data>
   <data name="nextToolStripMenuItem.Text" xml:space="preserve">
-    <value>一手先のハンド</value>
+    <value>Next</value>
   </data>
   <data name="prevToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 22</value>
+    <value>102, 22</value>
   </data>
   <data name="prevToolStripMenuItem.Text" xml:space="preserve">
-    <value>一手前のハンド</value>
+    <value>Prev</value>
   </data>
   <data name="handToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>46, 20</value>
   </data>
-  <data name="&gt;&gt;labelICM5.ZOrder" xml:space="preserve">
-    <value>9</value>
   <data name="handToolStripMenuItem.Text" xml:space="preserve">
     <value>ハンド</value>
   </data>
@@ -2321,57 +2130,8 @@
   <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;labelICM6.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="labelICM7.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelICM7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="openToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 22</value>
-  </data>
-  <data name="openToolStripMenuItem.Text" xml:space="preserve">
-    <value>Open</value>
-  </data>
-  <data name="ReReadToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 22</value>
-  </data>
-  <data name="ReReadToolStripMenuItem.Text" xml:space="preserve">
-    <value>再読み込み</value>
-  </data>
-  <data name="nextToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 22</value>
-  </data>
-  <data name="nextToolStripMenuItem.Text" xml:space="preserve">
-    <value>Next</value>
-  </data>
-  <data name="prevToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 22</value>
-  </data>
-  <data name="&gt;&gt;labelICM7.ZOrder" xml:space="preserve">
     <value>7</value>
-  <data name="prevToolStripMenuItem.Text" xml:space="preserve">
-    <value>Prev</value>
-  </data>
-  <data name="AutoRefreshToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="AutoRefreshToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
-  </data>
-  <data name="AutoRefreshToolStripMenuItem.Text" xml:space="preserve">
-    <value>自動更新</value>
-  </data>
-  <data name="AutoCloseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
-  </data>
-  <data name="AutoCloseToolStripMenuItem.Text" xml:space="preserve">
-    <value>自動終了</value>
   </data>
   <data name="buttonMTT.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2439,10 +2199,8 @@
   <data name="&gt;&gt;buttonMTT.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;labelICM8.ZOrder" xml:space="preserve">
-    <value>6</value>
   <data name="&gt;&gt;buttonMTT.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="buttonHyperSat.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2485,10 +2243,8 @@
   <data name="&gt;&gt;buttonHyperSat.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;labelICM9.ZOrder" xml:space="preserve">
-    <value>5</value>
   <data name="&gt;&gt;buttonHyperSat.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="buttonSNG6.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2531,10 +2287,8 @@
   <data name="&gt;&gt;buttonSNG6.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;checkBoxICM.ZOrder" xml:space="preserve">
-    <value>4</value>
   <data name="&gt;&gt;buttonSNG6.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="buttonSNG9.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2577,10 +2331,8 @@
   <data name="&gt;&gt;buttonSNG9.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;checkBoxAutoBack.ZOrder" xml:space="preserve">
-    <value>3</value>
   <data name="&gt;&gt;buttonSNG9.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="buttonFifty50.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2623,30 +2375,8 @@
   <data name="&gt;&gt;buttonFifty50.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;buttonHRC.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="webKitBrowser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 432</value>
-  </data>
-  <data name="webKitBrowser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>551, 187</value>
-  </data>
-  <data name="webKitBrowser.TabIndex" type="System.Int32, mscorlib">
-    <value>118</value>
-  </data>
-  <data name="&gt;&gt;webKitBrowser.Name" xml:space="preserve">
-    <value>webKitBrowser</value>
-  </data>
-  <data name="&gt;&gt;webKitBrowser.Type" xml:space="preserve">
-    <value>WebKit.WebKitBrowser, WebKitBrowser, Version=0.5.0.0, Culture=neutral, PublicKeyToken=b967213f6d29a3be</value>
-  </data>
-  <data name="&gt;&gt;webKitBrowser.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;webKitBrowser.ZOrder" xml:space="preserve">
   <data name="&gt;&gt;buttonFifty50.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

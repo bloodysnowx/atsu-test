@@ -97,27 +97,10 @@
             this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.checkBox9 = new System.Windows.Forms.CheckBox();
             this.findTimer = new System.Windows.Forms.Timer(this.components);
-            this.button_back = new System.Windows.Forms.Button();
-            this.button_fore = new System.Windows.Forms.Button();
-            this.webBrowserTimer = new System.Windows.Forms.Timer(this.components);
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.labelICM1 = new System.Windows.Forms.Label();
-            this.labelICM2 = new System.Windows.Forms.Label();
-            this.labelICM3 = new System.Windows.Forms.Label();
-            this.labelICM4 = new System.Windows.Forms.Label();
-            this.labelICM5 = new System.Windows.Forms.Label();
-            this.labelICM6 = new System.Windows.Forms.Label();
-            this.labelICM7 = new System.Windows.Forms.Label();
-            this.labelICM8 = new System.Windows.Forms.Label();
-            this.labelICM9 = new System.Windows.Forms.Label();
-            this.checkBoxICM = new System.Windows.Forms.CheckBox();
-            this.checkBoxAutoBack = new System.Windows.Forms.CheckBox();
-            this.buttonHRC = new System.Windows.Forms.Button();
-            this.webKitBrowser = new WebKit.WebKitBrowser();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.webBrowserTimer = new System.Windows.Forms.Timer(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.buttonCalc = new System.Windows.Forms.Button();
+            this.webKitBrowser = new WebKit.WebKitBrowser();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -611,22 +594,6 @@
             this.findTimer.Interval = 10000;
             this.findTimer.Tick += new System.EventHandler(this.findTimer_Tick);
             // 
-            // button_back
-            // 
-            resources.ApplyResources(this.button_back, "button_back");
-            this.button_back.Name = "button_back";
-            this.toolTip.SetToolTip(this.button_back, resources.GetString("button_back.ToolTip"));
-            this.button_back.UseVisualStyleBackColor = true;
-            this.button_back.Click += new System.EventHandler(this.button_back_Click);
-            // 
-            // button_fore
-            // 
-            resources.ApplyResources(this.button_fore, "button_fore");
-            this.button_fore.Name = "button_fore";
-            this.toolTip.SetToolTip(this.button_fore, resources.GetString("button_fore.ToolTip"));
-            this.button_fore.UseVisualStyleBackColor = true;
-            this.button_fore.Click += new System.EventHandler(this.button_fore_Click);
-            // 
             // webBrowserTimer
             // 
             this.webBrowserTimer.Interval = 500;
@@ -642,6 +609,14 @@
             this.toolTip.SetToolTip(this.buttonCalc, resources.GetString("buttonCalc.ToolTip"));
             this.buttonCalc.UseVisualStyleBackColor = false;
             this.buttonCalc.Click += new System.EventHandler(this.buttonCalc_Click);
+            // 
+            // webKitBrowser
+            // 
+            this.webKitBrowser.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.webKitBrowser, "webKitBrowser");
+            this.webKitBrowser.Name = "webKitBrowser";
+            this.webKitBrowser.Url = null;
+            this.webKitBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webKitBrowser_DocumentCompleted);
             // 
             // menuStrip1
             // 
@@ -716,7 +691,6 @@
             // 
             // buttonMTT
             // 
-            this.buttonMTT.BackgroundImage = global::OpenNashCalculator.Properties.Resources._110_233_161_121;
             resources.ApplyResources(this.buttonMTT, "buttonMTT");
             this.buttonMTT.ForeColor = System.Drawing.Color.Gainsboro;
             this.buttonMTT.Name = "buttonMTT";
@@ -755,37 +729,14 @@
             this.buttonFifty50.UseVisualStyleBackColor = true;
             this.buttonFifty50.Click += new System.EventHandler(this.buttonStructure_Click);
             // 
-            // webKitBrowser
-            // 
-            this.webKitBrowser.BackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.webKitBrowser, "webKitBrowser");
-            this.webKitBrowser.Name = "webKitBrowser";
-            this.webKitBrowser.Url = null;
-            this.webKitBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webKitBrowser_DocumentCompleted);
-            // 
             // OpenNashCalculatorViewController
             // 
             this.AllowDrop = true;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = global::OpenNashCalculator.Properties.Settings.Default.BackColorOfMainForm;
-            this.Controls.Add(this.webKitBrowser);
-            this.Controls.Add(this.buttonHRC);
-            this.Controls.Add(this.checkBoxAutoBack);
-            this.Controls.Add(this.checkBoxICM);
-            this.Controls.Add(this.labelICM9);
-            this.Controls.Add(this.labelICM8);
-            this.Controls.Add(this.labelICM7);
-            this.Controls.Add(this.labelICM6);
-            this.Controls.Add(this.labelICM5);
-            this.Controls.Add(this.labelICM4);
-            this.Controls.Add(this.labelICM3);
-            this.Controls.Add(this.labelICM2);
-            this.Controls.Add(this.labelICM1);
-            this.Controls.Add(this.button_fore);
-            this.Controls.Add(this.button_back);
-            this.BackgroundImage = global::OpenNashCalculator.Properties.Resources._128_81;
             this.BackgroundImage = global::OpenNashCalculator.Properties.Resources._4;
+            this.Controls.Add(this.webKitBrowser);
             this.Controls.Add(this.buttonFifty50);
             this.Controls.Add(this.buttonSNG9);
             this.Controls.Add(this.buttonSNG6);
@@ -933,25 +884,9 @@
         private System.Windows.Forms.CheckBox checkBox8;
         private System.Windows.Forms.CheckBox checkBox9;
         private System.Windows.Forms.Timer findTimer;
-        private System.Windows.Forms.Button button_back;
-        private System.Windows.Forms.Button button_fore;
         private System.Windows.Forms.Timer webBrowserTimer;
         private System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.Label labelICM1;
-        private System.Windows.Forms.Label labelICM2;
-        private System.Windows.Forms.Label labelICM3;
-        private System.Windows.Forms.Label labelICM4;
-        private System.Windows.Forms.Label labelICM5;
-        private System.Windows.Forms.Label labelICM6;
-        private System.Windows.Forms.Label labelICM7;
-        private System.Windows.Forms.Label labelICM8;
-        private System.Windows.Forms.Label labelICM9;
-        private System.Windows.Forms.CheckBox checkBoxICM;
-        private System.Windows.Forms.CheckBox checkBoxAutoBack;
-        private System.Windows.Forms.Button buttonHRC;
         private WebKit.WebKitBrowser webKitBrowser;
-        private System.Windows.Forms.Timer webBrowserTimer;
-        private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
