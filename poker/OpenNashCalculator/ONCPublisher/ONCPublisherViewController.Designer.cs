@@ -32,12 +32,13 @@
             this.userNameTextBox = new System.Windows.Forms.TextBox();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.publishButton = new System.Windows.Forms.Button();
+            this.generateButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.Location = new System.Drawing.Point(13, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(194, 23);
@@ -47,8 +48,8 @@
             // 
             // userNameTextBox
             // 
-            this.userNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.userNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.userNameTextBox.Location = new System.Drawing.Point(15, 29);
             this.userNameTextBox.Name = "userNameTextBox";
             this.userNameTextBox.Size = new System.Drawing.Size(192, 19);
@@ -64,11 +65,22 @@
             this.publishButton.UseVisualStyleBackColor = true;
             this.publishButton.Click += new System.EventHandler(this.publishButton_Click);
             // 
+            // generateButton
+            // 
+            this.generateButton.Location = new System.Drawing.Point(13, 84);
+            this.generateButton.Name = "generateButton";
+            this.generateButton.Size = new System.Drawing.Size(194, 23);
+            this.generateButton.TabIndex = 4;
+            this.generateButton.Text = "Generate Only";
+            this.generateButton.UseVisualStyleBackColor = true;
+            this.generateButton.Click += new System.EventHandler(this.generateButton_Click);
+            // 
             // ONCPublisherViewController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(219, 88);
+            this.ClientSize = new System.Drawing.Size(219, 114);
+            this.Controls.Add(this.generateButton);
             this.Controls.Add(this.publishButton);
             this.Controls.Add(this.userNameTextBox);
             this.Controls.Add(this.label1);
@@ -86,6 +98,7 @@
         private System.Windows.Forms.TextBox userNameTextBox;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.Button publishButton;
+        private System.Windows.Forms.Button generateButton;
 
     }
 }

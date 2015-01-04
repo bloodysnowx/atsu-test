@@ -24,5 +24,10 @@ namespace WhiteListGeneratorUI
             publisher.publish(userNameTextBox.Text, System.IO.Directory.GetCurrentDirectory());
             System.Windows.Forms.MessageBox.Show("Release Zip Complete!");
         }
+
+        private void generateButton_Click(object sender, EventArgs e)
+        {
+            publisher.generate(userNameTextBox.Text, System.IO.Directory.GetCurrentDirectory());
+        }
     }
 }
