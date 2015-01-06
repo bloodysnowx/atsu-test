@@ -10,7 +10,6 @@ using System.Web;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Xml;
-using System.Data.SQLite;
 
 using System.Text.RegularExpressions;
 
@@ -36,13 +35,7 @@ namespace OpenNashCalculator
             if (chipTextBoxes.Count(x => x.Text != string.Empty && System.Convert.ToInt32(x.Text) > 0) <= 1) return;
             textBoxStructure.Text = textBoxStructure.Text.Replace('+', ',').Replace(' ', ',');
             this.buttonCalc.Enabled = false;
-            if (CanCalcByCLI()) CalcByCLI();
-            else CalcByWeb();
-        }
-
-        private bool CanCalcByCLI()
-        {
-            return System.IO.File.Exists("net.holdemresources.cli.jar") && hh_back_num > 0;
+            CalcByWeb();
         }
 
         private string getSQLKey()
@@ -60,69 +53,6 @@ namespace OpenNashCalculator
         {
             string tourneyID = this.reader.getTourneyID(openHandHistoryDialog.FileName);
             return "output_" + tourneyID + ".xml";
-        }
-
-        private bool searchCache()
-        {
-            return false;
-
-            using (var conn = new SQLiteConnection("Data Source=calc.db"))
-            {
-                conn.Open();
-                using (var selectCommand = conn.CreateCommand())
-                {
-                    selectCommand.CommandText = "select data from CalculatedData where id = @id";
-                    selectCommand.Parameters.Add("id", System.Data.DbType.String);
-                    selectCommand.Prepare();
-                    selectCommand.Parameters["id"].Value = getSQLKey();
-
-                    using (var reader = selectCommand.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            string resultData = reader.GetString(0);
-                            if (resultData.Length < 30)
-                            {
-                                using (var deleteCommand = conn.CreateCommand())
-                                {
-                                    deleteCommand.CommandText = "delete from CalculatedData where id = @id";
-                                    deleteCommand.Parameters.Add("id", System.Data.DbType.String);
-                                    deleteCommand.Prepare();
-                                    deleteCommand.Parameters["id"].Value = getSQLKey();
-                                    deleteCommand.ExecuteNonQuery();
-                                }
-                            }
-                            else
-                            {
-                                resultXML = new XmlDocument();
-                                resultXML.LoadXml(resultData);
-                                return true;
-                            }
-                        }
-                    }
-
-                }
-                conn.Close();
-            }
-            return false;
-        }
-
-        private void CalcByCLICommandExecute()
-        {
-            var inputXML = creator.create(currentTableData);
-            inputXML.Save(getInputXMLname());
-
-            if (currentProcess != null && currentProcess.HasExited == false)
-            {
-                currentProcess.EnableRaisingEvents = false;
-                currentProcess.Kill();
-            }
-            currentProcess = new System.Diagnostics.Process();
-            currentProcess.StartInfo = new ProcessStartInfo("java.exe", "-Xmx600m -jar net.holdemresources.cli.jar " + getInputXMLname() + " " + getOutputXMLname()) { CreateNoWindow = true, UseShellExecute = false };
-            currentProcess.SynchronizingObject = this;
-            currentProcess.Exited += new EventHandler(CalcByCLI_Exited);
-            currentProcess.EnableRaisingEvents = true;
-            currentProcess.Start();
         }
 
         List<bool> isForceAllInList;
@@ -166,16 +96,6 @@ namespace OpenNashCalculator
                         currentTableData.buttonPos = i;
                 }
             }
-        }
-
-        private void CalcByCLI()
-        {
-
-            setupCurrentTableData();
-
-            resultXML = null;
-            if (searchCache()) readFromXML();
-            else CalcByCLICommandExecute();
         }
 
         private void readFromXML()
@@ -224,41 +144,11 @@ namespace OpenNashCalculator
             }
         }
 
-        private void CalcByCLI_Exited(object sender, EventArgs e)
-        {
-            var sr = new System.IO.StreamReader(getOutputXMLname());
-            string resultData = sr.ReadToEnd();
-            sr.Close();
-            System.IO.File.Delete(getInputXMLname());
-            System.IO.File.Delete(getOutputXMLname());
-
-            using (var conn = new SQLiteConnection("Data Source=calc.db"))
-            {
-                conn.Open();
-                using (var insertCommand = conn.CreateCommand())
-                {
-                    insertCommand.CommandText = "insert into CalculatedData values (@id, @data)";
-                    insertCommand.Parameters.Add("id", System.Data.DbType.String);
-                    insertCommand.Parameters.Add("data", System.Data.DbType.String);
-                    insertCommand.Prepare();
-                    insertCommand.Parameters["id"].Value = getSQLKey();
-                    insertCommand.Parameters["data"].Value = resultData;
-                    insertCommand.ExecuteNonQuery();
-                }
-                conn.Close();
-            }
-
-            resultXML = new XmlDocument();
-            resultXML.LoadXml(resultData);
-            readFromXML();
-        }
-
         private void CalcByWeb()
         {
             webBrowserTimer.Enabled = false;
 
             setupCurrentTableData();
-            if (searchCache()) { readFromXML(); return; }
 
             if (textBoxAnte.Text.Trim() == "")
                 textBoxAnte.Text = "0";

@@ -191,7 +191,7 @@ namespace OpenNashCalculator
             foreach (CheckBox checkBox in AllinCheckBoxes)
                 checkBox.Checked = false;
 
-            if (result.chips[result.getHeroIndex()] > 0 && player_num > 1 && (checkBoxCalc.Checked || CanCalcByCLI()))
+            if (result.chips[result.getHeroIndex()] > 0 && player_num > 1 && checkBoxCalc.Checked)
             {
                 Calc();
             }
@@ -200,7 +200,6 @@ namespace OpenNashCalculator
                 resultXML = null;
                 recent_web_page = String.Empty;
                 setupCurrentTableData();
-                if (searchCache()) readFromXML();
             }
         }
 
