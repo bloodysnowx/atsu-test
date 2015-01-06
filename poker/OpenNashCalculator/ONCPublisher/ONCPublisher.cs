@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Ionic.Zip;
 using UserValidatorLib;
+using System.IO.Compression;
 
 namespace WhiteListGeneratorUI
 {
@@ -16,12 +16,7 @@ namespace WhiteListGeneratorUI
             string filesPath = path + "\\files";
             string zipPath = path + "\\" + userName + ".zip";
             generate(userName, filesPath);
-            using (ZipFile zip = new ZipFile(Encoding.GetEncoding("Shift_JIS")))
-            {
-                zip.CompressionLevel = Ionic.Zlib.CompressionLevel.None;
-                zip.AddDirectory(filesPath);
-                zip.Save(zipPath);
-            }
+            ZipFile.CreateFromDirectory(filesPath, zipPath);
         }
 
         public void generate(string userName, string path)

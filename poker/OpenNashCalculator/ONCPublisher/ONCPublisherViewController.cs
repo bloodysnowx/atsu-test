@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WhiteListGeneratorUI
@@ -18,10 +19,10 @@ namespace WhiteListGeneratorUI
             InitializeComponent();
         }
 
-        private void publishButton_Click(object sender, EventArgs e)
+        private async void publishButton_Click(object sender, EventArgs e)
         {
             if (userNameTextBox.Text.Length == 0) return;
-            publisher.publish(userNameTextBox.Text, System.IO.Directory.GetCurrentDirectory());
+            await Task.Run(() => { publisher.publish(userNameTextBox.Text, System.IO.Directory.GetCurrentDirectory()); });
             System.Windows.Forms.MessageBox.Show("Release Zip Complete!");
         }
 
