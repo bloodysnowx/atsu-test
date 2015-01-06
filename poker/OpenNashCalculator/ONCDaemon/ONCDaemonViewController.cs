@@ -40,6 +40,12 @@ namespace ONCDaemon
 
         private void Form_Load(object sender, EventArgs e)
         {
+            var timeLimit = new DateTime(2015, 7, 31);
+            if (timeLimit < DateTime.Now)
+            {
+                System.Windows.Forms.MessageBox.Show("試用期間が終了しました");
+                Application.Exit();
+            }
             readFromConfig();
             setLabels();
             setupEventHandler();
