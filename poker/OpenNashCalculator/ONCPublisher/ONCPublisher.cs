@@ -18,7 +18,7 @@ namespace WhiteListGeneratorUI
             generate(userName, filesPath);
             using (ZipFile zip = new ZipFile(Encoding.GetEncoding("Shift_JIS")))
             {
-                zip.CompressionLevel = Ionic.Zlib.CompressionLevel.BestCompression;
+                zip.CompressionLevel = Ionic.Zlib.CompressionLevel.None;
                 zip.AddDirectory(filesPath);
                 zip.Save(zipPath);
             }

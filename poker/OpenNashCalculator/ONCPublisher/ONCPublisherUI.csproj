@@ -91,7 +91,15 @@
   <PropertyGroup>
     <PostBuildEvent>copy $(SolutionDir)OpenNashCalculator\readme.txt $(TargetDir)files\
 xcopy $(SolutionDir)ONCDaemon\bin\$(ConfigurationName) $(TargetDir)files /Y /I /D
-copy $(SolutionDir)OpenNashCalculator\bin\$(ConfigurationName) $(TargetDir)files
+xcopy $(SolutionDir)ONCDaemon\bin\$(ConfigurationName)\ja-JP $(TargetDir)files\ja-JP /Y /I /D
+xcopy $(SolutionDir)OpenNashCalculator\bin\$(ConfigurationName) $(TargetDir)files /Y /I /D
+xcopy $(SolutionDir)OpenNashCalculator\bin\$(ConfigurationName)\ja-JP $(TargetDir)files\ja-JP /Y /I /D
+xcopy $(SolutionDir)OpenNashCalculator\bin\$(ConfigurationName)\JavaScriptCore.resources $(TargetDir)files\JavaScriptCore.resources /Y /I /D
+xcopy $(SolutionDir)OpenNashCalculator\bin\$(ConfigurationName)\WebKit.resources $(TargetDir)files\WebKit.resources /Y /I /D
+xcopy $(SolutionDir)OpenNashCalculator\bin\$(ConfigurationName)\WebKit.resources\certificates $(TargetDir)files\WebKit.resources\certificates /Y /I /D
+xcopy $(SolutionDir)OpenNashCalculator\bin\$(ConfigurationName)\WebKit.resources\en.lproj $(TargetDir)files\WebKit.resources\en.lproj /Y /I /D
+xcopy $(SolutionDir)OpenNashCalculator\bin\$(ConfigurationName)\WebKit.resources\inspector $(TargetDir)files\WebKit.resources\inspector /Y /I /D
+xcopy $(SolutionDir)OpenNashCalculator\bin\$(ConfigurationName)\WebKit.resources\inspector\Images $(TargetDir)files\WebKit.resources\inspector\Images /Y /I /D
 del $(TargetDir)files\*.bak
 copy $(SolutionDir)UserValidatorLib\bin\$(ConfigurationName)\UserValidatorLib.dll $(TargetDir)files\</PostBuildEvent>
   </PropertyGroup>
