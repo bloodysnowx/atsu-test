@@ -196,7 +196,7 @@ namespace OpenNashCalculator
 
         private static string getCallRange(string pushRanges, string position)
         {
-            Regex regex = new Regex(Regex.Escape(position) + "([0-9]+" + Regex.Escape(".") + "[0-9]+%, .*?)\n");
+            Regex regex = new Regex(Regex.Escape(position) + "([0-9]+" + Regex.Escape(".") + "?[0-9]+%, .*?)\n");
             MatchCollection matchCol = regex.Matches(pushRanges);
             String callRange = "";
             if (matchCol.Count == 2 || matchCol.Count == 1)
@@ -205,8 +205,8 @@ namespace OpenNashCalculator
             }
             else
             {
-                regex = new Regex("BB[0-9]+" + Regex.Escape(".") + "[0-9]+%, .*?\n(" +
-                    Regex.Escape(position) + "[0-9]+" + Regex.Escape(".") + "[0-9]+%, .*?)\n");
+                regex = new Regex("BB[0-9]+" + Regex.Escape(".") + "?[0-9]+%, .*?\n(" +
+                    Regex.Escape(position) + "[0-9]+" + Regex.Escape(".") + "?[0-9]+%, .*?)\n");
                 matchCol = regex.Matches(pushRanges);
                 if (matchCol.Count > 0)
                     callRange = matchCol[0].Groups[1].Value;
