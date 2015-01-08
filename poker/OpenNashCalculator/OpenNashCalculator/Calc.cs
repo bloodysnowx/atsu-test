@@ -188,7 +188,7 @@ namespace OpenNashCalculator
 
         private static string getPushRange(string webPage, string position)
         {
-            Regex regex = new Regex(Regex.Escape(position) + "([0-9]+" + Regex.Escape(".") + "[0-9]+%, .*?)\n");
+            Regex regex = new Regex(Regex.Escape(position) + "([0-9]+" + Regex.Escape(".") + "?[0-9]+%, .*?)\n");
             MatchCollection matchCol = regex.Matches(webPage);
             String pushRange = webPage.Substring(webPage.LastIndexOf(matchCol[matchCol.Count - 1].Value));
             return position == "BB" ? "" : pushRange;
