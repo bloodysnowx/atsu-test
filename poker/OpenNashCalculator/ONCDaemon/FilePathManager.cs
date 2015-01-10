@@ -15,7 +15,7 @@ namespace ONCDaemon
 
         public string getONCPath()
         {
-            return System.IO.Directory.GetCurrentDirectory() + "/ナッシュさん.exe";
+            return System.IO.Directory.GetCurrentDirectory() + "/" + Properties.Settings.Default.ONCName;
         }
     }
 }
